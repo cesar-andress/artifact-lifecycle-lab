@@ -142,7 +142,8 @@ def discover_matched_paths(
     try:
         raw_paths = list_all_paths(repo_dir, timeout=git_timeout)
     finally:
-        timings.inspection_s += time.perf_counter() - t0
+        if live is None or live.should_record_timing():
+            timings.inspection_s += time.perf_counter() - t0
 
     if live:
         live.enter_phase("detector")
@@ -154,7 +155,8 @@ def discover_matched_paths(
             if norm and is_matched_path(norm, family):
                 matched.add(norm)
     finally:
-        timings.detector_s += time.perf_counter() - t0
+        if live is None or live.should_record_timing():
+            timings.detector_s += time.perf_counter() - t0
     return matched
 
 
@@ -184,7 +186,8 @@ def extract_repo_events(
             history = log_follow(repo_dir, path, timeout=git_timeout)
             deletes = deletion_commits(repo_dir, path, timeout=git_timeout)
         finally:
-            timings.history_s += time.perf_counter() - t0
+            if live is None or live.should_record_timing():
+                timings.history_s += time.perf_counter() - t0
 
         for idx, touch in enumerate(history):
             change_type = "add" if idx == 0 else "modify"
@@ -202,7 +205,8 @@ def extract_repo_events(
                         blob_sha = blob_store.put_text(content)
                         resources.local_cpu_s += time.perf_counter() - t_blob
                 finally:
-                    timings.blobs_s += time.perf_counter() - t0
+                    if live is None or live.should_record_timing():
+                        timings.blobs_s += time.perf_counter() - t0
             events.append(
                 {
                     "repo_id": repo_id,
@@ -265,7 +269,8 @@ def _extract_repo_body(
             try:
                 clone_bare(row["repo_url"], clone_path, timeout=cfg.clone_timeout)
             finally:
-                timings.clone_s = time.perf_counter() - t0
+                if live.should_record_timing():
+                    timings.clone_s = time.perf_counter() - t0
 
             size = clone_size_bytes(clone_path)
             receipt["clone_bytes"] = size
@@ -310,8 +315,9 @@ def _extract_repo_body(
         live.enter_phase("cleanup")
         t0 = time.perf_counter()
         remove_clone(clone_path)
-        timings.cleanup_s = time.perf_counter() - t0
-        timings.wall_s = time.perf_counter() - wall_start
+        if live.should_record_timing():
+            timings.cleanup_s = time.perf_counter() - t0
+            timings.wall_s = time.perf_counter() - wall_start
         receipt["clone_removed"] = not clone_path.exists()
         receipt["finished_at"] = datetime.now(timezone.utc).isoformat()
         profile.recorded_at = receipt["finished_at"]

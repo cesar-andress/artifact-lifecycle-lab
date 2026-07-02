@@ -196,25 +196,62 @@ class ExtractionLiveState:
     current_phase: str = "clone"
     phase_started_at: float = field(default_factory=time.perf_counter)
     wall_started_at: float = field(default_factory=time.perf_counter)
+    timed_out: bool = False
 
     def enter_phase(self, phase: str) -> None:
         with self.lock:
+            if self.timed_out:
+                return
             self.current_phase = phase
             self.phase_started_at = time.perf_counter()
 
+    def should_record_timing(self) -> bool:
+        with self.lock:
+            return not self.timed_out
+
     def build_timeout_profile(self) -> ExtractionProfile:
         with self.lock:
+            self.timed_out = True
             phase = self.current_phase
             partial_elapsed = max(0.0, time.perf_counter() - self.phase_started_at)
-            self.profile.timings.record_phase_partial(phase, partial_elapsed)
-            self.profile.timings.wall_s = max(
-                self.profile.timings.wall_s,
+            timings = self.profile.timings
+            timings.record_phase_partial(phase, partial_elapsed)
+            timings.wall_s = max(
+                timings.wall_s,
                 time.perf_counter() - self.wall_started_at,
             )
-            self.profile.timeout_phase = phase
-            self.profile.failure_reason = f"timeout:{phase}"
-            self.profile.status = "failed"
-            return self.profile
+            resources = self.profile.resources
+            return ExtractionProfile(
+                repo_id=self.profile.repo_id,
+                repo_url=self.profile.repo_url,
+                extraction_wave=self.profile.extraction_wave,
+                status="failed",
+                timings=PhaseTimings(
+                    clone_s=timings.clone_s,
+                    inspection_s=timings.inspection_s,
+                    history_s=timings.history_s,
+                    detector_s=timings.detector_s,
+                    blobs_s=timings.blobs_s,
+                    parquet_write_s=timings.parquet_write_s,
+                    manifest_write_s=timings.manifest_write_s,
+                    cleanup_s=timings.cleanup_s,
+                    wall_s=timings.wall_s,
+                ),
+                resources=ResourceMetrics(
+                    local_cpu_s=resources.local_cpu_s,
+                    git_network_wait_s=resources.git_network_wait_s,
+                    git_local_wait_s=resources.git_local_wait_s,
+                    n_git_subprocesses=resources.n_git_subprocesses,
+                    n_lazy_blob_fetches=resources.n_lazy_blob_fetches,
+                    bytes_downloaded=resources.bytes_downloaded,
+                ),
+                clone_bytes=self.profile.clone_bytes,
+                n_events=self.profile.n_events,
+                n_matched_paths=self.profile.n_matched_paths,
+                recorded_at=self.profile.recorded_at,
+                failure_reason=f"timeout:{phase}",
+                timeout_phase=phase,
+            )
 
 
 def timeout_phase_from_reason(reason: str | None) -> str | None:
