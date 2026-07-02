@@ -9,4 +9,5 @@ data/blobs/
 data/l1/
 data/derived/
 data/receipts/
+data/state/
 *.parquet

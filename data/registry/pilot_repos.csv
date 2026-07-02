@@ -1,18 +1,18 @@
-repo_id,repo_url,seed_pool,notes
-continuedev_continue,https://github.com/continuedev/continue,ai_adopter,legacy seeds.txt
-pydantic_pydantic-ai,https://github.com/pydantic/pydantic-ai,ai_adopter,
-langchain-ai_langchain,https://github.com/langchain-ai/langchain,ai_adopter,
-All-Hands-AI_OpenHands,https://github.com/All-Hands-AI/OpenHands,ai_adopter,
-anthropics_claude-code,https://github.com/anthropics/claude-code,ai_adopter,
-dagster-io_dagster,https://github.com/dagster-io/dagster,ai_adopter,known CLAUDE.md example in legacy paper
-modelcontextprotocol_servers,https://github.com/modelcontextprotocol/servers,ai_adopter,
-Aider-AI_aider,https://github.com/Aider-AI/aider,ai_adopter,
-open-webui_open-webui,https://github.com/open-webui/open-webui,ai_adopter,
-astral-sh_ruff,https://github.com/astral-sh/ruff,general_oss,legacy seeds_stratified
-django_django,https://github.com/django/django,general_oss,
-tiangolo_fastapi,https://github.com/tiangolo/fastapi,general_oss,
-vercel_next.js,https://github.com/vercel/next.js,general_oss,
-microsoft_vscode,https://github.com/microsoft/vscode,general_oss,
-prefecthq_prefect,https://github.com/prefecthq/prefect,ai_adopter,
-crewAIInc_crewAI,https://github.com/crewAIInc/crewAI,ai_adopter,
-langgenius_dify,https://github.com/langgenius/dify,ai_adopter,
+repo_url,seed_pool,notes
+https://github.com/continuedev/continue,ai_adopter,legacy seeds.txt
+https://github.com/pydantic/pydantic-ai,ai_adopter,
+https://github.com/langchain-ai/langchain,ai_adopter,
+https://github.com/All-Hands-AI/OpenHands,ai_adopter,
+https://github.com/anthropics/claude-code,ai_adopter,
+https://github.com/dagster-io/dagster,ai_adopter,known CLAUDE.md example in legacy paper
+https://github.com/modelcontextprotocol/servers,ai_adopter,
+https://github.com/Aider-AI/aider,ai_adopter,
+https://github.com/open-webui/open-webui,ai_adopter,
+https://github.com/astral-sh/ruff,general_oss,legacy seeds_stratified
+https://github.com/django/django,general_oss,
+https://github.com/tiangolo/fastapi,general_oss,
+https://github.com/vercel/next.js,general_oss,
+https://github.com/microsoft/vscode,general_oss,
+https://github.com/prefecthq/prefect,ai_adopter,
+https://github.com/crewAIInc/crewAI,ai_adopter,
+https://github.com/langgenius/dify,ai_adopter,
