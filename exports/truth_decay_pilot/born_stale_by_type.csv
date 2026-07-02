@@ -1,0 +1,5 @@
+reference_type,count,pct_of_rq2_excluded,surface_context_top,relative_path_candidates,likely_external,repeated_across_5plus_files
+path,13349,75.22,structured_path,6015,1971,2232
+directory,3216,18.12,structured_path,0,14,1018
+script_name,1149,6.47,code_block,0,42,96
+dependency,33,0.19,prose,0,33,0
