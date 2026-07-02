@@ -61,7 +61,7 @@ When references go stale, do maintainers **repair** instruction text, **delete**
 
 ---
 
-### RQ5 — Machine-consumed vs human-facing documentation (comparative)
+### RQ5 — Machine-consumed vs human-facing documentation (comparative baseline)
 
 Do machine-consumed instruction files differ from human-facing documentation (README.md, CONTRIBUTING.md) in **reference density**, **verifiable-claim burden**, and **staleness rate**?
 
@@ -69,7 +69,21 @@ Do machine-consumed instruction files differ from human-facing documentation (RE
 
 **Unit of analysis:** Matched repository, comparing instruction-file snapshots vs README/CONTRIBUTING at the same commit window.
 
-**Gate:** P5 human-doc baseline must pass before comparative analysis is scaled.
+**Gate:** P5 human-doc baseline must pass before within-repo comparison is scaled.
+
+**Impact experiment (causal):** See `protocol/RQ5_AGENT_IMPACT_EXPERIMENT_v1.md` — measures operational cost of **observed rot** on agent task success. Truth Debt is conditional on this showing cost.
+
+---
+
+## Phenomena hierarchy
+
+| Phenomenon | Status | Evidence required |
+|------------|--------|-------------------|
+| **Truth Decay** | **Primary** (default TOSEM claim) | P1/P3 longitudinal rot; RQ1 feasibility |
+| **Truth Debt** | **Conditional** | RQ5 agent impact experiment shows measurable cost (Δ success, time, or trace failures) |
+| **Self-maintenance** | Secondary | P4 precision ≥0.80; RQ3 attribution join |
+
+Truth Decay stands alone as an observational contribution. Truth Debt is promoted only if RQ5 demonstrates that observed rot degrades agent outcomes.
 
 ---
 
@@ -79,9 +93,9 @@ Do machine-consumed instruction files differ from human-facing documentation (RE
 
 | Gate | Purpose | Outputs | Pass condition |
 |------|---------|---------|----------------|
-| **P3 — Rot incidence** | Confirm decay rate supports half-life study | `p3_rot_incidence.md`, `p3_rot_events.csv` | Rot ≥2–3%/reference-year; KM median estimable |
-| **P4 — Attribution precision** | Audit agent-signal accuracy before RQ3 | `agent_attribution_gold_worksheet.csv`, `agent_attribution_precision.md` | Human-review precision ≥0.80 on agent-maintenance subset |
-| **P5 — Human doc baseline** | Feasibility of comparative RQ5 | `human_doc_baseline.md`, `human_doc_reference_examples.csv` | Sufficient human docs with verifiable references |
+| **P3 — Rot incidence** | Confirm decay rate supports half-life study | `p3_rot_incidence.md`, `p3_rot_events.csv` | Rot ≥2–3%/reference-year; survival median estimable |
+| **P4 — Attribution precision** | Audit agent-signal accuracy before RQ3 | `agent_attribution_gold_worksheet.csv`, `p4_attribution_precision.md` | Human-review precision ≥0.80 on agent-maintenance subset |
+| **P5 — Human doc baseline** | Feasibility of within-repo comparison | `p5_human_doc_baseline.md`, `human_doc_reference_examples.csv` | Sufficient human docs with verifiable references |
 
 ### P3 — Rot incidence (mandatory go/no-go)
 
@@ -110,9 +124,10 @@ The program **stops scaling** (including E1-1000) if any mandatory gate fails:
 
 | Criterion | Threshold | Gate |
 |-----------|-----------|------|
-| Rot incidence | **<2–3%** references per year | P3 |
+| Rot incidence | **<2–3%** per reference-year of follow-up | P3 |
 | Attribution precision | **<0.80** on agent-maintenance commits (human-reviewed) | P4 |
 | Survival median | **Not estimable** due to excessive right-censoring | P3 |
+| Agent impact (RQ5) | **Δ success ≤5pp** with observed rot | RQ5 pilot |
 
 ---
 
@@ -281,8 +296,9 @@ Pilot mapping: `agent-authored` ← `agent_signature_in_message`; `agent-coautho
 **Completed (pre-scaling gates):**
 
 5. P3 rot incidence pilot — `exports/truth_pilot/p3_rot_incidence.md`
-6. P4 attribution precision worksheet — `exports/truth_pilot/agent_attribution_gold_worksheet.csv`
-7. P5 human doc baseline — `exports/truth_pilot/human_doc_baseline.md`
+6. P4 attribution precision worksheet — `exports/truth_pilot/p4_attribution_precision.md`
+7. P5 human doc baseline — `exports/truth_pilot/p5_human_doc_baseline.md`
+8. RQ5 agent impact design — `protocol/RQ5_AGENT_IMPACT_EXPERIMENT_v1.md`
 
 **Remaining (post-gate, later milestones):**
 
@@ -291,9 +307,10 @@ Pilot mapping: `agent-authored` ← `agent_signature_in_message`; `agent-coautho
 3. **L2 extension** — Stale-reference counts per month on instruction files.
 4. **Survival analysis module** — RQ2 half-life estimators (post-P3 gate pass).
 5. **Repair/death module** — RQ4 transition accounting.
-6. **Comparative RQ5 analysis** — Machine vs human doc staleness (requires P5 pass).
-7. **Analysis-ready export** — `exports/truth_decay/` for external review.
-8. **Protocol v1.1 trigger** — if detector, attribution rules, or cohort frame changes.
+6. **Comparative RQ5 baseline** — Machine vs human doc density/staleness within matched repos (P5).
+7. **RQ5 agent impact pilot** — Observed-rot perturbation experiment (`RQ5_AGENT_IMPACT_EXPERIMENT_v1.md`).
+8. **Analysis-ready export** — `exports/truth_decay/` for external review.
+9. **Protocol v1.1 trigger** — if detector, attribution rules, or cohort frame changes.
 
 ---
 
@@ -318,3 +335,4 @@ Pilot mapping: `agent-authored` ← `agent_signature_in_message`; `agent-coautho
 | v1 | 2026-07-02 | Initial protocol post go/no-go pilot (400-file P1, full L1 P2 on pilot + E1-100) |
 | v1.0-rq1 | 2026-07-02 | RQ1 longitudinal feasibility study implemented (`exports/truth_decay_pilot/`) |
 | v1.0-gates | 2026-07-02 | Pre-scaling gates P3–P5 implemented (`make pre-scaling-gates`) |
+| v1.0-rq5-design | 2026-07-02 | RQ5 agent impact experiment design; Truth Debt conditional on cost |

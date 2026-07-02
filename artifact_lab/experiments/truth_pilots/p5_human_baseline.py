@@ -38,7 +38,7 @@ def run_p5_human_baseline_gate(
     clone_timeout: int = 180,
 ) -> tuple[Path, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
-    report_md = output_dir / "human_doc_baseline.md"
+    report_md = output_dir / "p5_human_doc_baseline.md"
     examples_csv = output_dir / "human_doc_reference_examples.csv"
 
     import csv
@@ -154,8 +154,9 @@ def run_p5_human_baseline_gate(
         f"- Human doc files sampled (README.md / CONTRIBUTING.md): **{n_sampled}**",
         "",
         "## Human-facing doc metrics",
+        f"- Files sampled: **{n_sampled}**",
         f"- Files with ≥1 verifiable reference: **{n_with_verifiable}** ({100 * n_with_verifiable / n_sampled:.1f}%)" if n_sampled else "- Files with ≥1 verifiable reference: **0**",
-        f"- Median reference density (human docs): **{median_density:.1f}**",
+        f"- Median references per file: **{median_density:.1f}**",
         f"- Median verifiable references per repo (machine docs, P1): **{machine_median:.1f}**",
         "",
         "## Extraction ambiguity",
@@ -174,9 +175,10 @@ def run_p5_human_baseline_gate(
     lines.extend(
         [
             "",
-            "## Comparative RQ feasibility",
-            f"- Machine vs human doc comparison technically viable: **{'Yes' if viable else 'No'}**",
-            "- Requires matched repos with both instruction files (P1) and human docs present.",
+            "## Within-repo comparison feasibility",
+            f"- Within-repo machine vs human doc comparison feasible: **{'Yes' if viable else 'No'}**",
+            "- Requires matched repos with instruction files (P1) and README/CONTRIBUTING present at HEAD.",
+            "- See `protocol/RQ5_AGENT_IMPACT_EXPERIMENT_v1.md` for cost/impact design (not implemented).",
             "",
             f"## Gate verdict: **{gate}**",
             "",

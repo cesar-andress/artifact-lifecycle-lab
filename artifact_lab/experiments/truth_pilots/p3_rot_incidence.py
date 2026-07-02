@@ -160,11 +160,14 @@ def compute_rot_metrics(
     n_censored = sum(1 for t in trajectories if t.censored)
     ref_years = sum((t.end_time - t.start_time).days / DAYS_PER_YEAR for t in trajectories)
 
+    # Epidemiological incidence: rot events per reference-year of follow-up
+    rot_per_reference_year = n_rot / ref_years if ref_years > 0 else 0.0
+
     if observation_span_years is None or observation_span_years <= 0:
         observation_span_years = max(ref_years / n_verifiable, 1 / DAYS_PER_YEAR) if n_verifiable else 1.0
 
     ever_rot_rate = n_rot / n_verifiable if n_verifiable else 0.0
-    rot_per_year = ever_rot_rate / observation_span_years
+    annualized_ever_rot = ever_rot_rate / observation_span_years if observation_span_years > 0 else 0.0
 
     files_with_rot: set[tuple[str, str]] = {
         (t.repo_id, t.instruction_path) for t in trajectories if t.rot_event
@@ -177,24 +180,28 @@ def compute_rot_metrics(
         "verifiable_references": n_verifiable,
         "references_ever_missing": n_rot,
         "ever_rot_proportion": ever_rot_rate,
+        "rot_incidence_per_reference_year": rot_per_reference_year,
+        "rot_incidence_per_reference_year_pct": rot_per_reference_year * 100,
+        "annualized_ever_rot_pct": annualized_ever_rot * 100,
         "observation_span_years": observation_span_years,
-        "rot_incidence_per_year": rot_per_year,
-        "rot_incidence_pct_per_year": rot_per_year * 100,
         "files_with_rot_event": len(files_with_rot),
         "right_censoring_rate": n_censored / n_verifiable if n_verifiable else 0.0,
         "reference_years": ref_years,
+        "survival_median_estimable": km_ok,
+        "survival_median_days": km_median_days,
+        "survival_median_note": km_note,
         "km_median_estimable": km_ok,
         "km_median_days": km_median_days,
         "km_note": km_note,
-        "kill_rot_below_threshold": rot_per_year < ROT_KILL_THRESHOLD,
+        "kill_rot_below_threshold": rot_per_reference_year < ROT_KILL_THRESHOLD,
     }
 
 
 def _p3_markdown(metrics: dict, *, source: str, p1_matched: int) -> str:
-    gate = "PASS" if not metrics["kill_rot_below_threshold"] and metrics["km_median_estimable"] else "FAIL"
+    gate = "PASS" if not metrics["kill_rot_below_threshold"] and metrics["survival_median_estimable"] else "FAIL"
     if metrics["kill_rot_below_threshold"]:
         gate = "FAIL"
-    elif not metrics["km_median_estimable"]:
+    elif not metrics["survival_median_estimable"]:
         gate = "CONDITIONAL"
 
     lines = [
@@ -206,29 +213,29 @@ def _p3_markdown(metrics: dict, *, source: str, p1_matched: int) -> str:
         f"- Longitudinal source: `{source}`",
         "",
         "## Rot metrics",
-        f"- Verifiable references (trajectories): **{metrics['verifiable_references']}**",
-        f"- References that ever become missing (rot): **{metrics['references_ever_missing']}** "
+        f"- Total verifiable references: **{metrics['verifiable_references']}**",
+        f"- References that ever become missing: **{metrics['references_ever_missing']}** "
         f"({metrics['ever_rot_proportion']:.1%} of verifiable)",
-        f"- Observation span: **{metrics['observation_span_years']:.2f} years**",
-        f"- Rot incidence: **{metrics['rot_incidence_pct_per_year']:.2f}%** of verifiable references/year",
+        f"- Rot incidence per reference-year: **{metrics['rot_incidence_per_reference_year']:.2f}** events/reference-year",
         f"- Files with ≥1 rot event: **{metrics['files_with_rot_event']}**",
         f"- Right-censoring rate: **{metrics['right_censoring_rate']:.1%}**",
-        f"- Reference-years of follow-up: **{metrics['reference_years']:.1f}**",
+        f"- Total reference-years of follow-up: **{metrics['reference_years']:.1f}**",
+        f"- Calendar observation span: **{metrics['observation_span_years']:.2f} years**",
         "",
-        "## Kaplan-Meier median estimability",
-        f"- Estimable: **{'Yes' if metrics['km_median_estimable'] else 'No'}**",
-        f"- Note: {metrics['km_note']}",
+        "## Survival median estimability",
+        f"- Estimable: **{'Yes' if metrics['survival_median_estimable'] else 'No'}**",
+        f"- Note: {metrics['survival_median_note']}",
     ]
-    if metrics["km_median_days"] is not None:
-        lines.append(f"- Approximate KM median: **{metrics['km_median_days']:.0f} days**")
+    if metrics.get("survival_median_days") is not None:
+        lines.append(f"- Approximate survival median: **{metrics['survival_median_days']:.0f} days**")
 
     lines.extend(
         [
             "",
             "## Kill criteria (protocol)",
-            f"- Rot incidence <2–3%/year: **{'TRIGGERED' if metrics['kill_rot_below_threshold'] else 'not triggered'}** "
-            f"({metrics['rot_incidence_pct_per_year']:.2f}%)",
-            f"- KM median not estimable (censoring): **{'TRIGGERED' if not metrics['km_median_estimable'] else 'not triggered'}**",
+            f"- Rot incidence <2–3%/reference-year: **{'TRIGGERED' if metrics['kill_rot_below_threshold'] else 'not triggered'}** "
+            f"({metrics['rot_incidence_per_reference_year']:.2f} events/ref-year; threshold 0.025)",
+            f"- Survival median not estimable (censoring): **{'TRIGGERED' if not metrics['survival_median_estimable'] else 'not triggered'}**",
             "",
             f"## Gate verdict: **{gate}**",
             "",

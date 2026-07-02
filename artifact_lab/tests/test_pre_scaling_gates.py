@@ -110,7 +110,7 @@ def test_categorize_dependabot_excluded():
         author_email="49699333+dependabot[bot]@users.noreply.github.com",
         evidence="author=dependabot[bot]",
     )
-    assert cat == "dependabot"
+    assert cat == "dependabot_renovate_security_bot"
     assert counts is False
 
 
@@ -122,7 +122,7 @@ def test_categorize_claude_coauthored():
         author_email="dev@example.com",
         evidence="co_authored_by:claude:Claude Opus 4.6",
     )
-    assert cat == "co_authored_by_claude"
+    assert cat == "co_authored_by_trailer"
     assert counts is True
 
 
@@ -199,6 +199,6 @@ def test_build_gold_worksheet_columns():
     ]
     rows = build_gold_worksheet(sampled)
     assert rows[0]["worksheet_id"] == 1
-    assert rows[0]["signature_category"] == "co_authored_by_cursor"
+    assert rows[0]["signature_category"] == "co_authored_by_trailer"
     assert rows[0]["counts_as_agent_maintenance"] == "yes"
     assert rows[0]["human_label"] == ""

@@ -38,34 +38,32 @@ def categorize_signature(
     evidence: str,
 ) -> tuple[str, bool]:
     """Return (signature_category, counts_as_agent_maintenance)."""
-    if _is_dependency_bot(author_name, author_email, evidence):
-        if re.search(r"dependabot", f"{author_name} {author_email} {evidence}", re.I):
-            return "dependabot", False
-        if re.search(r"renovate", f"{author_name} {author_email} {evidence}", re.I):
-            return "renovate", False
-        return "security_dependency_bot", False
+    combined = f"{author_name} {author_email} {evidence}"
+
+    if re.search(r"dependabot", combined, re.I):
+        return "dependabot_renovate_security_bot", False
+    if re.search(r"renovate", combined, re.I):
+        return "dependabot_renovate_security_bot", False
+    if re.search(r"github-actions|security-bot|snyk-bot", combined, re.I):
+        return "dependabot_renovate_security_bot", False
 
     evidence_lower = evidence.lower()
+
     if attribution_class == "agent_coauthored" or signature_type == "co_authored_by":
-        for label in AGENT_TOOL_LABELS:
-            if label in evidence_lower:
-                return f"co_authored_by_{label}", True
-        return "co_authored_by_other", True
+        return "co_authored_by_trailer", True
 
     for label in ("claude", "cursor", "copilot"):
-        if label in evidence_lower or (
-            attribution_class == "agent_signature_in_message" and label in signature_type
-        ):
+        if label in evidence_lower:
             return f"{label}_signature", True
 
     if attribution_class == "agent_signature_in_message":
-        for label in AGENT_TOOL_LABELS:
+        for label in ("openai", "aider", "devin", "codeium"):
             if label in evidence_lower:
-                return f"{label}_signature", True
-        return "other_tool_signature", True
+                return "generic_automation", True
+        return "generic_automation", True
 
     if attribution_class == "bot_author":
-        return "generic_bot_author", False
+        return "bot_author", False
 
     return "unclassified", False
 
@@ -163,9 +161,9 @@ def _precision_markdown(
         f"- Total non-human flagged commits (P2): **{total_flagged}**",
         f"- Human-review worksheet sample: **{sampled}**",
         "",
-        "## Auto-classification summary",
+        "## Category separation (reviewer objection closure)",
         "",
-        "Categories separated for precision audit. **Dependabot/Renovate/security bots do NOT count as agent maintenance.**",
+        "Dependabot/Renovate/security bots **do not** count as agent maintenance.",
         "",
         "| signature_category | count | agent maintenance? |",
         "|--------------------|------:|:------------------:|",
@@ -180,24 +178,19 @@ def _precision_markdown(
             "",
             "## Breakdown",
             "- **Claude/Cursor/Copilot signatures:** "
-            + str(
-                sum(
-                    1
-                    for r in worksheet
-                    if any(t in r["signature_category"] for t in ("claude", "cursor", "copilot"))
-                )
-            ),
+            + str(sum(1 for r in worksheet if r["signature_category"].endswith("_signature"))),
             "- **Co-Authored-By trailers:** "
-            + str(sum(1 for r in worksheet if r["signature_category"].startswith("co_authored_by"))),
-            "- **Generic bot authors (excl. dependency bots):** "
-            + str(sum(1 for r in worksheet if r["signature_category"] == "generic_bot_author")),
+            + str(sum(1 for r in worksheet if r["signature_category"] == "co_authored_by_trailer")),
+            "- **Bot authors:** "
+            + str(sum(1 for r in worksheet if r["signature_category"] == "bot_author")),
+            "- **Generic automation:** "
+            + str(sum(1 for r in worksheet if r["signature_category"] == "generic_automation")),
             "- **Dependabot/Renovate/security bots (excluded):** "
             + str(
                 sum(
                     1
                     for r in worksheet
-                    if r["signature_category"]
-                    in ("dependabot", "renovate", "security_dependency_bot")
+                    if r["signature_category"] == "dependabot_renovate_security_bot"
                 )
             ),
             "",
@@ -228,7 +221,7 @@ def run_p4_attribution_precision_gate(
 ) -> tuple[Path, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     worksheet_csv = output_dir / "agent_attribution_gold_worksheet.csv"
-    report_md = output_dir / "agent_attribution_precision.md"
+    report_md = output_dir / "p4_attribution_precision.md"
 
     all_flagged = load_agent_candidates(candidates_csv)
     sampled_rows = sample_candidates(all_flagged, n=n_sample, seed=seed)
