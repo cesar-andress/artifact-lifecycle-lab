@@ -12,7 +12,7 @@ import pyarrow.parquet as pq
 import pytest
 
 from artifact_lab.execution.recover import run_recover
-from artifact_lab.execution.states import COMPLETED, FAILED, PENDING, WRITING_L1
+from artifact_lab.execution.states import COMPLETED, FAILED, PENDING, WRITING
 from artifact_lab.execution.verify import verify_repo_completion
 from artifact_lab.ingest import extract as extract_module
 from artifact_lab.ingest.extract import ExtractConfig, run_extract
@@ -39,6 +39,8 @@ def _cfg(tmp_path, registry_path: Path, **kwargs) -> ExtractConfig:
         queue_path=tmp_path / "jobs.db",
         extraction_wave="test_wave",
         force=True,
+        execution_log_path=tmp_path / "execution.log",
+        session_path=tmp_path / "extraction_session.json",
     )
     defaults.update(kwargs)
     return ExtractConfig(**defaults)
@@ -171,7 +173,7 @@ def test_fault_injection_crash_during_parquet_write(tmp_path):
 
     with JobQueue(cfg.queue_path) as q:
         job = q.get(repo0, cfg.family, cfg.extraction_wave)
-        assert job.state in {WRITING_L1, "extracting", "cloning", PENDING, FAILED}
+        assert job.state in {WRITING, "extracting", "cloning", PENDING, FAILED}
 
     report = run_recover(
         registry_path=cfg.registry_path,
@@ -289,7 +291,8 @@ def test_execution_log_records_transitions(tmp_path):
     with patch.object(extract_module, "extract_one_repo", side_effect=lambda c, r, b, cp=None: _ok_receipt(r)):
         run_extract(cfg)
 
-    log_path = cfg.events_dir / "execution.log"
+    log_path = cfg.execution_log_path
+    assert log_path is not None
     assert log_path.exists()
     lines = [json.loads(line) for line in log_path.read_text(encoding="utf-8").splitlines() if line.strip()]
     states = [entry["new_state"] for entry in lines]
@@ -323,3 +326,164 @@ def test_recover_reverts_inconsistent_completed(tmp_path):
     with JobQueue(cfg.queue_path) as q:
         job = q.get(repo0, cfg.family, cfg.extraction_wave)
         assert job.state == FAILED
+
+
+def test_fault_injection_crash_during_history(tmp_path):
+    registry = _registry(tmp_path, 1)
+    cfg = _cfg(tmp_path, registry)
+
+    def crash_history(phase: str) -> None:
+        if phase == "history":
+            raise KeyboardInterrupt("simulated Ctrl+C during history")
+
+    def fake_extract(cfg, row, blob_store, checkpoint=None):
+        crash_history("history")
+        return _ok_receipt(row)
+
+    extract_module.FAULT_INJECTION_HOOK = crash_history
+    try:
+        with patch.object(extract_module, "extract_one_repo", side_effect=fake_extract):
+            with pytest.raises(KeyboardInterrupt):
+                run_extract(cfg)
+    finally:
+        extract_module.FAULT_INJECTION_HOOK = None
+
+    run_recover(
+        registry_path=cfg.registry_path,
+        events_dir=cfg.events_dir,
+        receipts_dir=cfg.receipts_dir,
+        blobs_dir=cfg.blobs_dir,
+        queue_path=cfg.queue_path,
+        scratch_dir=cfg.scratch_dir,
+        family=cfg.family,
+        wave=cfg.extraction_wave,
+        protocol_version="1.0.0",
+        extraction_wave=cfg.extraction_wave,
+    )
+    with JobQueue(cfg.queue_path) as q:
+        job = q.get(_repo_id(0), cfg.family, cfg.extraction_wave)
+        assert job.state in {PENDING, FAILED}
+
+
+def test_fault_injection_crash_during_blob(tmp_path):
+    registry = _registry(tmp_path, 1)
+    cfg = _cfg(tmp_path, registry)
+
+    def crash_blob(phase: str) -> None:
+        if phase == "blob":
+            raise KeyboardInterrupt("simulated Ctrl+C during blob")
+
+    def fake_extract(cfg, row, blob_store, checkpoint=None):
+        crash_blob("blob")
+        return _ok_receipt(row)
+
+    extract_module.FAULT_INJECTION_HOOK = crash_blob
+    try:
+        with patch.object(extract_module, "extract_one_repo", side_effect=fake_extract):
+            with pytest.raises(KeyboardInterrupt):
+                run_extract(cfg)
+    finally:
+        extract_module.FAULT_INJECTION_HOOK = None
+
+    run_recover(
+        registry_path=cfg.registry_path,
+        events_dir=cfg.events_dir,
+        receipts_dir=cfg.receipts_dir,
+        blobs_dir=cfg.blobs_dir,
+        queue_path=cfg.queue_path,
+        scratch_dir=cfg.scratch_dir,
+        family=cfg.family,
+        wave=cfg.extraction_wave,
+        protocol_version="1.0.0",
+        extraction_wave=cfg.extraction_wave,
+    )
+
+
+def test_fault_injection_power_loss_before_cleanup(tmp_path):
+    registry = _registry(tmp_path, 1)
+    cfg = _cfg(tmp_path, registry)
+    repo0 = _repo_id(0)
+
+    def crash_cleanup(phase: str) -> None:
+        if phase == "cleanup":
+            raise KeyboardInterrupt("simulated power loss before cleanup")
+
+    extract_module.FAULT_INJECTION_HOOK = crash_cleanup
+    try:
+        with pytest.raises(KeyboardInterrupt):
+            run_extract(cfg)
+    finally:
+        extract_module.FAULT_INJECTION_HOOK = None
+
+    report = run_recover(
+        registry_path=cfg.registry_path,
+        events_dir=cfg.events_dir,
+        receipts_dir=cfg.receipts_dir,
+        blobs_dir=cfg.blobs_dir,
+        queue_path=cfg.queue_path,
+        scratch_dir=cfg.scratch_dir,
+        family=cfg.family,
+        wave=cfg.extraction_wave,
+        protocol_version="1.0.0",
+        extraction_wave=cfg.extraction_wave,
+    )
+    assert report.scratch_removed or not cfg.scratch_dir.exists() or not list(cfg.scratch_dir.iterdir())
+    with JobQueue(cfg.queue_path) as q:
+        job = q.get(repo0, cfg.family, cfg.extraction_wave)
+        assert job.state in {PENDING, FAILED, "extracting", "cloning"}
+
+
+def test_resume_after_interrupted_run(tmp_path):
+    registry = _registry(tmp_path, 2)
+    cfg = _cfg(tmp_path, registry)
+    calls: list[str] = []
+
+    def fake_extract(cfg, row, blob_store, checkpoint=None):
+        calls.append(row["repo_id"])
+        if len(calls) > 1:
+            raise KeyboardInterrupt("stop before second repo completes")
+        return _ok_receipt(row)
+
+    with patch.object(extract_module, "extract_one_repo", side_effect=fake_extract):
+        with pytest.raises(KeyboardInterrupt):
+            run_extract(cfg)
+
+    with JobQueue(cfg.queue_path) as q:
+        assert sum(1 for j in q.list_jobs() if j.state == COMPLETED) == 1
+
+    calls.clear()
+
+    cfg_resume = ExtractConfig(**{**cfg.__dict__, "force": False})
+    with patch.object(extract_module, "extract_one_repo", side_effect=fake_extract):
+        run_extract(cfg_resume)
+
+    assert len(calls) == 1
+    with JobQueue(cfg.queue_path) as q:
+        completed = sum(1 for j in q.list_jobs() if j.state == COMPLETED)
+    assert completed == 2
+
+
+def test_global_manifest_contains_required_fields(tmp_path):
+    registry = _registry(tmp_path, 1)
+    cfg = _cfg(tmp_path, registry, registry_version="test_reg_v1")
+
+    with patch.object(extract_module, "extract_one_repo", side_effect=lambda c, r, b, cp=None: _ok_receipt(r)):
+        run_extract(cfg)
+
+    import yaml
+
+    manifest = yaml.safe_load((cfg.events_dir / "manifest.yaml").read_text(encoding="utf-8"))
+    for key in (
+        "registry_version",
+        "registry_hash",
+        "wave_id",
+        "protocol_version",
+        "detector_version",
+        "git_commit",
+        "python_version",
+        "execution_start",
+        "execution_finish",
+        "completed_repositories",
+        "failed_repositories",
+    ):
+        assert key in manifest, f"missing manifest key: {key}"

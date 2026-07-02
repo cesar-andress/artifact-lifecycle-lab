@@ -4,7 +4,10 @@ from __future__ import annotations
 
 import csv
 from collections import defaultdict
+from io import StringIO
 from pathlib import Path
+
+from artifact_lab.execution.atomic_io import atomic_write_text
 
 
 def build_table1_rows(repo_family_rows: list[dict]) -> list[dict]:
@@ -31,14 +34,14 @@ def build_table1_rows(repo_family_rows: list[dict]) -> list[dict]:
 
 
 def write_table1(rows: list[dict], path: Path) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(
-            handle,
-            fieldnames=["artifact_family", "n_repos", "n_files", "share_repos_pct"],
-        )
-        writer.writeheader()
-        writer.writerows(rows)
+    buffer = StringIO()
+    writer = csv.DictWriter(
+        buffer,
+        fieldnames=["artifact_family", "n_repos", "n_files", "share_repos_pct"],
+    )
+    writer.writeheader()
+    writer.writerows(rows)
+    atomic_write_text(path, buffer.getvalue())
 
 
 def run_table1(*, repo_family_rows: list[dict], output_path: Path) -> list[dict]:

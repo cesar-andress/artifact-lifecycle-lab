@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from artifact_lab.execution.atomic_io import atomic_write_text
+
 
 def render_report(
     *,
@@ -62,5 +64,4 @@ def render_report(
 
 
 def write_report(text: str, path: Path) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(text, encoding="utf-8")
+    atomic_write_text(path, text)

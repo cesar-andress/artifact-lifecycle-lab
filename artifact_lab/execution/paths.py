@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from artifact_lab.contracts.paths import EXECUTION_LOG_PATH
+
 
 def repo_events_path(events_dir: Path, repo_id: str) -> Path:
     return events_dir / "repos" / f"{repo_id}.parquet"
@@ -25,5 +27,5 @@ def receipt_path(receipts_dir: Path, repo_id: str) -> Path:
     return receipts_dir / f"{repo_id}.json"
 
 
-def execution_log_path(events_dir: Path) -> Path:
-    return events_dir / "execution.log"
+def execution_log_path() -> Path:
+    return EXECUTION_LOG_PATH

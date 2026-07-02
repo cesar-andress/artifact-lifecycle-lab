@@ -316,15 +316,20 @@ def slow_repo_warning(profile: ExtractionProfile, *, threshold_s: float = SLOW_R
 
 
 def write_profiles(profiles: list[ExtractionProfile], parquet_path: Path, *, csv_path: Path | None = None) -> None:
-    parquet_path.parent.mkdir(parents=True, exist_ok=True)
+    import io
+
+    from artifact_lab.execution.atomic_io import atomic_write_text
+    from artifact_lab.store.parquet import write_parquet
+
     rows = [p.to_row() for p in profiles]
     table = pa.Table.from_pylist(rows) if rows else pa.table({col: [] for col in PROFILE_COLUMNS})
-    pq.write_table(table, parquet_path)
+    write_parquet(table, parquet_path)
     csv_target = csv_path or parquet_path.with_suffix(".csv")
-    with csv_target.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(PROFILE_COLUMNS))
-        writer.writeheader()
-        writer.writerows(rows)
+    buffer = io.StringIO()
+    writer = csv.DictWriter(buffer, fieldnames=list(PROFILE_COLUMNS))
+    writer.writeheader()
+    writer.writerows(rows)
+    atomic_write_text(csv_target, buffer.getvalue())
 
 
 def merge_profiles(existing: list[dict], fresh: list[ExtractionProfile]) -> list[ExtractionProfile]:

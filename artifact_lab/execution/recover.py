@@ -16,7 +16,8 @@ from artifact_lab.execution.paths import (
     global_manifest_path,
     repo_events_path,
 )
-from artifact_lab.execution.states import COMPLETED, FAILED, normalize_state
+from artifact_lab.execution.manifest_metadata import build_dataset_manifest_extra
+from artifact_lab.execution.states import COMPLETED, FAILED, PENDING, normalize_state
 from artifact_lab.execution.verify import verify_repo_completion
 from artifact_lab.store.blobs import BlobStore
 from artifact_lab.store.job_queue import JobQueue
@@ -37,6 +38,7 @@ class RecoverReport:
     tmp_removed: list[str] = field(default_factory=list)
     reverted_to_failed: list[str] = field(default_factory=list)
     inconsistent: list[str] = field(default_factory=list)
+    incomplete: list[str] = field(default_factory=list)
     actions: list[RecoverAction] = field(default_factory=list)
     global_events_rebuilt: bool = False
 
@@ -94,6 +96,21 @@ def rebuild_global_events(
         )
     row_count = atomic_write_parquet(table, out_path, expected_columns=FILE_EVENT_LOG_COLUMNS)
 
+    manifest_extra = build_dataset_manifest_extra(
+        registry_path=registry_path,
+        registry_version=registry_version,
+        wave_id=extraction_wave,
+        protocol_version=protocol_version,
+        detector_version=protocol_version,
+        queue_path=queue_path,
+        family=family,
+        wave=wave,
+        dataset_version=dataset_version,
+        mark_activity=False,
+    )
+    manifest_extra["family"] = family
+    manifest_extra["extraction_wave"] = extraction_wave
+
     write_manifest(
         global_manifest_path(events_dir),
         dataset_name="file_event_log",
@@ -102,15 +119,36 @@ def rebuild_global_events(
         protocol_version=protocol_version,
         row_count=row_count,
         columns=FILE_EVENT_LOG_COLUMNS,
-        extra={
-            "family": family,
-            "dataset_version": dataset_version,
-            "extraction_wave": extraction_wave,
-            "registry_version": registry_version,
-            "detector_version": protocol_version,
-        },
+        extra=manifest_extra,
     )
     return True
+
+
+def detect_incomplete_repositories(
+    *,
+    events_dir: Path,
+    receipts_dir: Path,
+    queue_path: Path,
+    family: str,
+    wave: str,
+) -> list[str]:
+    """Repos with partial artifacts but not in COMPLETED state."""
+    incomplete: set[str] = set()
+    repos_dir = events_dir / "repos"
+    if repos_dir.exists():
+        for parquet in repos_dir.glob("*.parquet"):
+            repo_id = parquet.stem
+            manifest = repo_manifest_path(events_dir, repo_id)
+            if not manifest.exists():
+                incomplete.add(repo_id)
+    with JobQueue(queue_path) as queue:
+        if receipts_dir.exists():
+            for receipt_file in receipts_dir.glob("*.json"):
+                repo_id = receipt_file.stem
+                job = queue.get(repo_id, family, wave)
+                if job is None or normalize_state(job.state) != COMPLETED:
+                    incomplete.add(repo_id)
+    return sorted(incomplete)
 
 
 def run_recover(
@@ -204,6 +242,18 @@ def run_recover(
                             )
                     except json.JSONDecodeError:
                         report.inconsistent.append(repo_id)
+
+    report.incomplete = detect_incomplete_repositories(
+        events_dir=events_dir,
+        receipts_dir=receipts_dir,
+        queue_path=queue_path,
+        family=family,
+        wave=wave,
+    )
+    if report.incomplete:
+        report.actions.append(
+            RecoverAction("incomplete_repos", f"detected {len(report.incomplete)} incomplete repository artifact(s)")
+        )
 
     rebuild_global_events(
         events_dir=events_dir,

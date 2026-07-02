@@ -13,7 +13,7 @@ from artifact_lab.execution.states import (
     FAILED,
     PENDING,
     VERIFYING,
-    WRITING_L1,
+    WRITING,
 )
 from artifact_lab.store.job_queue import JobQueue
 
@@ -56,8 +56,12 @@ class RepoCheckpoint:
     def start_extracting(self) -> None:
         self.transition(EXTRACTING, reason="clone complete")
 
+    def start_writing(self) -> None:
+        self.transition(WRITING, reason="extraction complete")
+
     def start_writing_l1(self) -> None:
-        self.transition(WRITING_L1, reason="extraction complete")
+        """Backward-compatible alias."""
+        self.start_writing()
 
     def start_verifying(self) -> None:
         self.transition(VERIFYING, reason="L1 artifacts written")

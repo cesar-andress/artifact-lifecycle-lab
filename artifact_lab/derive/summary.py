@@ -67,7 +67,7 @@ def build_summary(
             summary["repos_pending"] = counts.get("pending", 0)
             in_progress = sum(
                 counts.get(state, 0)
-                for state in ("running", "cloning", "extracting", "writing_l1", "verifying")
+                for state in ("running", "cloning", "extracting", "writing", "writing_l1", "verifying")
             )
             summary["repos_running"] = in_progress
             summary["repos_attempted"] = sum(counts.values())

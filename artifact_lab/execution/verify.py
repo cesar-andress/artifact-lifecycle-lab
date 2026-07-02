@@ -124,8 +124,11 @@ def verify_queue(queue_path: Path, *, family: str, wave: str) -> VerifyReport:
         return report
     with JobQueue(queue_path) as queue:
         jobs = queue.list_jobs(family=family, wave=wave)
-        if not jobs:
-            report.add("", "queue", f"no jobs for family={family} wave={wave}")
+    # Empty queue for a wave is expected before first extraction run.
+    if queue_path.exists() and not jobs:
+        return report
+    if not queue_path.exists():
+        report.add("", "queue", f"missing queue db: {queue_path}")
     return report
 
 

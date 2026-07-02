@@ -14,7 +14,7 @@ from pathlib import Path
 import pyarrow as pa
 
 from artifact_lab.contracts.datasets import L1_DATASET_VERSION
-from artifact_lab.contracts.paths import EXTRACTION_PROFILE_PATH
+from artifact_lab.contracts.paths import EXECUTION_LOG_PATH, EXTRACTION_PROFILE_PATH, EXTRACTION_SESSION_PATH
 from artifact_lab.contracts.repo_id import normalize_repo_url, repo_id_from_url
 from artifact_lab.contracts.schemas import (
     FILE_EVENT_LOG_COLUMNS,
@@ -30,7 +30,9 @@ from artifact_lab.execution.paths import (
     repo_events_path,
     repo_manifest_path,
 )
+from artifact_lab.execution.manifest_metadata import build_dataset_manifest_extra
 from artifact_lab.execution.recover import cleanup_scratch, rebuild_global_events
+from artifact_lab.execution.session import touch_wave
 from artifact_lab.execution.verify import verify_repo_completion
 from artifact_lab.ingest.git_activity import track_git_activity
 from artifact_lab.ingest.git_utils import (
@@ -99,6 +101,8 @@ class ExtractConfig:
     force: bool = False
     retry_failed: bool = False
     limit: int | None = None
+    execution_log_path: Path | None = None
+    session_path: Path | None = None
     profile_path: Path = EXTRACTION_PROFILE_PATH
     inspection_mode: str = DEFAULT_INSPECTION_MODE
 
@@ -178,12 +182,27 @@ def write_repo_l1_manifest(
     row_count: int,
     family: str,
     extraction_wave: str,
+    registry_path: Path,
     registry_version: str | None,
     dataset_version: str,
     detector_version: str,
+    queue_path: Path,
 ) -> Path:
     _inject_fault("manifest")
     path = repo_manifest_path(events_dir, repo_id)
+    extra = build_dataset_manifest_extra(
+        registry_path=registry_path,
+        registry_version=registry_version,
+        wave_id=extraction_wave,
+        protocol_version=detector_version,
+        detector_version=detector_version,
+        queue_path=queue_path,
+        family=family,
+        wave=extraction_wave,
+        dataset_version=dataset_version,
+    )
+    extra["repo_id"] = repo_id
+    extra["family"] = family
     write_manifest(
         path,
         dataset_name="file_event_log_repo",
@@ -192,14 +211,7 @@ def write_repo_l1_manifest(
         protocol_version=detector_version,
         row_count=row_count,
         columns=FILE_EVENT_LOG_COLUMNS,
-        extra={
-            "repo_id": repo_id,
-            "family": family,
-            "dataset_version": dataset_version,
-            "extraction_wave": extraction_wave,
-            "registry_version": registry_version,
-            "detector_version": detector_version,
-        },
+        extra=extra,
     )
     return path
 
@@ -271,6 +283,7 @@ def extract_repo_events(
             live.enter_phase("history")
         t0 = time.perf_counter()
         try:
+            _inject_fault("history")
             history = log_follow(repo_dir, path, timeout=git_timeout)
             deletes = deletion_commits(repo_dir, path, timeout=git_timeout)
         finally:
@@ -402,6 +415,8 @@ def _extract_repo_body(
             profile.status = receipt["status"]
             profile.n_events = len(events)
             profile.n_matched_paths = len(receipt["matched_paths"])
+    except KeyboardInterrupt:
+        raise
     except Exception as exc:  # noqa: BLE001 — record and continue pilot
         receipt["error"] = f"{exc.__class__.__name__}: {exc}"
         receipt["events"] = []
@@ -522,7 +537,7 @@ def _finalize_successful_repo(
     n_events = len(events)
     detector_version = family_version(cfg.family)
 
-    checkpoint.start_writing_l1()
+    checkpoint.start_writing()
     write_repo_l1_events(cfg.events_dir, repo_id, events)
     write_repo_l1_manifest(
         cfg.events_dir,
@@ -530,9 +545,11 @@ def _finalize_successful_repo(
         row_count=n_events,
         family=cfg.family,
         extraction_wave=cfg.extraction_wave,
+        registry_path=cfg.registry_path,
         registry_version=cfg.registry_version,
         dataset_version=cfg.dataset_version,
         detector_version=detector_version,
+        queue_path=cfg.queue_path,
     )
     write_receipt(cfg.receipts_dir, repo_id, receipt)
 
@@ -575,7 +592,8 @@ def run_extract(cfg: ExtractConfig) -> Path:
     run_profiles: list[ExtractionProfile] = []
     stale_recovered = 0
     queue_counts: dict[str, int] = {}
-    execution_log = ExecutionLog(execution_log_path(cfg.events_dir))
+    execution_log = ExecutionLog(cfg.execution_log_path or EXECUTION_LOG_PATH)
+    touch_wave(cfg.extraction_wave, path=cfg.session_path or EXTRACTION_SESSION_PATH)
 
     scratch_removed = cleanup_scratch(cfg.scratch_dir)
     if scratch_removed:

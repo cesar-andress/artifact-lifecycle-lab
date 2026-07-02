@@ -5,6 +5,8 @@ from __future__ import annotations
 import statistics
 from pathlib import Path
 
+from artifact_lab.execution.atomic_io import atomic_write_text
+
 from artifact_lab.experiments.e1_adoption_census.cohort_accounting import (
     E1_1000_SCIENTIFIC_COHORT_NOTE,
     ENRICHED_COHORT_NOTE,
@@ -319,8 +321,7 @@ def write_report(
             summary_mode=SUMMARY_MODE_LATEST,
         )
         profiles = selection.profiles
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(
+    atomic_write_text(
+        output_path,
         build_report(profiles, test_mode=test_mode, registry_path=registry_path),
-        encoding="utf-8",
     )

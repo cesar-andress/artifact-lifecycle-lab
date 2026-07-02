@@ -5,34 +5,52 @@ from __future__ import annotations
 PENDING = "pending"
 CLONING = "cloning"
 EXTRACTING = "extracting"
-WRITING_L1 = "writing_l1"
+WRITING = "writing"
 VERIFYING = "verifying"
 COMPLETED = "completed"
 FAILED = "failed"
 
 # Legacy aliases kept for migration and backward-compatible reads.
+WRITING_L1 = WRITING
 LEGACY_RUNNING = "running"
 LEGACY_SUCCEEDED = "succeeded"
+LEGACY_WRITING_L1 = "writing_l1"
 
 IN_PROGRESS_STATES: frozenset[str] = frozenset(
-    {CLONING, EXTRACTING, WRITING_L1, VERIFYING, LEGACY_RUNNING}
+    {CLONING, EXTRACTING, WRITING, VERIFYING, LEGACY_RUNNING, LEGACY_WRITING_L1}
 )
 TERMINAL_COMPLETED: frozenset[str] = frozenset({COMPLETED, LEGACY_SUCCEEDED})
 TERMINAL_FAILED: frozenset[str] = frozenset({FAILED})
 
 ALL_STATES: frozenset[str] = frozenset(
-    {PENDING, CLONING, EXTRACTING, WRITING_L1, VERIFYING, COMPLETED, FAILED, LEGACY_RUNNING, LEGACY_SUCCEEDED}
+    {
+        PENDING,
+        CLONING,
+        EXTRACTING,
+        WRITING,
+        VERIFYING,
+        COMPLETED,
+        FAILED,
+        LEGACY_RUNNING,
+        LEGACY_SUCCEEDED,
+        LEGACY_WRITING_L1,
+    }
 )
 
 
 def normalize_state(state: str) -> str:
     if state == LEGACY_SUCCEEDED:
         return COMPLETED
+    if state == LEGACY_WRITING_L1:
+        return WRITING
     return state
 
 
 def is_in_progress(state: str) -> bool:
-    return state in IN_PROGRESS_STATES
+    return normalize_state(state) in {CLONING, EXTRACTING, WRITING, VERIFYING} or state in {
+        LEGACY_RUNNING,
+        LEGACY_WRITING_L1,
+    }
 
 
 def is_completed(state: str) -> bool:

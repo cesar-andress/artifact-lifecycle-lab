@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 from collections import defaultdict
 from datetime import date, datetime, timezone
+from io import StringIO
 from pathlib import Path
 
 import matplotlib
@@ -13,6 +14,7 @@ matplotlib.use("Agg")
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 
+from artifact_lab.execution.atomic_io import atomic_replace, atomic_write_text
 from artifact_lab.experiments.e1_adoption_census.census import build_path_census_rows
 
 
@@ -48,23 +50,29 @@ def build_adoption_timeline(path_rows: list[dict]) -> list[dict]:
 
 
 def write_fig1_csv(rows: list[dict], path: Path) -> None:
+    buffer = StringIO()
+    writer = csv.DictWriter(
+        buffer,
+        fieldnames=["month", "new_convention_files", "cumulative_convention_files"],
+    )
+    writer.writeheader()
+    writer.writerows(rows)
+    atomic_write_text(path, buffer.getvalue())
+
+
+def _save_fig_atomic(fig, path: Path, **kwargs) -> None:
+    tmp = path.with_name(path.name + ".tmp")
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(
-            handle,
-            fieldnames=["month", "new_convention_files", "cumulative_convention_files"],
-        )
-        writer.writeheader()
-        writer.writerows(rows)
+    fig.savefig(tmp, **kwargs)
+    atomic_replace(tmp, path)
 
 
 def render_fig1_pdf(rows: list[dict], path: Path) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
     if not rows:
         fig, ax = plt.subplots(figsize=(6.5, 3.75))
         ax.text(0.5, 0.5, "No matched convention files", ha="center", va="center")
         ax.set_axis_off()
-        fig.savefig(path, format="pdf", bbox_inches="tight")
+        _save_fig_atomic(fig, path, format="pdf", bbox_inches="tight")
         plt.close(fig)
         return
 
@@ -83,7 +91,7 @@ def render_fig1_pdf(rows: list[dict], path: Path) -> None:
     ax.set_xlim(months[0], months[-1])
     ax.set_ylim(0, max(cumulative) * 1.08 if cumulative else 1)
     fig.tight_layout()
-    fig.savefig(path, format="pdf", bbox_inches="tight")
+    _save_fig_atomic(fig, path, format="pdf", bbox_inches="tight")
     plt.close(fig)
 
 

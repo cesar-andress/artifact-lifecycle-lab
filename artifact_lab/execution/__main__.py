@@ -20,6 +20,7 @@ def _print_recover_report(report) -> None:
     print(f"  tmp removed ........ {len(report.tmp_removed)}")
     print(f"  reverted to failed . {len(report.reverted_to_failed)}")
     print(f"  inconsistent ....... {len(report.inconsistent)}")
+    print(f"  incomplete ....... {len(report.incomplete)}")
     print(f"  global rebuilt ..... {report.global_events_rebuilt}")
     if report.inconsistent:
         print("Inconsistent repositories:")

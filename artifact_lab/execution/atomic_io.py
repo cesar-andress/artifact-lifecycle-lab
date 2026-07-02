@@ -1,4 +1,4 @@
-"""Atomic filesystem writes: tmp → verify → rename."""
+"""Atomic filesystem writes: tmp → fsync → verify → rename."""
 
 from __future__ import annotations
 
@@ -15,6 +15,21 @@ def _tmp_path(path: Path) -> Path:
     return path.with_name(path.name + ".tmp")
 
 
+def _fsync_path(path: Path) -> None:
+    with path.open("rb") as fh:
+        os.fsync(fh.fileno())
+    try:
+        os.fsync(os.open(path.parent, os.O_RDONLY))
+    except OSError:
+        pass
+
+
+def atomic_replace(src: Path, dest: Path) -> None:
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    _fsync_path(src)
+    os.replace(src, dest)
+
+
 def atomic_write_bytes(path: Path, data: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = _tmp_path(path)
@@ -22,7 +37,7 @@ def atomic_write_bytes(path: Path, data: bytes) -> None:
         tmp.write_bytes(data)
         if len(data) != tmp.stat().st_size:
             raise OSError(f"size mismatch after write: {tmp}")
-        os.replace(tmp, path)
+        atomic_replace(tmp, path)
     finally:
         if tmp.exists():
             tmp.unlink(missing_ok=True)
@@ -47,7 +62,7 @@ def atomic_write_parquet(
         verified = pq.read_table(tmp)
         if verified.num_rows != table.num_rows:
             raise OSError(f"row count mismatch after parquet write: {tmp}")
-        os.replace(tmp, path)
+        atomic_replace(tmp, path)
     finally:
         if tmp.exists():
             tmp.unlink(missing_ok=True)

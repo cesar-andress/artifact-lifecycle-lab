@@ -46,6 +46,7 @@ def write_manifest(
         "input_datasets": input_datasets,
         "protocol_version": protocol_version,
         "code_git_sha": git_sha(),
+        "git_commit": git_sha(),
         "created_at": datetime.now(timezone.utc).isoformat(),
         "row_count": row_count,
         "schema_hash": schema_hash(columns),

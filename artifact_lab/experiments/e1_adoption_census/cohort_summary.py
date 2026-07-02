@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-import argparse
 import csv
 import sys
 from pathlib import Path
+
+from artifact_lab.execution.atomic_io import atomic_write_text
 
 from artifact_lab.contracts.paths import EXTRACTION_PROFILE_PATH
 from artifact_lab.experiments.e1_adoption_census.cohort_accounting import (
@@ -189,8 +190,8 @@ def write_cohort_summary(
     summary_mode: str = SUMMARY_MODE_LATEST,
     extraction_wave: str | None = None,
 ) -> None:
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(
+    atomic_write_text(
+        output_path,
         build_cohort_summary(
             registry_path=registry_path,
             census_dir=census_dir,
@@ -199,7 +200,6 @@ def write_cohort_summary(
             summary_mode=summary_mode,
             extraction_wave=extraction_wave,
         ),
-        encoding="utf-8",
     )
 
 

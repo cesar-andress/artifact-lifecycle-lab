@@ -14,7 +14,9 @@ from artifact_lab.execution.states import (
     FAILED,
     IN_PROGRESS_STATES,
     LEGACY_SUCCEEDED,
+    LEGACY_WRITING_L1,
     PENDING,
+    WRITING,
     normalize_state,
 )
 
@@ -22,12 +24,13 @@ JobState = Literal[
     "pending",
     "cloning",
     "extracting",
-    "writing_l1",
+    "writing",
     "verifying",
     "completed",
     "failed",
     "running",
     "succeeded",
+    "writing_l1",
 ]
 
 DOCUMENTED_COLUMNS: tuple[str, ...] = (
@@ -104,6 +107,10 @@ class JobQueue:
         self._conn.execute(
             "UPDATE extraction_jobs SET state = ? WHERE state = ?",
             (COMPLETED, LEGACY_SUCCEEDED),
+        )
+        self._conn.execute(
+            "UPDATE extraction_jobs SET state = ? WHERE state = ?",
+            (WRITING, LEGACY_WRITING_L1),
         )
 
     def reset_stale_in_progress(self, *, max_age_seconds: int | None = None) -> int:
