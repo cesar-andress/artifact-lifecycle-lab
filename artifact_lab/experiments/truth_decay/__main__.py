@@ -8,6 +8,8 @@ from pathlib import Path
 
 from artifact_lab.experiments.truth_decay.run_born_stale_audit import run_born_stale_audit
 from artifact_lab.experiments.truth_decay.run_born_stale_autopsy import run_born_stale_autopsy
+from artifact_lab.experiments.truth_decay.run_cited_uncited_audit import run_cited_uncited_audit
+from artifact_lab.experiments.truth_decay.run_gfc_confirmatory_audit import run_gfc_confirmatory_audit
 from artifact_lab.experiments.truth_decay.run_rq2_failure_audit import run_rq2_failure_audit
 from artifact_lab.experiments.truth_decay.run_rq1 import DEFAULT_EXPORT_DIR, DEFAULT_L1_PATHS, run_rq1_feasibility_study
 from artifact_lab.experiments.truth_decay.run_rq2 import DEFAULT_RQ2_EXPORT, run_rq2_survival_analysis
@@ -75,6 +77,33 @@ def _cmd_rq5_prep(args: argparse.Namespace) -> int:
         blobs_dir=args.blobs_dir,
         reference_summary_csv=args.reference_summary_csv,
         output_dir=args.output_dir,
+    )
+    for label, path in outputs.items():
+        print(f"{label} -> {path}")
+    return 0
+
+
+def _cmd_gfc_confirmatory_audit(args: argparse.Namespace) -> int:
+    outputs = run_gfc_confirmatory_audit(
+        taxonomy_csv=args.taxonomy_csv,
+        output_dir=args.output_dir,
+        enable_llm=not args.skip_llm,
+        max_llm_cases=args.max_llm_cases,
+        ollama_url=args.ollama_url,
+    )
+    for label, path in outputs.items():
+        print(f"{label} -> {path}")
+    return 0
+
+
+def _cmd_cited_uncited_audit(args: argparse.Namespace) -> int:
+    outputs = run_cited_uncited_audit(
+        longitudinal_csv=args.longitudinal_csv,
+        scratch_dir=args.scratch,
+        output_dir=args.output_dir,
+        max_cited_per_repo=args.max_cited_per_repo,
+        seed=args.seed,
+        clone_timeout=args.clone_timeout,
     )
     for label, path in outputs.items():
         print(f"{label} -> {path}")
@@ -212,6 +241,33 @@ def main(argv: list[str] | None = None) -> int:
     rq2_audit.add_argument("--max-llm-cases", type=int, default=None)
     rq2_audit.add_argument("--ollama-url", default="http://127.0.0.1:11434/api/generate")
     rq2_audit.set_defaults(func=_cmd_rq2_failure_audit)
+
+    gfc_audit = sub.add_parser(
+        "gfc-confirmatory-audit",
+        help="Confirmatory audit of born-stale genuine_false_claim labels",
+    )
+    gfc_audit.add_argument(
+        "--taxonomy-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/born_stale_taxonomy.csv"),
+    )
+    gfc_audit.add_argument("--output-dir", type=Path, default=DEFAULT_RQ2_EXPORT)
+    gfc_audit.add_argument("--skip-llm", action="store_true", help="Deterministic heuristics only")
+    gfc_audit.add_argument("--max-llm-cases", type=int, default=None)
+    gfc_audit.add_argument("--ollama-url", default="http://127.0.0.1:11434/api/generate")
+    gfc_audit.set_defaults(func=_cmd_gfc_confirmatory_audit)
+
+    cited_audit = sub.add_parser(
+        "cited-uncited-audit",
+        help="Contrast git churn of cited vs matched uncited paths",
+    )
+    cited_audit.add_argument("--longitudinal-csv", type=Path, default=DEFAULT_RQ1_LONGITUDINAL)
+    cited_audit.add_argument("--scratch", type=Path, default=Path("scratch"))
+    cited_audit.add_argument("--output-dir", type=Path, default=DEFAULT_RQ2_EXPORT)
+    cited_audit.add_argument("--max-cited-per-repo", type=int, default=40)
+    cited_audit.add_argument("--seed", type=int, default=42)
+    cited_audit.add_argument("--clone-timeout", type=int, default=180)
+    cited_audit.set_defaults(func=_cmd_cited_uncited_audit)
 
     args = parser.parse_args(argv)
     return args.func(args)

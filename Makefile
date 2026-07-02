@@ -60,7 +60,7 @@ GENERAL_OSS_POOL := data/registry/sources/general_oss_candidates.jsonl
 	e1-100-extract e1-100-derive e1-100-exports e1-100-performance e1-100-summary \
 	e1-1000-registry e1-1000-extract e1-1000-derive e1-1000-exports e1-1000-performance e1-1000-summary e1-1000-qa \
 	recover verify truth-pilot-p1 truth-pilot-p2 truth-pilot-go-no-go truth-pilots \
-	truth-decay-rq1 truth-decay-rq2 truth-decay-rq3 truth-decay-rq4 truth-decay-rq5-prep truth-decay-born-stale-audit truth-decay-born-stale-autopsy truth-decay-rq2-failure-audit truth-pilot-p3 truth-pilot-p4 truth-pilot-p4-validate truth-pilot-p5 pre-scaling-gates
+	truth-decay-rq1 truth-decay-rq2 truth-decay-rq3 truth-decay-rq4 truth-decay-rq5-prep truth-decay-born-stale-audit truth-decay-born-stale-autopsy truth-decay-rq2-failure-audit truth-decay-gfc-confirmatory-audit truth-decay-cited-uncited-audit truth-pilot-p3 truth-pilot-p4 truth-pilot-p4-validate truth-pilot-p5 pre-scaling-gates
 
 e1: install-paper e1-extract e1-derive e1-exports-run profile-report
 
@@ -266,6 +266,14 @@ truth-decay-born-stale-autopsy: install-paper
 
 truth-decay-rq2-failure-audit: install-paper
 	$(PY) -m artifact_lab.experiments.truth_decay rq2-failure-audit \
+	  --output-dir exports/truth_decay_pilot
+
+truth-decay-gfc-confirmatory-audit: install-paper
+	$(PY) -m artifact_lab.experiments.truth_decay gfc-confirmatory-audit \
+	  --output-dir exports/truth_decay_pilot
+
+truth-decay-cited-uncited-audit: install-paper
+	$(PY) -m artifact_lab.experiments.truth_decay cited-uncited-audit \
 	  --output-dir exports/truth_decay_pilot
 
 ingest: $(L1_EVENTS)
