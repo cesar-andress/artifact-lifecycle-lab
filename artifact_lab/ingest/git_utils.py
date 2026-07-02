@@ -6,8 +6,11 @@ import os
 import re
 import shutil
 import subprocess
+import time
 from datetime import datetime, timezone
 from pathlib import Path
+
+from artifact_lab.ingest.git_activity import record_git_subprocess
 
 GIT_ENV = {**os.environ, "GIT_TERMINAL_PROMPT": "0", "GCM_INTERACTIVE": "Never"}
 
@@ -18,7 +21,8 @@ def run_git(
     cwd: Path | None = None,
     timeout: int | None = None,
 ) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
+    t0 = time.perf_counter()
+    proc = subprocess.run(
         args,
         cwd=cwd,
         capture_output=True,
@@ -28,6 +32,10 @@ def run_git(
         timeout=timeout,
         env=GIT_ENV,
     )
+    elapsed = time.perf_counter() - t0
+    stdout_bytes = len(proc.stdout.encode("utf-8")) if proc.stdout else 0
+    record_git_subprocess(args, elapsed_s=elapsed, stdout_bytes=stdout_bytes)
+    return proc
 
 
 def parse_github_url(url: str) -> tuple[str, str] | None:

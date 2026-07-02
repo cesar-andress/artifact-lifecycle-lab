@@ -41,6 +41,12 @@ PROFILE_COLUMNS: tuple[str, ...] = (
     "manifest_write_s",
     "cleanup_s",
     "total_s",
+    "local_cpu_s",
+    "git_network_wait_s",
+    "git_local_wait_s",
+    "n_git_subprocesses",
+    "n_lazy_blob_fetches",
+    "bytes_downloaded",
     "clone_bytes",
     "n_events",
     "n_matched_paths",
@@ -53,6 +59,16 @@ def repo_slug(repo_url: str) -> str:
     if parsed:
         return f"{parsed[0]}/{parsed[1]}"
     return repo_url
+
+
+@dataclass
+class ResourceMetrics:
+    local_cpu_s: float = 0.0
+    git_network_wait_s: float = 0.0
+    git_local_wait_s: float = 0.0
+    n_git_subprocesses: int = 0
+    n_lazy_blob_fetches: int = 0
+    bytes_downloaded: int = 0
 
 
 @dataclass
@@ -100,6 +116,7 @@ class ExtractionProfile:
     extraction_wave: str
     status: str
     timings: PhaseTimings = field(default_factory=PhaseTimings)
+    resources: ResourceMetrics = field(default_factory=ResourceMetrics)
     clone_bytes: int = 0
     n_events: int = 0
     n_matched_paths: int = 0
@@ -125,6 +142,12 @@ class ExtractionProfile:
             "manifest_write_s": self.timings.manifest_write_s,
             "cleanup_s": self.timings.cleanup_s,
             "total_s": self.timings.total_s,
+            "local_cpu_s": self.resources.local_cpu_s,
+            "git_network_wait_s": self.resources.git_network_wait_s,
+            "git_local_wait_s": self.resources.git_local_wait_s,
+            "n_git_subprocesses": self.resources.n_git_subprocesses,
+            "n_lazy_blob_fetches": self.resources.n_lazy_blob_fetches,
+            "bytes_downloaded": self.resources.bytes_downloaded,
             "clone_bytes": self.clone_bytes,
             "n_events": self.n_events,
             "n_matched_paths": self.n_matched_paths,
@@ -216,6 +239,14 @@ def _row_to_profile(row: dict) -> ExtractionProfile:
         extraction_wave=row["extraction_wave"],
         status=row["status"],
         timings=timings,
+        resources=ResourceMetrics(
+            local_cpu_s=float(row.get("local_cpu_s", 0.0)),
+            git_network_wait_s=float(row.get("git_network_wait_s", 0.0)),
+            git_local_wait_s=float(row.get("git_local_wait_s", 0.0)),
+            n_git_subprocesses=int(row.get("n_git_subprocesses", 0)),
+            n_lazy_blob_fetches=int(row.get("n_lazy_blob_fetches", 0)),
+            bytes_downloaded=int(row.get("bytes_downloaded", 0)),
+        ),
         clone_bytes=int(row.get("clone_bytes", 0)),
         n_events=int(row.get("n_events", 0)),
         n_matched_paths=int(row.get("n_matched_paths", 0)),
@@ -294,4 +325,17 @@ def format_extraction_summary(
         lines.append(f"  stale recovered .... {stale_recovered} (running -> pending)")
     if registry_limit is not None:
         lines.append(f"  registry limit ..... {registry_limit}")
+    if run_profiles:
+        git_net = [p.resources.git_network_wait_s for p in run_profiles]
+        local_cpu = [p.resources.local_cpu_s for p in run_profiles]
+        lines.append(
+            f"  median git network .. {median_or_none(git_net):.1f} s"
+            if git_net
+            else "  median git network .. n/a"
+        )
+        lines.append(
+            f"  median local cpu ..... {median_or_none(local_cpu):.1f} s"
+            if local_cpu
+            else "  median local cpu ..... n/a"
+        )
     return "\n".join(lines)

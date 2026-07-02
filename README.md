@@ -119,6 +119,17 @@ After each extract run, a summary is printed: completed / failed / pending count
 
 At the start of every extract run, jobs left as `running` from an interrupted process are reset to **`pending`** (not failed). They are retried on the next run unless already `succeeded` and `--force` is not set. The number recovered is printed when non-zero.
 
+### Concurrency (design only)
+
+Per-repository extraction remains **sequential**. Planned limits (not yet enabled):
+
+- **Network concurrency:** default 2 (clone, fetch, lazy `git show`)
+- **Local analysis concurrency:** `cpu_count - 2` (matching, Parquet, panel)
+
+See [`artifact_lab/docs/concurrency_design.md`](artifact_lab/docs/concurrency_design.md).
+
+Profiling now records `local_cpu_s`, `git_network_wait_s`, `git_local_wait_s`, `n_git_subprocesses`, `n_lazy_blob_fetches`, and `bytes_downloaded` per repository.
+
 ## Extraction profiling
 
 Each processed repository records phase timings:

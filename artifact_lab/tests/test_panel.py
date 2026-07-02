@@ -11,7 +11,7 @@ import pyarrow as pa
 from artifact_lab.contracts.schemas import FILE_EVENT_LOG_COLUMNS, file_event_log_schema
 from artifact_lab.derive.panel import build_panel_rows, classify_state, run_panel
 from artifact_lab.ingest.extract import discover_matched_paths, extract_repo_events
-from artifact_lab.ingest.profiling import PhaseTimings
+from artifact_lab.ingest.profiling import PhaseTimings, ResourceMetrics
 from artifact_lab.store.blobs import BlobStore
 from artifact_lab.store.parquet import write_parquet
 
@@ -75,6 +75,7 @@ def test_panel_from_synthetic_repo(tmp_path):
         blob_store=BlobStore(tmp_path / "blobs"),
         git_timeout=60,
         timings=PhaseTimings(),
+        resources=ResourceMetrics(),
     )
     assert len(events) >= 2
     table = pa.Table.from_pylist(events, schema=file_event_log_schema())

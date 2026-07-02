@@ -20,6 +20,7 @@ from artifact_lab.contracts.schemas import (
     file_event_log_schema,
     hash_email,
 )
+from artifact_lab.ingest.git_activity import track_git_activity
 from artifact_lab.ingest.git_utils import (
     blob_at_commit,
     clone_bare,
@@ -31,6 +32,7 @@ from artifact_lab.ingest.git_utils import (
 from artifact_lab.ingest.profiling import (
     ExtractionProfile,
     PhaseTimings,
+    ResourceMetrics,
     assign_batch_write_shares,
     format_extraction_summary,
     format_progress_log,
@@ -161,6 +163,7 @@ def extract_repo_events(
     blob_store: BlobStore,
     git_timeout: int,
     timings: PhaseTimings,
+    resources: ResourceMetrics,
 ) -> list[dict]:
     paths = discover_matched_paths(repo_dir, family, git_timeout=git_timeout, timings=timings)
     events: list[dict] = []
@@ -182,7 +185,9 @@ def extract_repo_events(
                 try:
                     content = blob_at_commit(repo_dir, touch["commit_sha"], path, timeout=git_timeout)
                     if content is not None and b"\x00" not in content:
+                        t_blob = time.perf_counter()
                         blob_sha = blob_store.put_text(content)
+                        resources.local_cpu_s += time.perf_counter() - t_blob
                 finally:
                     timings.blobs_s += time.perf_counter() - t0
             events.append(
@@ -221,6 +226,7 @@ def _extract_repo_body(
         extraction_wave=cfg.extraction_wave,
         status="failed",
         timings=timings,
+        resources=ResourceMetrics(),
         recorded_at=started.isoformat(),
     )
     receipt: dict = {
@@ -245,37 +251,46 @@ def _extract_repo_body(
             profile.status = "skipped"
             return receipt
 
-        t0 = time.perf_counter()
-        try:
-            clone_bare(row["repo_url"], clone_path, timeout=cfg.clone_timeout)
-        finally:
-            timings.clone_s = time.perf_counter() - t0
+        with track_git_activity() as git_stats:
+            t0 = time.perf_counter()
+            try:
+                clone_bare(row["repo_url"], clone_path, timeout=cfg.clone_timeout)
+            finally:
+                timings.clone_s = time.perf_counter() - t0
 
-        size = clone_size_bytes(clone_path)
-        receipt["clone_bytes"] = size
-        profile.clone_bytes = size
-        if size > cfg.max_clone_bytes:
-            raise CloneTooLargeError(f"clone size {size} exceeds limit {cfg.max_clone_bytes}")
+            size = clone_size_bytes(clone_path)
+            receipt["clone_bytes"] = size
+            profile.clone_bytes = size
+            if size > cfg.max_clone_bytes:
+                raise CloneTooLargeError(f"clone size {size} exceeds limit {cfg.max_clone_bytes}")
 
-        git_timeout = min(cfg.repo_timeout, cfg.clone_timeout)
-        events = extract_repo_events(
-            clone_path,
-            repo_id=repo_id,
-            repo_url=repo_url,
-            family=cfg.family,
-            extraction_wave=cfg.extraction_wave,
-            detector_version=family_version(cfg.family),
-            blob_store=blob_store,
-            git_timeout=git_timeout,
-            timings=timings,
-        )
-        receipt["matched_paths"] = sorted({e["path"] for e in events})
-        receipt["n_events"] = len(events)
-        receipt["status"] = "ok" if events else "no_matches"
-        receipt["events"] = events
-        profile.status = receipt["status"]
-        profile.n_events = len(events)
-        profile.n_matched_paths = len(receipt["matched_paths"])
+            git_timeout = min(cfg.repo_timeout, cfg.clone_timeout)
+            events = extract_repo_events(
+                clone_path,
+                repo_id=repo_id,
+                repo_url=repo_url,
+                family=cfg.family,
+                extraction_wave=cfg.extraction_wave,
+                detector_version=family_version(cfg.family),
+                blob_store=blob_store,
+                git_timeout=git_timeout,
+                timings=timings,
+                resources=profile.resources,
+            )
+            profile.resources.local_cpu_s += timings.detector_s
+            profile.resources.git_network_wait_s = git_stats.git_network_wait_s
+            profile.resources.git_local_wait_s = git_stats.git_local_wait_s
+            profile.resources.n_git_subprocesses = git_stats.n_git_subprocesses
+            profile.resources.n_lazy_blob_fetches = git_stats.n_lazy_blob_fetches
+            profile.resources.bytes_downloaded = size + git_stats.bytes_from_git
+
+            receipt["matched_paths"] = sorted({e["path"] for e in events})
+            receipt["n_events"] = len(events)
+            receipt["status"] = "ok" if events else "no_matches"
+            receipt["events"] = events
+            profile.status = receipt["status"]
+            profile.n_events = len(events)
+            profile.n_matched_paths = len(receipt["matched_paths"])
     except Exception as exc:  # noqa: BLE001 — record and continue pilot
         receipt["error"] = f"{exc.__class__.__name__}: {exc}"
         receipt["events"] = []
