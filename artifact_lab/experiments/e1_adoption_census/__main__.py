@@ -3,12 +3,18 @@
 from __future__ import annotations
 
 import argparse
-import csv
 import sys
 from pathlib import Path
 
 from artifact_lab.contracts.datasets import l1_dataset_dir
 from artifact_lab.experiments.e1_adoption_census.census import run_census
+from artifact_lab.experiments.e1_adoption_census.cohort_accounting import (
+    ENRICHED_COHORT_NOTE,
+    count_repos_with_matches,
+    filter_rows_to_registry,
+    is_e1_100_registry,
+    load_registry_repo_ids,
+)
 from artifact_lab.experiments.e1_adoption_census.export_paper import export_to_paper_repo
 from artifact_lab.experiments.e1_adoption_census.export_paths import (
     DEFAULT_FIG1_CSV,
@@ -38,14 +44,6 @@ def _l1_events_path(l1: Path) -> Path:
     return l1
 
 
-def _count_registry(path: Path) -> int:
-    if not path.exists():
-        return 0
-    with path.open(encoding="utf-8", newline="") as handle:
-        rows = list(csv.DictReader(handle))
-    return len(rows)
-
-
 def run_all(
     *,
     l1_path: Path,
@@ -59,16 +57,23 @@ def run_all(
 ) -> None:
     events_path = _l1_events_path(l1_path)
     census = run_census(l1_path=events_path, output_dir=census_dir)
+    registry_repo_ids = load_registry_repo_ids(registry_path)
+    filtered_path = filter_rows_to_registry(census["path"], registry_repo_ids)
+    filtered_repo = filter_rows_to_registry(census["repo"], registry_repo_ids)
+    filtered_repo_family = filter_rows_to_registry(census["repo_family"], registry_repo_ids)
+
     events = read_parquet(events_path).to_pylist()
-    run_fig1(events=events, csv_path=fig1_csv, pdf_path=fig1_pdf)
-    run_table1(repo_family_rows=census["repo_family"], output_path=table1_path)
+    filtered_events = [event for event in events if event.get("repo_id") in registry_repo_ids]
+    run_fig1(events=filtered_events, csv_path=fig1_csv, pdf_path=fig1_pdf)
+    run_table1(repo_family_rows=filtered_repo_family, output_path=table1_path)
     report = render_report(
         census_dir=census_dir,
         fig1_csv=fig1_csv,
         table1_csv=table1_path,
-        n_registry_repos=_count_registry(registry_path),
-        n_repos_with_matches=len(census["repo"]),
-        n_path_rows=len(census["path"]),
+        n_registry_repos=len(registry_repo_ids),
+        n_repos_with_matches=count_repos_with_matches(filtered_repo, registry_repo_ids),
+        n_path_rows=len(filtered_path),
+        cohort_note=ENRICHED_COHORT_NOTE if is_e1_100_registry(registry_path) else None,
     )
     write_report(report, report_path)
     print(f"wrote census -> {census_dir}")

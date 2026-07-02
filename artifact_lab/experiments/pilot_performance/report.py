@@ -5,9 +5,16 @@ from __future__ import annotations
 import statistics
 from pathlib import Path
 
+from artifact_lab.experiments.e1_adoption_census.cohort_accounting import (
+    ENRICHED_COHORT_NOTE,
+    SUMMARY_MODE_LATEST,
+    compute_extraction_outcomes,
+    is_e1_100_registry,
+    select_cohort_profiles,
+)
 from artifact_lab.experiments.pilot_performance.registry_filter import (
     DEFAULT_REGISTRY_PATH,
-    filter_pilot_profiles,
+    load_registry_repo_ids,
 )
 from artifact_lab.ingest.profiling import (
     PHASE_NAMES,
@@ -63,7 +70,12 @@ def _display_failure_reason(profile: ExtractionProfile) -> str:
     return "unknown"
 
 
-def build_report(profiles: list[ExtractionProfile], *, test_mode: bool = False) -> str:
+def build_report(
+    profiles: list[ExtractionProfile],
+    *,
+    test_mode: bool = False,
+    registry_path: Path | None = None,
+) -> str:
     if not profiles:
         header = "# Pilot extraction performance\n\nNo pilot registry profiling records found.\n"
         if test_mode:
@@ -102,6 +114,26 @@ def build_report(profiles: list[ExtractionProfile], *, test_mode: bool = False) 
         "",
         "Documentation-only summary of pilot registry extraction profiling.",
         "",
+    ]
+    outcomes = None
+    if registry_path is not None and is_e1_100_registry(registry_path):
+        registry_ids = load_registry_repo_ids(registry_path)
+        outcomes = compute_extraction_outcomes(registry_ids, profiles)
+        lines.extend(
+            [
+                "## Cohort interpretation",
+                f"> {ENRICHED_COHORT_NOTE}",
+                "",
+                "## Registry accounting",
+                f"- Attempted repositories: **{outcomes.attempted}**",
+                f"- Profile accounting mode: **{SUMMARY_MODE_LATEST}**",
+                f"- Profile rows used in summary: **{len(profiles)}**",
+                "",
+            ]
+        )
+
+    lines.extend(
+        [
         "## Summary",
         "",
         f"- Profiled repositories: **{len(profiles)}**",
@@ -113,11 +145,24 @@ def build_report(profiles: list[ExtractionProfile], *, test_mode: bool = False) 
         f"- Failed repositories: **{len(failed)}**",
         f"- Slow-repo threshold: **{SLOW_REPO_THRESHOLD_S:.0f} s**",
         "",
-        "## Slowest repositories",
-        "",
-        "| Rank | Repository | Total | Clone | Inspection | History | Detector | Blobs | Status |",
-        "|------|------------|-------|-------|------------|---------|----------|-------|--------|",
-    ]
+        ]
+    )
+    if outcomes is not None:
+        lines.extend(
+            [
+                f"- Missing profile rows: **{outcomes.missing}**",
+                "",
+            ]
+        )
+
+    lines.extend(
+        [
+            "## Slowest repositories",
+            "",
+            "| Rank | Repository | Total | Clone | Inspection | History | Detector | Blobs | Status |",
+            "|------|------------|-------|-------|------------|---------|----------|-------|--------|",
+        ]
+    )
     for rank, profile in enumerate(slowest_repos, start=1):
         t = profile.timings
         lines.append(
@@ -247,7 +292,18 @@ def write_report(
     registry_path: Path = DEFAULT_REGISTRY_PATH,
     test_mode: bool = False,
 ) -> None:
-    profiles = load_profiles(profile_path)
-    profiles = filter_pilot_profiles(profiles, registry_path, test_mode=test_mode)
+    all_profiles = load_profiles(profile_path)
+    if test_mode:
+        profiles = all_profiles
+    else:
+        selection = select_cohort_profiles(
+            all_profiles,
+            registry_path,
+            summary_mode=SUMMARY_MODE_LATEST,
+        )
+        profiles = selection.profiles
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(build_report(profiles, test_mode=test_mode), encoding="utf-8")
+    output_path.write_text(
+        build_report(profiles, test_mode=test_mode, registry_path=registry_path),
+        encoding="utf-8",
+    )

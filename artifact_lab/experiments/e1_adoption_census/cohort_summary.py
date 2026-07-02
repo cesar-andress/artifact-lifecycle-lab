@@ -8,7 +8,15 @@ import sys
 from pathlib import Path
 
 from artifact_lab.contracts.paths import EXTRACTION_PROFILE_PATH
-from artifact_lab.experiments.pilot_performance.registry_filter import filter_pilot_profiles
+from artifact_lab.experiments.e1_adoption_census.cohort_accounting import (
+    ENRICHED_COHORT_NOTE,
+    SUMMARY_MODE_LATEST,
+    compute_extraction_outcomes,
+    count_repos_with_matches,
+    filter_rows_to_registry,
+    is_e1_100_registry,
+    select_cohort_profiles,
+)
 from artifact_lab.ingest.profiling import load_profiles, median_or_none
 from artifact_lab.registry.schema import validate_e1_100_registry
 from artifact_lab.store.parquet import read_parquet
@@ -26,45 +34,72 @@ def _load_table1_distribution(table1_path: Path) -> list[tuple[str, int, int]]:
     return [(row["artifact_family"], int(row["n_repos"]), int(row["n_files"])) for row in rows]
 
 
+def _wave_summary(waves: dict[str, int]) -> str:
+    if not waves:
+        return "none"
+    return ", ".join(f"{wave} ({count})" for wave, count in waves.items())
+
+
 def build_cohort_summary(
     *,
     registry_path: Path,
     census_dir: Path,
     table1_path: Path,
     profile_path: Path,
+    summary_mode: str = SUMMARY_MODE_LATEST,
+    extraction_wave: str | None = None,
 ) -> str:
-    registry_rows = validate_e1_100_registry(registry_path)
-    profiles = filter_pilot_profiles(load_profiles(profile_path), registry_path)
+    if is_e1_100_registry(registry_path):
+        validate_e1_100_registry(registry_path, expected_rows=100)
 
-    succeeded = [p for p in profiles if p.status in {"ok", "no_matches"}]
-    failed = [p for p in profiles if p.status not in {"ok", "no_matches", "skipped"}]
-    skipped = [p for p in profiles if p.status == "skipped"]
+    selection = select_cohort_profiles(
+        load_profiles(profile_path),
+        registry_path,
+        summary_mode=summary_mode,
+        extraction_wave=extraction_wave,
+    )
+    profiles = selection.profiles
+    outcomes = compute_extraction_outcomes(selection.registry_repo_ids, profiles)
 
     matched_repos = 0
     matched_paths = 0
     repo_census = census_dir / "repo_census.parquet"
     path_census = census_dir / "path_census.parquet"
     if repo_census.exists():
-        repo_rows = read_parquet(repo_census).to_pylist()
-        matched_repos = sum(1 for row in repo_rows if int(row.get("total_matched_files") or 0) > 0)
+        repo_rows = filter_rows_to_registry(
+            read_parquet(repo_census).to_pylist(),
+            selection.registry_repo_ids,
+        )
+        matched_repos = count_repos_with_matches(repo_rows, selection.registry_repo_ids)
     if path_census.exists():
-        matched_paths = len(read_parquet(path_census).to_pylist())
+        path_rows = filter_rows_to_registry(
+            read_parquet(path_census).to_pylist(),
+            selection.registry_repo_ids,
+        )
+        matched_paths = len(path_rows)
 
-    totals = [p.timings.total_s for p in profiles if p.timings.total_s > 0]
-    slowest = sorted(profiles, key=lambda p: p.timings.total_s, reverse=True)[:10]
+    totals = [profile.timings.total_s for profile in profiles if profile.timings.total_s > 0]
+    slowest = sorted(profiles, key=lambda profile: profile.timings.total_s, reverse=True)[:10]
     family_rows = _load_table1_distribution(table1_path)
 
     lines = [
         "# E1 100-repository cohort summary",
         "",
+        "## Cohort interpretation",
+        f"> {ENRICHED_COHORT_NOTE}",
+        "",
         "## Registry",
-        f"- Attempted repositories: **{len(registry_rows)}**",
-        f"- Profiled in latest extraction wave: **{len(profiles)}**",
+        f"- Attempted repositories: **{outcomes.attempted}**",
+        f"- Profile accounting mode: **{selection.summary_mode}**",
+        f"- Extraction wave(s) in summary: **{_wave_summary(selection.extraction_waves)}**",
+        f"- Profile rows matching registry (all waves): **{selection.profile_rows_in_registry}**",
+        f"- Profile rows used in summary: **{selection.latest_profile_rows_used}**",
         "",
         "## Extraction outcomes",
-        f"- Succeeded: **{len(succeeded)}**",
-        f"- Failed: **{len(failed)}**",
-        f"- Skipped: **{len(skipped)}**",
+        f"- Succeeded: **{outcomes.succeeded}**",
+        f"- Failed: **{outcomes.failed}**",
+        f"- Skipped: **{outcomes.skipped}**",
+        f"- Missing (no profile row): **{outcomes.missing}**",
         "",
         "## Adoption census",
         f"- Repositories with matched convention files: **{matched_repos}**",
@@ -94,14 +129,14 @@ def build_cohort_summary(
     else:
         lines.extend(
             [
-                "| Rank | Repository | Total (s) | Status | Inspection mode |",
-                "|------|------------|-----------|--------|-----------------|",
+                "| Rank | Repository | Wave | Total (s) | Status | Inspection mode |",
+                "|------|------------|------|-----------|--------|-----------------|",
             ]
         )
         for rank, profile in enumerate(slowest, start=1):
             lines.append(
-                f"| {rank} | {profile.repo_slug} | {profile.timings.total_s:.1f} | "
-                f"{profile.status} | {profile.inspection_mode} |"
+                f"| {rank} | {profile.repo_slug} | {profile.extraction_wave} | "
+                f"{profile.timings.total_s:.1f} | {profile.status} | {profile.inspection_mode} |"
             )
     lines.append("")
     return "\n".join(lines)
@@ -114,6 +149,8 @@ def write_cohort_summary(
     table1_path: Path,
     profile_path: Path,
     output_path: Path,
+    summary_mode: str = SUMMARY_MODE_LATEST,
+    extraction_wave: str | None = None,
 ) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(
@@ -122,6 +159,8 @@ def write_cohort_summary(
             census_dir=census_dir,
             table1_path=table1_path,
             profile_path=profile_path,
+            summary_mode=summary_mode,
+            extraction_wave=extraction_wave,
         ),
         encoding="utf-8",
     )
@@ -134,6 +173,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--table1", type=Path, default=DEFAULT_TABLE1)
     parser.add_argument("--profiles", type=Path, default=EXTRACTION_PROFILE_PATH)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument(
+        "--summary-mode",
+        choices=("latest-per-repo", "cumulative"),
+        default=SUMMARY_MODE_LATEST,
+    )
+    parser.add_argument("--extraction-wave", type=str, default=None)
     args = parser.parse_args(argv)
     write_cohort_summary(
         registry_path=args.registry,
@@ -141,6 +186,8 @@ def main(argv: list[str] | None = None) -> int:
         table1_path=args.table1,
         profile_path=args.profiles,
         output_path=args.output,
+        summary_mode=args.summary_mode,
+        extraction_wave=args.extraction_wave,
     )
     print(f"wrote cohort summary -> {args.output}")
     return 0

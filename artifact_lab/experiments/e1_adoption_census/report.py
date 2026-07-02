@@ -13,10 +13,22 @@ def render_report(
     n_registry_repos: int,
     n_repos_with_matches: int,
     n_path_rows: int,
+    cohort_note: str | None = None,
 ) -> str:
     lines = [
         "# E1 — Repository Adoption Census",
         "",
+    ]
+    if cohort_note:
+        lines.extend(
+            [
+                "## Cohort interpretation",
+                f"> {cohort_note}",
+                "",
+            ]
+        )
+    lines.extend(
+        [
         "## Scope",
         f"- Registry repositories: {n_registry_repos}",
         f"- Repositories with matched convention files: {n_repos_with_matches}",
@@ -44,7 +56,8 @@ def render_report(
         "make paper      # copy exports to ../paper/",
         "```",
         "",
-    ]
+        ]
+    )
     return "\n".join(lines)
 
 
