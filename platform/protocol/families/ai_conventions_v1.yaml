@@ -1,0 +1,60 @@
+# ai_conventions_v1 — detector family for AI instruction / agent-governance paths
+
+family: ai_conventions_v1
+version: "1.0.0"
+description: >
+  Git-tracked AI convention and agent-instruction artifacts
+  (AGENTS.md, Cursor/Claude/Copilot rules, prompts, skills).
+
+detector_patterns:
+  - id: agents_md
+    regex: '(^|/)AGENTS\.md$'
+  - id: claude_md
+    regex: '(^|/)CLAUDE\.md$'
+  - id: cursorrules
+    regex: '(^|/)\.cursorrules$'
+  - id: cursor_rules
+    regex: '(^|/)\.cursor/rules/.*\.(md|mdc)$'
+  - id: copilot_instructions
+    regex: '(^|/)\.github/copilot-instructions\.md$'
+  - id: github_instructions
+    regex: '(^|/)\.github/instructions/.*'
+  - id: windsurf_rules
+    regex: '(^|/)\.windsurf/.*\.(md|mdc|yaml|yml)$'
+  - id: agents_dir
+    regex: '(^|/)\.agents/.*\.(md|yaml|yml)$'
+  - id: skill_md
+    regex: '(^|/)SKILL\.md$'
+  - id: prompts
+    regex: '(^|/)prompts/.*\.(md|txt|yaml|yml)$'
+
+exclude_path_prefixes:
+  - node_modules/
+  - vendor/
+  - vendors/
+  - dist/
+  - build/
+  - target/
+  - coverage/
+  - .git/
+  - third_party/
+  - external/
+
+exclude_basenames:
+  - README.md
+  - CHANGELOG.md
+  - LICENSE
+  - CODE_OF_CONDUCT.md
+  - CONTRIBUTING.md
+
+exclude_path_regex:
+  - '(^|/)docs/api/'
+  - '(^|/)docs/reference/'
+
+text_extensions:
+  - .md
+  - .mdc
+  - .txt
+  - .yaml
+  - .yml
+  - .cursorrules
