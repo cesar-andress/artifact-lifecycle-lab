@@ -8,6 +8,7 @@ from pathlib import Path
 
 from artifact_lab.experiments.truth_decay.run_born_stale_audit import run_born_stale_audit
 from artifact_lab.experiments.truth_decay.run_born_stale_autopsy import run_born_stale_autopsy
+from artifact_lab.experiments.truth_decay.run_rq2_failure_audit import run_rq2_failure_audit
 from artifact_lab.experiments.truth_decay.run_rq1 import DEFAULT_EXPORT_DIR, DEFAULT_L1_PATHS, run_rq1_feasibility_study
 from artifact_lab.experiments.truth_decay.run_rq2 import DEFAULT_RQ2_EXPORT, run_rq2_survival_analysis
 from artifact_lab.experiments.truth_decay.run_rq3 import DEFAULT_EXPORT as DEFAULT_RQ3_EXPORT, run_rq3_observational_analysis
@@ -74,6 +75,23 @@ def _cmd_rq5_prep(args: argparse.Namespace) -> int:
         blobs_dir=args.blobs_dir,
         reference_summary_csv=args.reference_summary_csv,
         output_dir=args.output_dir,
+    )
+    for label, path in outputs.items():
+        print(f"{label} -> {path}")
+    return 0
+
+
+def _cmd_rq2_failure_audit(args: argparse.Namespace) -> int:
+    outputs = run_rq2_failure_audit(
+        survival_csv=args.survival_csv,
+        longitudinal_csv=args.longitudinal_csv,
+        born_stale_taxonomy_csv=args.born_stale_taxonomy_csv,
+        l1_paths=args.l1_paths,
+        blobs_dir=args.blobs_dir,
+        output_dir=args.output_dir,
+        enable_llm=not args.skip_llm,
+        max_llm_cases=args.max_llm_cases,
+        ollama_url=args.ollama_url,
     )
     for label, path in outputs.items():
         print(f"{label} -> {path}")
@@ -171,6 +189,29 @@ def main(argv: list[str] | None = None) -> int:
     autopsy.add_argument("--max-llm-cases", type=int, default=None)
     autopsy.add_argument("--ollama-url", default="http://127.0.0.1:11434/api/generate")
     autopsy.set_defaults(func=_cmd_born_stale_autopsy)
+
+    rq2_audit = sub.add_parser(
+        "rq2-failure-audit",
+        help="Audit RQ2 post-verification first_missing events",
+    )
+    rq2_audit.add_argument(
+        "--survival-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/rq2_survival.csv"),
+    )
+    rq2_audit.add_argument("--longitudinal-csv", type=Path, default=DEFAULT_RQ1_LONGITUDINAL)
+    rq2_audit.add_argument(
+        "--born-stale-taxonomy-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/born_stale_taxonomy.csv"),
+    )
+    rq2_audit.add_argument("--l1", type=Path, action="append", dest="l1_paths")
+    rq2_audit.add_argument("--blobs-dir", type=Path, default=Path("data/blobs"))
+    rq2_audit.add_argument("--output-dir", type=Path, default=DEFAULT_RQ2_EXPORT)
+    rq2_audit.add_argument("--skip-llm", action="store_true", help="Deterministic heuristics only")
+    rq2_audit.add_argument("--max-llm-cases", type=int, default=None)
+    rq2_audit.add_argument("--ollama-url", default="http://127.0.0.1:11434/api/generate")
+    rq2_audit.set_defaults(func=_cmd_rq2_failure_audit)
 
     args = parser.parse_args(argv)
     return args.func(args)

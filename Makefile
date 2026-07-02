@@ -60,7 +60,7 @@ GENERAL_OSS_POOL := data/registry/sources/general_oss_candidates.jsonl
 	e1-100-extract e1-100-derive e1-100-exports e1-100-performance e1-100-summary \
 	e1-1000-registry e1-1000-extract e1-1000-derive e1-1000-exports e1-1000-performance e1-1000-summary e1-1000-qa \
 	recover verify truth-pilot-p1 truth-pilot-p2 truth-pilot-go-no-go truth-pilots \
-	truth-decay-rq1 truth-decay-rq2 truth-decay-rq3 truth-decay-rq4 truth-decay-rq5-prep truth-decay-born-stale-audit truth-decay-born-stale-autopsy truth-pilot-p3 truth-pilot-p4 truth-pilot-p5 pre-scaling-gates
+	truth-decay-rq1 truth-decay-rq2 truth-decay-rq3 truth-decay-rq4 truth-decay-rq5-prep truth-decay-born-stale-audit truth-decay-born-stale-autopsy truth-decay-rq2-failure-audit truth-pilot-p3 truth-pilot-p4 truth-pilot-p4-validate truth-pilot-p5 pre-scaling-gates
 
 e1: install-paper e1-extract e1-derive e1-exports-run profile-report
 
@@ -195,6 +195,7 @@ verify:
 	  --events-dir $(E1_1000_L1_DIR)
 
 TRUTH_PILOT_EXPORT := exports/truth_pilot
+P4_GOLD_CSV ?= /home/cesar/Downloads/human_code.txt
 TRUTH_PILOT_N ?= 400
 TRUTH_PILOT_N_MIN ?= 300
 TRUTH_PILOT_N_MAX ?= 500
@@ -222,6 +223,11 @@ truth-pilot-p3:
 
 truth-pilot-p4:
 	$(PY) -m artifact_lab.experiments.truth_pilots p4 \
+	  --output-dir $(TRUTH_PILOT_EXPORT)
+
+truth-pilot-p4-validate: install-paper
+	$(PY) -m artifact_lab.experiments.truth_pilots p4-validate \
+	  --gold-csv $(P4_GOLD_CSV) \
 	  --output-dir $(TRUTH_PILOT_EXPORT)
 
 truth-pilot-p5:
@@ -256,6 +262,10 @@ truth-decay-born-stale-audit: install-paper
 
 truth-decay-born-stale-autopsy: install-paper
 	$(PY) -m artifact_lab.experiments.truth_decay born-stale-autopsy \
+	  --output-dir exports/truth_decay_pilot
+
+truth-decay-rq2-failure-audit: install-paper
+	$(PY) -m artifact_lab.experiments.truth_decay rq2-failure-audit \
 	  --output-dir exports/truth_decay_pilot
 
 ingest: $(L1_EVENTS)
