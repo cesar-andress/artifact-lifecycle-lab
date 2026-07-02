@@ -20,7 +20,7 @@ panel_horizon_days: 180
 wave_id: null  # set to e1_1000_v1 after first extraction
 execution_date: null  # ISO-8601 UTC timestamp after first make e1-1000
 
-git_sha: e10a78ac41bd4a9c04c357291ce215253351d473
+git_sha: 37914af1b9ab371918be0249e8bacff98f46bb33
 freeze_date: "2026-07-02"
 
 strata:
