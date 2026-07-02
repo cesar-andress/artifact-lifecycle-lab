@@ -101,6 +101,24 @@ Artifact targets never write directly into `../paper/`. The paper repo is update
 
 Use **`make e1-pilot` for development**. Use **`make e1` only for the full pilot**. Avoid `--force` unless you intentionally want to re-extract succeeded repositories.
 
+### E1 100-repository cohort
+
+```bash
+make e1-100
+```
+
+| Target | Scope |
+|--------|-------|
+| `make e1-100` | Full 100-repo registry (`data/registry/e1_100_repos.csv`), head-only inspection, exports under `exports/e1_100/` |
+
+Rebuild the registry CSV (requires VSDLC eligible JSONL):
+
+```bash
+python -m artifact_lab.registry.build_e1_100
+```
+
+Pilot outputs in `exports/e1/` are never overwritten by `make e1-100`.
+
 The pilot performance report (`exports/e1/pilot_performance.md`) includes only repositories listed in `data/registry/pilot_repos.csv`. Synthetic fixture repos from tests (e.g. `example/slow`) are excluded unless `--test-mode` is passed explicitly to the report CLI.
 
 ### Bounded extraction flags
