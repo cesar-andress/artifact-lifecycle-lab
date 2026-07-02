@@ -39,8 +39,9 @@ def render_report(
         "",
         "## Regeneration",
         "```bash",
-        "make paper      # artifact-only + export to ../paper",
-        "make paper-artifact  # artifact outputs only",
+        "make e1-pilot   # bounded development pilot",
+        "make e1         # full pilot registry",
+        "make paper      # copy exports to ../paper/",
         "```",
         "",
     ]

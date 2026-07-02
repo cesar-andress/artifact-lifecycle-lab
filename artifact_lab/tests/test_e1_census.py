@@ -122,3 +122,20 @@ def test_run_census_writes_outputs(tmp_path: Path):
     assert census["path"]
     assert (out / "path_census.csv").exists()
     assert (out / "repo_family_census.csv").exists()
+
+
+def test_e1_report_lists_correct_regeneration_commands(tmp_path: Path):
+    from artifact_lab.experiments.e1_adoption_census.report import render_report
+
+    text = render_report(
+        census_dir=tmp_path / "census",
+        fig1_csv=tmp_path / "exports" / "e1" / "fig1.csv",
+        table1_csv=tmp_path / "exports" / "e1" / "table1.csv",
+        n_registry_repos=17,
+        n_repos_with_matches=3,
+        n_path_rows=10,
+    )
+    assert "make e1-pilot" in text
+    assert "make e1" in text
+    assert "make paper" in text
+    assert "paper-artifact" not in text

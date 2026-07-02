@@ -24,11 +24,24 @@ PAPER_NOTE := $(PAPER_ROOT)/notes/pilot_performance.md
 E1_PILOT_LIMIT ?= 3
 INSPECTION_MODE ?= head-only
 
-.PHONY: e1 e1-pilot paper ingest panel e1-exports profile-report test install-paper e1-pilot-extract e1-pilot-derive e1-pilot-exports
+.PHONY: e1 e1-pilot paper ingest panel e1-exports profile-report test install-paper \
+	e1-pilot-extract e1-pilot-derive e1-pilot-exports e1-extract e1-derive e1-exports-run
 
-e1: install-paper ingest panel e1-exports profile-report
+e1: install-paper e1-extract e1-derive e1-exports-run profile-report
 
 e1-pilot: install-paper e1-pilot-extract e1-pilot-derive e1-pilot-exports profile-report
+
+e1-extract:
+	$(PY) -m artifact_lab.ingest extract \
+	  --registry $(REGISTRY) \
+	  --family $(FAMILY) \
+	  --inspection-mode $(INSPECTION_MODE)
+
+e1-derive:
+	$(PY) -m artifact_lab.derive panel --T 180
+
+e1-exports-run:
+	$(PY) -m artifact_lab.experiments.e1_adoption_census --no-export
 
 e1-pilot-extract:
 	$(PY) -m artifact_lab.ingest extract \
@@ -50,7 +63,8 @@ panel: $(L2_PANEL)
 
 e1-exports: $(FIG1_PDF) $(FIG1_CSV) $(TABLE1) $(E1_REPORT)
 
-profile-report: $(E1_PILOT_PERF)
+profile-report:
+	$(PY) -m artifact_lab.experiments.pilot_performance
 
 install-paper:
 	$(PIP) install -e ".[dev,paper]"
