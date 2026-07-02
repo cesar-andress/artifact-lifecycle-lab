@@ -10,6 +10,7 @@ import pyarrow as pa
 from artifact_lab.contracts.schemas import FILE_EVENT_LOG_COLUMNS, file_event_log_schema
 from artifact_lab.derive.panel import build_panel_rows
 from artifact_lab.ingest.extract import extract_repo_events
+from artifact_lab.ingest.profiling import PhaseTimings
 from artifact_lab.store.blobs import BlobStore
 from artifact_lab.tests.golden_repo import build_golden_bare_repo
 
@@ -40,6 +41,7 @@ def test_golden_l1_and_l2_outputs(tmp_path):
         detector_version="1.0.0",
         blob_store=BlobStore(tmp_path / "blobs"),
         git_timeout=60,
+        timings=PhaseTimings(),
     )
     signatures = sorted([_event_signature(e) for e in events], key=lambda r: (r["path"], r["commit_time"]))
     expected_l1 = json.loads((FIXTURES / "golden_l1_expected.json").read_text(encoding="utf-8"))

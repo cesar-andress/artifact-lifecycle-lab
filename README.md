@@ -76,6 +76,39 @@ python3.12 -m artifact_lab.derive summary
 python3.12 -m pytest artifact_lab/tests
 ```
 
+## Extraction profiling
+
+Each processed repository records phase timings:
+
+`clone`, `history`, `detector`, `blobs`, `parquet_write`, `cleanup`, `total`
+
+Profiles are stored at `data/profiling/extraction_profile.parquet`.
+
+```bash
+# Re-profile all pilot repositories
+python3.12 -m artifact_lab.ingest extract \
+  --registry data/registry/pilot_repos.csv \
+  --family ai_conventions_v1 \
+  --force
+
+# Export performance note to the paper repository
+python3.12 -m artifact_lab.experiments.pilot_performance
+```
+
+Progress log example:
+
+```text
+[3/16]
+astral-sh/ruff
+clone=8.2s
+history=4.7s
+detector=0.5s
+blobs=1.3s
+write=0.2s
+cleanup=0.1s
+total=14.8s
+```
+
 ## Resume workflow
 
 Extraction uses a SQLite WAL job queue at `data/state/extraction_jobs.db`.
@@ -103,7 +136,8 @@ sqlite3 data/state/extraction_jobs.db "
 ```
 
 - Each repo is tracked as `pending`, `running`, `succeeded`, or `failed`.
-- The extract CLI prints one progress line per registry row (`skip`, `extract`, `done`, or `fail`).
+- The extract CLI prints one profiling block per processed repository and warns when total time exceeds 5 minutes.
+- Profile rows are written to `data/profiling/extraction_profile.parquet`.
 - Re-run the same `extract` command after interruption: stale `running` jobs reset to `pending`.
 - **Succeeded repos are skipped**; their L1 rows are preserved in `events.parquet`.
 - Failed repos are retried on the next run.

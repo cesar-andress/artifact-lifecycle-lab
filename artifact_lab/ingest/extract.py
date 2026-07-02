@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import json
+import time
 from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeout
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -12,6 +13,7 @@ from pathlib import Path
 import pyarrow as pa
 
 from artifact_lab.contracts.datasets import L1_DATASET_VERSION
+from artifact_lab.contracts.paths import EXTRACTION_PROFILE_PATH
 from artifact_lab.contracts.repo_id import normalize_repo_url, repo_id_from_url
 from artifact_lab.contracts.schemas import (
     FILE_EVENT_LOG_COLUMNS,
@@ -23,9 +25,18 @@ from artifact_lab.ingest.git_utils import (
     clone_bare,
     deletion_commits,
     log_follow,
-    parse_github_url,
     remove_clone,
     ts_to_datetime,
+)
+from artifact_lab.ingest.profiling import (
+    ExtractionProfile,
+    PhaseTimings,
+    assign_parquet_write_share,
+    format_progress_log,
+    load_profiles,
+    merge_profiles,
+    slow_repo_warning,
+    write_profiles,
 )
 from artifact_lab.protocol.detector import is_matched_path, is_text_candidate, safe_normalize_path
 from artifact_lab.protocol.loader import family_version, load_family
@@ -50,6 +61,7 @@ class ExtractConfig:
     repo_timeout: int = 600
     max_clone_bytes: int = 500_000_000
     force: bool = False
+    profile_path: Path = EXTRACTION_PROFILE_PATH
 
 
 class CloneTooLargeError(RuntimeError):
@@ -98,7 +110,7 @@ def clone_size_bytes(repo_dir: Path) -> int:
 def write_receipt(receipts_dir: Path, repo_id: str, receipt: dict) -> Path:
     receipts_dir.mkdir(parents=True, exist_ok=True)
     path = receipts_dir / f"{repo_id}.json"
-    serializable = {k: v for k, v in receipt.items() if k != "events"}
+    serializable = {k: v for k, v in receipt.items() if k not in {"events", "profile"}}
     path.write_text(json.dumps(serializable, indent=2) + "\n", encoding="utf-8")
     return path
 
@@ -124,23 +136,36 @@ def extract_repo_events(
     detector_version: str,
     blob_store: BlobStore,
     git_timeout: int,
+    timings: PhaseTimings,
 ) -> list[dict]:
-    paths = discover_matched_paths(repo_dir, family, git_timeout=git_timeout)
+    t0 = time.perf_counter()
+    try:
+        paths = discover_matched_paths(repo_dir, family, git_timeout=git_timeout)
+    finally:
+        timings.detector_s += time.perf_counter() - t0
+
     events: list[dict] = []
     for path in sorted(paths):
-        history = log_follow(repo_dir, path, timeout=git_timeout)
-        if not history:
-            continue
-        deletes = deletion_commits(repo_dir, path, timeout=git_timeout)
+        t0 = time.perf_counter()
+        try:
+            history = log_follow(repo_dir, path, timeout=git_timeout)
+            deletes = deletion_commits(repo_dir, path, timeout=git_timeout)
+        finally:
+            timings.history_s += time.perf_counter() - t0
+
         for idx, touch in enumerate(history):
             change_type = "add" if idx == 0 else "modify"
             if touch["commit_sha"] in deletes:
                 change_type = "delete"
             blob_sha = ""
             if change_type != "delete" and is_text_candidate(path, family):
-                content = blob_at_commit(repo_dir, touch["commit_sha"], path, timeout=git_timeout)
-                if content is not None and b"\x00" not in content:
-                    blob_sha = blob_store.put_text(content)
+                t0 = time.perf_counter()
+                try:
+                    content = blob_at_commit(repo_dir, touch["commit_sha"], path, timeout=git_timeout)
+                    if content is not None and b"\x00" not in content:
+                        blob_sha = blob_store.put_text(content)
+                finally:
+                    timings.blobs_s += time.perf_counter() - t0
             events.append(
                 {
                     "repo_id": repo_id,
@@ -168,7 +193,17 @@ def _extract_repo_body(
     repo_id = row["repo_id"]
     repo_url = row["normalized_repo_url"]
     clone_path = cfg.scratch_dir / repo_id
+    wall_start = time.perf_counter()
     started = datetime.now(timezone.utc)
+    timings = PhaseTimings()
+    profile = ExtractionProfile(
+        repo_id=repo_id,
+        repo_url=repo_url,
+        extraction_wave=cfg.extraction_wave,
+        status="failed",
+        timings=timings,
+        recorded_at=started.isoformat(),
+    )
     receipt: dict = {
         "repo_id": repo_id,
         "repo_url": repo_url,
@@ -188,11 +223,18 @@ def _extract_repo_body(
             receipt["skip_reason"] = skip
             receipt["error"] = skip
             receipt["events"] = []
+            profile.status = "skipped"
             return receipt
 
-        clone_bare(row["repo_url"], clone_path, timeout=cfg.clone_timeout)
+        t0 = time.perf_counter()
+        try:
+            clone_bare(row["repo_url"], clone_path, timeout=cfg.clone_timeout)
+        finally:
+            timings.clone_s = time.perf_counter() - t0
+
         size = clone_size_bytes(clone_path)
         receipt["clone_bytes"] = size
+        profile.clone_bytes = size
         if size > cfg.max_clone_bytes:
             raise CloneTooLargeError(f"clone size {size} exceeds limit {cfg.max_clone_bytes}")
 
@@ -206,18 +248,28 @@ def _extract_repo_body(
             detector_version=family_version(cfg.family),
             blob_store=blob_store,
             git_timeout=git_timeout,
+            timings=timings,
         )
         receipt["matched_paths"] = sorted({e["path"] for e in events})
         receipt["n_events"] = len(events)
         receipt["status"] = "ok" if events else "no_matches"
         receipt["events"] = events
+        profile.status = receipt["status"]
+        profile.n_events = len(events)
+        profile.n_matched_paths = len(receipt["matched_paths"])
     except Exception as exc:  # noqa: BLE001 — record and continue pilot
         receipt["error"] = f"{exc.__class__.__name__}: {exc}"
         receipt["events"] = []
+        profile.status = "failed"
     finally:
+        t0 = time.perf_counter()
         remove_clone(clone_path)
+        timings.cleanup_s = time.perf_counter() - t0
+        timings.wall_s = time.perf_counter() - wall_start
         receipt["clone_removed"] = not clone_path.exists()
         receipt["finished_at"] = datetime.now(timezone.utc).isoformat()
+        profile.recorded_at = receipt["finished_at"]
+        receipt["profile"] = profile
     return receipt
 
 
@@ -230,6 +282,14 @@ def extract_one_repo(cfg: ExtractConfig, row: dict[str, str], blob_store: BlobSt
             clone_path = cfg.scratch_dir / row["repo_id"]
             remove_clone(clone_path)
             finished = datetime.now(timezone.utc).isoformat()
+            profile = ExtractionProfile(
+                repo_id=row["repo_id"],
+                repo_url=row["normalized_repo_url"],
+                extraction_wave=cfg.extraction_wave,
+                status="failed",
+                timings=PhaseTimings(wall_s=float(cfg.repo_timeout)),
+                recorded_at=finished,
+            )
             return {
                 "repo_id": row["repo_id"],
                 "repo_url": row["normalized_repo_url"],
@@ -244,6 +304,7 @@ def extract_one_repo(cfg: ExtractConfig, row: dict[str, str], blob_store: BlobSt
                 "skip_reason": None,
                 "clone_removed": not clone_path.exists(),
                 "events": [],
+                "profile": profile,
             }
 
 
@@ -273,6 +334,7 @@ def run_extract(cfg: ExtractConfig) -> Path:
     existing_events = _load_existing_events(out_path)
     new_events: list[dict] = []
     processed_repo_ids: set[str] = set()
+    run_profiles: list[ExtractionProfile] = []
 
     with JobQueue(cfg.queue_path) as queue:
         queue.reset_stale_running()
@@ -289,9 +351,18 @@ def run_extract(cfg: ExtractConfig) -> Path:
                 print(f"[{index}/{total}] skip {repo_url} (state={state})", flush=True)
                 continue
 
-            print(f"[{index}/{total}] extract {repo_url} ...", flush=True)
             queue.mark_running(repo_id, cfg.family, cfg.extraction_wave)
             receipt = extract_one_repo(cfg, row, blob_store)
+            profile = receipt.get("profile")
+            if isinstance(profile, ExtractionProfile):
+                run_profiles.append(profile)
+                print(format_progress_log(index=index, total=total, profile=profile), flush=True)
+                warning = slow_repo_warning(profile)
+                if warning:
+                    print(warning, flush=True)
+                existing_rows = [p.to_row() for p in load_profiles(cfg.profile_path)]
+                write_profiles(merge_profiles(existing_rows, [profile]), cfg.profile_path)
+
             write_receipt(cfg.receipts_dir, repo_id, receipt)
             processed_repo_ids.add(repo_id)
 
@@ -300,7 +371,6 @@ def run_extract(cfg: ExtractConfig) -> Path:
             if status in {"ok", "no_matches"}:
                 queue.mark_succeeded(repo_id, cfg.family, cfg.extraction_wave, n_events=n_events)
                 new_events.extend(receipt.get("events") or [])
-                print(f"[{index}/{total}] done {repo_url} -> {status} ({n_events} events)", flush=True)
             elif status == "skipped":
                 reason = receipt.get("skip_reason") or "skipped"
                 queue.mark_failed(
@@ -310,7 +380,6 @@ def run_extract(cfg: ExtractConfig) -> Path:
                     reason=reason,
                     n_events=0,
                 )
-                print(f"[{index}/{total}] skip {repo_url} -> {reason}", flush=True)
             else:
                 reason = receipt.get("error") or "unknown_failure"
                 queue.mark_failed(
@@ -320,8 +389,8 @@ def run_extract(cfg: ExtractConfig) -> Path:
                     reason=reason,
                     n_events=0,
                 )
-                print(f"[{index}/{total}] fail {repo_url} -> {reason}", flush=True)
 
+    t0 = time.perf_counter()
     merged = _merge_events(existing_events, new_events, replaced_repo_ids=processed_repo_ids)
     if merged:
         table = pa.Table.from_pylist(merged, schema=file_event_log_schema())
@@ -331,6 +400,13 @@ def run_extract(cfg: ExtractConfig) -> Path:
             {col: pa.array([], type=file_event_log_schema().field(col).type) for col in FILE_EVENT_LOG_COLUMNS}
         )
         row_count = write_parquet(table, out_path, expected_columns=FILE_EVENT_LOG_COLUMNS)
+    parquet_write_s = time.perf_counter() - t0
+    assign_parquet_write_share(run_profiles, parquet_write_s)
+
+    if run_profiles:
+        existing_rows = [p.to_row() for p in load_profiles(cfg.profile_path)]
+        merged_profiles = merge_profiles(existing_rows, run_profiles)
+        write_profiles(merged_profiles, cfg.profile_path)
 
     write_manifest(
         cfg.events_dir / "manifest.yaml",
