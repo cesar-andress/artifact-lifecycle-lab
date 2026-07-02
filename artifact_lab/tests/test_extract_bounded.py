@@ -16,6 +16,7 @@ from artifact_lab.store.job_queue import JobQueue
 def test_normalize_failure_reason_timeout():
     assert normalize_failure_reason("RepoTimeoutError: exceeded 600s") == "timeout"
     assert normalize_failure_reason("timeout") == "timeout"
+    assert normalize_failure_reason("timeout:detector") == "timeout:detector"
     assert normalize_failure_reason("clone failed") == "clone failed"
 
 

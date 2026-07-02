@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import statistics
+import threading
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -25,6 +26,17 @@ PHASE_NAMES: tuple[str, ...] = (
     "manifest_write",
     "cleanup",
 )
+
+PHASE_TIMING_ATTR: dict[str, str] = {
+    "clone": "clone_s",
+    "inspection": "inspection_s",
+    "history": "history_s",
+    "detector": "detector_s",
+    "blobs": "blobs_s",
+    "parquet_write": "parquet_write_s",
+    "manifest_write": "manifest_write_s",
+    "cleanup": "cleanup_s",
+}
 
 PROFILE_COLUMNS: tuple[str, ...] = (
     "repo_id",
@@ -52,6 +64,7 @@ PROFILE_COLUMNS: tuple[str, ...] = (
     "n_matched_paths",
     "recorded_at",
     "failure_reason",
+    "timeout_phase",
 )
 
 
@@ -96,6 +109,20 @@ class PhaseTimings:
             ("cleanup", self.cleanup_s),
         ]
 
+    def phase_elapsed(self, phase: str) -> float:
+        attr = PHASE_TIMING_ATTR.get(phase)
+        if not attr:
+            return 0.0
+        return float(getattr(self, attr, 0.0))
+
+    def record_phase_partial(self, phase: str, elapsed_s: float) -> None:
+        attr = PHASE_TIMING_ATTR.get(phase)
+        if not attr:
+            return
+        current = float(getattr(self, attr, 0.0))
+        if elapsed_s > current:
+            setattr(self, attr, elapsed_s)
+
     def dominant_phase(self) -> tuple[str, float]:
         phase, value = max(self.phase_values(), key=lambda item: item[1])
         if value <= 0 and self.wall_s > 0:
@@ -123,6 +150,7 @@ class ExtractionProfile:
     n_matched_paths: int = 0
     recorded_at: str = ""
     failure_reason: str | None = None
+    timeout_phase: str | None = None
 
     @property
     def repo_slug(self) -> str:
@@ -155,7 +183,52 @@ class ExtractionProfile:
             "n_matched_paths": self.n_matched_paths,
             "recorded_at": self.recorded_at,
             "failure_reason": self.failure_reason,
+            "timeout_phase": self.timeout_phase,
         }
+
+
+@dataclass
+class ExtractionLiveState:
+    """Thread-safe extraction progress for timeout attribution."""
+
+    profile: ExtractionProfile
+    lock: threading.Lock = field(default_factory=threading.Lock, repr=False)
+    current_phase: str = "clone"
+    phase_started_at: float = field(default_factory=time.perf_counter)
+    wall_started_at: float = field(default_factory=time.perf_counter)
+
+    def enter_phase(self, phase: str) -> None:
+        with self.lock:
+            self.current_phase = phase
+            self.phase_started_at = time.perf_counter()
+
+    def build_timeout_profile(self) -> ExtractionProfile:
+        with self.lock:
+            phase = self.current_phase
+            partial_elapsed = max(0.0, time.perf_counter() - self.phase_started_at)
+            self.profile.timings.record_phase_partial(phase, partial_elapsed)
+            self.profile.timings.wall_s = max(
+                self.profile.timings.wall_s,
+                time.perf_counter() - self.wall_started_at,
+            )
+            self.profile.timeout_phase = phase
+            self.profile.failure_reason = f"timeout:{phase}"
+            self.profile.status = "failed"
+            return self.profile
+
+
+def timeout_phase_from_reason(reason: str | None) -> str | None:
+    if reason and reason.startswith("timeout:"):
+        return reason.split(":", 1)[1]
+    return None
+
+
+def profile_dominant_phase_label(profile: ExtractionProfile) -> tuple[str, float]:
+    phase = profile.timeout_phase or timeout_phase_from_reason(profile.failure_reason)
+    if phase:
+        return f"timeout:{phase}", profile.timings.phase_elapsed(phase)
+    dominant, value = profile.timings.dominant_phase()
+    return dominant, value
 
 
 def _phase_line(label: str, seconds: float) -> str:
@@ -181,14 +254,23 @@ def format_progress_log(*, index: int, total: int, profile: ExtractionProfile) -
         "",
         _phase_line("TOTAL", t.total_s).replace(" s", " s", 1),
     ]
+    if profile.status == "failed" and (profile.timeout_phase or timeout_phase_from_reason(profile.failure_reason)):
+        label, elapsed = profile_dominant_phase_label(profile)
+        lines.extend(["", _phase_line(label, elapsed)])
     return "\n".join(lines)
 
 
 def slow_repo_warning(profile: ExtractionProfile, *, threshold_s: float = SLOW_REPO_THRESHOLD_S) -> str | None:
     total = profile.timings.total_s
+    if profile.timeout_phase or timeout_phase_from_reason(profile.failure_reason):
+        label, elapsed = profile_dominant_phase_label(profile)
+        return (
+            f"WARNING: Timed out repository ({profile.repo_slug}) — "
+            f"slowest phase: {label} ({elapsed:.1f} s, total {total:.1f} s)"
+        )
     if total <= threshold_s:
         return None
-    phase, value = profile.timings.dominant_phase()
+    phase, value = profile_dominant_phase_label(profile)
     return f"WARNING: Slow repository ({profile.repo_slug}) — slowest phase: {phase} ({value:.1f} s, total {total:.1f} s)"
 
 
@@ -255,6 +337,7 @@ def _row_to_profile(row: dict) -> ExtractionProfile:
         n_matched_paths=int(row.get("n_matched_paths", 0)),
         recorded_at=row.get("recorded_at", ""),
         failure_reason=row.get("failure_reason"),
+        timeout_phase=row.get("timeout_phase"),
     )
 
 

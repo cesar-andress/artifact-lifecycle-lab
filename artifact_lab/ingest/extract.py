@@ -30,6 +30,7 @@ from artifact_lab.ingest.git_utils import (
     ts_to_datetime,
 )
 from artifact_lab.ingest.profiling import (
+    ExtractionLiveState,
     ExtractionProfile,
     PhaseTimings,
     ResourceMetrics,
@@ -131,15 +132,20 @@ def discover_matched_paths(
     *,
     git_timeout: int,
     timings: PhaseTimings,
+    live: ExtractionLiveState | None = None,
 ) -> set[str]:
     from artifact_lab.ingest.git_utils import list_all_paths
 
+    if live:
+        live.enter_phase("inspection")
     t0 = time.perf_counter()
     try:
         raw_paths = list_all_paths(repo_dir, timeout=git_timeout)
     finally:
         timings.inspection_s += time.perf_counter() - t0
 
+    if live:
+        live.enter_phase("detector")
     t0 = time.perf_counter()
     try:
         matched: set[str] = set()
@@ -164,10 +170,15 @@ def extract_repo_events(
     git_timeout: int,
     timings: PhaseTimings,
     resources: ResourceMetrics,
+    live: ExtractionLiveState | None = None,
 ) -> list[dict]:
-    paths = discover_matched_paths(repo_dir, family, git_timeout=git_timeout, timings=timings)
+    paths = discover_matched_paths(
+        repo_dir, family, git_timeout=git_timeout, timings=timings, live=live
+    )
     events: list[dict] = []
     for path in sorted(paths):
+        if live:
+            live.enter_phase("history")
         t0 = time.perf_counter()
         try:
             history = log_follow(repo_dir, path, timeout=git_timeout)
@@ -181,6 +192,8 @@ def extract_repo_events(
                 change_type = "delete"
             blob_sha = ""
             if change_type != "delete" and is_text_candidate(path, family):
+                if live:
+                    live.enter_phase("blobs")
                 t0 = time.perf_counter()
                 try:
                     content = blob_at_commit(repo_dir, touch["commit_sha"], path, timeout=git_timeout)
@@ -213,6 +226,7 @@ def _extract_repo_body(
     cfg: ExtractConfig,
     row: dict[str, str],
     blob_store: BlobStore,
+    live: ExtractionLiveState,
 ) -> dict:
     repo_id = row["repo_id"]
     repo_url = row["normalized_repo_url"]
@@ -220,15 +234,8 @@ def _extract_repo_body(
     wall_start = time.perf_counter()
     started = datetime.now(timezone.utc)
     timings = PhaseTimings()
-    profile = ExtractionProfile(
-        repo_id=repo_id,
-        repo_url=repo_url,
-        extraction_wave=cfg.extraction_wave,
-        status="failed",
-        timings=timings,
-        resources=ResourceMetrics(),
-        recorded_at=started.isoformat(),
-    )
+    profile = live.profile
+    profile.timings = timings
     receipt: dict = {
         "repo_id": repo_id,
         "repo_url": repo_url,
@@ -253,6 +260,7 @@ def _extract_repo_body(
             return receipt
 
         with track_git_activity() as git_stats:
+            live.enter_phase("clone")
             t0 = time.perf_counter()
             try:
                 clone_bare(row["repo_url"], clone_path, timeout=cfg.clone_timeout)
@@ -277,6 +285,7 @@ def _extract_repo_body(
                 git_timeout=git_timeout,
                 timings=timings,
                 resources=profile.resources,
+                live=live,
             )
             profile.resources.local_cpu_s += timings.detector_s
             profile.resources.git_network_wait_s = git_stats.git_network_wait_s
@@ -298,6 +307,7 @@ def _extract_repo_body(
         profile.status = "failed"
         profile.failure_reason = normalize_failure_reason(receipt.get("error"))
     finally:
+        live.enter_phase("cleanup")
         t0 = time.perf_counter()
         remove_clone(clone_path)
         timings.cleanup_s = time.perf_counter() - t0
@@ -312,40 +322,46 @@ def _extract_repo_body(
 def normalize_failure_reason(error: str | None) -> str:
     if not error:
         return "unknown_failure"
+    if error.startswith("timeout:"):
+        return error
     if "RepoTimeoutError" in error or error == "timeout":
         return "timeout"
     return error
 
 
 def extract_one_repo(cfg: ExtractConfig, row: dict[str, str], blob_store: BlobStore) -> dict:
+    started = datetime.now(timezone.utc)
+    profile = ExtractionProfile(
+        repo_id=row["repo_id"],
+        repo_url=row["normalized_repo_url"],
+        extraction_wave=cfg.extraction_wave,
+        status="failed",
+        timings=PhaseTimings(),
+        resources=ResourceMetrics(),
+        recorded_at=started.isoformat(),
+    )
+    live = ExtractionLiveState(profile=profile)
     with ThreadPoolExecutor(max_workers=1) as pool:
-        future = pool.submit(_extract_repo_body, cfg, row, blob_store)
+        future = pool.submit(_extract_repo_body, cfg, row, blob_store, live)
         try:
             return future.result(timeout=cfg.repo_timeout)
         except FuturesTimeout:
             clone_path = cfg.scratch_dir / row["repo_id"]
             remove_clone(clone_path)
             finished = datetime.now(timezone.utc).isoformat()
-            profile = ExtractionProfile(
-                repo_id=row["repo_id"],
-                repo_url=row["normalized_repo_url"],
-                extraction_wave=cfg.extraction_wave,
-                status="failed",
-                timings=PhaseTimings(wall_s=float(cfg.repo_timeout)),
-                recorded_at=finished,
-                failure_reason="timeout",
-            )
+            profile = live.build_timeout_profile()
+            profile.recorded_at = finished
             return {
                 "repo_id": row["repo_id"],
                 "repo_url": row["normalized_repo_url"],
                 "family": cfg.family,
                 "extraction_wave": cfg.extraction_wave,
-                "started_at": finished,
+                "started_at": started.isoformat(),
                 "finished_at": finished,
                 "status": "failed",
                 "n_events": 0,
                 "matched_paths": [],
-                "error": "timeout",
+                "error": profile.failure_reason,
                 "skip_reason": None,
                 "clone_removed": not clone_path.exists(),
                 "events": [],
@@ -410,7 +426,9 @@ def run_extract(cfg: ExtractConfig) -> Path:
                 if status == "skipped":
                     profile.failure_reason = receipt.get("skip_reason") or "skipped"
                 elif status not in {"ok", "no_matches"}:
-                    profile.failure_reason = normalize_failure_reason(receipt.get("error"))
+                    profile.failure_reason = normalize_failure_reason(
+                        profile.failure_reason or receipt.get("error")
+                    )
                 run_profiles.append(profile)
                 print(format_progress_log(index=index, total=total, profile=profile), flush=True)
                 warning = slow_repo_warning(profile)
@@ -442,7 +460,11 @@ def run_extract(cfg: ExtractConfig) -> Path:
                     n_events=0,
                 )
             else:
-                reason = normalize_failure_reason(receipt.get("error"))
+                reason = (
+                    profile.failure_reason
+                    if isinstance(profile, ExtractionProfile) and profile.failure_reason
+                    else normalize_failure_reason(receipt.get("error"))
+                )
                 queue.mark_failed(
                     repo_id,
                     cfg.family,

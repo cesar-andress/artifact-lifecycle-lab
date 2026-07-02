@@ -144,24 +144,28 @@ def test_test_mode_includes_fixture_repos(tmp_path: Path):
     assert "test mode" in text.lower()
 
 
-def test_timeout_failure_reports_unknown_phase_and_reason():
+def test_timeout_failure_reports_phase_and_reason():
     profile = ExtractionProfile(
         repo_id="slow-repo",
         repo_url="https://github.com/example/slow",
         extraction_wave="pilot_v1",
         status="failed",
         timings=PhaseTimings(
+            clone_s=1.2,
+            inspection_s=118.5,
             wall_s=120.0,
             manifest_write_s=0.0,
             parquet_write_s=0.0,
         ),
-        failure_reason="timeout",
+        failure_reason="timeout:inspection",
+        timeout_phase="inspection",
     )
-    assert report_failure_phase(profile) == "timeout/unknown"
+    assert report_failure_phase(profile) == "timeout:inspection (118.5 s)"
 
     text = build_report([profile], test_mode=True)
-    assert "slowest phase=timeout/unknown" in text
-    assert "failure_reason=timeout" in text
+    assert "timeout_phase=inspection" in text
+    assert "slowest phase=timeout:inspection (118.5 s)" in text
+    assert "failure_reason=timeout:inspection" in text
 
 
 def test_failed_repo_with_batch_phase_quota_shows_unknown():

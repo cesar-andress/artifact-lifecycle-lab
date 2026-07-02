@@ -16,6 +16,7 @@ from artifact_lab.ingest.profiling import (
     load_profiles,
     mean_or_none,
     median_or_none,
+    timeout_phase_from_reason,
 )
 
 DEFAULT_PROFILE_PATH = Path("data/profiling/extraction_profile.parquet")
@@ -37,21 +38,26 @@ def _fmt_mb(n_bytes: int) -> str:
 
 def report_failure_phase(profile: ExtractionProfile) -> str:
     """Human-readable slowest phase for failed repositories."""
-    if profile.failure_reason == "timeout":
-        return "timeout/unknown"
-    phase, value = profile.timings.dominant_phase()
+    phase = profile.timeout_phase or timeout_phase_from_reason(profile.failure_reason)
+    if phase:
+        elapsed = profile.timings.phase_elapsed(phase)
+        return f"timeout:{phase} ({elapsed:.1f} s)"
+    dominant, value = profile.timings.dominant_phase()
     if profile.status == "failed" and (
-        value <= 0 or phase in _BATCH_PHASES or phase == "unattributed"
+        value <= 0 or dominant in _BATCH_PHASES or dominant == "unattributed"
     ):
         return "timeout/unknown"
     if value <= 0:
         return "unknown"
-    return f"{phase} ({value:.1f} s)"
+    return f"{dominant} ({value:.1f} s)"
 
 
 def _display_failure_reason(profile: ExtractionProfile) -> str:
     if profile.failure_reason:
         return profile.failure_reason
+    phase = profile.timeout_phase or timeout_phase_from_reason(profile.failure_reason)
+    if phase:
+        return f"timeout:{phase}"
     if profile.status == "failed" and report_failure_phase(profile) == "timeout/unknown":
         return "timeout"
     return "unknown"
@@ -160,9 +166,10 @@ def build_report(profiles: list[ExtractionProfile], *, test_mode: bool = False) 
         for profile in failed:
             reason = _display_failure_reason(profile)
             phase_label = report_failure_phase(profile)
+            timeout_phase = profile.timeout_phase or timeout_phase_from_reason(profile.failure_reason) or "n/a"
             lines.append(
                 f"- **{profile.repo_slug}**: total={profile.timings.total_s:.1f} s; "
-                f"slowest phase={phase_label}; failure_reason={reason}"
+                f"timeout_phase={timeout_phase}; slowest phase={phase_label}; failure_reason={reason}"
             )
 
     lines.extend(
