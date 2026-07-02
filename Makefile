@@ -17,7 +17,7 @@ TABLE1 := exports/e1/table1.csv
 E1_REPORT := exports/e1/e1_census.md
 E1_PILOT_PERF := exports/e1/pilot_performance.md
 
-PAPER_ROOT := ../paper
+PAPER_ROOT ?= ../paper
 PAPER_NOTE := $(PAPER_ROOT)/notes/pilot_performance.md
 
 # Bounded development pilot (default: 3 repos, 120s timeouts via --skip-slow)
@@ -75,7 +75,7 @@ paper:
 	cp $(FIG1_CSV) $(PAPER_ROOT)/figures/fig1.csv
 	cp $(TABLE1) $(PAPER_ROOT)/tables/table1.csv
 	@test -f $(E1_PILOT_PERF) && cp $(E1_PILOT_PERF) $(PAPER_ROOT)/notes/pilot_performance.md || echo "note: $(E1_PILOT_PERF) not found; skipping performance note copy"
-	-$(MAKE) -C $(PAPER_ROOT) pdf
+	$(MAKE) -C $(PAPER_ROOT) pdf
 
 test:
 	$(PY) -m pytest artifact_lab/tests -q
