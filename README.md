@@ -76,38 +76,50 @@ python3.12 -m artifact_lab.derive summary
 python3.12 -m pytest artifact_lab/tests
 ```
 
+## Scientific pilot (E1)
+
+```bash
+pip install -e ".[dev,paper]"
+
+# Full artifact pipeline: extract → panel → census/fig1/table1 → performance note
+make e1
+
+# Copy exports to paper repo and compile LaTeX (no mining)
+make paper
+```
+
+| Target | Scope |
+|--------|-------|
+| `make e1` | Mining + derived datasets + `exports/e1/` + `../paper/notes/pilot_performance.md` |
+| `make paper` | Copy figures/tables to `../paper/` and compile manuscript only |
+
 ## Extraction profiling
 
 Each processed repository records phase timings:
 
-`clone`, `history`, `detector`, `blobs`, `parquet_write`, `cleanup`, `total`
+`clone`, `inspection`, `history`, `detector`, `blobs`, `parquet_write`, `manifest_write`, `cleanup`, `total`
 
-Profiles are stored at `data/profiling/extraction_profile.parquet`.
-
-```bash
-# Re-profile all pilot repositories
-python3.12 -m artifact_lab.ingest extract \
-  --registry data/registry/pilot_repos.csv \
-  --family ai_conventions_v1 \
-  --force
-
-# Export performance note to the paper repository
-python3.12 -m artifact_lab.experiments.pilot_performance
-```
+Profiles: `data/profiling/extraction_profile.parquet` and `.csv`.
 
 Progress log example:
 
 ```text
 [3/16]
+
+Repository:
 astral-sh/ruff
-clone=8.2s
-history=4.7s
-detector=0.5s
-blobs=1.3s
-write=0.2s
-cleanup=0.1s
-total=14.8s
+
+clone ............ 8.3 s
+history .......... 4.8 s
+detectors ........ 0.2 s
+blobs ............ 1.1 s
+write ............ 0.3 s
+cleanup .......... 0.1 s
+
+TOTAL ............ 14.8 s
 ```
+
+Repositories exceeding **300 s** emit `WARNING: Slow repository` with the slowest phase.
 
 ## Resume workflow
 

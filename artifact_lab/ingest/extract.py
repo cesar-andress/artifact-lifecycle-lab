@@ -31,7 +31,7 @@ from artifact_lab.ingest.git_utils import (
 from artifact_lab.ingest.profiling import (
     ExtractionProfile,
     PhaseTimings,
-    assign_parquet_write_share,
+    assign_batch_write_shares,
     format_progress_log,
     load_profiles,
     merge_profiles,
@@ -115,14 +115,30 @@ def write_receipt(receipts_dir: Path, repo_id: str, receipt: dict) -> Path:
     return path
 
 
-def discover_matched_paths(repo_dir: Path, family: str, *, git_timeout: int) -> set[str]:
+def discover_matched_paths(
+    repo_dir: Path,
+    family: str,
+    *,
+    git_timeout: int,
+    timings: PhaseTimings,
+) -> set[str]:
     from artifact_lab.ingest.git_utils import list_all_paths
 
-    matched: set[str] = set()
-    for raw in list_all_paths(repo_dir, timeout=git_timeout):
-        norm = safe_normalize_path(raw)
-        if norm and is_matched_path(norm, family):
-            matched.add(norm)
+    t0 = time.perf_counter()
+    try:
+        raw_paths = list_all_paths(repo_dir, timeout=git_timeout)
+    finally:
+        timings.inspection_s += time.perf_counter() - t0
+
+    t0 = time.perf_counter()
+    try:
+        matched: set[str] = set()
+        for raw in raw_paths:
+            norm = safe_normalize_path(raw)
+            if norm and is_matched_path(norm, family):
+                matched.add(norm)
+    finally:
+        timings.detector_s += time.perf_counter() - t0
     return matched
 
 
@@ -138,12 +154,7 @@ def extract_repo_events(
     git_timeout: int,
     timings: PhaseTimings,
 ) -> list[dict]:
-    t0 = time.perf_counter()
-    try:
-        paths = discover_matched_paths(repo_dir, family, git_timeout=git_timeout)
-    finally:
-        timings.detector_s += time.perf_counter() - t0
-
+    paths = discover_matched_paths(repo_dir, family, git_timeout=git_timeout, timings=timings)
     events: list[dict] = []
     for path in sorted(paths):
         t0 = time.perf_counter()
@@ -361,7 +372,12 @@ def run_extract(cfg: ExtractConfig) -> Path:
                 if warning:
                     print(warning, flush=True)
                 existing_rows = [p.to_row() for p in load_profiles(cfg.profile_path)]
-                write_profiles(merge_profiles(existing_rows, [profile]), cfg.profile_path)
+                merged = merge_profiles(existing_rows, [profile])
+                write_profiles(
+                    merged,
+                    cfg.profile_path,
+                    csv_path=cfg.profile_path.with_suffix(".csv"),
+                )
 
             write_receipt(cfg.receipts_dir, repo_id, receipt)
             processed_repo_ids.add(repo_id)
@@ -401,13 +417,8 @@ def run_extract(cfg: ExtractConfig) -> Path:
         )
         row_count = write_parquet(table, out_path, expected_columns=FILE_EVENT_LOG_COLUMNS)
     parquet_write_s = time.perf_counter() - t0
-    assign_parquet_write_share(run_profiles, parquet_write_s)
 
-    if run_profiles:
-        existing_rows = [p.to_row() for p in load_profiles(cfg.profile_path)]
-        merged_profiles = merge_profiles(existing_rows, run_profiles)
-        write_profiles(merged_profiles, cfg.profile_path)
-
+    t0 = time.perf_counter()
     write_manifest(
         cfg.events_dir / "manifest.yaml",
         dataset_name="file_event_log",
@@ -421,4 +432,21 @@ def run_extract(cfg: ExtractConfig) -> Path:
             "dataset_version": cfg.dataset_version,
         },
     )
+    manifest_write_s = time.perf_counter() - t0
+
+    assign_batch_write_shares(
+        run_profiles,
+        parquet_write_s=parquet_write_s,
+        manifest_write_s=manifest_write_s,
+    )
+
+    if run_profiles:
+        existing_rows = [p.to_row() for p in load_profiles(cfg.profile_path)]
+        merged_profiles = merge_profiles(existing_rows, run_profiles)
+        write_profiles(
+            merged_profiles,
+            cfg.profile_path,
+            csv_path=cfg.profile_path.with_suffix(".csv"),
+        )
+
     return out_path

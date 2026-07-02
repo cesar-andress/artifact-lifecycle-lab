@@ -46,7 +46,11 @@ def test_write_report_exports_to_paper_path(tmp_path: Path):
                 repo_url="https://github.com/o/r",
                 extraction_wave="pilot_v1",
                 status="ok",
-                timings=PhaseTimings(clone_s=1.0, wall_s=2.0),
+                timings=PhaseTimings(
+            clone_s=1.0,
+            inspection_s=0.5,
+            wall_s=2.0,
+        ),
                 clone_bytes=1000,
             )
         ],

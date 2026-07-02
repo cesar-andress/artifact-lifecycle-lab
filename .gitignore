@@ -10,4 +10,5 @@ data/l1/
 data/derived/
 data/receipts/
 data/state/
+data/profiling/
 *.parquet

@@ -63,7 +63,7 @@ def test_classify_state_priority():
 
 def test_panel_from_synthetic_repo(tmp_path):
     bare = _make_repo(tmp_path)
-    paths = discover_matched_paths(bare, "ai_conventions_v1", git_timeout=60)
+    paths = discover_matched_paths(bare, "ai_conventions_v1", git_timeout=60, timings=PhaseTimings())
     assert "AGENTS.md" in paths
     events = extract_repo_events(
         bare,
