@@ -9,16 +9,17 @@ from pathlib import Path
 
 from artifact_lab.contracts.paths import EXTRACTION_PROFILE_PATH
 from artifact_lab.experiments.e1_adoption_census.cohort_accounting import (
-    ENRICHED_COHORT_NOTE,
     SUMMARY_MODE_LATEST,
+    cohort_note_for_registry,
     compute_extraction_outcomes,
     count_repos_with_matches,
     filter_rows_to_registry,
+    is_e1_1000_registry,
     is_e1_100_registry,
     select_cohort_profiles,
 )
 from artifact_lab.ingest.profiling import load_profiles, median_or_none
-from artifact_lab.registry.schema import validate_e1_100_registry
+from artifact_lab.registry.schema import validate_e1_1000_registry, validate_e1_100_registry
 from artifact_lab.store.parquet import read_parquet
 
 DEFAULT_CENSUS_DIR = Path("data/derived/adoption_census/e1_100/v1")
@@ -40,6 +41,17 @@ def _wave_summary(waves: dict[str, int]) -> str:
     return ", ".join(f"{wave} ({count})" for wave, count in waves.items())
 
 
+def _stratum_counts(registry_path: Path) -> list[tuple[str, int]]:
+    if not is_e1_1000_registry(registry_path):
+        return []
+    rows = validate_e1_1000_registry(registry_path)
+    counts: dict[str, int] = {}
+    for row in rows:
+        stratum = row["cohort_stratum"]
+        counts[stratum] = counts.get(stratum, 0) + 1
+    return sorted(counts.items())
+
+
 def build_cohort_summary(
     *,
     registry_path: Path,
@@ -49,8 +61,17 @@ def build_cohort_summary(
     summary_mode: str = SUMMARY_MODE_LATEST,
     extraction_wave: str | None = None,
 ) -> str:
-    if is_e1_100_registry(registry_path):
+    if is_e1_1000_registry(registry_path):
+        validate_e1_1000_registry(registry_path)
+    elif is_e1_100_registry(registry_path):
         validate_e1_100_registry(registry_path, expected_rows=100)
+
+    cohort_note = cohort_note_for_registry(registry_path)
+    title = "# E1 cohort summary"
+    if is_e1_1000_registry(registry_path):
+        title = "# E1 1000-repository scientific cohort summary"
+    elif is_e1_100_registry(registry_path):
+        title = "# E1 100-repository cohort summary"
 
     selection = select_cohort_profiles(
         load_profiles(profile_path),
@@ -83,11 +104,26 @@ def build_cohort_summary(
     family_rows = _load_table1_distribution(table1_path)
 
     lines = [
-        "# E1 100-repository cohort summary",
+        title,
         "",
-        "## Cohort interpretation",
-        f"> {ENRICHED_COHORT_NOTE}",
-        "",
+    ]
+    if cohort_note:
+        lines.extend(
+            [
+                "## Cohort interpretation",
+                f"> {cohort_note}",
+                "",
+            ]
+        )
+    stratum_counts = _stratum_counts(registry_path)
+    if stratum_counts:
+        lines.extend(["## Strata", ""])
+        for stratum, count in stratum_counts:
+            lines.append(f"- `{stratum}`: **{count}** repositories")
+        lines.append("")
+
+    lines.extend(
+        [
         "## Registry",
         f"- Attempted repositories: **{outcomes.attempted}**",
         f"- Profile accounting mode: **{selection.summary_mode}**",
@@ -110,7 +146,8 @@ def build_cohort_summary(
         "",
         "## Artifact family distribution",
         "",
-    ]
+        ]
+    )
     if family_rows:
         lines.extend(
             [

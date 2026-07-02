@@ -9,10 +9,9 @@ from pathlib import Path
 from artifact_lab.contracts.datasets import l1_dataset_dir
 from artifact_lab.experiments.e1_adoption_census.census import run_census
 from artifact_lab.experiments.e1_adoption_census.cohort_accounting import (
-    ENRICHED_COHORT_NOTE,
+    cohort_note_for_registry,
     count_repos_with_matches,
     filter_rows_to_registry,
-    is_e1_100_registry,
     load_registry_repo_ids,
 )
 from artifact_lab.experiments.e1_adoption_census.export_paper import export_to_paper_repo
@@ -73,7 +72,7 @@ def run_all(
         n_registry_repos=len(registry_repo_ids),
         n_repos_with_matches=count_repos_with_matches(filtered_repo, registry_repo_ids),
         n_path_rows=len(filtered_path),
-        cohort_note=ENRICHED_COHORT_NOTE if is_e1_100_registry(registry_path) else None,
+        cohort_note=cohort_note_for_registry(registry_path),
     )
     write_report(report, report_path)
     print(f"wrote census -> {census_dir}")

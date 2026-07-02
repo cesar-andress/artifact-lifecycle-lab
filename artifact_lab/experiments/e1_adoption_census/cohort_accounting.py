@@ -10,11 +10,21 @@ from artifact_lab.experiments.pilot_performance.registry_filter import (
     load_registry_repo_ids,
 )
 from artifact_lab.ingest.profiling import ExtractionProfile
-from artifact_lab.registry.schema import read_registry_rows, validate_e1_100_registry
+from artifact_lab.registry.schema import (
+    read_registry_rows,
+    validate_e1_1000_registry,
+    validate_e1_100_registry,
+)
 
 ENRICHED_COHORT_NOTE = (
     "This 100-repository cohort is an enriched engineering cohort, not a population sample. "
     "Adoption rates must not be interpreted as GitHub-wide prevalence."
+)
+
+E1_1000_SCIENTIFIC_COHORT_NOTE = (
+    "E1-1000 is a deterministic stratified scientific cohort, not a GitHub population sample. "
+    "Report AI-instruction discovery-frame prevalence and general-OSS contrast separately. "
+    "Adoption is head-only current-presence at HEAD."
 )
 
 SUMMARY_MODE_LATEST = "latest-per-repo"
@@ -181,3 +191,19 @@ def is_e1_100_registry(registry_path: Path) -> bool:
         return True
     except ValueError:
         return False
+
+
+def is_e1_1000_registry(registry_path: Path) -> bool:
+    try:
+        validate_e1_1000_registry(registry_path)
+        return True
+    except ValueError:
+        return False
+
+
+def cohort_note_for_registry(registry_path: Path) -> str | None:
+    if is_e1_1000_registry(registry_path):
+        return E1_1000_SCIENTIFIC_COHORT_NOTE
+    if is_e1_100_registry(registry_path):
+        return ENRICHED_COHORT_NOTE
+    return None

@@ -53,6 +53,15 @@ artifact_lab/
 | protocol YAML | — |
 | registry CSV | — |
 
+## Cohort ladder
+
+E1 experiments use a staged cohort progression. See [docs/cohort_ladder.md](docs/cohort_ladder.md):
+
+- **Pilot (17)** — development and profiling
+- **Engineering (100)** — pipeline regression (`make e1-100`)
+- **Scientific (1000)** — TOSEM default cohort (`make e1-1000`)
+- **Future population-scale** — not implemented
+
 ## Pilot workflow
 
 ```bash

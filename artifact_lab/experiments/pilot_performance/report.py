@@ -6,9 +6,11 @@ import statistics
 from pathlib import Path
 
 from artifact_lab.experiments.e1_adoption_census.cohort_accounting import (
+    E1_1000_SCIENTIFIC_COHORT_NOTE,
     ENRICHED_COHORT_NOTE,
     SUMMARY_MODE_LATEST,
     compute_extraction_outcomes,
+    is_e1_1000_registry,
     is_e1_100_registry,
     select_cohort_profiles,
 )
@@ -116,7 +118,22 @@ def build_report(
         "",
     ]
     outcomes = None
-    if registry_path is not None and is_e1_100_registry(registry_path):
+    if registry_path is not None and is_e1_1000_registry(registry_path):
+        registry_ids = load_registry_repo_ids(registry_path)
+        outcomes = compute_extraction_outcomes(registry_ids, profiles)
+        lines.extend(
+            [
+                "## Cohort interpretation",
+                f"> {E1_1000_SCIENTIFIC_COHORT_NOTE}",
+                "",
+                "## Registry accounting",
+                f"- Attempted repositories: **{outcomes.attempted}**",
+                f"- Profile accounting mode: **{SUMMARY_MODE_LATEST}**",
+                f"- Profile rows used in summary: **{len(profiles)}**",
+                "",
+            ]
+        )
+    elif registry_path is not None and is_e1_100_registry(registry_path):
         registry_ids = load_registry_repo_ids(registry_path)
         outcomes = compute_extraction_outcomes(registry_ids, profiles)
         lines.extend(

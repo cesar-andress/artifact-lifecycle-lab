@@ -33,6 +33,11 @@ def main(argv: list[str] | None = None) -> int:
     extract_p.add_argument("--receipts-dir", type=Path, default=Path("data/receipts"))
     extract_p.add_argument("--queue", type=Path, default=EXTRACTION_QUEUE_PATH)
     extract_p.add_argument("--wave", default="pilot_v1")
+    extract_p.add_argument(
+        "--registry-version",
+        default=None,
+        help="Registry version label recorded in L1 manifest (e.g. e1_1000_v1)",
+    )
     extract_p.add_argument("--clone-timeout", type=int, default=DEFAULT_CLONE_TIMEOUT)
     extract_p.add_argument("--repo-timeout", type=int, default=DEFAULT_REPO_TIMEOUT)
     extract_p.add_argument("--max-clone-mb", type=int, default=500)
@@ -67,6 +72,7 @@ def main(argv: list[str] | None = None) -> int:
             receipts_dir=args.receipts_dir,
             queue_path=args.queue,
             extraction_wave=args.wave,
+            registry_version=args.registry_version,
             clone_timeout=clone_timeout,
             repo_timeout=repo_timeout,
             max_clone_bytes=args.max_clone_mb * 1_000_000,

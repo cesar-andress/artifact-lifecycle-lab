@@ -72,6 +72,7 @@ class ExtractConfig:
     queue_path: Path
     extraction_wave: str = "pilot_v1"
     dataset_version: str = L1_DATASET_VERSION
+    registry_version: str | None = None
     clone_timeout: int = 300
     repo_timeout: int = 600
     max_clone_bytes: int = 500_000_000
@@ -524,6 +525,9 @@ def run_extract(cfg: ExtractConfig) -> Path:
         extra={
             "family": cfg.family,
             "dataset_version": cfg.dataset_version,
+            "extraction_wave": cfg.extraction_wave,
+            "registry_version": cfg.registry_version,
+            "detector_version": family_version(cfg.family),
         },
     )
     manifest_write_s = time.perf_counter() - t0

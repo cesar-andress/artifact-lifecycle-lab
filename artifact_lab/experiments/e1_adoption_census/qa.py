@@ -12,9 +12,11 @@ from artifact_lab.experiments.e1_adoption_census.cohort_accounting import (
     compute_extraction_outcomes,
     count_repos_with_matches,
     filter_rows_to_registry,
+    is_e1_1000_registry,
     select_cohort_profiles,
 )
 from artifact_lab.ingest.profiling import load_profiles
+from artifact_lab.registry.schema import E1_1000_TARGET_SIZE, validate_e1_1000_registry
 from artifact_lab.store.parquet import read_parquet
 
 
@@ -25,12 +27,15 @@ def run_qa(
     profile_path: Path,
     summary_mode: str = SUMMARY_MODE_LATEST,
     extraction_wave: str | None = None,
+    expected_rows: int | None = None,
 ) -> int:
+    if is_e1_1000_registry(registry_path):
+        validate_e1_1000_registry(registry_path)
+        expected_rows = expected_rows or E1_1000_TARGET_SIZE
     audit = audit_registry(registry_path)
-    if audit.registry_rows != 100:
-        warnings: list[str] = [f"expected 100 registry rows, got {audit.registry_rows}"]
-    else:
-        warnings = []
+    warnings: list[str] = []
+    if expected_rows is not None and audit.registry_rows != expected_rows:
+        warnings.append(f"expected {expected_rows} registry rows, got {audit.registry_rows}")
 
     selection = select_cohort_profiles(
         load_profiles(profile_path),
@@ -88,6 +93,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--registry", type=Path, required=True)
     parser.add_argument("--census-dir", type=Path, required=True)
     parser.add_argument("--profiles", type=Path, required=True)
+    parser.add_argument("--expected-rows", type=int, default=None)
     parser.add_argument(
         "--summary-mode",
         choices=("latest-per-repo", "cumulative"),
@@ -101,6 +107,7 @@ def main(argv: list[str] | None = None) -> int:
         profile_path=args.profiles,
         summary_mode=args.summary_mode,
         extraction_wave=args.extraction_wave,
+        expected_rows=args.expected_rows,
     )
 
 

@@ -37,9 +37,28 @@ PAPER_NOTE := $(PAPER_ROOT)/notes/pilot_performance.md
 E1_PILOT_LIMIT ?= 3
 INSPECTION_MODE ?= head-only
 
-.PHONY: e1 e1-pilot e1-100 paper ingest panel e1-exports profile-report test install-paper \
+E1_1000_REGISTRY := data/registry/e1_1000_repos.csv
+E1_1000_L1_DIR := data/l1/e1_1000/v1
+E1_1000_PANEL_DIR := data/derived/file_state_panel/e1_1000/v1
+E1_1000_CENSUS_DIR := data/derived/adoption_census/e1_1000/v1
+E1_1000_WAVE := e1_1000_v1
+E1_1000_REGISTRY_VERSION := e1_1000_v1
+E1_1000_EXPORT_DIR := exports/e1_1000
+E1_1000_FIG1_PDF := $(E1_1000_EXPORT_DIR)/fig1.pdf
+E1_1000_FIG1_CSV := $(E1_1000_EXPORT_DIR)/fig1.csv
+E1_1000_TABLE1 := $(E1_1000_EXPORT_DIR)/table1.csv
+E1_1000_REPORT := $(E1_1000_EXPORT_DIR)/e1_census.md
+E1_1000_PERF := $(E1_1000_EXPORT_DIR)/pilot_performance.md
+E1_1000_SUMMARY := $(E1_1000_EXPORT_DIR)/cohort_summary.md
+E1_1000_COHORT_DESIGN := $(E1_1000_EXPORT_DIR)/cohort_design.md
+VSDLC_ELIGIBLE := $(HOME)/papers/vsdlc/vsdlc/data/interim/eligible_repos_enriched.jsonl
+SECOND_FRAME := $(HOME)/papers/vsdlc/vsdlc/data/raw/second_frame_candidates.jsonl
+GENERAL_OSS_POOL := data/registry/sources/general_oss_candidates.jsonl
+
+.PHONY: e1 e1-pilot e1-100 e1-1000 paper ingest panel e1-exports profile-report test install-paper \
 	e1-pilot-extract e1-pilot-derive e1-pilot-exports e1-extract e1-derive e1-exports-run \
-	e1-100-extract e1-100-derive e1-100-exports e1-100-performance e1-100-summary
+	e1-100-extract e1-100-derive e1-100-exports e1-100-performance e1-100-summary \
+	e1-1000-registry e1-1000-extract e1-1000-derive e1-1000-exports e1-1000-performance e1-1000-summary e1-1000-qa
 
 e1: install-paper e1-extract e1-derive e1-exports-run profile-report
 
@@ -105,6 +124,58 @@ e1-100-summary:
 	  --census-dir $(E1_100_CENSUS_DIR) \
 	  --table1 $(E1_100_TABLE1) \
 	  --output $(E1_100_SUMMARY)
+
+e1-1000-registry:
+	@test -f $(GENERAL_OSS_POOL) || $(PY) -m artifact_lab.registry.build_general_oss_pool
+	$(PY) -m artifact_lab.registry.build_e1_1000 \
+	  --vsdlc $(VSDLC_ELIGIBLE) \
+	  --second-frame $(SECOND_FRAME) \
+	  --general-oss $(GENERAL_OSS_POOL) \
+	  --output $(E1_1000_REGISTRY) \
+	  --cohort-design $(E1_1000_COHORT_DESIGN)
+
+e1-1000: install-paper e1-1000-registry e1-1000-extract e1-1000-derive e1-1000-exports e1-1000-performance e1-1000-summary
+
+e1-1000-extract:
+	$(PY) -m artifact_lab.ingest extract \
+	  --registry $(E1_1000_REGISTRY) \
+	  --family $(FAMILY) \
+	  --wave $(E1_1000_WAVE) \
+	  --registry-version $(E1_1000_REGISTRY_VERSION) \
+	  --events-dir $(E1_1000_L1_DIR) \
+	  --inspection-mode $(INSPECTION_MODE)
+
+e1-1000-derive:
+	$(PY) -m artifact_lab.derive panel --T 180 --events $(E1_1000_L1_DIR) --output $(E1_1000_PANEL_DIR)
+
+e1-1000-exports:
+	$(PY) -m artifact_lab.experiments.e1_adoption_census --no-export \
+	  --l1 $(E1_1000_L1_DIR) \
+	  --census-dir $(E1_1000_CENSUS_DIR) \
+	  --registry $(E1_1000_REGISTRY) \
+	  --fig1-csv $(E1_1000_FIG1_CSV) \
+	  --fig1-pdf $(E1_1000_FIG1_PDF) \
+	  --table1 $(E1_1000_TABLE1) \
+	  --report $(E1_1000_REPORT)
+
+e1-1000-performance:
+	$(PY) -m artifact_lab.experiments.pilot_performance \
+	  --registry $(E1_1000_REGISTRY) \
+	  --output $(E1_1000_PERF)
+
+e1-1000-summary:
+	$(PY) -m artifact_lab.experiments.e1_adoption_census.cohort_summary \
+	  --registry $(E1_1000_REGISTRY) \
+	  --census-dir $(E1_1000_CENSUS_DIR) \
+	  --table1 $(E1_1000_TABLE1) \
+	  --output $(E1_1000_SUMMARY)
+
+e1-1000-qa:
+	$(PY) -m artifact_lab.experiments.e1_adoption_census.qa \
+	  --registry $(E1_1000_REGISTRY) \
+	  --census-dir $(E1_1000_CENSUS_DIR) \
+	  --profiles $(PROFILE_PARQUET) \
+	  --expected-rows 1000
 
 ingest: $(L1_EVENTS)
 

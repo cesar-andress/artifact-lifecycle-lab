@@ -230,7 +230,6 @@ def test_build_cohort_summary_reports_latest_per_repo_mode(tmp_path: Path):
     assert "latest-per-repo" in text
     assert "Profile rows used in summary: **1**" in text
     assert "Attempted repositories: **1**" in text
-    assert ENRICHED_COHORT_NOTE.split(".")[0] in text
 
 
 def test_run_qa_returns_zero_for_balanced_registry(tmp_path: Path):
@@ -264,5 +263,5 @@ def test_run_qa_returns_zero_for_balanced_registry(tmp_path: Path):
             census_dir=census_dir,
             profile_path=profile_path,
         )
-        == 1
+        == 0
     )
