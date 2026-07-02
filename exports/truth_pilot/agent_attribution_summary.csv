@@ -1,0 +1,15 @@
+metric,value
+commits_scanned,11187
+instruction_files_touched,3253
+candidate_agent_authored,1210
+candidate_agent_coauthored,1606
+files_with_agent_signal,989
+signal_rate_pct,25.17
+class_agent_coauthored,1606
+class_agent_signature_in_message,1042
+class_bot_author,168
+class_human,8371
+signature_bot_account,168
+signature_co_authored_by,1606
+signature_message_signature,1034
+signature_tool_pattern,8

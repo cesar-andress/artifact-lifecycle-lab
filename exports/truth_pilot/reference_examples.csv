@@ -1,0 +1,16 @@
+sample_id,repo_id,instruction_path,reference_type,reference_text,example_label,verification_status,evidence
+2,03ff95638105b96a,.cursor/rules/readme.md,path,.cursor/rules,true,verified,path exists at HEAD
+2,03ff95638105b96a,.cursor/rules/readme.md,directory,.cursor/rules/,true,verified,directory prefix exists at HEAD
+2,03ff95638105b96a,.cursor/rules/readme.md,path,mkdocs.yml,true,verified,path exists at HEAD
+3,03ff95638105b96a,CLAUDE.md,path,build_mkdocs.sh,true,verified,path exists at HEAD
+3,03ff95638105b96a,CLAUDE.md,directory,tests/llm/,true,verified,directory prefix exists at HEAD
+2,03ff95638105b96a,.cursor/rules/readme.md,path,simple-language.mdc,false,missing,path not in HEAD tree
+2,03ff95638105b96a,.cursor/rules/readme.md,path,new-features-planning.mdc,false,missing,path not in HEAD tree
+2,03ff95638105b96a,.cursor/rules/readme.md,path,followups.mdc,false,missing,path not in HEAD tree
+2,03ff95638105b96a,.cursor/rules/readme.md,path,documentation-sync.mdc,false,missing,path not in HEAD tree
+2,03ff95638105b96a,.cursor/rules/readme.md,path,//cursor.sh,false,missing,path not in HEAD tree
+2,03ff95638105b96a,.cursor/rules/readme.md,command,2. **Rule Content**: Markdown-formatted instructions that guide the AI's behavior,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+2,03ff95638105b96a,.cursor/rules/readme.md,command,"Currently, the following rules are defined:",ambiguous,unverifiable,command not mapped to filesystem check in pilot
+2,03ff95638105b96a,.cursor/rules/readme.md,command,- **Purpose**: Ensures documentation is written at a grade 10 reading level,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+2,03ff95638105b96a,.cursor/rules/readme.md,command,- **Applies to**: Markdown files (*.md),ambiguous,unverifiable,command not mapped to filesystem check in pilot
+2,03ff95638105b96a,.cursor/rules/readme.md,command,- **Auto Apply**: No,ambiguous,unverifiable,command not mapped to filesystem check in pilot

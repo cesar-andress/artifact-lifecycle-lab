@@ -59,7 +59,7 @@ GENERAL_OSS_POOL := data/registry/sources/general_oss_candidates.jsonl
 	e1-pilot-extract e1-pilot-derive e1-pilot-exports e1-extract e1-derive e1-exports-run \
 	e1-100-extract e1-100-derive e1-100-exports e1-100-performance e1-100-summary \
 	e1-1000-registry e1-1000-extract e1-1000-derive e1-1000-exports e1-1000-performance e1-1000-summary e1-1000-qa \
-	recover verify
+	recover verify truth-pilot-p1 truth-pilot-p2 truth-pilot-go-no-go truth-pilots
 
 e1: install-paper e1-extract e1-derive e1-exports-run profile-report
 
@@ -192,6 +192,28 @@ verify:
 	  --family $(FAMILY) \
 	  --wave $(E1_1000_WAVE) \
 	  --events-dir $(E1_1000_L1_DIR)
+
+TRUTH_PILOT_EXPORT := exports/truth_pilot
+TRUTH_PILOT_N ?= 400
+TRUTH_PILOT_N_MIN ?= 300
+TRUTH_PILOT_N_MAX ?= 500
+
+truth-pilot-p1:
+	$(PY) -m artifact_lab.experiments.truth_pilots p1 \
+	  --output-dir $(TRUTH_PILOT_EXPORT) \
+	  --n-samples $(TRUTH_PILOT_N) \
+	  --n-min $(TRUTH_PILOT_N_MIN) \
+	  --n-max $(TRUTH_PILOT_N_MAX)
+
+truth-pilot-p2:
+	$(PY) -m artifact_lab.experiments.truth_pilots p2 \
+	  --output-dir $(TRUTH_PILOT_EXPORT)
+
+truth-pilot-go-no-go:
+	$(PY) -m artifact_lab.experiments.truth_pilots go-no-go \
+	  --output-dir $(TRUTH_PILOT_EXPORT)
+
+truth-pilots: truth-pilot-p1 truth-pilot-p2 truth-pilot-go-no-go
 
 ingest: $(L1_EVENTS)
 

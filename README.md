@@ -74,7 +74,21 @@ Future longitudinal studies         ← separate protocols (E2+); not implemente
 | **Scientific** | `e1_1000_repos.csv` (1000) | TOSEM primary cohort; three-stratum design | Frame-conditional RQ1 + OSS contrast |
 | **Longitudinal** | (future) | Lifecycle, drift, ownership, coupling | Requires new protocol per estimand |
 
-**E1-1000 status:** Protocol frozen. See `protocol/E1_1000_protocol_v1.md`, `protocol/pre_execution_checklist.md`, and `protocol/experiment_manifest.yaml`. Do **not** run `make e1-1000` until the checklist is complete.
+**E1-1000 status:** Protocol frozen; **scaling paused** for TOSEM go/no-go pilot. Do **not** run `make e1-1000`. See `docs/truth_decay_pilots.md`.
+
+## Half-Life of Truth — TOSEM go/no-go pilot
+
+Working concept: *The Half-Life of Truth in Machine-Consumed Documentation.*
+
+| Pilot | Validates | Command |
+|-------|-----------|---------|
+| **P1** | Reference density in instruction files | `make truth-pilot-p1` |
+| **P2** | Agent attribution in instruction-file commits | `make truth-pilot-p2` |
+| **Go/no-go** | Scientific viability for TOSEM pivot | `make truth-pilot-go-no-go` |
+
+Sample 300–500 files from existing **L1 + L1b** (pilot + E1-100). Outputs: `exports/truth_pilot/`. Run `make truth-pilots` for full pilot + report.
+
+If go/no-go is positive, the program shifts to **truth decay, lifecycle, and self-maintenance**.
 
 ## Cohort ladder
 

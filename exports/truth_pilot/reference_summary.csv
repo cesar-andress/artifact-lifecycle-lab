@@ -1,0 +1,401 @@
+sample_id,repo_id,instruction_path,family_group,pattern_id,total_references,verifiable_references,verified,missing,unverifiable,extraction_ok
+1,03ff95638105b96a,.cursor/rules/followups.mdc,Cursor rules,cursor_rules,0,0,0,0,0,true
+2,03ff95638105b96a,.cursor/rules/readme.md,Cursor rules,cursor_rules,43,10,3,8,32,true
+3,03ff95638105b96a,CLAUDE.md,CLAUDE.md,claude_md,175,71,26,55,94,true
+4,045697c18e22b2e6,.agents/skills/llmobs-testing/SKILL.md,AGENTS.md,agents_dir,8,7,0,7,1,true
+5,045697c18e22b2e6,.agents/skills/llmobs-testing/references/vcr-cassettes.md,AGENTS.md,agents_dir,55,16,1,15,39,true
+6,0c6c8a962b287919,.agents/skills/docker-via-wsl/SKILL.md,AGENTS.md,agents_dir,6,3,0,3,3,true
+7,0c6c8a962b287919,.agents/skills/rust-skills/rules/anti-clone-excessive.md,AGENTS.md,agents_dir,11,4,1,3,7,true
+8,0c6c8a962b287919,.agents/skills/rust-skills/rules/api-operator-overload.md,AGENTS.md,agents_dir,2,2,0,2,0,true
+9,0c6c8a962b287919,.agents/skills/rust-skills/rules/async-fn-in-trait.md,AGENTS.md,agents_dir,9,3,0,3,6,true
+10,0c6c8a962b287919,.agents/skills/rust-skills/rules/async-select-racing.md,AGENTS.md,agents_dir,3,3,0,3,0,true
+11,0c6c8a962b287919,.agents/skills/rust-skills/rules/err-doc-errors.md,AGENTS.md,agents_dir,11,5,1,4,6,true
+12,0c6c8a962b287919,.agents/skills/rust-skills/rules/mem-assert-type-size.md,AGENTS.md,agents_dir,4,4,1,3,0,true
+13,0c6c8a962b287919,.agents/skills/rust-skills/rules/mem-smallvec.md,AGENTS.md,agents_dir,11,4,0,4,7,true
+14,0c6c8a962b287919,.agents/skills/rust-skills/rules/mem-with-capacity.md,AGENTS.md,agents_dir,6,5,0,5,1,true
+15,0c6c8a962b287919,.agents/skills/rust-skills/rules/name-lifetime-short.md,AGENTS.md,agents_dir,12,3,0,3,9,true
+16,0c6c8a962b287919,.agents/skills/rust-skills/rules/opt-target-cpu.md,AGENTS.md,agents_dir,6,5,2,3,1,true
+17,0c6c8a962b287919,.agents/skills/rust-skills/rules/own-arc-shared.md,AGENTS.md,agents_dir,5,5,0,5,0,true
+18,0c6c8a962b287919,.agents/skills/rust-skills/rules/own-mutex-interior.md,AGENTS.md,agents_dir,6,4,0,4,2,true
+19,0c6c8a962b287919,.agents/skills/rust-skills/rules/pat-at-bindings.md,AGENTS.md,agents_dir,3,2,0,2,1,true
+20,0c6c8a962b287919,.agents/skills/rust-skills/rules/pat-if-let-chains.md,AGENTS.md,agents_dir,5,3,1,2,2,true
+21,0c6c8a962b287919,.agents/skills/rust-skills/rules/serde-skip-empty.md,AGENTS.md,agents_dir,5,4,0,4,1,true
+22,0c6c8a962b287919,.agents/skills/rust-skills/rules/test-mockall-mocking.md,AGENTS.md,agents_dir,4,4,1,3,0,true
+23,0c6c8a962b287919,.agents/skills/rust-skills/rules/type-no-stringly.md,AGENTS.md,agents_dir,3,3,0,3,0,true
+24,0c6c8a962b287919,.agents/skills/rust-skills/rules/unsafe-minimize-scope.md,AGENTS.md,agents_dir,2,2,0,2,0,true
+25,0c6c8a962b287919,.agents/skills/vercel-react-best-practices/rules/advanced-event-handler-refs.md,AGENTS.md,agents_dir,2,0,0,0,2,true
+26,0c6c8a962b287919,.agents/skills/vercel-react-best-practices/rules/async-cheap-condition-before-await.md,AGENTS.md,agents_dir,2,1,0,1,1,true
+27,0c6c8a962b287919,.agents/skills/vercel-react-best-practices/rules/js-batch-dom-css.md,AGENTS.md,agents_dir,5,0,0,0,5,true
+28,0c6c8a962b287919,.agents/skills/vercel-react-best-practices/rules/rendering-activity.md,AGENTS.md,agents_dir,0,0,0,0,0,true
+29,0c6c8a962b287919,.agents/skills/vercel-react-best-practices/rules/rendering-resource-hints.md,AGENTS.md,agents_dir,3,1,0,1,2,true
+30,0c6c8a962b287919,.agents/skills/vercel-react-best-practices/rules/rerender-defer-reads.md,AGENTS.md,agents_dir,1,0,0,0,1,true
+31,0c6c8a962b287919,.agents/skills/vercel-react-best-practices/rules/rerender-dependencies.md,AGENTS.md,agents_dir,2,0,0,0,2,true
+32,0c6c8a962b287919,.agents/skills/vercel-react-best-practices/rules/server-dedup-props.md,AGENTS.md,agents_dir,9,0,0,0,9,true
+33,0c6c8a962b287919,.agents/skills/vercel-react-best-practices/rules/server-parallel-nested-fetching.md,AGENTS.md,agents_dir,2,0,0,0,2,true
+34,0d8bce7e29a5cd98,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,40,37,19,18,3,true
+35,0d8bce7e29a5cd98,.github/instructions/accessibility.instructions.md,GitHub instructions,github_instructions,11,0,0,0,11,true
+36,0d8bce7e29a5cd98,.github/instructions/agentHostTesting.instructions.md,GitHub instructions,github_instructions,5,5,2,3,0,true
+37,0d8bce7e29a5cd98,.github/instructions/ai-customization.instructions.md,GitHub instructions,github_instructions,4,4,3,1,0,true
+38,0d8bce7e29a5cd98,.github/instructions/best-practices.instructions.md,GitHub instructions,github_instructions,8,8,0,8,0,true
+39,0d8bce7e29a5cd98,.github/instructions/buildNext.instructions.md,GitHub instructions,github_instructions,98,80,17,63,18,true
+40,0d8bce7e29a5cd98,.github/instructions/chat.instructions.md,GitHub instructions,github_instructions,0,0,0,0,0,true
+41,0d8bce7e29a5cd98,.github/instructions/coding-guidelines.instructions.md,GitHub instructions,github_instructions,0,0,0,0,0,true
+42,0d8bce7e29a5cd98,.github/instructions/design-tokens.instructions.md,GitHub instructions,github_instructions,79,4,0,4,75,true
+43,0d8bce7e29a5cd98,.github/instructions/disposable.instructions.md,GitHub instructions,github_instructions,0,0,0,0,0,true
+44,0d8bce7e29a5cd98,.github/instructions/interactive.instructions.md,GitHub instructions,github_instructions,4,4,1,3,0,true
+45,0d8bce7e29a5cd98,.github/instructions/kusto.instructions.md,GitHub instructions,github_instructions,1,1,0,1,0,true
+46,0d8bce7e29a5cd98,.github/instructions/learnings.instructions.md,GitHub instructions,github_instructions,0,0,0,0,0,true
+47,0d8bce7e29a5cd98,.github/instructions/notebook.instructions.md,GitHub instructions,github_instructions,6,6,1,5,0,true
+48,0d8bce7e29a5cd98,.github/instructions/observables.instructions.md,GitHub instructions,github_instructions,1,1,0,1,0,true
+49,0d8bce7e29a5cd98,.github/instructions/oss-third-party-notices.instructions.md,GitHub instructions,github_instructions,86,49,12,37,37,true
+50,0d8bce7e29a5cd98,.github/instructions/oss.instructions.md,GitHub instructions,github_instructions,2,2,2,0,0,true
+51,0d8bce7e29a5cd98,.github/instructions/sessions.instructions.md,GitHub instructions,github_instructions,29,23,4,19,6,true
+52,0d8bce7e29a5cd98,.github/instructions/source-code-organization.instructions.md,GitHub instructions,github_instructions,12,12,1,11,0,true
+53,0d8bce7e29a5cd98,.github/instructions/telemetry.instructions.md,GitHub instructions,github_instructions,16,3,0,3,13,true
+54,0d8bce7e29a5cd98,.github/instructions/tree-widgets.instructions.md,GitHub instructions,github_instructions,14,10,9,1,4,true
+55,0d8bce7e29a5cd98,.github/instructions/writing-tests.instructions.md,GitHub instructions,github_instructions,12,12,6,6,0,true
+56,0d8bce7e29a5cd98,.github/skills/auto-perf-optimize/SKILL.md,Skills,skill_md,36,20,4,16,16,true
+57,0d8bce7e29a5cd98,.github/skills/chat-customizations-editor/SKILL.md,Skills,skill_md,63,33,9,24,30,true
+58,0d8bce7e29a5cd98,.github/skills/memory-leak-audit/SKILL.md,Skills,skill_md,14,3,0,3,11,true
+59,0d8bce7e29a5cd98,extensions/copilot/.github/copilot-instructions.md,Copilot instructions,copilot_instructions,98,93,4,89,5,true
+60,0d8bce7e29a5cd98,extensions/copilot/.github/instructions/model-prompts.instructions.md,GitHub instructions,github_instructions,32,5,0,5,27,true
+61,0d8bce7e29a5cd98,extensions/copilot/.github/instructions/prompt-tsx.instructions.md,GitHub instructions,github_instructions,24,1,0,1,23,true
+62,0d8bce7e29a5cd98,extensions/copilot/.github/instructions/vitest-unit-tests.instructions.md,GitHub instructions,github_instructions,3,3,1,2,0,true
+63,0d8bce7e29a5cd98,extensions/copilot/assets/prompts/chronicle-standup.prompt.md,prompt files,prompts,0,0,0,0,0,true
+64,0d8bce7e29a5cd98,src/vs/sessions/skills/create-pr/SKILL.md,Skills,skill_md,0,0,0,0,0,true
+65,0d8bce7e29a5cd98,src/vs/sessions/skills/fix-ci/SKILL.md,Skills,skill_md,0,0,0,0,0,true
+66,0d8bce7e29a5cd98,src/vs/sessions/skills/troubleshoot/SKILL.md,Skills,skill_md,71,13,0,14,57,true
+67,0e4ba13097809b36,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,22,21,2,19,1,true
+68,0e4ba13097809b36,.github/skills/agentic-workflows/SKILL.md,Skills,skill_md,53,53,0,53,0,true
+69,0e4ba13097809b36,.github/skills/ml/fix-pylint/SKILL.md,Skills,skill_md,71,9,3,6,62,true
+70,108db640493e4b74,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,24,17,22,1,1,true
+71,13d96f6971fff698,plugins/plugin-dev/skills/hook-development/SKILL.md,Skills,skill_md,175,54,2,54,119,true
+72,157b059bdfd44153,CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+73,19d28dd039331b07,.clinerules/AGENTS.md,AGENTS.md,agents_md,3,3,2,1,0,true
+74,19d28dd039331b07,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,15,12,9,6,0,true
+75,1b2e6c6b097e37df,.codex/skills/update-v8-version/SKILL.md,Skills,skill_md,17,14,8,9,0,true
+76,1b2e6c6b097e37df,codex-rs/CLAUDE.md,CLAUDE.md,claude_md,16,16,0,16,0,true
+77,1b2e6c6b097e37df,codex-rs/skills/src/assets/research/paper-discovery/SKILL.md,Skills,skill_md,4,4,0,4,0,true
+78,1b2e6c6b097e37df,codex-rs/skills/src/assets/research/zotero/SKILL.md,Skills,skill_md,1,1,0,1,0,true
+79,1c56c3e814cfed1e,experiments/mcp-genmedia/skills/build-mcp-genmedia/SKILL.md,Skills,skill_md,5,5,0,5,0,true
+80,1c56c3e814cfed1e,experiments/mcp-genmedia/skills/story-generator/SKILL.md,Skills,skill_md,67,31,2,39,26,true
+81,2201521926ce8f58,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,89,65,24,48,17,true
+82,22e1d1b5ef859fb4,app/dashboard/.cursor/rules/design.mdc,Cursor rules,cursor_rules,0,0,0,0,0,true
+83,2a7f0fddd2dac162,.jcode/skills/optimization/SKILL.md,Skills,skill_md,0,0,0,0,0,true
+84,36d3a1dd1dbdae11,.github/skills/fix-nightly-warnings/SKILL.md,Skills,skill_md,18,13,4,11,3,true
+85,3986c65660655800,packages/backend/skills/note-taking/SKILL.md,Skills,skill_md,26,5,0,5,21,true
+86,3f33ab9828ac52ad,.claude/skills/calypso-security-alerts/SKILL.md,Skills,skill_md,2,2,1,1,0,true
+87,3f33ab9828ac52ad,.claude/skills/dashboard-create-screen/SKILL.md,Skills,skill_md,75,17,5,12,58,true
+88,3f33ab9828ac52ad,.cursor/rules/dashboard-testing.mdc,Cursor rules,cursor_rules,6,6,5,1,0,true
+89,3f33ab9828ac52ad,CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+90,3f33ab9828ac52ad,apps/agents-manager/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+91,3f33ab9828ac52ad,apps/blaze-dashboard/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+92,3f33ab9828ac52ad,apps/help-center/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+93,3f33ab9828ac52ad,apps/odyssey-stats/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+94,3f33ab9828ac52ad,client/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+95,3f33ab9828ac52ad,client/dashboard/sites/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+96,3f33ab9828ac52ad,client/jetpack-connect/AGENTS.md,AGENTS.md,agents_md,16,12,3,9,4,true
+97,3f33ab9828ac52ad,client/me/purchases/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+98,3f33ab9828ac52ad,client/my-sites/checkout/AGENTS.md,AGENTS.md,agents_md,57,43,10,33,14,true
+99,3f33ab9828ac52ad,client/my-sites/checkout/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+100,3f33ab9828ac52ad,client/my-sites/stats/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+101,3f33ab9828ac52ad,client/my-sites/themes/AGENTS.md,AGENTS.md,agents_md,2,2,2,0,0,true
+102,3f33ab9828ac52ad,client/reader/social/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+103,3f33ab9828ac52ad,client/reader/spaces/AGENTS.md,AGENTS.md,agents_md,32,32,4,28,0,true
+104,3f33ab9828ac52ad,packages/agents-manager/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+105,3f33ab9828ac52ad,packages/image-studio/AGENTS.md,AGENTS.md,agents_md,34,33,2,31,1,true
+106,3f33ab9828ac52ad,packages/image-studio/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+107,3f33ab9828ac52ad,packages/jetpack-ai-sidebar/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+108,3f33ab9828ac52ad,packages/ui/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+109,3f33ab9828ac52ad,test/e2e/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+110,40c2c54a4c6490e8,CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+111,47f0b3bf26690337,.cursor/rules/english_comments.mdc,Cursor rules,cursor_rules,0,0,0,0,0,true
+112,47f0b3bf26690337,.cursor/rules/environment_variable.mdc,Cursor rules,cursor_rules,8,8,5,3,0,true
+113,47f0b3bf26690337,.cursor/rules/frontend/ui_standards_rules.mdc,Cursor rules,cursor_rules,12,2,0,2,10,true
+114,47f0b3bf26690337,.cursor/rules/pytest_unit_test_rules.mdc,Cursor rules,cursor_rules,4,4,0,4,0,true
+115,47f0b3bf26690337,CLAUDE.md,CLAUDE.md,claude_md,83,28,12,21,50,true
+116,47f0b3bf26690337,backend/prompts/utils/prompt_optimize_en.yaml,prompt files,prompts,0,0,0,0,0,true
+117,4801516ff573cf43,docs/CLAUDE.md,CLAUDE.md,claude_md,3,3,1,2,0,true
+118,4801516ff573cf43,examples/docs_snippets/docs_snippets_tests/snippet_checks/guides/.cursor/rules/snippet_tests.mdc,Cursor rules,cursor_rules,0,0,0,0,0,true
+119,4801516ff573cf43,examples/docs_snippets/docs_snippets_tests/snippet_checks/guides/CLAUDE.md,CLAUDE.md,claude_md,2,0,0,0,2,true
+120,4801516ff573cf43,python_modules/automation/automation/dagster_dev/CLAUDE.md,CLAUDE.md,claude_md,13,13,0,13,0,true
+121,4801516ff573cf43,python_modules/dagster/dagster_tests/declarative_automation_tests/automation_condition_tests/builtins/CLAUDE.md,CLAUDE.md,claude_md,0,0,0,0,0,true
+122,4818d222565fc432,.codex/skills/openspec-archive-change/SKILL.md,Skills,skill_md,12,5,0,5,7,true
+123,4818d222565fc432,.codex/skills/tinymist-release/SKILL.md,Skills,skill_md,17,16,15,1,1,true
+124,4818d222565fc432,.codex/skills/typst-writing-document/SKILL.md,Skills,skill_md,118,0,0,0,118,true
+125,4818d222565fc432,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,25,18,14,4,7,true
+126,4b5c2fe87cf3d3b3,.codex/skills/evolve-skills/SKILL.md,Skills,skill_md,163,36,3,33,127,true
+127,4b5c2fe87cf3d3b3,src/user/claude-code/skills/adr/SKILL.md,Skills,skill_md,60,13,3,10,47,true
+128,4b5c2fe87cf3d3b3,src/user/claude-code/skills/team-doctrine/SKILL.md,Skills,skill_md,13,13,1,12,0,true
+129,4b5c2fe87cf3d3b3,src/user/codex/skills/design-qa/SKILL.md,Skills,skill_md,29,6,2,4,23,true
+130,4b5c2fe87cf3d3b3,src/user/codex/skills/init-specs/SKILL.md,Skills,skill_md,31,14,2,12,17,true
+131,4b5c2fe87cf3d3b3,src/user/codex/skills/ux-spec/SKILL.md,Skills,skill_md,73,7,2,5,66,true
+132,505f0d234f59678f,agent-server/nodejs/CLAUDE.md,CLAUDE.md,claude_md,126,31,2,29,95,true
+133,508ea0cfd549d6b8,.claude/skills/docs-style/SKILL.md,Skills,skill_md,1,1,0,1,0,true
+134,5adfb3da95ff17b6,benchmarks/arc-agi-3/CLAUDE.md,CLAUDE.md,claude_md,42,17,0,17,25,true
+135,5adfb3da95ff17b6,skills/bluebubbles/SKILL.md,Skills,skill_md,1,1,0,1,0,true
+136,5adfb3da95ff17b6,skills/finance-data/SKILL.md,Skills,skill_md,8,0,0,0,8,true
+137,5adfb3da95ff17b6,skills/protocol-quiet-in-groups/SKILL.md,Skills,skill_md,2,2,1,1,0,true
+138,5adfb3da95ff17b6,skills/spotify-player/SKILL.md,Skills,skill_md,2,2,0,2,0,true
+139,5adfb3da95ff17b6,src/gateway/server-methods/CLAUDE.md,CLAUDE.md,claude_md,1,1,0,1,0,true
+140,5c2f54e6b81c8c02,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,0,0,0,0,0,true
+141,5c72626db78858d4,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,4,4,0,4,0,true
+142,5c72626db78858d4,.github/instructions/async-flow.instructions.md,GitHub instructions,github_instructions,0,0,0,0,0,true
+143,68507e79e06cd903,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,0,0,0,0,0,true
+144,6ae141e5471ec8fb,.agents/skills/nuqs/SKILL.md,AGENTS.md,agents_dir,23,23,0,23,0,true
+145,6ae141e5471ec8fb,.agents/skills/react-map-gl/references/flat-source-layer.md,AGENTS.md,agents_dir,38,9,0,9,29,true
+146,6ae141e5471ec8fb,.agents/skills/react-map-gl/references/map-event-handlers.md,AGENTS.md,agents_dir,13,9,0,9,4,true
+147,6ae141e5471ec8fb,.agents/skills/tanstack-better-upload/references/troubleshooting.md,AGENTS.md,agents_dir,8,8,0,8,0,true
+148,6ae141e5471ec8fb,.cursor/rules/lua.rules.mdc,Cursor rules,cursor_rules,8,3,1,2,5,true
+149,6ae141e5471ec8fb,.cursor/skills/add-static-dataset/SKILL.md,Skills,skill_md,78,26,6,20,52,true
+150,728eba3dd2de5fd6,.cursor/rules/adversarial-product-review.mdc,Cursor rules,cursor_rules,1,1,1,0,0,true
+151,728eba3dd2de5fd6,.cursor/rules/agent-runtime-invariants.mdc,Cursor rules,cursor_rules,19,7,2,5,12,true
+152,728eba3dd2de5fd6,.cursor/rules/architecture-doc-triggers.mdc,Cursor rules,cursor_rules,5,5,2,3,0,true
+153,728eba3dd2de5fd6,.cursor/rules/code-doc-lockstep.mdc,Cursor rules,cursor_rules,15,13,2,11,2,true
+154,728eba3dd2de5fd6,.cursor/rules/completion-time-self-audit.mdc,Cursor rules,cursor_rules,21,11,3,8,10,true
+155,728eba3dd2de5fd6,.cursor/rules/configuration-architecture.mdc,Cursor rules,cursor_rules,8,8,4,4,0,true
+156,728eba3dd2de5fd6,.cursor/rules/iot-terminology-boundary.mdc,Cursor rules,cursor_rules,7,7,1,6,0,true
+157,728eba3dd2de5fd6,.cursor/rules/pre-edit-reading.mdc,Cursor rules,cursor_rules,5,5,2,3,0,true
+158,728eba3dd2de5fd6,.cursor/rules/provider-adapter-canonical-openai.mdc,Cursor rules,cursor_rules,32,16,6,10,16,true
+159,728eba3dd2de5fd6,.cursor/rules/redis-cache-only.mdc,Cursor rules,cursor_rules,7,7,2,5,0,true
+160,728eba3dd2de5fd6,.cursor/rules/release-compat-policy.mdc,Cursor rules,cursor_rules,2,2,2,0,0,true
+161,728eba3dd2de5fd6,.cursor/rules/secrets-env-only.mdc,Cursor rules,cursor_rules,2,2,1,1,0,true
+162,728eba3dd2de5fd6,.cursor/rules/session-handoff.mdc,Cursor rules,cursor_rules,7,7,2,5,0,true
+163,728eba3dd2de5fd6,.cursor/rules/unit-test-coverage-95.mdc,Cursor rules,cursor_rules,10,10,5,5,0,true
+164,728eba3dd2de5fd6,.cursor/rules/worktree-per-session.mdc,Cursor rules,cursor_rules,3,3,0,3,0,true
+165,765c43fa9140cff6,CLAUDE.md,CLAUDE.md,claude_md,10,4,2,2,6,true
+166,79e5b3dcaadc644e,.claude/skills/backlog-management/SKILL.md,Skills,skill_md,9,2,2,0,7,true
+167,79e5b3dcaadc644e,.claude/skills/document-changes/SKILL.md,Skills,skill_md,26,24,18,6,2,true
+168,79e5b3dcaadc644e,src/integrations/AGENTS.md,AGENTS.md,agents_md,27,15,5,11,11,true
+169,79e5b3dcaadc644e,tests/fixtures/AGENTS.md,AGENTS.md,agents_md,23,23,0,23,0,true
+170,79e5b3dcaadc644e,ui-v2/src/components/AGENTS.md,AGENTS.md,agents_md,16,8,0,8,8,true
+171,79e5b3dcaadc644e,ui-v2/src/graphs/AGENTS.md,AGENTS.md,agents_md,33,21,0,21,12,true
+172,79e5b3dcaadc644e,ui-v2/src/storybook/AGENTS.md,AGENTS.md,agents_md,6,5,0,5,1,true
+173,7a52cff67ca04110,CLAUDE.md,CLAUDE.md,claude_md,110,71,19,52,39,true
+174,7a52cff67ca04110,docker/templates/academic-researcher/skills/latex-writing/SKILL.md,Skills,skill_md,3,0,0,0,3,true
+175,7a52cff67ca04110,web/CLAUDE.md,CLAUDE.md,claude_md,168,120,8,112,48,true
+176,80c1e78b3cbb6701,.cursor/rules/agent-development.mdc,Cursor rules,cursor_rules,45,45,5,40,0,true
+177,80c1e78b3cbb6701,.cursor/rules/development-workflow.mdc,Cursor rules,cursor_rules,30,30,2,28,0,true
+178,80c1e78b3cbb6701,.cursor/rules/examples-and-demos.mdc,Cursor rules,cursor_rules,31,26,3,23,5,true
+179,80c1e78b3cbb6701,.cursor/rules/quick-reference.mdc,Cursor rules,cursor_rules,40,40,7,33,0,true
+180,80c1e78b3cbb6701,.cursor/rules/suggestions-development.mdc,Cursor rules,cursor_rules,25,25,7,18,0,true
+181,80c1e78b3cbb6701,CLAUDE.md,CLAUDE.md,claude_md,16,16,9,7,0,true
+182,80c1e78b3cbb6701,examples/showcases/generative-ui-playground/a2a-agent/CLAUDE.md,CLAUDE.md,claude_md,30,15,1,15,14,true
+183,80c1e78b3cbb6701,examples/showcases/multi-agent-canvas/frontend/.cursorrules,Cursor rules,cursorrules,3,3,0,3,0,true
+184,80c1e78b3cbb6701,skills/a2ui-renderer/SKILL.md,Skills,skill_md,34,11,6,5,23,true
+185,80c1e78b3cbb6701,skills/copilotkit-debug/SKILL.md,Skills,skill_md,23,22,1,21,1,true
+186,87071fd400d0446f,.cursor/rules/mod-000b-complete-models-belong-in-models.mdc,Cursor rules,cursor_rules,21,12,5,8,8,true
+187,87071fd400d0446f,.cursor/rules/mod-002a-experimental-models-belong-in-experimental.mdc,Cursor rules,cursor_rules,15,14,4,10,1,true
+188,87071fd400d0446f,.cursor/rules/mod-002b-add-deprecation-warnings-to-model.mdc,Cursor rules,cursor_rules,7,6,2,4,1,true
+189,87071fd400d0446f,.cursor/rules/mod-002c-remove-deprecated-model-from-codebase.mdc,Cursor rules,cursor_rules,5,4,0,4,1,true
+190,87071fd400d0446f,.cursor/rules/mod-003c-missing-required-class-docstring-sections.mdc,Cursor rules,cursor_rules,1,0,0,0,1,true
+191,87071fd400d0446f,.cursor/rules/mod-004-model-code-is-not-self-contained.mdc,Cursor rules,cursor_rules,20,19,0,19,1,true
+192,87071fd400d0446f,.cursor/rules/mod-007a-cannot-add-required-parameters-without-defaults.mdc,Cursor rules,cursor_rules,3,2,2,0,1,true
+193,87071fd400d0446f,.cursor/rules/mod-007b-cannot-remove-or-rename-parameters-without-compat-mapper.mdc,Cursor rules,cursor_rules,3,2,2,0,1,true
+194,87071fd400d0446f,.cursor/rules/mod-008a-model-missing-constructor-attributes-tests.mdc,Cursor rules,cursor_rules,3,2,2,0,1,true
+195,87071fd400d0446f,.cursor/rules/mod-008b-model-missing-non-regression-test-with-reference-data.mdc,Cursor rules,cursor_rules,1,0,0,0,1,true
+196,87071fd400d0446f,.cursor/rules/mod-009-avoid-string-based-class-selection.mdc,Cursor rules,cursor_rules,1,0,0,0,1,true
+197,87071fd400d0446f,.cursor/rules/mod-011-use-proper-optional-dependency-handling.mdc,Cursor rules,cursor_rules,3,2,1,1,1,true
+198,87071fd400d0446f,skills/physicsnemo-discover/SKILL.md,Skills,skill_md,40,19,10,14,16,true
+199,8a674fb1b83eb012,Samples/AgentCLI/CLAUDE.md,CLAUDE.md,claude_md,36,1,1,0,35,true
+200,8f91b00bf73d6fec,CLAUDE.md,CLAUDE.md,claude_md,36,24,13,11,12,true
+201,956a087a689baeee,.agents/skills/update-sdk/references/docker-image-locations.md,AGENTS.md,agents_dir,20,18,12,6,2,true
+202,97dcab4759c83fdb,.agents/skills/backend-code-review/SKILL.md,AGENTS.md,agents_dir,18,14,8,6,4,true
+203,97dcab4759c83fdb,.agents/skills/e2e-cucumber-playwright/agents/openai.yaml,AGENTS.md,agents_dir,0,0,0,0,0,true
+204,97dcab4759c83fdb,.agents/skills/frontend-code-review/references/accessibility-ui.md,AGENTS.md,agents_dir,6,6,2,4,0,true
+205,97dcab4759c83fdb,e2e/features/agent-v2/AGENTS.md,AGENTS.md,agents_md,45,42,5,37,3,true
+206,97dcab4759c83fdb,packages/dify-ui/AGENTS.md,AGENTS.md,agents_md,26,26,3,23,0,true
+207,97dcab4759c83fdb,web/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+208,9856eaec5894ba65,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,29,10,5,5,19,true
+209,9856eaec5894ba65,.github/instructions/api-endpoints.instructions.md,GitHub instructions,github_instructions,9,3,0,4,5,true
+210,9856eaec5894ba65,.github/instructions/coding-standards.instructions.md,GitHub instructions,github_instructions,73,17,7,10,56,true
+211,9856eaec5894ba65,.github/instructions/system-architecture.instructions.md,GitHub instructions,github_instructions,148,86,14,72,62,true
+212,9856eaec5894ba65,.github/skills/add-mcp-server/SKILL.md,Skills,skill_md,102,50,19,42,41,true
+213,9856eaec5894ba65,.github/skills/add-tool/SKILL.md,Skills,skill_md,14,7,3,5,6,true
+214,9856eaec5894ba65,.github/skills/add-voice-handler/SKILL.md,Skills,skill_md,8,3,1,2,5,true
+215,a707f142336c2957,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,3,3,0,3,0,true
+216,a9863bc6d7aa9dfa,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,90,31,1,30,59,true
+217,a9863bc6d7aa9dfa,.github/instructions/benchmark.instructions.md,GitHub instructions,github_instructions,6,6,0,6,0,true
+218,a9863bc6d7aa9dfa,.github/instructions/development.instructions.md,GitHub instructions,github_instructions,71,5,1,4,66,true
+219,a9863bc6d7aa9dfa,.github/instructions/net.instructions.md,GitHub instructions,github_instructions,93,1,0,1,92,true
+220,ab3194c6a08d7bdc,.agents/skills/swift-concurrency/references/performance.md,AGENTS.md,agents_dir,72,3,0,3,69,true
+221,ab3194c6a08d7bdc,.agents/skills/swiftui-expert-skill/SKILL.md,AGENTS.md,agents_dir,20,20,0,20,0,true
+222,ab3194c6a08d7bdc,.agents/skills/swiftui-expert-skill/references/accessibility-patterns.md,AGENTS.md,agents_dir,6,0,0,0,6,true
+223,ab3194c6a08d7bdc,.agents/skills/swiftui-expert-skill/references/animation-basics.md,AGENTS.md,agents_dir,13,0,0,0,13,true
+224,ab3194c6a08d7bdc,.cursorrules,Cursor rules,cursorrules,3,3,2,1,0,true
+225,ab3194c6a08d7bdc,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,81,21,7,14,60,true
+226,ab3194c6a08d7bdc,.github/instructions/core-bridge.instructions.md,GitHub instructions,github_instructions,6,2,0,2,4,true
+227,ab3194c6a08d7bdc,.github/instructions/release-versioning.instructions.md,GitHub instructions,github_instructions,11,10,2,8,1,true
+228,ab3194c6a08d7bdc,.github/instructions/swift.instructions.md,GitHub instructions,github_instructions,6,4,2,2,2,true
+229,ad8952854864b7f2,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,21,20,10,10,1,true
+230,ad8952854864b7f2,.github/instructions/package-lock.instructions.md,GitHub instructions,github_instructions,6,6,4,2,0,true
+231,ad8952854864b7f2,packages/python-packages/apiview-copilot/.github/skills/update-guidelines/SKILL.md,Skills,skill_md,43,3,0,4,39,true
+232,ad8952854864b7f2,plugins/azure-sdk-tools/skills/sdk-release/SKILL.md,Skills,skill_md,0,0,0,0,0,true
+233,ad8952854864b7f2,plugins/azure-sdk-tools/skills/sensei/SKILL.md,Skills,skill_md,76,23,4,20,52,true
+234,ad8952854864b7f2,tools/apiview/parsers/csharp-api-parser/.github/copilot-instructions.md,Copilot instructions,copilot_instructions,0,0,0,0,0,true
+235,ad8952854864b7f2,tools/sdk-ai-bots/azure-sdk-qa-bot-agent/prompts/tenants/azure_sdk_onboarding.md,prompt files,prompts,0,0,0,0,0,true
+236,b6094e7293d972e7,.cursor/rules/architecture.md,Cursor rules,cursor_rules,3,3,0,3,0,true
+237,b6094e7293d972e7,.cursor/rules/general.md,Cursor rules,cursor_rules,26,6,1,5,20,true
+238,c31227c5b77dce67,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,1,1,1,0,0,true
+239,c31227c5b77dce67,plugins/newspack-ads/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+240,c31227c5b77dce67,plugins/newspack-blocks/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+241,c31227c5b77dce67,plugins/newspack-listings/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+242,c31227c5b77dce67,plugins/newspack-network/AGENTS.md,AGENTS.md,agents_md,19,19,1,18,0,true
+243,c31227c5b77dce67,plugins/newspack-network/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+244,c31227c5b77dce67,plugins/newspack-popups/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+245,c31227c5b77dce67,plugins/newspack-sponsors/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+246,c31227c5b77dce67,themes/newspack-theme/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+247,c5a32632e586ab2c,libs/langchain/langchain_classic/chains/llm_summarization_checker/prompts/create_facts.txt,prompt files,prompts,0,0,0,0,0,true
+248,c60b34f108c5e545,.claude/skills/python-tests/SKILL.md,Skills,skill_md,13,2,0,2,11,true
+249,c60b34f108c5e545,.cursor/rules/core-mcp-objects.mdc,Cursor rules,cursor_rules,1,1,0,1,0,true
+250,c60b34f108c5e545,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,0,0,0,0,0,true
+251,c60b34f108c5e545,CLAUDE.md,CLAUDE.md,claude_md,50,41,15,26,9,true
+252,c65277d4b7b5f15d,prompts/gpts/0sKdcWhZd_Empath_Engine_Original.md,prompt files,prompts,0,0,0,0,0,true
+253,c65277d4b7b5f15d,prompts/gpts/1X3Z0mbKR_Soulmate.md,prompt files,prompts,1,0,0,0,1,true
+254,c65277d4b7b5f15d,prompts/gpts/2ByxoJ68T_Immobility_and_Depression.md,prompt files,prompts,0,0,0,0,0,true
+255,c65277d4b7b5f15d,prompts/gpts/2OyX2ZiUk_Math AI.md,prompt files,prompts,1,1,0,1,0,true
+256,c65277d4b7b5f15d,prompts/gpts/3s6SJ5V7S_AskTheCode.md,prompt files,prompts,0,0,0,0,0,true
+257,c65277d4b7b5f15d,prompts/gpts/6LRpw5BJC_StephenWolframGPT.md,prompt files,prompts,4,0,0,0,4,true
+258,c65277d4b7b5f15d,prompts/gpts/6P1d67FCj_Card_Mystic.md,prompt files,prompts,0,0,0,0,0,true
+259,c65277d4b7b5f15d,prompts/gpts/6ZtBUGAni_Teen_Spirit.md,prompt files,prompts,0,0,0,0,0,true
+260,c65277d4b7b5f15d,prompts/gpts/6af35x1VN_Wireframe Wizard.md,prompt files,prompts,0,0,0,0,0,true
+261,c65277d4b7b5f15d,prompts/gpts/6c48jGW3n_Tricycle.md,prompt files,prompts,2,2,0,2,0,true
+262,c65277d4b7b5f15d,prompts/gpts/82ALdp8Nj_Automated Blog Post Writer.md,prompt files,prompts,0,0,0,0,0,true
+263,c65277d4b7b5f15d,prompts/gpts/9oR40lkZm_Debugger.md,prompt files,prompts,0,0,0,0,0,true
+264,c65277d4b7b5f15d,prompts/gpts/AoEcIYlek_The_Wingman.md,prompt files,prompts,0,0,0,0,0,true
+265,c65277d4b7b5f15d,prompts/gpts/BBfyeI7Ig_ForGePT.md,prompt files,prompts,9,9,1,8,0,true
+266,c65277d4b7b5f15d,prompts/gpts/BrA8GwiLU_Ruby.wasm_JavaScript_Helper.md,prompt files,prompts,0,0,0,0,0,true
+267,c65277d4b7b5f15d,prompts/gpts/Dtw0CPsWF_Texas_Criminal_Lawyer.md,prompt files,prompts,0,0,0,0,0,true
+268,c65277d4b7b5f15d,prompts/gpts/FA3lrTWTq_Self_Aware_Networks_GPT.md,prompt files,prompts,0,0,0,0,0,true
+269,c65277d4b7b5f15d,prompts/gpts/GJttZk3QA_GPT_Finder.md,prompt files,prompts,0,0,0,0,0,true
+270,c65277d4b7b5f15d,prompts/gpts/GyVv5kH9g_The DVP Original Life Advice Navigator.md,prompt files,prompts,1,1,0,1,0,true
+271,c65277d4b7b5f15d,prompts/gpts/H8GlhVipV_Universal_Neurologist_UNO.md,prompt files,prompts,0,0,0,0,0,true
+272,c65277d4b7b5f15d,prompts/gpts/IYZOt4w0N_Craft_Beer_Buddy_-_Worlds_First_AI_Beer_Expert.md,prompt files,prompts,0,0,0,0,0,true
+273,c65277d4b7b5f15d,prompts/gpts/J7KCSvKFu_Glyph.md,prompt files,prompts,0,0,0,0,0,true
+274,c65277d4b7b5f15d,prompts/gpts/JAUZ1i49Q_Dafny_Assistant.md,prompt files,prompts,0,0,0,0,0,true
+275,c65277d4b7b5f15d,prompts/gpts/JUPludygA_Home_Style_Advisor.md,prompt files,prompts,0,0,0,0,0,true
+276,c65277d4b7b5f15d,prompts/gpts/MBkOkD76H_Siren.md,prompt files,prompts,0,0,0,0,0,true
+277,c65277d4b7b5f15d,prompts/gpts/NCUFRmWbr_TXYZ.md,prompt files,prompts,1,1,0,1,0,true
+278,c65277d4b7b5f15d,prompts/gpts/O0vInZlBi_Cari_Cature.md,prompt files,prompts,0,0,0,0,0,true
+279,c65277d4b7b5f15d,prompts/gpts/OCOyXYJjW_genz_4_meme.md,prompt files,prompts,0,0,0,0,0,true
+280,c65277d4b7b5f15d,prompts/gpts/S5H2bEqXi_GOOD_GPT.md,prompt files,prompts,0,0,0,0,0,true
+281,c65277d4b7b5f15d,prompts/gpts/SVbTmakt6_Remote_Revenues_Analyst.md,prompt files,prompts,0,0,0,0,0,true
+282,c65277d4b7b5f15d,prompts/gpts/XgDrDmmur_La_doctrine_sociale_de_lEglise.md,prompt files,prompts,0,0,0,0,0,true
+283,c65277d4b7b5f15d,prompts/gpts/Z8x0lVds4_Pinterest_Optimization_GPT.md,prompt files,prompts,0,0,0,0,0,true
+284,c65277d4b7b5f15d,prompts/gpts/Zz2aQaHNv_Product Manager Mock Prep.md,prompt files,prompts,0,0,0,0,0,true
+285,c65277d4b7b5f15d,prompts/gpts/acEMRJBy4_Swift_Analysis.md,prompt files,prompts,0,0,0,0,0,true
+286,c65277d4b7b5f15d,prompts/gpts/e9AVVjxcw_Fragrance Finder Deluxe.md,prompt files,prompts,0,0,0,0,0,true
+287,c65277d4b7b5f15d,prompts/gpts/gB3d4WvYH_GPT_Jailbreak-proof.md,prompt files,prompts,0,0,0,0,0,true
+288,c65277d4b7b5f15d,prompts/gpts/h3VXYD6yk_Doppel.md,prompt files,prompts,0,0,0,0,0,true
+289,c65277d4b7b5f15d,prompts/gpts/hBDutiLmw_ChadGPT.md,prompt files,prompts,7,3,0,4,3,true
+290,c65277d4b7b5f15d,prompts/gpts/hRCqiqVlM_Tutor_Me.md,prompt files,prompts,0,0,0,0,0,true
+291,c65277d4b7b5f15d,prompts/gpts/hTpLoTt6A_Essay_Mentor.md,prompt files,prompts,0,0,0,0,0,true
+292,c65277d4b7b5f15d,prompts/gpts/hz8Pw1quF_Screenshot To Code GPT.md,prompt files,prompts,0,0,0,0,0,true
+293,c65277d4b7b5f15d,prompts/gpts/jCYeXl5xh_NEO - Ultimate AI.md,prompt files,prompts,0,0,0,0,0,true
+294,c65277d4b7b5f15d,prompts/gpts/jJ2w9pS0f_Diplomatic Mainframe ODIN DZ-00a69v00.md,prompt files,prompts,1,1,0,1,0,true
+295,c65277d4b7b5f15d,prompts/gpts/kLwmWO80d_World Class Software Engineer.md,prompt files,prompts,7,7,0,7,0,true
+296,c65277d4b7b5f15d,prompts/gpts/knowledge/ALL IN GPT/All in pod 85-99.txt,prompt files,prompts,0,0,0,0,0,true
+297,c65277d4b7b5f15d,prompts/gpts/knowledge/CIPHERON/lalalala.txt,prompt files,prompts,0,0,0,0,0,true
+298,c65277d4b7b5f15d,prompts/gpts/knowledge/David/OpenAI_policy.txt,prompt files,prompts,0,0,0,0,0,true
+299,c65277d4b7b5f15d,prompts/gpts/knowledge/Grimoire[1.16.6]/Readme.md,prompt files,prompts,3,3,0,3,0,true
+300,c65277d4b7b5f15d,prompts/gpts/knowledge/Grimoire[1.16.6]/ReleaseNotes.md,prompt files,prompts,3,3,0,3,0,true
+301,c65277d4b7b5f15d,prompts/gpts/knowledge/Grimoire[1.17.2]/RecommendedTools.md,prompt files,prompts,2,2,0,2,0,true
+302,c65277d4b7b5f15d,prompts/gpts/knowledge/Grimoire[1.19.1]/ProjectIdeas.md,prompt files,prompts,15,15,0,15,0,true
+303,c65277d4b7b5f15d,prompts/gpts/knowledge/Grimoire[2.0.5]/Projects.md,prompt files,prompts,9,9,0,9,0,true
+304,c65277d4b7b5f15d,prompts/gpts/knowledge/Grimoire[2.0]/Part3.txt,prompt files,prompts,4,4,0,4,0,true
+305,c65277d4b7b5f15d,prompts/gpts/knowledge/MLX Guru/losses.txt,prompt files,prompts,0,0,0,0,0,true
+306,c65277d4b7b5f15d,prompts/gpts/knowledge/Unity 6A/ComprehensiveUnity6ASettings.txt,prompt files,prompts,0,0,0,0,0,true
+307,c65277d4b7b5f15d,prompts/gpts/kq2OIc7m1_Funny_Image_Creator.md,prompt files,prompts,0,0,0,0,0,true
+308,c65277d4b7b5f15d,prompts/gpts/mQwmZZToy_Jailbreak_Me.md,prompt files,prompts,0,0,0,0,0,true
+309,c65277d4b7b5f15d,prompts/gpts/n1bBXq4ow_LLM_Security_Wizard_Game_-_LV_3.md,prompt files,prompts,0,0,0,0,0,true
+310,c65277d4b7b5f15d,prompts/gpts/n7Rs0IK86_Grimoire[1.13].md,prompt files,prompts,9,9,0,9,0,true
+311,c65277d4b7b5f15d,prompts/gpts/n7Rs0IK86_Grimoire[1.16.1].md,prompt files,prompts,9,9,0,9,0,true
+312,c65277d4b7b5f15d,prompts/gpts/n7Rs0IK86_Grimoire[1.16.3].md,prompt files,prompts,8,8,0,8,0,true
+313,c65277d4b7b5f15d,prompts/gpts/nPwpAqi10_God_of_Prompt.md,prompt files,prompts,0,0,0,0,0,true
+314,c65277d4b7b5f15d,prompts/gpts/nT1RqVJLg_NovaGPT.md,prompt files,prompts,17,6,0,6,11,true
+315,c65277d4b7b5f15d,prompts/gpts/nWDPFr7rA_HackMeBreakMeCrackMe.md,prompt files,prompts,0,0,0,0,0,true
+316,c65277d4b7b5f15d,prompts/gpts/q8HsJfG6z_SmartCartGPT.md,prompt files,prompts,0,0,0,0,0,true
+317,c65277d4b7b5f15d,prompts/gpts/qbbY9xQai_Hack_This.md,prompt files,prompts,0,0,0,0,0,true
+318,c65277d4b7b5f15d,prompts/gpts/qfoOICq1l_Prompt_Professor.md,prompt files,prompts,0,0,0,0,0,true
+319,c65277d4b7b5f15d,prompts/gpts/quK0nMtwZ_Create_or_Refactor_your_Web_Component.md,prompt files,prompts,2,2,0,2,0,true
+320,c65277d4b7b5f15d,prompts/gpts/wFKFszA41_Best_Long-Form_AI_Writing_Tool_by_Alex_Kosch.md,prompt files,prompts,0,0,0,0,0,true
+321,c65277d4b7b5f15d,prompts/gpts/zqlCXCzP0_Inkspire.md,prompt files,prompts,0,0,0,0,0,true
+322,c65277d4b7b5f15d,prompts/official-product/claude/ClaudeSonnet4.md,prompt files,prompts,6,6,0,6,0,true
+323,c65277d4b7b5f15d,prompts/official-product/claude/claudecode/ClaudeCodeTools-2-1-168.md,prompt files,prompts,270,9,0,9,261,true
+324,c65277d4b7b5f15d,prompts/official-product/claude/claudecode/explore/ClaudeCodeExplore-2-1-168.md,prompt files,prompts,0,0,0,0,0,true
+325,c65277d4b7b5f15d,prompts/official-product/github/github_copilot_vscode_02292024.md,prompt files,prompts,0,0,0,0,0,true
+326,c65277d4b7b5f15d,prompts/official-product/google/notebooklm.md,prompt files,prompts,0,0,0,0,0,true
+327,c65277d4b7b5f15d,prompts/official-product/xai/Grok3_Persona_Companion.md,prompt files,prompts,1,1,0,1,0,true
+328,c65277d4b7b5f15d,prompts/opensource-prj/open-notebooklm.md,prompt files,prompts,2,2,0,2,0,true
+329,c6ac6f9616b35ee8,.agents/skills/aspire/references/monitoring.md,AGENTS.md,agents_dir,10,0,0,0,10,true
+330,c6ac6f9616b35ee8,.agents/skills/dotnet-inspect/SKILL.md,AGENTS.md,agents_dir,12,0,0,0,12,true
+331,c6ac6f9616b35ee8,.agents/skills/hosting-integration-authoring/resources/app-model-fundamentals.md,AGENTS.md,agents_dir,0,0,0,0,0,true
+332,c6ac6f9616b35ee8,.agents/skills/hosting-integration-authoring/resources/archetype-secret-provider.md,AGENTS.md,agents_dir,0,0,0,0,0,true
+333,c6ac6f9616b35ee8,.agents/skills/hosting-integration-authoring/resources/resource-model-invariants.md,AGENTS.md,agents_dir,0,0,0,0,0,true
+334,c6ac6f9616b35ee8,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,13,13,11,2,0,true
+335,c6ac6f9616b35ee8,examples/squad/CommunityToolkit.Aspire.Hosting.Squad.AppHost/dev-squad/.squad/templates/skills/docs-standards/SKILL.md,Skills,skill_md,5,4,0,4,1,true
+336,c6ac6f9616b35ee8,examples/squad/CommunityToolkit.Aspire.Hosting.Squad.AppHost/dev-squad/.squad/templates/skills/reviewer-protocol/SKILL.md,Skills,skill_md,0,0,0,0,0,true
+337,c6ac6f9616b35ee8,examples/squad/CommunityToolkit.Aspire.Hosting.Squad.AppHost/research-squad/.copilot/skills/test-discipline/SKILL.md,Skills,skill_md,5,5,0,5,0,true
+338,c6ac6f9616b35ee8,examples/squad/CommunityToolkit.Aspire.Hosting.Squad.AppHost/research-squad/.squad/templates/skills/external-comms/SKILL.md,Skills,skill_md,32,4,0,4,28,true
+339,c6ac6f9616b35ee8,examples/squad/CommunityToolkit.Aspire.Hosting.Squad.AppHost/research-squad/.squad/templates/skills/squad-conventions/SKILL.md,Skills,skill_md,16,16,0,16,0,true
+340,c80f9fe166839d30,skills/content/twitter-thread-writer/SKILL.md,Skills,skill_md,51,4,4,0,47,true
+341,c80f9fe166839d30,skills/distribution/bio-link-deployer/SKILL.md,Skills,skill_md,107,6,3,3,101,true
+342,c80f9fe166839d30,skills/landing/landing-page-creator/SKILL.md,Skills,skill_md,138,8,4,4,130,true
+343,c80f9fe166839d30,skills/landing/product-showcase-page/SKILL.md,Skills,skill_md,84,5,4,1,79,true
+344,c80f9fe166839d30,skills/meta/category-designer/SKILL.md,Skills,skill_md,32,3,3,0,29,true
+345,c80f9fe166839d30,skills/meta/funnel-planner/SKILL.md,Skills,skill_md,61,3,3,0,58,true
+346,cb7b3236cdf182bc,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,4,4,1,3,0,true
+347,cb7b3236cdf182bc,.ide/vscode/CLAUDE.md,CLAUDE.md,claude_md,250,100,7,93,150,true
+348,cb7b3236cdf182bc,CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+349,cb7b3236cdf182bc,packages/cmk-agent-receiver/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+350,cce01573548299c4,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,25,18,8,10,7,true
+351,cce01573548299c4,src/channeloutput/CLAUDE.md,CLAUDE.md,claude_md,56,2,0,2,54,true
+352,ccefb3517bf78962,CLAUDE.md,CLAUDE.md,claude_md,44,40,14,26,4,true
+353,ccefb3517bf78962,src/agent/extensions/subagent/prompts/scout-and-plan.md,prompt files,prompts,0,0,0,0,0,true
+354,d5d314dafcc3125b,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,17,17,7,10,0,true
+355,d5d314dafcc3125b,.github/instructions/package-lock.instructions.md,GitHub instructions,github_instructions,6,6,2,4,0,true
+356,dcb792d718508bec,.agents/skills/backport-pr/SKILL.md,AGENTS.md,agents_dir,11,3,0,3,8,true
+357,dcb792d718508bec,.agents/skills/dce-edge/SKILL.md,AGENTS.md,agents_dir,12,12,1,11,0,true
+358,dcb792d718508bec,.agents/skills/insight-error-page/SKILL.md,AGENTS.md,agents_dir,43,30,6,24,13,true
+359,dcb792d718508bec,.agents/skills/pr-status-triage/SKILL.md,AGENTS.md,agents_dir,16,9,1,8,7,true
+360,dcb792d718508bec,.github/AGENTS.md,AGENTS.md,agents_md,17,3,1,2,14,true
+361,dcb792d718508bec,.github/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+362,dcb792d718508bec,CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+363,df2612605c42c18a,.claude/skills/openspec-new-change/SKILL.md,Skills,skill_md,4,1,0,1,3,true
+364,df2612605c42c18a,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,37,16,7,13,17,true
+365,df2612605c42c18a,.github/skills/openspec-new-change/SKILL.md,Skills,skill_md,4,1,0,1,3,true
+366,e916d975160d16b9,.claude/skills/testing-skill/SKILL.md,Skills,skill_md,22,11,7,13,2,true
+367,e916d975160d16b9,.github/workflows/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+368,e916d975160d16b9,.github/workflows/shared/prompts/pydantic-ai-streaming-resilience-sweep.md,prompt files,prompts,3,2,1,1,1,true
+369,e916d975160d16b9,AGENTS.md,AGENTS.md,agents_md,41,41,35,6,0,true
+370,e916d975160d16b9,CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+371,e916d975160d16b9,docs/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+372,e916d975160d16b9,pydantic_ai_slim/pydantic_ai/models/AGENTS.md,AGENTS.md,agents_md,4,4,1,3,0,true
+373,e916d975160d16b9,pydantic_ai_slim/pydantic_ai/models/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+374,e916d975160d16b9,pydantic_ai_slim/pydantic_ai/toolsets/AGENTS.md,AGENTS.md,agents_md,1,1,0,1,0,true
+375,e916d975160d16b9,tests/CLAUDE.md,CLAUDE.md,claude_md,1,1,1,0,0,true
+376,edb0f986792e26e6,tools/ugc_tutorial_node_sync/CLAUDE.md,CLAUDE.md,claude_md,5,5,0,5,0,true
+377,ef64a947957b8d7f,lib/crewai/tests/skills/fixtures/invalid-name/SKILL.md,Skills,skill_md,0,0,0,0,0,true
+378,efc2b777b5c60652,.cursor/rules/build.md,Cursor rules,cursor_rules,12,0,0,0,12,true
+379,efc2b777b5c60652,.cursor/rules/cpp-constraints.md,Cursor rules,cursor_rules,2,1,0,1,1,true
+380,efc2b777b5c60652,.cursor/rules/documentation.md,Cursor rules,cursor_rules,6,0,0,0,6,true
+381,efc2b777b5c60652,.cursor/rules/low-level.md,Cursor rules,cursor_rules,10,0,0,0,10,true
+382,efc2b777b5c60652,.cursor/rules/philosophy.md,Cursor rules,cursor_rules,1,1,1,0,0,true
+383,efc2b777b5c60652,.cursor/rules/testing.md,Cursor rules,cursor_rules,4,0,0,0,4,true
+384,f180f14f739c0e8e,initiatives/genai_red_team_handbook/exploitation/agent0/prompts/MITRE_RAG_AML_T0070_T0071_v2025.md,prompt files,prompts,3,0,0,0,3,true
+385,f180f14f739c0e8e,initiatives/genai_red_team_handbook/exploitation/agent0/prompts/OWASP_Top10_v2021.md,prompt files,prompts,0,0,0,0,0,true
+386,f36aacdb1f7345de,skills/gold-analysis/SKILL.md,Skills,skill_md,0,0,0,0,0,true
+387,f36aacdb1f7345de,skills/skill_manager/SKILL.md,Skills,skill_md,7,7,0,7,0,true
+388,f36aacdb1f7345de,skills/stock_research/SKILL.md,Skills,skill_md,0,0,0,0,0,true
+389,f52cb4bcae8e5329,.cursor/rules/krci-ai/advisor.mdc,Cursor rules,cursor_rules,10,10,9,1,0,true
+390,f52cb4bcae8e5329,.cursor/rules/krci-ai/ba.mdc,Cursor rules,cursor_rules,4,4,4,0,0,true
+391,f52cb4bcae8e5329,.cursor/rules/krci-ai/dev.mdc,Cursor rules,cursor_rules,3,3,3,0,0,true
+392,f52cb4bcae8e5329,.cursor/rules/krci-ai/devops.mdc,Cursor rules,cursor_rules,1,1,1,0,0,true
+393,f52cb4bcae8e5329,.cursor/rules/krci-ai/po.mdc,Cursor rules,cursor_rules,5,5,5,0,0,true
+394,f52cb4bcae8e5329,.cursor/rules/krci-ai/qa.mdc,Cursor rules,cursor_rules,4,4,4,0,0,true
+395,f9322113d8450527,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,3,3,0,3,0,true
+396,fa54ee3b244bee41,.github/copilot-instructions.md,Copilot instructions,copilot_instructions,71,19,10,13,48,true
+397,fa54ee3b244bee41,.github/instructions/c-code.instructions.md,GitHub instructions,github_instructions,3,2,3,0,0,true
+398,fa54ee3b244bee41,.github/instructions/demodulators.instructions.md,GitHub instructions,github_instructions,0,0,0,0,0,true
+399,fa54ee3b244bee41,.github/instructions/generators.instructions.md,GitHub instructions,github_instructions,0,0,0,0,0,true
+400,fa54ee3b244bee41,.github/instructions/tests.instructions.md,GitHub instructions,github_instructions,13,11,8,5,0,true
