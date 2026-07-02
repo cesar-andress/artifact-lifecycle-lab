@@ -79,3 +79,71 @@ Report separately:
 2. **General OSS contrast** — stratum `general_oss`
 
 Do not pool strata without explicit labeling. Combined cohort statistics are descriptive only.
+
+## Why deterministic sampling?
+
+E1-1000 uses **seed 42** and deterministic sort keys so that any researcher with the same candidate pools and builder script reproduces the **exact same 1,000 URLs**.
+
+Determinism serves three purposes:
+
+1. **Pre-registration integrity** — the registry can be committed and cited before extraction; results cannot be tuned by post-hoc repo substitution.
+2. **Auditability** — stratum round-robin selection is replayable from documented inputs.
+3. **Regression isolation** — pipeline changes are separated from cohort changes; E1-100 remains the engineering regression cohort.
+
+Deterministic sampling is **not** claim of simple random sampling from GitHub. It is a reproducible stratified draw from documented frames.
+
+## Why three strata?
+
+A single discovery frame cannot support both enriched prevalence and OSS contrast. Three strata separate interpretable estimands:
+
+| Stratum | Answers |
+|---------|---------|
+| **AI discovery frame** | “Among repos discoverable via instruction-artifact code search, how prevalent are convention files at HEAD?” |
+| **General OSS** | “Among star-ranked visible OSS repos (no AI discovery predicate), what is the contrast prevalence?” |
+| **Mixed/control** | “Among AI-topic metadata repos without guaranteed instruction paths, where does metadata discovery land?” |
+
+Pooling would confound discoverability with adoption. RQ1 requires **separate reporting** per stratum or explicitly labeled contrasts.
+
+## Why this is NOT GitHub-wide prevalence
+
+None of the three strata is a probability sample of all GitHub repositories:
+
+- **Visibility bias** — only public repos; search-indexed; star/activity floors.
+- **Frame bias** — instruction stratum requires path discoverability; general OSS requires star-ranked search hits.
+- **Head-only** — measures current presence, not historical adoption.
+- **English / platform bias** — GitHub API and search semantics favor certain ecosystems.
+
+All prevalence figures are **conditional on frame ℱ**, documented in `cohort_stratum`. The paper must never extrapolate to “all of GitHub.”
+
+## Why head-only is appropriate for E1
+
+E1 is an **adoption census**, not a lifecycle study. RQ1 asks whether convention artifacts are **currently present** at HEAD in each cohort repository.
+
+Head-only inspection (`list_head_paths`):
+
+- Matches the estimand (current-presence prevalence).
+- Avoids full-history traversal cost at n=1,000 scale.
+- Was validated as feasible in E1-100 engineering cohort (RQ4 pilot evidence).
+
+Head-only **undercounts** repos that adopted then deleted conventions. That is a documented lower bound, not a bug — correcting it requires a different protocol (full-history or panel-based lifecycle).
+
+## Why lifecycle analyses require another protocol
+
+The following questions are **explicitly out of scope** for `E1_1000_protocol_v1`:
+
+| Question | Required capability | Protocol |
+|----------|---------------------|----------|
+| When were artifacts deleted? | Full history or L2 panel delete events | E2 / lifecycle protocol (future) |
+| Survival / hazard of conventions | Longitudinal state machine | E2+ |
+| Semantic drift of content | Blob diffs + LLM coding | L5 / E5 (future) |
+| Ownership concentration | CODEOWNERS + blame | L3 (future) |
+| Co-change with code | Commit coupling graph | L4 (future) |
+
+E1-1000 produces the **cross-sectional baseline** that later longitudinal protocols extend. Running lifecycle analysis on the same wave without a separate protocol would conflate estimands and invalidate claims.
+
+## Protocol cross-references
+
+- Scientific protocol: `protocol/E1_1000_protocol_v1.md`
+- Experiment manifest: `protocol/experiment_manifest.yaml`
+- Pre-execution checklist: `protocol/pre_execution_checklist.md`
+- Dataset lineage: `docs/dataset_lineage.md`

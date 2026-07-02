@@ -53,14 +53,39 @@ artifact_lab/
 | protocol YAML | — |
 | registry CSV | — |
 
+## Scientific workflow
+
+Research proceeds through **staged cohorts**, each with a distinct epistemic role. Do not skip stages or merge export directories.
+
+```
+Pilot (17 repos)
+       ↓  pipeline development, profiling, inspection-mode validation
+Engineering cohort (100 repos)
+       ↓  end-to-end regression, accounting QA, first census
+Scientific cohort (1,000 repos)     ← E1-1000 (frozen, not yet executed)
+       ↓  TOSEM default; stratified prevalence + OSS contrast
+Future longitudinal studies         ← separate protocols (E2+); not implemented
+```
+
+| Stage | Registry | Role | Inference |
+|-------|----------|------|-----------|
+| **Pilot** | `pilot_repos.csv` (17) | Detector smoke tests, timeout profiling, bounded `make e1-pilot` | None — qualitative evidence only |
+| **Engineering** | `e1_100_repos.csv` (100) | Pipeline regression, latest-per-repo QA, E1-100 census | Limited — enriched engineering frame |
+| **Scientific** | `e1_1000_repos.csv` (1000) | TOSEM primary cohort; three-stratum design | Frame-conditional RQ1 + OSS contrast |
+| **Longitudinal** | (future) | Lifecycle, drift, ownership, coupling | Requires new protocol per estimand |
+
+**E1-1000 status:** Protocol frozen. See `protocol/E1_1000_protocol_v1.md`, `protocol/pre_execution_checklist.md`, and `protocol/experiment_manifest.yaml`. Do **not** run `make e1-1000` until the checklist is complete.
+
 ## Cohort ladder
 
-E1 experiments use a staged cohort progression. See [docs/cohort_ladder.md](docs/cohort_ladder.md):
+E1 experiments use a staged cohort progression. See [docs/cohort_ladder.md](docs/cohort_ladder.md) for Makefile targets and export paths:
 
 - **Pilot (17)** — development and profiling
 - **Engineering (100)** — pipeline regression (`make e1-100`)
-- **Scientific (1000)** — TOSEM default cohort (`make e1-1000`)
+- **Scientific (1000)** — TOSEM default cohort (`make e1-1000`, frozen pre-execution)
 - **Future population-scale** — not implemented
+
+See also [docs/dataset_lineage.md](docs/dataset_lineage.md) for the full L0→paper dependency chain.
 
 ## Pilot workflow
 

@@ -1,0 +1,39 @@
+# E1-1000 experiment manifest — frozen before first execution
+# Update execution_date and wave_id only after make e1-1000 completes.
+
+experiment_id: E1-1000
+protocol_version: E1_1000_protocol_v1
+registry_version: e1_1000_v1
+registry_path: data/registry/e1_1000_repos.csv
+registry_hash_sha256: 1f1f53fe9943c7baa39fa9d7977ddcd8ed012b66c2b641dfe96ec6759697ec90
+registry_rows: 1000
+deterministic_seed: 42
+
+protocol_family: ai_conventions_v1
+detector_version: "1.0.0"
+detector_patterns_file: artifact_lab/protocol/families/ai_conventions_v1.yaml
+detector_patterns_hash_sha256: dbd047ea77f06e2697d7593f301e947c105a96e32e9c6ca5e1a3ab5985a9875f
+
+inspection_mode: head-only
+panel_horizon_days: 180
+
+wave_id: null  # set to e1_1000_v1 after first extraction
+execution_date: null  # ISO-8601 UTC timestamp after first make e1-1000
+
+git_sha: c46890acac3b0ab343a790e65f8c54a5767558bb
+freeze_date: "2026-07-02"
+
+strata:
+  ai_instruction_discovery: 334
+  general_oss: 333
+  mixed_control: 333
+
+execution_command: make e1-1000
+qa_command: make e1-1000-qa
+
+outputs:
+  l1_events: data/l1/e1_1000/v1/events.parquet
+  l1_manifest: data/l1/e1_1000/v1/manifest.yaml
+  l2_panel: data/derived/file_state_panel/e1_1000/v1/panel_T180.parquet
+  census_dir: data/derived/adoption_census/e1_1000/v1
+  export_dir: exports/e1_1000
