@@ -93,11 +93,15 @@ make paper
 
 | Target | Scope |
 |--------|-------|
-| `make e1-pilot` | First 3 registry repos, `--skip-slow`, exports to `exports/e1/` |
-| `make e1` | Full registry extract (resume) → panel → census → performance note |
-| `make paper` | Copy figures/tables to `../paper/` and compile manuscript only |
+| `make e1-pilot` | First 3 registry repos, `--skip-slow`; all artifact outputs under `exports/e1/` only |
+| `make e1` | Full registry extract (resume) → panel → census → `exports/e1/` (including `pilot_performance.md`) |
+| `make paper` | Create `../paper/figures`, `../paper/tables`, `../paper/notes`; copy E1 exports from `exports/e1/`; attempt LaTeX compile (skips gracefully if `main.tex` is missing or compile fails) |
+
+Artifact targets never write directly into `../paper/`. The paper repo is updated only via `make paper`.
 
 Use **`make e1-pilot` for development**. Use **`make e1` only for the full pilot**. Avoid `--force` unless you intentionally want to re-extract succeeded repositories.
+
+The pilot performance report (`exports/e1/pilot_performance.md`) includes only repositories listed in `data/registry/pilot_repos.csv`. Synthetic fixture repos from tests (e.g. `example/slow`) are excluded unless `--test-mode` is passed explicitly to the report CLI.
 
 ### Bounded extraction flags
 

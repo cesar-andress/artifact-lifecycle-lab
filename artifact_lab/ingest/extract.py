@@ -249,6 +249,7 @@ def _extract_repo_body(
             receipt["error"] = skip
             receipt["events"] = []
             profile.status = "skipped"
+            profile.failure_reason = skip
             return receipt
 
         with track_git_activity() as git_stats:
@@ -295,6 +296,7 @@ def _extract_repo_body(
         receipt["error"] = f"{exc.__class__.__name__}: {exc}"
         receipt["events"] = []
         profile.status = "failed"
+        profile.failure_reason = normalize_failure_reason(receipt.get("error"))
     finally:
         t0 = time.perf_counter()
         remove_clone(clone_path)
@@ -331,6 +333,7 @@ def extract_one_repo(cfg: ExtractConfig, row: dict[str, str], blob_store: BlobSt
                 status="failed",
                 timings=PhaseTimings(wall_s=float(cfg.repo_timeout)),
                 recorded_at=finished,
+                failure_reason="timeout",
             )
             return {
                 "repo_id": row["repo_id"],
@@ -403,6 +406,11 @@ def run_extract(cfg: ExtractConfig) -> Path:
             receipt = extract_one_repo(cfg, row, blob_store)
             profile = receipt.get("profile")
             if isinstance(profile, ExtractionProfile):
+                status = receipt["status"]
+                if status == "skipped":
+                    profile.failure_reason = receipt.get("skip_reason") or "skipped"
+                elif status not in {"ok", "no_matches"}:
+                    profile.failure_reason = normalize_failure_reason(receipt.get("error"))
                 run_profiles.append(profile)
                 print(format_progress_log(index=index, total=total, profile=profile), flush=True)
                 warning = slow_repo_warning(profile)

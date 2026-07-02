@@ -51,6 +51,7 @@ PROFILE_COLUMNS: tuple[str, ...] = (
     "n_events",
     "n_matched_paths",
     "recorded_at",
+    "failure_reason",
 )
 
 
@@ -121,6 +122,7 @@ class ExtractionProfile:
     n_events: int = 0
     n_matched_paths: int = 0
     recorded_at: str = ""
+    failure_reason: str | None = None
 
     @property
     def repo_slug(self) -> str:
@@ -152,6 +154,7 @@ class ExtractionProfile:
             "n_events": self.n_events,
             "n_matched_paths": self.n_matched_paths,
             "recorded_at": self.recorded_at,
+            "failure_reason": self.failure_reason,
         }
 
 
@@ -251,6 +254,7 @@ def _row_to_profile(row: dict) -> ExtractionProfile:
         n_events=int(row.get("n_events", 0)),
         n_matched_paths=int(row.get("n_matched_paths", 0)),
         recorded_at=row.get("recorded_at", ""),
+        failure_reason=row.get("failure_reason"),
     )
 
 

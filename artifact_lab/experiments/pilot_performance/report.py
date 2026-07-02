@@ -1,20 +1,28 @@
-"""Generate pilot extraction performance notes for the paper repository."""
+"""Generate pilot extraction performance notes."""
 
 from __future__ import annotations
 
 import statistics
 from pathlib import Path
 
+from artifact_lab.experiments.pilot_performance.registry_filter import (
+    DEFAULT_REGISTRY_PATH,
+    filter_pilot_profiles,
+)
 from artifact_lab.ingest.profiling import (
     PHASE_NAMES,
     SLOW_REPO_THRESHOLD_S,
+    ExtractionProfile,
     load_profiles,
     mean_or_none,
     median_or_none,
 )
 
 DEFAULT_PROFILE_PATH = Path("data/profiling/extraction_profile.parquet")
+DEFAULT_E1_EXPORT = Path("exports/e1/pilot_performance.md")
 DEFAULT_PAPER_NOTE = Path("../paper/notes/pilot_performance.md")
+
+_BATCH_PHASES = frozenset({"parquet_write", "manifest_write"})
 
 
 def _fmt_s(seconds: float | None) -> str:
@@ -27,9 +35,34 @@ def _fmt_mb(n_bytes: int) -> str:
     return f"{n_bytes / 1_000_000:.1f} MB"
 
 
-def build_report(profiles: list) -> str:
+def report_failure_phase(profile: ExtractionProfile) -> str:
+    """Human-readable slowest phase for failed repositories."""
+    if profile.failure_reason == "timeout":
+        return "timeout/unknown"
+    phase, value = profile.timings.dominant_phase()
+    if profile.status == "failed" and (
+        value <= 0 or phase in _BATCH_PHASES or phase == "unattributed"
+    ):
+        return "timeout/unknown"
+    if value <= 0:
+        return "unknown"
+    return f"{phase} ({value:.1f} s)"
+
+
+def _display_failure_reason(profile: ExtractionProfile) -> str:
+    if profile.failure_reason:
+        return profile.failure_reason
+    if profile.status == "failed" and report_failure_phase(profile) == "timeout/unknown":
+        return "timeout"
+    return "unknown"
+
+
+def build_report(profiles: list[ExtractionProfile], *, test_mode: bool = False) -> str:
     if not profiles:
-        return "# Pilot extraction performance\n\nNo profiling records found.\n"
+        header = "# Pilot extraction performance\n\nNo pilot registry profiling records found.\n"
+        if test_mode:
+            header = "# Pilot extraction performance (test mode)\n\nNo profiling records found.\n"
+        return header
 
     succeeded = [p for p in profiles if p.status in {"ok", "no_matches"}]
     skipped = [p for p in profiles if p.status == "skipped"]
@@ -54,8 +87,12 @@ def build_report(profiles: list) -> str:
     clone_sizes = [p.clone_bytes for p in profiles if p.clone_bytes > 0]
     total_execution = sum(totals)
 
+    title = "# Pilot extraction performance"
+    if test_mode:
+        title = "# Pilot extraction performance (test mode)"
+
     lines = [
-        "# Pilot extraction performance",
+        title,
         "",
         "Documentation-only summary of pilot registry extraction profiling.",
         "",
@@ -113,17 +150,19 @@ def build_report(profiles: list) -> str:
         lines.append("None.")
     else:
         for profile in skipped:
-            lines.append(f"- {profile.repo_slug}")
+            reason = profile.failure_reason or "skipped"
+            lines.append(f"- {profile.repo_slug} ({reason})")
 
     lines.extend(["", "## Repositories failed", ""])
     if not failed:
         lines.append("None.")
     else:
         for profile in failed:
-            phase, value = profile.timings.dominant_phase()
+            reason = _display_failure_reason(profile)
+            phase_label = report_failure_phase(profile)
             lines.append(
                 f"- **{profile.repo_slug}**: total={profile.timings.total_s:.1f} s; "
-                f"slowest phase={phase} ({value:.1f} s); status={profile.status}"
+                f"slowest phase={phase_label}; failure_reason={reason}"
             )
 
     lines.extend(
@@ -136,7 +175,9 @@ def build_report(profiles: list) -> str:
             "## Regeneration",
             "",
             "```bash",
-            "make e1",
+            "make e1-pilot   # development",
+            "make e1         # full pilot",
+            "make paper      # copy exports to ../paper/",
             "```",
             "",
         ]
@@ -144,7 +185,7 @@ def build_report(profiles: list) -> str:
     return "\n".join(lines)
 
 
-def _recommendations(slowest_phase: str, profiles: list, clone_sizes: list[int]) -> str:
+def _recommendations(slowest_phase: str, profiles: list[ExtractionProfile], clone_sizes: list[int]) -> str:
     bullets: list[str] = []
     if slowest_phase == "history":
         bullets.append(
@@ -192,7 +233,14 @@ def _recommendations(slowest_phase: str, profiles: list, clone_sizes: list[int])
     return "\n".join(f"- {item}" for item in bullets)
 
 
-def write_report(*, profile_path: Path, output_path: Path) -> None:
+def write_report(
+    *,
+    profile_path: Path,
+    output_path: Path,
+    registry_path: Path = DEFAULT_REGISTRY_PATH,
+    test_mode: bool = False,
+) -> None:
     profiles = load_profiles(profile_path)
+    profiles = filter_pilot_profiles(profiles, registry_path, test_mode=test_mode)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(build_report(profiles), encoding="utf-8")
+    output_path.write_text(build_report(profiles, test_mode=test_mode), encoding="utf-8")

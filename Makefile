@@ -15,6 +15,7 @@ FIG1_PDF := exports/e1/fig1.pdf
 FIG1_CSV := exports/e1/fig1.csv
 TABLE1 := exports/e1/table1.csv
 E1_REPORT := exports/e1/e1_census.md
+E1_PILOT_PERF := exports/e1/pilot_performance.md
 
 PAPER_ROOT := ../paper
 PAPER_NOTE := $(PAPER_ROOT)/notes/pilot_performance.md
@@ -47,7 +48,7 @@ panel: $(L2_PANEL)
 
 e1-exports: $(FIG1_PDF) $(FIG1_CSV) $(TABLE1) $(E1_REPORT)
 
-profile-report: $(PAPER_NOTE)
+profile-report: $(E1_PILOT_PERF)
 
 install-paper:
 	$(PIP) install -e ".[dev,paper]"
@@ -61,7 +62,7 @@ $(L2_PANEL): $(L1_EVENTS)
 $(FIG1_PDF) $(FIG1_CSV) $(TABLE1) $(E1_REPORT): $(L2_PANEL)
 	$(PY) -m artifact_lab.experiments.e1_adoption_census --no-export
 
-$(PAPER_NOTE): $(PROFILE_PARQUET)
+$(E1_PILOT_PERF): $(PROFILE_PARQUET)
 	$(PY) -m artifact_lab.experiments.pilot_performance
 
 $(PROFILE_CSV): $(PROFILE_PARQUET)
@@ -73,7 +74,8 @@ paper:
 	cp $(FIG1_PDF) $(PAPER_ROOT)/figures/fig1.pdf
 	cp $(FIG1_CSV) $(PAPER_ROOT)/figures/fig1.csv
 	cp $(TABLE1) $(PAPER_ROOT)/tables/table1.csv
-	$(MAKE) -C $(PAPER_ROOT) pdf
+	@test -f $(E1_PILOT_PERF) && cp $(E1_PILOT_PERF) $(PAPER_ROOT)/notes/pilot_performance.md || echo "note: $(E1_PILOT_PERF) not found; skipping performance note copy"
+	-$(MAKE) -C $(PAPER_ROOT) pdf
 
 test:
 	$(PY) -m pytest artifact_lab/tests -q
