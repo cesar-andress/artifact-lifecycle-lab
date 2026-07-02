@@ -11,6 +11,7 @@ from typing import Any
 import yaml
 
 from artifact_lab.contracts.schemas import schema_hash
+from artifact_lab.execution.atomic_io import atomic_write_text
 
 
 def git_sha() -> str | None:
@@ -52,9 +53,8 @@ def write_manifest(
     }
     if extra:
         payload.update(extra)
-    path.parent.mkdir(parents=True, exist_ok=True)
     if path.suffix in {".yaml", ".yml"}:
-        path.write_text(yaml.safe_dump(payload, sort_keys=False), encoding="utf-8")
+        atomic_write_text(path, yaml.safe_dump(payload, sort_keys=False))
     else:
-        path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+        atomic_write_text(path, json.dumps(payload, indent=2) + "\n")
     return payload

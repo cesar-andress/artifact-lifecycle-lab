@@ -49,6 +49,11 @@ def main(argv: list[str] | None = None) -> int:
     )
     extract_p.add_argument("--force", action="store_true")
     extract_p.add_argument(
+        "--retry-failed",
+        action="store_true",
+        help="Re-process repositories previously marked failed (default: skip failed)",
+    )
+    extract_p.add_argument(
         "--inspection-mode",
         choices=INSPECTION_MODES,
         default=DEFAULT_INSPECTION_MODE,
@@ -78,6 +83,7 @@ def main(argv: list[str] | None = None) -> int:
             max_clone_bytes=args.max_clone_mb * 1_000_000,
             force=args.force,
             limit=args.limit,
+            retry_failed=args.retry_failed,
             inspection_mode=args.inspection_mode,
         )
         out = run_extract(cfg)

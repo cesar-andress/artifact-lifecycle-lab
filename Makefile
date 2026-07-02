@@ -58,7 +58,8 @@ GENERAL_OSS_POOL := data/registry/sources/general_oss_candidates.jsonl
 .PHONY: e1 e1-pilot e1-100 e1-1000 paper ingest panel e1-exports profile-report test install-paper \
 	e1-pilot-extract e1-pilot-derive e1-pilot-exports e1-extract e1-derive e1-exports-run \
 	e1-100-extract e1-100-derive e1-100-exports e1-100-performance e1-100-summary \
-	e1-1000-registry e1-1000-extract e1-1000-derive e1-1000-exports e1-1000-performance e1-1000-summary e1-1000-qa
+	e1-1000-registry e1-1000-extract e1-1000-derive e1-1000-exports e1-1000-performance e1-1000-summary e1-1000-qa \
+	recover verify
 
 e1: install-paper e1-extract e1-derive e1-exports-run profile-report
 
@@ -176,6 +177,21 @@ e1-1000-qa:
 	  --census-dir $(E1_1000_CENSUS_DIR) \
 	  --profiles $(PROFILE_PARQUET) \
 	  --expected-rows 1000
+
+recover:
+	$(PY) -m artifact_lab.execution recover \
+	  --registry $(E1_1000_REGISTRY) \
+	  --family $(FAMILY) \
+	  --wave $(E1_1000_WAVE) \
+	  --events-dir $(E1_1000_L1_DIR) \
+	  --registry-version $(E1_1000_REGISTRY_VERSION)
+
+verify:
+	$(PY) -m artifact_lab.execution verify \
+	  --registry $(E1_1000_REGISTRY) \
+	  --family $(FAMILY) \
+	  --wave $(E1_1000_WAVE) \
+	  --events-dir $(E1_1000_L1_DIR)
 
 ingest: $(L1_EVENTS)
 

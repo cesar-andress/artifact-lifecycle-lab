@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import os
 from pathlib import Path
 
 
@@ -32,7 +33,13 @@ class BlobStore:
         if dest.exists():
             return sha
         dest.parent.mkdir(parents=True, exist_ok=True)
-        dest.write_bytes(content)
+        tmp = dest.with_name(dest.name + ".tmp")
+        try:
+            tmp.write_bytes(content)
+            os.replace(tmp, dest)
+        finally:
+            if tmp.exists():
+                tmp.unlink(missing_ok=True)
         return sha
 
     def get_text(self, sha: str) -> bytes:

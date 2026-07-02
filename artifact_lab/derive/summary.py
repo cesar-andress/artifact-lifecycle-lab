@@ -62,10 +62,14 @@ def build_summary(
     if queue_path and queue_path.exists():
         with JobQueue(queue_path) as queue:
             counts = queue.counts_by_state()
-            summary["repos_succeeded"] = counts.get("succeeded", 0)
+            summary["repos_succeeded"] = counts.get("completed", 0) + counts.get("succeeded", 0)
             summary["repos_failed"] = counts.get("failed", 0)
             summary["repos_pending"] = counts.get("pending", 0)
-            summary["repos_running"] = counts.get("running", 0)
+            in_progress = sum(
+                counts.get(state, 0)
+                for state in ("running", "cloning", "extracting", "writing_l1", "verifying")
+            )
+            summary["repos_running"] = in_progress
             summary["repos_attempted"] = sum(counts.values())
     elif receipts_dir and receipts_dir.exists():
         receipts = list(receipts_dir.glob("*.json"))

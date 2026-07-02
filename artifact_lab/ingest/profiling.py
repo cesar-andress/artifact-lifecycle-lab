@@ -436,7 +436,7 @@ def format_extraction_summary(
     stale_recovered: int = 0,
     registry_limit: int | None = None,
 ) -> str:
-    completed = queue_counts.get("succeeded", 0)
+    completed = queue_counts.get("completed", 0) + queue_counts.get("succeeded", 0)
     failed = queue_counts.get("failed", 0)
     pending = queue_counts.get("pending", 0)
     totals = [p.timings.total_s for p in run_profiles]

@@ -5,6 +5,28 @@ import sqlite3
 from artifact_lab.store.job_queue import DOCUMENTED_COLUMNS, JobQueue
 
 
+def test_resume_skips_completed_unless_force(tmp_path):
+    db = tmp_path / "jobs.db"
+    with JobQueue(db) as q:
+        q.upsert_pending("abc", "https://github.com/o/r", "ai_conventions_v1", "pilot_v1")
+        q.mark_running("abc", "ai_conventions_v1", "pilot_v1")
+        q.mark_completed("abc", "ai_conventions_v1", "pilot_v1", n_events=3)
+
+        assert q.should_process("abc", "ai_conventions_v1", "pilot_v1", force=False) is False
+        assert q.should_process("abc", "ai_conventions_v1", "pilot_v1", force=True) is True
+
+
+def test_retry_failed_only_when_requested(tmp_path):
+    db = tmp_path / "jobs.db"
+    with JobQueue(db) as q:
+        q.upsert_pending("abc", "https://github.com/o/r", "ai_conventions_v1", "pilot_v1")
+        q.mark_running("abc", "ai_conventions_v1", "pilot_v1")
+        q.mark_failed("abc", "ai_conventions_v1", "pilot_v1", reason="timeout")
+
+        assert q.should_process("abc", "ai_conventions_v1", "pilot_v1", force=False, retry_failed=False) is False
+        assert q.should_process("abc", "ai_conventions_v1", "pilot_v1", force=False, retry_failed=True) is True
+
+
 def test_resume_skips_succeeded_unless_force(tmp_path):
     db = tmp_path / "jobs.db"
     with JobQueue(db) as q:

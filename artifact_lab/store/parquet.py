@@ -8,14 +8,11 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from artifact_lab.contracts.schemas import validate_columns
+from artifact_lab.execution.atomic_io import atomic_write_parquet
 
 
 def write_parquet(table: pa.Table, path: Path, *, expected_columns: tuple[str, ...] | None = None) -> int:
-    if expected_columns:
-        validate_columns(table, expected_columns)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    pq.write_table(table, path)
-    return table.num_rows
+    return atomic_write_parquet(table, path, expected_columns=expected_columns)
 
 
 def read_parquet(path: Path) -> pa.Table:

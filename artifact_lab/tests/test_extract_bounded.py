@@ -41,7 +41,7 @@ def test_limit_processes_only_first_n_registry_rows(tmp_path):
         force=True,
     )
 
-    def fake_extract(cfg, row, blob_store):
+    def fake_extract(cfg, row, blob_store, checkpoint=None):
         return {
             "repo_id": row["repo_id"],
             "repo_url": row["normalized_repo_url"],
@@ -86,7 +86,7 @@ def test_timeout_marks_failed_and_continues(tmp_path):
     )
     calls: list[str] = []
 
-    def fake_extract(cfg, row, blob_store):
+    def fake_extract(cfg, row, blob_store, checkpoint=None):
         calls.append(row["repo_url"])
         if len(calls) == 1:
             return {
@@ -128,7 +128,7 @@ def test_timeout_marks_failed_and_continues(tmp_path):
         jobs = q.list_jobs()
     assert len(jobs) == 2
     assert sum(1 for j in jobs if j.failure_reason == "timeout") == 1
-    assert sum(1 for j in jobs if j.state == "succeeded") == 1
+    assert sum(1 for j in jobs if j.state in {"succeeded", "completed"}) == 1
 
 
 def test_stale_running_becomes_pending(tmp_path):

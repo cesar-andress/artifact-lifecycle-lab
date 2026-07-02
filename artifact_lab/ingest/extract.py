@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import json
 import time
+from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeout
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -20,6 +21,17 @@ from artifact_lab.contracts.schemas import (
     file_event_log_schema,
     hash_email,
 )
+from artifact_lab.execution.atomic_io import atomic_write_text
+from artifact_lab.execution.checkpoint import RepoCheckpoint
+from artifact_lab.execution.execution_log import ExecutionLog
+from artifact_lab.execution.paths import (
+    execution_log_path,
+    receipt_path,
+    repo_events_path,
+    repo_manifest_path,
+)
+from artifact_lab.execution.recover import cleanup_scratch, rebuild_global_events
+from artifact_lab.execution.verify import verify_repo_completion
 from artifact_lab.ingest.git_activity import track_git_activity
 from artifact_lab.ingest.git_utils import (
     blob_at_commit,
@@ -60,6 +72,14 @@ INSPECTION_MODE_FULL_HISTORY = "full-history"
 DEFAULT_INSPECTION_MODE = INSPECTION_MODE_HEAD_ONLY
 INSPECTION_MODES: tuple[str, ...] = (INSPECTION_MODE_HEAD_ONLY, INSPECTION_MODE_FULL_HISTORY)
 
+# Test hook: raise when phase name matches (e.g. "clone", "parquet", "manifest", "receipt").
+FAULT_INJECTION_HOOK: Callable[[str], None] | None = None
+
+
+def _inject_fault(phase: str) -> None:
+    if FAULT_INJECTION_HOOK is not None:
+        FAULT_INJECTION_HOOK(phase)
+
 
 @dataclass
 class ExtractConfig:
@@ -77,6 +97,7 @@ class ExtractConfig:
     repo_timeout: int = 600
     max_clone_bytes: int = 500_000_000
     force: bool = False
+    retry_failed: bool = False
     limit: int | None = None
     profile_path: Path = EXTRACTION_PROFILE_PATH
     inspection_mode: str = DEFAULT_INSPECTION_MODE
@@ -127,9 +148,59 @@ def clone_size_bytes(repo_dir: Path) -> int:
 
 def write_receipt(receipts_dir: Path, repo_id: str, receipt: dict) -> Path:
     receipts_dir.mkdir(parents=True, exist_ok=True)
-    path = receipts_dir / f"{repo_id}.json"
+    path = receipt_path(receipts_dir, repo_id)
     serializable = {k: v for k, v in receipt.items() if k not in {"events", "profile"}}
-    path.write_text(json.dumps(serializable, indent=2) + "\n", encoding="utf-8")
+    _inject_fault("receipt")
+    atomic_write_text(path, json.dumps(serializable, indent=2) + "\n")
+    return path
+
+
+def write_repo_l1_events(events_dir: Path, repo_id: str, events: list[dict]) -> Path:
+    out_path = repo_events_path(events_dir, repo_id)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    _inject_fault("parquet")
+    if events:
+        table = pa.Table.from_pylist(events, schema=file_event_log_schema())
+    else:
+        table = pa.table(
+            {col: pa.array([], type=file_event_log_schema().field(col).type) for col in FILE_EVENT_LOG_COLUMNS}
+        )
+    from artifact_lab.store.parquet import write_parquet
+
+    write_parquet(table, out_path, expected_columns=FILE_EVENT_LOG_COLUMNS)
+    return out_path
+
+
+def write_repo_l1_manifest(
+    events_dir: Path,
+    repo_id: str,
+    *,
+    row_count: int,
+    family: str,
+    extraction_wave: str,
+    registry_version: str | None,
+    dataset_version: str,
+    detector_version: str,
+) -> Path:
+    _inject_fault("manifest")
+    path = repo_manifest_path(events_dir, repo_id)
+    write_manifest(
+        path,
+        dataset_name="file_event_log_repo",
+        version=extraction_wave,
+        input_datasets=[repo_id],
+        protocol_version=detector_version,
+        row_count=row_count,
+        columns=FILE_EVENT_LOG_COLUMNS,
+        extra={
+            "repo_id": repo_id,
+            "family": family,
+            "dataset_version": dataset_version,
+            "extraction_wave": extraction_wave,
+            "registry_version": registry_version,
+            "detector_version": detector_version,
+        },
+    )
     return path
 
 
@@ -216,6 +287,7 @@ def extract_repo_events(
                     live.enter_phase("blobs")
                 t0 = time.perf_counter()
                 try:
+                    _inject_fault("blob")
                     content = blob_at_commit(repo_dir, touch["commit_sha"], path, timeout=git_timeout)
                     if content is not None and b"\x00" not in content:
                         t_blob = time.perf_counter()
@@ -248,6 +320,7 @@ def _extract_repo_body(
     row: dict[str, str],
     blob_store: BlobStore,
     live: ExtractionLiveState,
+    checkpoint: RepoCheckpoint | None = None,
 ) -> dict:
     repo_id = row["repo_id"]
     repo_url = row["normalized_repo_url"]
@@ -285,10 +358,14 @@ def _extract_repo_body(
             live.enter_phase("clone")
             t0 = time.perf_counter()
             try:
+                _inject_fault("clone")
                 clone_bare(row["repo_url"], clone_path, timeout=cfg.clone_timeout)
             finally:
                 if live.should_record_timing():
                     timings.clone_s = time.perf_counter() - t0
+
+            if checkpoint is not None:
+                checkpoint.start_extracting()
 
             size = clone_size_bytes(clone_path)
             receipt["clone_bytes"] = size
@@ -333,6 +410,7 @@ def _extract_repo_body(
     finally:
         live.enter_phase("cleanup")
         t0 = time.perf_counter()
+        _inject_fault("cleanup")
         remove_clone(clone_path)
         if live.should_record_timing():
             timings.cleanup_s = time.perf_counter() - t0
@@ -354,7 +432,12 @@ def normalize_failure_reason(error: str | None) -> str:
     return error
 
 
-def extract_one_repo(cfg: ExtractConfig, row: dict[str, str], blob_store: BlobStore) -> dict:
+def extract_one_repo(
+    cfg: ExtractConfig,
+    row: dict[str, str],
+    blob_store: BlobStore,
+    checkpoint: RepoCheckpoint | None = None,
+) -> dict:
     started = datetime.now(timezone.utc)
     profile = ExtractionProfile(
         repo_id=row["repo_id"],
@@ -368,7 +451,7 @@ def extract_one_repo(cfg: ExtractConfig, row: dict[str, str], blob_store: BlobSt
     )
     live = ExtractionLiveState(profile=profile)
     with ThreadPoolExecutor(max_workers=1) as pool:
-        future = pool.submit(_extract_repo_body, cfg, row, blob_store, live)
+        future = pool.submit(_extract_repo_body, cfg, row, blob_store, live, checkpoint)
         try:
             return future.result(timeout=cfg.repo_timeout)
         except FuturesTimeout:
@@ -411,6 +494,74 @@ def _merge_events(
     return kept + fresh
 
 
+def _record_profile(cfg: ExtractConfig, receipt: dict, run_profiles: list[ExtractionProfile]) -> ExtractionProfile | None:
+    profile = receipt.get("profile")
+    if not isinstance(profile, ExtractionProfile):
+        return None
+    status = receipt["status"]
+    if status == "skipped":
+        profile.failure_reason = receipt.get("skip_reason") or "skipped"
+    elif status not in {"ok", "no_matches"}:
+        profile.failure_reason = normalize_failure_reason(profile.failure_reason or receipt.get("error"))
+    run_profiles.append(profile)
+    existing_rows = [p.to_row() for p in load_profiles(cfg.profile_path)]
+    merged = merge_profiles(existing_rows, [profile])
+    write_profiles(merged, cfg.profile_path, csv_path=cfg.profile_path.with_suffix(".csv"))
+    return profile
+
+
+def _finalize_successful_repo(
+    cfg: ExtractConfig,
+    checkpoint: RepoCheckpoint,
+    repo_id: str,
+    receipt: dict,
+    blob_store: BlobStore,
+    queue: JobQueue,
+) -> bool:
+    events = receipt.get("events") or []
+    n_events = len(events)
+    detector_version = family_version(cfg.family)
+
+    checkpoint.start_writing_l1()
+    write_repo_l1_events(cfg.events_dir, repo_id, events)
+    write_repo_l1_manifest(
+        cfg.events_dir,
+        repo_id,
+        row_count=n_events,
+        family=cfg.family,
+        extraction_wave=cfg.extraction_wave,
+        registry_version=cfg.registry_version,
+        dataset_version=cfg.dataset_version,
+        detector_version=detector_version,
+    )
+    write_receipt(cfg.receipts_dir, repo_id, receipt)
+
+    checkpoint.start_verifying()
+    failures = verify_repo_completion(
+        repo_id=repo_id,
+        events_dir=cfg.events_dir,
+        receipts_dir=cfg.receipts_dir,
+        blob_store=blob_store,
+    )
+    if failures:
+        checkpoint.fail(reason=f"verification_failed: {'; '.join(failures)}")
+        return False
+
+    checkpoint.complete(n_events=n_events)
+    rebuild_global_events(
+        events_dir=cfg.events_dir,
+        queue_path=cfg.queue_path,
+        family=cfg.family,
+        wave=cfg.extraction_wave,
+        registry_path=cfg.registry_path,
+        protocol_version=detector_version,
+        extraction_wave=cfg.extraction_wave,
+        registry_version=cfg.registry_version,
+        dataset_version=cfg.dataset_version,
+    )
+    return True
+
+
 def run_extract(cfg: ExtractConfig) -> Path:
     load_family(cfg.family)
     registry = read_registry(cfg.registry_path)
@@ -419,18 +570,21 @@ def run_extract(cfg: ExtractConfig) -> Path:
     blob_store = BlobStore(cfg.blobs_dir)
     cfg.events_dir.mkdir(parents=True, exist_ok=True)
     out_path = cfg.events_dir / "events.parquet"
+    detector_version = family_version(cfg.family)
 
-    existing_events = _load_existing_events(out_path)
-    new_events: list[dict] = []
-    processed_repo_ids: set[str] = set()
     run_profiles: list[ExtractionProfile] = []
     stale_recovered = 0
     queue_counts: dict[str, int] = {}
+    execution_log = ExecutionLog(execution_log_path(cfg.events_dir))
+
+    scratch_removed = cleanup_scratch(cfg.scratch_dir)
+    if scratch_removed:
+        print(f"removed {len(scratch_removed)} abandoned scratch dir(s)", flush=True)
 
     with JobQueue(cfg.queue_path) as queue:
-        stale_recovered = queue.reset_stale_running()
+        stale_recovered = queue.reset_stale_in_progress()
         if stale_recovered:
-            print(f"recovered {stale_recovered} stale running job(s) -> pending", flush=True)
+            print(f"recovered {stale_recovered} stale in-progress job(s) -> pending", flush=True)
         for row in registry:
             queue.upsert_pending(row["repo_id"], row["normalized_repo_url"], cfg.family, cfg.extraction_wave)
 
@@ -438,113 +592,63 @@ def run_extract(cfg: ExtractConfig) -> Path:
         for index, row in enumerate(registry, start=1):
             repo_id = row["repo_id"]
             repo_url = row["normalized_repo_url"]
-            if not queue.should_process(repo_id, cfg.family, cfg.extraction_wave, force=cfg.force):
+            if not queue.should_process(
+                repo_id,
+                cfg.family,
+                cfg.extraction_wave,
+                force=cfg.force,
+                retry_failed=cfg.retry_failed,
+            ):
                 job = queue.get(repo_id, cfg.family, cfg.extraction_wave)
                 state = job.state if job else "unknown"
                 print(f"[{index}/{total}] skip {repo_url} (state={state})", flush=True)
                 continue
 
-            queue.mark_running(repo_id, cfg.family, cfg.extraction_wave)
-            receipt = extract_one_repo(cfg, row, blob_store)
-            profile = receipt.get("profile")
-            if isinstance(profile, ExtractionProfile):
-                status = receipt["status"]
-                if status == "skipped":
-                    profile.failure_reason = receipt.get("skip_reason") or "skipped"
-                elif status not in {"ok", "no_matches"}:
-                    profile.failure_reason = normalize_failure_reason(
-                        profile.failure_reason or receipt.get("error")
-                    )
-                run_profiles.append(profile)
+            checkpoint = RepoCheckpoint(
+                queue=queue,
+                log=execution_log,
+                repo_id=repo_id,
+                family=cfg.family,
+                wave=cfg.extraction_wave,
+            )
+            checkpoint.start_cloning()
+            receipt = extract_one_repo(cfg, row, blob_store, checkpoint)
+            profile = _record_profile(cfg, receipt, run_profiles)
+            if profile is not None:
                 print(format_progress_log(index=index, total=total, profile=profile), flush=True)
                 warning = slow_repo_warning(profile)
                 if warning:
                     print(warning, flush=True)
-                existing_rows = [p.to_row() for p in load_profiles(cfg.profile_path)]
-                merged = merge_profiles(existing_rows, [profile])
-                write_profiles(
-                    merged,
-                    cfg.profile_path,
-                    csv_path=cfg.profile_path.with_suffix(".csv"),
-                )
-
-            write_receipt(cfg.receipts_dir, repo_id, receipt)
-            processed_repo_ids.add(repo_id)
 
             status = receipt["status"]
-            n_events = len(receipt.get("events") or [])
             if status in {"ok", "no_matches"}:
-                queue.mark_succeeded(repo_id, cfg.family, cfg.extraction_wave, n_events=n_events)
-                new_events.extend(receipt.get("events") or [])
+                _finalize_successful_repo(cfg, checkpoint, repo_id, receipt, blob_store, queue)
             elif status == "skipped":
                 reason = receipt.get("skip_reason") or "skipped"
-                queue.mark_failed(
-                    repo_id,
-                    cfg.family,
-                    cfg.extraction_wave,
-                    reason=reason,
-                    n_events=0,
-                )
+                write_receipt(cfg.receipts_dir, repo_id, receipt)
+                checkpoint.fail(reason=reason)
             else:
                 reason = (
                     profile.failure_reason
                     if isinstance(profile, ExtractionProfile) and profile.failure_reason
                     else normalize_failure_reason(receipt.get("error"))
                 )
-                queue.mark_failed(
-                    repo_id,
-                    cfg.family,
-                    cfg.extraction_wave,
-                    reason=reason,
-                    n_events=0,
-                )
+                write_receipt(cfg.receipts_dir, repo_id, receipt)
+                checkpoint.fail(reason=reason)
 
         queue_counts = queue.counts_by_state()
 
-    t0 = time.perf_counter()
-    merged = _merge_events(existing_events, new_events, replaced_repo_ids=processed_repo_ids)
-    if merged:
-        table = pa.Table.from_pylist(merged, schema=file_event_log_schema())
-        row_count = write_parquet(table, out_path, expected_columns=FILE_EVENT_LOG_COLUMNS)
-    else:
-        table = pa.table(
-            {col: pa.array([], type=file_event_log_schema().field(col).type) for col in FILE_EVENT_LOG_COLUMNS}
-        )
-        row_count = write_parquet(table, out_path, expected_columns=FILE_EVENT_LOG_COLUMNS)
-    parquet_write_s = time.perf_counter() - t0
-
-    t0 = time.perf_counter()
-    write_manifest(
-        cfg.events_dir / "manifest.yaml",
-        dataset_name="file_event_log",
-        version=cfg.extraction_wave,
-        input_datasets=[str(cfg.registry_path)],
-        protocol_version=family_version(cfg.family),
-        row_count=row_count,
-        columns=FILE_EVENT_LOG_COLUMNS,
-        extra={
-            "family": cfg.family,
-            "dataset_version": cfg.dataset_version,
-            "extraction_wave": cfg.extraction_wave,
-            "registry_version": cfg.registry_version,
-            "detector_version": family_version(cfg.family),
-        },
-    )
-    manifest_write_s = time.perf_counter() - t0
-
-    assign_batch_write_shares(
-        run_profiles,
-        parquet_write_s=parquet_write_s,
-        manifest_write_s=manifest_write_s,
-    )
-
-    if run_profiles:
-        existing_rows = [p.to_row() for p in load_profiles(cfg.profile_path)]
-        merged_profiles = merge_profiles(existing_rows, run_profiles)
-        write_profiles(
-            merged_profiles,
-            cfg.profile_path,
-            csv_path=cfg.profile_path.with_suffix(".csv"),
+    if not out_path.exists():
+        rebuild_global_events(
+            events_dir=cfg.events_dir,
+            queue_path=cfg.queue_path,
+            family=cfg.family,
+            wave=cfg.extraction_wave,
+            registry_path=cfg.registry_path,
+            protocol_version=detector_version,
+            extraction_wave=cfg.extraction_wave,
+            registry_version=cfg.registry_version,
+            dataset_version=cfg.dataset_version,
         )
 
     print(
