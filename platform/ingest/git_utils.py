@@ -35,13 +35,7 @@ def parse_github_url(url: str) -> tuple[str, str] | None:
     return (m.group(1), m.group(2)) if m else None
 
 
-def repo_id_from_url(url: str) -> str:
-    parsed = parse_github_url(url)
-    if not parsed:
-        slug = re.sub(r"[^a-zA-Z0-9]+", "_", url.strip().lower()).strip("_")
-        return slug[:80] or "unknown_repo"
-    owner, repo = parsed
-    return f"{owner}_{repo}".lower()
+from platform.contracts.repo_id import normalize_repo_url, repo_id_from_url
 
 
 def clone_bare(url: str, dest: Path, *, timeout: int = 300) -> None:

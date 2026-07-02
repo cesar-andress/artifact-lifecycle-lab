@@ -3,14 +3,18 @@
 from pathlib import Path
 from unittest.mock import patch
 
-import pytest
-
+from platform.contracts.repo_id import repo_id_from_url
 from platform.ingest.extract import ExtractConfig, extract_one_repo
 from platform.store.blobs import BlobStore
 
 
 def test_clone_removed_on_failure(tmp_path):
-    registry_row = {"repo_id": "fail_repo", "repo_url": "https://github.com/example/fail.git"}
+    repo_url = "https://github.com/example/fail.git"
+    registry_row = {
+        "repo_id": repo_id_from_url(repo_url),
+        "repo_url": repo_url,
+        "normalized_repo_url": "https://github.com/example/fail",
+    }
     scratch = tmp_path / "scratch"
     cfg = ExtractConfig(
         registry_path=tmp_path / "registry.csv",
@@ -19,8 +23,9 @@ def test_clone_removed_on_failure(tmp_path):
         events_dir=tmp_path / "l1",
         blobs_dir=tmp_path / "blobs",
         receipts_dir=tmp_path / "receipts",
+        queue_path=tmp_path / "jobs.db",
     )
-    clone_path = scratch / "example_fail"
+    clone_path = scratch / registry_row["repo_id"]
 
     def boom(url, dest, timeout=300):
         dest.mkdir(parents=True)
