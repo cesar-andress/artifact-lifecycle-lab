@@ -1,0 +1,31 @@
+repo_id,doc_path,reference_type,reference_text,example_label,verification_status,evidence
+03ff95638105b96a,README.md,command,"**That's it.** No JSON parsing, no error handling, no retries. Just define a model and get structured data.",ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,[![PyPI](https://img.shields.io/pypi/v/instructor?style=flat-square)](https://pypi.org/project/instructor/),false,missing,script not at HEAD: img.sh
+03ff95638105b96a,README.md,command,[![Downloads](https://img.shields.io/pypi/dm/instructor?style=flat-square)](https://pypi.org/project/instructor/),false,missing,script not at HEAD: img.sh
+03ff95638105b96a,README.md,command,[![GitHub Stars](https://img.shields.io/github/stars/567-labs/instructor?style=flat-square)](https://github.com/567-labs/instructor),false,missing,script not at HEAD: img.sh
+03ff95638105b96a,README.md,command,[![Discord](https://img.shields.io/discord/1192334452110659664?style=flat-square)](https://discord.gg/bD9YE9JArw),false,missing,script not at HEAD: img.sh
+03ff95638105b96a,README.md,command,[![Twitter](https://img.shields.io/twitter/follow/jxnlco?style=flat-square)](https://twitter.com/jxnlco),false,missing,script not at HEAD: img.sh
+03ff95638105b96a,README.md,command,"> **Use Instructor for fast extraction, reach for PydanticAI when you need agents.** Instructor keeps schema-first flows simple and cheap. If your app needs richer agent runs, built-in observability, ",ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,Getting structured data from LLMs is hard. You need to:,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,1. Write complex JSON schemas,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,2. Handle validation errors,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,3. Retry failed extractions,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,4. Parse unstructured responses,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,5. Deal with different provider APIs,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,**Instructor handles all of this with one simple interface:**,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,<table>,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,<tr>,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,<td><b>Without Instructor</b></td>,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,<td><b>With Instructor</b></td>,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,</tr>,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,<td>,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,</td>,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,</table>,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,Or with your package manager:,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,Use the same code with any LLM provider:,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,Failed validations are automatically retried with the error message:,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,Stream partial objects as they're generated:,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,"Extract complex, nested data structures:",ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,"Trusted by over 100,000 developers and companies building AI applications:",ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,- **3M+ monthly downloads**,ambiguous,unverifiable,command not mapped to filesystem check in pilot
+03ff95638105b96a,README.md,command,- **10K+ GitHub stars**,ambiguous,unverifiable,command not mapped to filesystem check in pilot

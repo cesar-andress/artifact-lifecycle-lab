@@ -1,6 +1,6 @@
 # Truth Decay Protocol v1
 
-**Status:** Frozen — RQ1 feasibility implemented; RQ2+ pending  
+**Status:** Frozen — RQ1 feasibility + pre-scaling gates (P3–P5) implemented; scaling blocked until gates pass  
 **Protocol version:** `TRUTH_DECAY_PROTOCOL_v1`  
 **Working title:** *The Half-Life of Truth in Machine-Consumed Documentation*  
 **Companion pilot exports:** `exports/truth_pilot/`  
@@ -58,6 +58,61 @@ When references go stale, do maintainers **repair** instruction text, **delete**
 2. Time-to-deletion for instruction files with high stale-reference burden.
 
 **Unit of analysis:** Instruction file lifecycle and reference-state transitions over the observation window.
+
+---
+
+### RQ5 — Machine-consumed vs human-facing documentation (comparative)
+
+Do machine-consumed instruction files differ from human-facing documentation (README.md, CONTRIBUTING.md) in **reference density**, **verifiable-claim burden**, and **staleness rate**?
+
+**Primary estimand:** Difference in verifiable-reference density and missing-reference ratio between instruction files and human-facing docs within the same repository.
+
+**Unit of analysis:** Matched repository, comparing instruction-file snapshots vs README/CONTRIBUTING at the same commit window.
+
+**Gate:** P5 human-doc baseline must pass before comparative analysis is scaled.
+
+---
+
+## Pre-scaling validation gates (mandatory)
+
+**Do not run E1-1000 or scale cohorts until P3, P4, and P5 pass.** Command: `make pre-scaling-gates`
+
+| Gate | Purpose | Outputs | Pass condition |
+|------|---------|---------|----------------|
+| **P3 — Rot incidence** | Confirm decay rate supports half-life study | `p3_rot_incidence.md`, `p3_rot_events.csv` | Rot ≥2–3%/reference-year; KM median estimable |
+| **P4 — Attribution precision** | Audit agent-signal accuracy before RQ3 | `agent_attribution_gold_worksheet.csv`, `agent_attribution_precision.md` | Human-review precision ≥0.80 on agent-maintenance subset |
+| **P5 — Human doc baseline** | Feasibility of comparative RQ5 | `human_doc_baseline.md`, `human_doc_reference_examples.csv` | Sufficient human docs with verifiable references |
+
+### P3 — Rot incidence (mandatory go/no-go)
+
+Uses P1 sample (400 instruction files) with longitudinal reference states. Reports verifiable references, rot events, incidence per year, censoring rate, and Kaplan-Meier median estimability (gate check only — not full RQ2 survival module).
+
+### P4 — Attribution precision (mandatory gate)
+
+Samples ~200 flagged commits into a human-review worksheet. Auto-summary **separates**:
+
+- Claude / Cursor / Copilot message signatures
+- Co-Authored-By trailers
+- Generic bot authors
+- **Dependabot / Renovate / security bots (excluded from agent maintenance)**
+
+Dependabot and Renovate must **not** count as agent maintenance unless explicitly justified in review notes.
+
+### P5 — Human documentation baseline (mandatory gate)
+
+For P1 repositories, samples README.md and CONTRIBUTING.md where available; runs identical reference extraction. Determines whether machine-vs-human comparative RQ is technically viable.
+
+---
+
+## Kill criteria (pre-scaling)
+
+The program **stops scaling** (including E1-1000) if any mandatory gate fails:
+
+| Criterion | Threshold | Gate |
+|-----------|-----------|------|
+| Rot incidence | **<2–3%** references per year | P3 |
+| Attribution precision | **<0.80** on agent-maintenance commits (human-reviewed) | P4 |
+| Survival median | **Not estimable** due to excessive right-censoring | P3 |
 
 ---
 
@@ -210,7 +265,7 @@ Pilot mapping: `agent-authored` ← `agent_signature_in_message`; `agent-coautho
 | Instruction-file lifecycle (repair/death) | General markdown / README analysis |
 | Join with L1/L1b/L2 spine | Paper writing |
 
-**Do not run:** `make e1-1000` until this protocol's longitudinal implementation step is complete and reviewed.
+**Do not run:** `make e1-1000` until pre-scaling gates P3–P5 pass and P4 human review confirms precision ≥0.80.
 
 ---
 
@@ -223,14 +278,22 @@ Pilot mapping: `agent-authored` ← `agent_signature_in_message`; `agent-coautho
 3. Reference state model documentation — `docs/reference_state_model.md`
 4. Exploratory RQ1 statistics and figures — `exports/truth_decay_pilot/rq1_feasibility.md`
 
-**Remaining (later milestones):**
+**Completed (pre-scaling gates):**
 
-1. **Attribution join** — Merge `agent_commit_candidates` onto L1 events; propagate attribution state to reference observations in commit windows (RQ3).
-2. **L2 extension** — Extend file-state panel with instruction-file `present | modified | deleted` and stale-reference counts per month.
-3. **Survival analysis module** — Implement half-life estimators for RQ2 (Kaplan–Meier or discrete-time hazard) under `artifact_lab/experiments/truth_decay/`.
-4. **Repair/death module** — Implement RQ4 transition accounting and instruction-file deletion hazards.
-5. **Analysis-ready export** — Generate `exports/truth_decay/` tables for external statistical review (still no paper).
-6. **Protocol v1.1 trigger** — New protocol version if detector family, attribution rules, or cohort frame changes.
+5. P3 rot incidence pilot — `exports/truth_pilot/p3_rot_incidence.md`
+6. P4 attribution precision worksheet — `exports/truth_pilot/agent_attribution_gold_worksheet.csv`
+7. P5 human doc baseline — `exports/truth_pilot/human_doc_baseline.md`
+
+**Remaining (post-gate, later milestones):**
+
+1. **Human review P4 worksheet** — compute attribution precision; confirm ≥0.80 or kill.
+2. **Attribution join** — Merge `agent_commit_candidates` onto L1 events (RQ3).
+3. **L2 extension** — Stale-reference counts per month on instruction files.
+4. **Survival analysis module** — RQ2 half-life estimators (post-P3 gate pass).
+5. **Repair/death module** — RQ4 transition accounting.
+6. **Comparative RQ5 analysis** — Machine vs human doc staleness (requires P5 pass).
+7. **Analysis-ready export** — `exports/truth_decay/` for external review.
+8. **Protocol v1.1 trigger** — if detector, attribution rules, or cohort frame changes.
 
 ---
 
@@ -254,3 +317,4 @@ Pilot mapping: `agent-authored` ← `agent_signature_in_message`; `agent-coautho
 |---------|------|--------|
 | v1 | 2026-07-02 | Initial protocol post go/no-go pilot (400-file P1, full L1 P2 on pilot + E1-100) |
 | v1.0-rq1 | 2026-07-02 | RQ1 longitudinal feasibility study implemented (`exports/truth_decay_pilot/`) |
+| v1.0-gates | 2026-07-02 | Pre-scaling gates P3–P5 implemented (`make pre-scaling-gates`) |

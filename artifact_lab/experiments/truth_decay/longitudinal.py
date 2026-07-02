@@ -77,9 +77,12 @@ def reconstruct_longitudinal_table(
     scratch_dir: Path,
     clone_timeout: int = 180,
     max_files: int | None = None,
+    file_filter: set[tuple[str, str]] | None = None,
 ) -> list[LongitudinalObservation]:
     grouped = load_instruction_file_events(l1_paths)
     file_keys = sorted(grouped.keys())
+    if file_filter is not None:
+        file_keys = [k for k in file_keys if k in file_filter]
     if max_files is not None:
         file_keys = file_keys[:max_files]
 
