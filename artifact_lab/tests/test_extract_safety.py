@@ -31,5 +31,5 @@ def test_skipped_repo_writes_receipt_and_marks_failed(tmp_path):
     with JobQueue(cfg.queue_path) as q:
         jobs = q.list_jobs()
         assert len(jobs) == 1
-        assert jobs[0].status == "failed"
+        assert jobs[0].state == "failed"
         assert jobs[0].failure_reason == "archived"

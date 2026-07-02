@@ -15,7 +15,9 @@ Research platform for mining **artifact lifecycles** in Git repositories. Git cl
 | L5 | Semantic drift / LLM | (future) |
 | — | Experiments | isolated leaves under `artifact_lab/experiments/` |
 
-Pipeline state (job queue) lives in `data/state/extraction_jobs.db` (SQLite WAL).
+Pipeline state (job queue) lives at `data/state/extraction_jobs.db` (SQLite WAL).
+The canonical path is defined in `artifact_lab/contracts/paths.py` as `EXTRACTION_QUEUE_PATH`.
+Do not use alternate filenames such as `extraction_jobs.sqlite`.
 
 ```
 artifact_lab/
@@ -78,7 +80,30 @@ python3.12 -m pytest artifact_lab/tests
 
 Extraction uses a SQLite WAL job queue at `data/state/extraction_jobs.db`.
 
+Documented columns on `extraction_jobs`:
+
+| Column | Description |
+|--------|-------------|
+| `repo_id` | Deterministic repository identifier |
+| `repo_url` | Normalized clone URL |
+| `state` | `pending`, `running`, `succeeded`, or `failed` |
+| `failure_reason` | Last failure/skip reason (nullable) |
+| `attempt_count` | Extraction attempts in this wave |
+| `started_at` | ISO-8601 UTC start of current/last attempt |
+| `finished_at` | ISO-8601 UTC completion of last attempt |
+
+Inspect queue state:
+
+```bash
+sqlite3 data/state/extraction_jobs.db "
+  SELECT repo_id, repo_url, state, failure_reason, attempt_count, started_at, finished_at
+  FROM extraction_jobs
+  ORDER BY started_at;
+"
+```
+
 - Each repo is tracked as `pending`, `running`, `succeeded`, or `failed`.
+- The extract CLI prints one progress line per registry row (`skip`, `extract`, `done`, or `fail`).
 - Re-run the same `extract` command after interruption: stale `running` jobs reset to `pending`.
 - **Succeeded repos are skipped**; their L1 rows are preserved in `events.parquet`.
 - Failed repos are retried on the next run.

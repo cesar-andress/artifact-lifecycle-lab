@@ -279,11 +279,17 @@ def run_extract(cfg: ExtractConfig) -> Path:
         for row in registry:
             queue.upsert_pending(row["repo_id"], row["normalized_repo_url"], cfg.family, cfg.extraction_wave)
 
-        for row in registry:
+        total = len(registry)
+        for index, row in enumerate(registry, start=1):
             repo_id = row["repo_id"]
+            repo_url = row["normalized_repo_url"]
             if not queue.should_process(repo_id, cfg.family, cfg.extraction_wave, force=cfg.force):
+                job = queue.get(repo_id, cfg.family, cfg.extraction_wave)
+                state = job.state if job else "unknown"
+                print(f"[{index}/{total}] skip {repo_url} (state={state})", flush=True)
                 continue
 
+            print(f"[{index}/{total}] extract {repo_url} ...", flush=True)
             queue.mark_running(repo_id, cfg.family, cfg.extraction_wave)
             receipt = extract_one_repo(cfg, row, blob_store)
             write_receipt(cfg.receipts_dir, repo_id, receipt)
@@ -294,22 +300,27 @@ def run_extract(cfg: ExtractConfig) -> Path:
             if status in {"ok", "no_matches"}:
                 queue.mark_succeeded(repo_id, cfg.family, cfg.extraction_wave, n_events=n_events)
                 new_events.extend(receipt.get("events") or [])
+                print(f"[{index}/{total}] done {repo_url} -> {status} ({n_events} events)", flush=True)
             elif status == "skipped":
+                reason = receipt.get("skip_reason") or "skipped"
                 queue.mark_failed(
                     repo_id,
                     cfg.family,
                     cfg.extraction_wave,
-                    reason=receipt.get("skip_reason") or "skipped",
+                    reason=reason,
                     n_events=0,
                 )
+                print(f"[{index}/{total}] skip {repo_url} -> {reason}", flush=True)
             else:
+                reason = receipt.get("error") or "unknown_failure"
                 queue.mark_failed(
                     repo_id,
                     cfg.family,
                     cfg.extraction_wave,
-                    reason=receipt.get("error") or "unknown_failure",
+                    reason=reason,
                     n_events=0,
                 )
+                print(f"[{index}/{total}] fail {repo_url} -> {reason}", flush=True)
 
     merged = _merge_events(existing_events, new_events, replaced_repo_ids=processed_repo_ids)
     if merged:

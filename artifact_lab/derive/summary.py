@@ -61,7 +61,7 @@ def build_summary(
 
     if queue_path and queue_path.exists():
         with JobQueue(queue_path) as queue:
-            counts = queue.counts_by_status()
+            counts = queue.counts_by_state()
             summary["repos_succeeded"] = counts.get("succeeded", 0)
             summary["repos_failed"] = counts.get("failed", 0)
             summary["repos_pending"] = counts.get("pending", 0)

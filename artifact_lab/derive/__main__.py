@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 from artifact_lab.contracts.datasets import l1_dataset_dir, l2_dataset_dir
+from artifact_lab.contracts.paths import EXTRACTION_QUEUE_PATH
 from artifact_lab.derive.panel import run_panel
 from artifact_lab.derive.summary import build_summary, format_summary
 
@@ -23,7 +24,7 @@ def main(argv: list[str] | None = None) -> int:
     summary_p = sub.add_parser("summary", help="Print pilot summary from L1/L2 and job queue")
     summary_p.add_argument("--l1", type=Path, default=None)
     summary_p.add_argument("--l2", type=Path, default=None)
-    summary_p.add_argument("--queue", type=Path, default=Path("data/state/extraction_jobs.db"))
+    summary_p.add_argument("--queue", type=Path, default=EXTRACTION_QUEUE_PATH)
     summary_p.add_argument("--receipts", type=Path, default=Path("data/receipts"))
     summary_p.add_argument("--blobs", type=Path, default=Path("data/blobs"))
 

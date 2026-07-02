@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 from artifact_lab.contracts.datasets import l1_dataset_dir
+from artifact_lab.contracts.paths import EXTRACTION_QUEUE_PATH
 from artifact_lab.ingest.extract import ExtractConfig, run_extract
 
 
@@ -21,7 +22,7 @@ def main(argv: list[str] | None = None) -> int:
     extract_p.add_argument("--events-dir", type=Path, default=None)
     extract_p.add_argument("--blobs-dir", type=Path, default=Path("data/blobs"))
     extract_p.add_argument("--receipts-dir", type=Path, default=Path("data/receipts"))
-    extract_p.add_argument("--queue", type=Path, default=Path("data/state/extraction_jobs.db"))
+    extract_p.add_argument("--queue", type=Path, default=EXTRACTION_QUEUE_PATH)
     extract_p.add_argument("--wave", default="pilot_v1")
     extract_p.add_argument("--clone-timeout", type=int, default=300)
     extract_p.add_argument("--repo-timeout", type=int, default=600)

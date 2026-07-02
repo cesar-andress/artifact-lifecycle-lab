@@ -8,7 +8,17 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Literal
 
-JobStatus = Literal["pending", "running", "succeeded", "failed"]
+JobState = Literal["pending", "running", "succeeded", "failed"]
+
+DOCUMENTED_COLUMNS: tuple[str, ...] = (
+    "repo_id",
+    "repo_url",
+    "state",
+    "failure_reason",
+    "attempt_count",
+    "started_at",
+    "finished_at",
+)
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS extraction_jobs (
@@ -16,7 +26,7 @@ CREATE TABLE IF NOT EXISTS extraction_jobs (
     repo_url TEXT NOT NULL,
     family TEXT NOT NULL,
     wave TEXT NOT NULL,
-    status TEXT NOT NULL,
+    state TEXT NOT NULL,
     failure_reason TEXT,
     attempt_count INTEGER NOT NULL DEFAULT 0,
     started_at TEXT,
@@ -33,7 +43,7 @@ class JobRecord:
     repo_url: str
     family: str
     wave: str
-    status: JobStatus
+    state: JobState
     failure_reason: str | None
     attempt_count: int
     started_at: str | None
@@ -49,6 +59,7 @@ class JobQueue:
         self._conn.row_factory = sqlite3.Row
         self._conn.execute("PRAGMA journal_mode=WAL")
         self._conn.executescript(_SCHEMA)
+        self._migrate_legacy_status_column()
         self._conn.commit()
 
     def close(self) -> None:
@@ -60,9 +71,17 @@ class JobQueue:
     def __exit__(self, *args: object) -> None:
         self.close()
 
+    def _migrate_legacy_status_column(self) -> None:
+        rows = self._conn.execute("PRAGMA table_info(extraction_jobs)").fetchall()
+        if not rows:
+            return
+        columns = {row["name"] for row in rows}
+        if "status" in columns and "state" not in columns:
+            self._conn.execute("ALTER TABLE extraction_jobs RENAME COLUMN status TO state")
+
     def reset_stale_running(self) -> int:
         cur = self._conn.execute(
-            "UPDATE extraction_jobs SET status = 'pending' WHERE status = 'running'"
+            "UPDATE extraction_jobs SET state = 'pending' WHERE state = 'running'"
         )
         self._conn.commit()
         return cur.rowcount
@@ -70,7 +89,7 @@ class JobQueue:
     def upsert_pending(self, repo_id: str, repo_url: str, family: str, wave: str) -> None:
         self._conn.execute(
             """
-            INSERT INTO extraction_jobs (repo_id, repo_url, family, wave, status)
+            INSERT INTO extraction_jobs (repo_id, repo_url, family, wave, state)
             VALUES (?, ?, ?, ?, 'pending')
             ON CONFLICT(repo_id, family, wave) DO NOTHING
             """,
@@ -91,14 +110,14 @@ class JobQueue:
             return True
         if force:
             return True
-        return job.status != "succeeded"
+        return job.state != "succeeded"
 
     def mark_running(self, repo_id: str, family: str, wave: str) -> None:
         now = _utc_now()
         self._conn.execute(
             """
             UPDATE extraction_jobs
-            SET status = 'running',
+            SET state = 'running',
                 attempt_count = attempt_count + 1,
                 started_at = ?,
                 finished_at = NULL,
@@ -114,7 +133,7 @@ class JobQueue:
         self._conn.execute(
             """
             UPDATE extraction_jobs
-            SET status = 'succeeded',
+            SET state = 'succeeded',
                 finished_at = ?,
                 failure_reason = NULL,
                 n_events = ?
@@ -129,7 +148,7 @@ class JobQueue:
         self._conn.execute(
             """
             UPDATE extraction_jobs
-            SET status = 'failed',
+            SET state = 'failed',
                 finished_at = ?,
                 failure_reason = ?,
                 n_events = ?
@@ -139,11 +158,11 @@ class JobQueue:
         )
         self._conn.commit()
 
-    def counts_by_status(self) -> dict[str, int]:
+    def counts_by_state(self) -> dict[str, int]:
         rows = self._conn.execute(
-            "SELECT status, COUNT(*) AS n FROM extraction_jobs GROUP BY status"
+            "SELECT state, COUNT(*) AS n FROM extraction_jobs GROUP BY state"
         ).fetchall()
-        return {row["status"]: row["n"] for row in rows}
+        return {row["state"]: row["n"] for row in rows}
 
     def list_jobs(self) -> list[JobRecord]:
         rows = self._conn.execute("SELECT * FROM extraction_jobs ORDER BY repo_id").fetchall()
@@ -156,7 +175,7 @@ class JobQueue:
             repo_url=row["repo_url"],
             family=row["family"],
             wave=row["wave"],
-            status=row["status"],
+            state=row["state"],
             failure_reason=row["failure_reason"],
             attempt_count=row["attempt_count"],
             started_at=row["started_at"],
