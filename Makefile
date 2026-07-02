@@ -59,7 +59,8 @@ GENERAL_OSS_POOL := data/registry/sources/general_oss_candidates.jsonl
 	e1-pilot-extract e1-pilot-derive e1-pilot-exports e1-extract e1-derive e1-exports-run \
 	e1-100-extract e1-100-derive e1-100-exports e1-100-performance e1-100-summary \
 	e1-1000-registry e1-1000-extract e1-1000-derive e1-1000-exports e1-1000-performance e1-1000-summary e1-1000-qa \
-	recover verify truth-pilot-p1 truth-pilot-p2 truth-pilot-go-no-go truth-pilots
+	recover verify truth-pilot-p1 truth-pilot-p2 truth-pilot-go-no-go truth-pilots \
+	truth-decay-rq1
 
 e1: install-paper e1-extract e1-derive e1-exports-run profile-report
 
@@ -214,6 +215,10 @@ truth-pilot-go-no-go:
 	  --output-dir $(TRUTH_PILOT_EXPORT)
 
 truth-pilots: truth-pilot-p1 truth-pilot-p2 truth-pilot-go-no-go
+
+truth-decay-rq1: install-paper
+	$(PY) -m artifact_lab.experiments.truth_decay \
+	  --output-dir exports/truth_decay_pilot
 
 ingest: $(L1_EVENTS)
 

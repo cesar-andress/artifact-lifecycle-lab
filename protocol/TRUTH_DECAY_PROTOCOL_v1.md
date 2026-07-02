@@ -1,10 +1,12 @@
 # Truth Decay Protocol v1
 
-**Status:** Frozen — post go/no-go pilot, pre-longitudinal implementation  
+**Status:** Frozen — RQ1 feasibility implemented; RQ2+ pending  
 **Protocol version:** `TRUTH_DECAY_PROTOCOL_v1`  
 **Working title:** *The Half-Life of Truth in Machine-Consumed Documentation*  
 **Companion pilot exports:** `exports/truth_pilot/`  
-**Pilot implementation:** `artifact_lab/experiments/truth_pilots/`
+**RQ1 feasibility exports:** `exports/truth_decay_pilot/`  
+**Pilot implementation:** `artifact_lab/experiments/truth_pilots/`  
+**RQ1 implementation:** `artifact_lab/experiments/truth_decay/`
 
 ---
 
@@ -190,7 +192,7 @@ Pilot mapping: `agent-authored` ← `agent_signature_in_message`; `agent-coautho
 | **Construct validity** | Mechanical verification ≠ semantic truth; instructions may be correct but unverifiable | Report `unverifiable` rate separately; do not claim semantic correctness |
 | **Selection bias** | Pilot cohort is engineering frame (pilot + E1-100), not E1-1000 scientific strata | Frame-conditional inference; defer population claims until longitudinal panel design |
 | **Attribution false positives/negatives** | Developers omit Co-Authored-By; bots misclassified as human | Deterministic rules only; report signature-type breakdown; sensitivity with stricter patterns |
-| **HEAD-only verification** | Pilot verifies at clone HEAD, not necessarily at L1 commit_sha | Longitudinal implementation must verify at matched commit |
+| **HEAD-only verification** | Pilot verifies at clone HEAD, not necessarily at L1 commit_sha | RQ1 feasibility verifies at L1 `commit_sha` (see `exports/truth_decay_pilot/`) |
 | **Reference extraction recall** | Regex extraction misses non-standard path formats | Pilot density audit; versioned extractor; manual spot-check sample |
 | **Survivorship** | Deleted instruction files drop out of L1 | Explicit `deleted` state; use full commit history before deletion |
 | **Confounding** | Agent-adoption repos may differ in engineering maturity | Include repo covariates (stars, activity, family) from registry |
@@ -214,16 +216,21 @@ Pilot mapping: `agent-authored` ← `agent_signature_in_message`; `agent-coautho
 
 ## Next implementation steps
 
-Ordered; each step is a separate milestone (no monolithic implementation):
+**Completed (RQ1 feasibility milestone):**
 
-1. **Commit-time verification** — Verify references at L1 `commit_sha`, not clone HEAD; store `(repo_id, instruction_path, commit_sha, reference, state)` rows.
-2. **Reference trajectory table** — Build `data/derived/truth_reference_panel/v1/` with one row per reference per observation time; encode transitions (`verified` → `missing` → `repaired`).
-3. **Attribution join** — Merge `agent_commit_candidates` onto L1 events; propagate attribution state to reference observations in commit windows.
-4. **L2 extension** — Extend file-state panel with instruction-file `present | modified | deleted` and stale-reference counts per month.
-5. **Survival analysis module** — Implement half-life estimators for RQ2 (Kaplan–Meier or discrete-time hazard) under `artifact_lab/experiments/truth_decay/`.
-6. **Repair/death module** — Implement RQ4 transition accounting and instruction-file deletion hazards.
-7. **Analysis-ready export** — Generate `exports/truth_decay/` tables for external statistical review (still no paper).
-8. **Protocol v1.1 trigger** — New protocol version if detector family, attribution rules, or cohort frame changes.
+1. Commit-time verification at L1 `commit_sha` — `artifact_lab/experiments/truth_decay/verify_at_commit.py`
+2. Reference trajectory table — `exports/truth_decay_pilot/reference_longitudinal.csv`
+3. Reference state model documentation — `docs/reference_state_model.md`
+4. Exploratory RQ1 statistics and figures — `exports/truth_decay_pilot/rq1_feasibility.md`
+
+**Remaining (later milestones):**
+
+1. **Attribution join** — Merge `agent_commit_candidates` onto L1 events; propagate attribution state to reference observations in commit windows (RQ3).
+2. **L2 extension** — Extend file-state panel with instruction-file `present | modified | deleted` and stale-reference counts per month.
+3. **Survival analysis module** — Implement half-life estimators for RQ2 (Kaplan–Meier or discrete-time hazard) under `artifact_lab/experiments/truth_decay/`.
+4. **Repair/death module** — Implement RQ4 transition accounting and instruction-file deletion hazards.
+5. **Analysis-ready export** — Generate `exports/truth_decay/` tables for external statistical review (still no paper).
+6. **Protocol v1.1 trigger** — New protocol version if detector family, attribution rules, or cohort frame changes.
 
 ---
 
@@ -246,3 +253,4 @@ Ordered; each step is a separate milestone (no monolithic implementation):
 | Version | Date | Change |
 |---------|------|--------|
 | v1 | 2026-07-02 | Initial protocol post go/no-go pilot (400-file P1, full L1 P2 on pilot + E1-100) |
+| v1.0-rq1 | 2026-07-02 | RQ1 longitudinal feasibility study implemented (`exports/truth_decay_pilot/`) |

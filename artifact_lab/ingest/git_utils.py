@@ -64,7 +64,16 @@ def remove_clone(dest: Path) -> None:
 
 def list_head_paths(repo_dir: Path, *, timeout: int = 300) -> set[str]:
     """List paths present in the HEAD tree only (fast adoption-census inspection)."""
-    proc = run_git(["git", "ls-tree", "-r", "--name-only", "HEAD"], cwd=repo_dir, timeout=timeout)
+    return list_paths_at_commit(repo_dir, "HEAD", timeout=timeout)
+
+
+def list_paths_at_commit(repo_dir: Path, commit_sha: str, *, timeout: int = 300) -> set[str]:
+    """List paths present in the tree at a specific commit (or HEAD)."""
+    proc = run_git(
+        ["git", "ls-tree", "-r", "--name-only", commit_sha],
+        cwd=repo_dir,
+        timeout=timeout,
+    )
     if proc.returncode != 0:
         return set()
     return {line.strip() for line in proc.stdout.splitlines() if line.strip()}
