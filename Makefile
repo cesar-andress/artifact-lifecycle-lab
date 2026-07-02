@@ -19,9 +19,27 @@ E1_REPORT := exports/e1/e1_census.md
 PAPER_ROOT := ../paper
 PAPER_NOTE := $(PAPER_ROOT)/notes/pilot_performance.md
 
-.PHONY: e1 paper ingest panel e1-exports profile-report test install-paper
+# Bounded development pilot (default: 3 repos, 120s timeouts via --skip-slow)
+E1_PILOT_LIMIT ?= 3
+
+.PHONY: e1 e1-pilot paper ingest panel e1-exports profile-report test install-paper e1-pilot-extract e1-pilot-derive e1-pilot-exports
 
 e1: install-paper ingest panel e1-exports profile-report
+
+e1-pilot: install-paper e1-pilot-extract e1-pilot-derive e1-pilot-exports profile-report
+
+e1-pilot-extract:
+	$(PY) -m artifact_lab.ingest extract \
+	  --registry $(REGISTRY) \
+	  --family $(FAMILY) \
+	  --limit $(E1_PILOT_LIMIT) \
+	  --skip-slow
+
+e1-pilot-derive:
+	$(PY) -m artifact_lab.derive panel --T 180
+
+e1-pilot-exports:
+	$(PY) -m artifact_lab.experiments.e1_adoption_census --no-export
 
 ingest: $(L1_EVENTS)
 
@@ -51,7 +69,7 @@ $(PROFILE_CSV): $(PROFILE_PARQUET)
 
 paper:
 	@mkdir -p $(PAPER_ROOT)/figures $(PAPER_ROOT)/tables $(PAPER_ROOT)/notes
-	@test -f $(FIG1_PDF) || (echo "missing $(FIG1_PDF); run make e1 first" && exit 1)
+	@test -f $(FIG1_PDF) || (echo "missing $(FIG1_PDF); run make e1 or make e1-pilot first" && exit 1)
 	cp $(FIG1_PDF) $(PAPER_ROOT)/figures/fig1.pdf
 	cp $(FIG1_CSV) $(PAPER_ROOT)/figures/fig1.csv
 	cp $(TABLE1) $(PAPER_ROOT)/tables/table1.csv

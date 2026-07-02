@@ -249,3 +249,49 @@ def mean_or_none(values: list[float]) -> float | None:
     if not values:
         return None
     return float(statistics.mean(values))
+
+
+def aggregate_slowest_phase(profiles: list[ExtractionProfile]) -> tuple[str, float]:
+    totals = {phase: 0.0 for phase in PHASE_NAMES}
+    for profile in profiles:
+        t = profile.timings
+        totals["clone"] += t.clone_s
+        totals["inspection"] += t.inspection_s
+        totals["history"] += t.history_s
+        totals["detector"] += t.detector_s
+        totals["blobs"] += t.blobs_s
+        totals["parquet_write"] += t.parquet_write_s
+        totals["manifest_write"] += t.manifest_write_s
+        totals["cleanup"] += t.cleanup_s
+    if not profiles:
+        return "n/a", 0.0
+    phase, value = max(totals.items(), key=lambda item: item[1])
+    return phase, value
+
+
+def format_extraction_summary(
+    *,
+    queue_counts: dict[str, int],
+    run_profiles: list[ExtractionProfile],
+    stale_recovered: int = 0,
+    registry_limit: int | None = None,
+) -> str:
+    completed = queue_counts.get("succeeded", 0)
+    failed = queue_counts.get("failed", 0)
+    pending = queue_counts.get("pending", 0)
+    totals = [p.timings.total_s for p in run_profiles]
+    slowest_phase, slowest_value = aggregate_slowest_phase(run_profiles)
+    lines = [
+        "",
+        "Extraction summary",
+        f"  completed .......... {completed}",
+        f"  failed ............. {failed}",
+        f"  pending ............ {pending}",
+        f"  median total time .. {median_or_none(totals):.1f} s" if totals else "  median total time .. n/a",
+        f"  slowest phase ...... {slowest_phase} ({slowest_value:.1f} s aggregate)",
+    ]
+    if stale_recovered:
+        lines.append(f"  stale recovered .... {stale_recovered} (running -> pending)")
+    if registry_limit is not None:
+        lines.append(f"  registry limit ..... {registry_limit}")
+    return "\n".join(lines)

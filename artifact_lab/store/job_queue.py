@@ -80,6 +80,7 @@ class JobQueue:
             self._conn.execute("ALTER TABLE extraction_jobs RENAME COLUMN status TO state")
 
     def reset_stale_running(self) -> int:
+        """Reset interrupted jobs from running -> pending for resumable extraction."""
         cur = self._conn.execute(
             "UPDATE extraction_jobs SET state = 'pending' WHERE state = 'running'"
         )

@@ -8,7 +8,14 @@ from pathlib import Path
 
 from artifact_lab.contracts.datasets import l1_dataset_dir
 from artifact_lab.contracts.paths import EXTRACTION_QUEUE_PATH
-from artifact_lab.ingest.extract import ExtractConfig, run_extract
+from artifact_lab.ingest.extract import (
+    DEFAULT_CLONE_TIMEOUT,
+    DEFAULT_REPO_TIMEOUT,
+    SKIP_SLOW_CLONE_TIMEOUT,
+    SKIP_SLOW_REPO_TIMEOUT,
+    ExtractConfig,
+    run_extract,
+)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -24,13 +31,25 @@ def main(argv: list[str] | None = None) -> int:
     extract_p.add_argument("--receipts-dir", type=Path, default=Path("data/receipts"))
     extract_p.add_argument("--queue", type=Path, default=EXTRACTION_QUEUE_PATH)
     extract_p.add_argument("--wave", default="pilot_v1")
-    extract_p.add_argument("--clone-timeout", type=int, default=300)
-    extract_p.add_argument("--repo-timeout", type=int, default=600)
+    extract_p.add_argument("--clone-timeout", type=int, default=DEFAULT_CLONE_TIMEOUT)
+    extract_p.add_argument("--repo-timeout", type=int, default=DEFAULT_REPO_TIMEOUT)
     extract_p.add_argument("--max-clone-mb", type=int, default=500)
+    extract_p.add_argument("--limit", type=int, default=None, help="Process only first N registry rows")
+    extract_p.add_argument(
+        "--skip-slow",
+        action="store_true",
+        help=f"Cap clone/repo timeouts at {SKIP_SLOW_CLONE_TIMEOUT}s (bounded pilot runs)",
+    )
     extract_p.add_argument("--force", action="store_true")
 
     args = parser.parse_args(argv)
     if args.command == "extract":
+        clone_timeout = args.clone_timeout
+        repo_timeout = args.repo_timeout
+        if args.skip_slow:
+            clone_timeout = min(clone_timeout, SKIP_SLOW_CLONE_TIMEOUT)
+            repo_timeout = min(repo_timeout, SKIP_SLOW_REPO_TIMEOUT)
+
         cfg = ExtractConfig(
             registry_path=args.registry,
             family=args.family,
@@ -40,10 +59,11 @@ def main(argv: list[str] | None = None) -> int:
             receipts_dir=args.receipts_dir,
             queue_path=args.queue,
             extraction_wave=args.wave,
-            clone_timeout=args.clone_timeout,
-            repo_timeout=args.repo_timeout,
+            clone_timeout=clone_timeout,
+            repo_timeout=repo_timeout,
             max_clone_bytes=args.max_clone_mb * 1_000_000,
             force=args.force,
+            limit=args.limit,
         )
         out = run_extract(cfg)
         print(f"wrote L1 events -> {out}")

@@ -32,6 +32,7 @@ from artifact_lab.ingest.profiling import (
     ExtractionProfile,
     PhaseTimings,
     assign_batch_write_shares,
+    format_extraction_summary,
     format_progress_log,
     load_profiles,
     merge_profiles,
@@ -61,7 +62,14 @@ class ExtractConfig:
     repo_timeout: int = 600
     max_clone_bytes: int = 500_000_000
     force: bool = False
+    limit: int | None = None
     profile_path: Path = EXTRACTION_PROFILE_PATH
+
+
+DEFAULT_CLONE_TIMEOUT = 300
+DEFAULT_REPO_TIMEOUT = 600
+SKIP_SLOW_CLONE_TIMEOUT = 120
+SKIP_SLOW_REPO_TIMEOUT = 120
 
 
 class CloneTooLargeError(RuntimeError):
@@ -284,6 +292,14 @@ def _extract_repo_body(
     return receipt
 
 
+def normalize_failure_reason(error: str | None) -> str:
+    if not error:
+        return "unknown_failure"
+    if "RepoTimeoutError" in error or error == "timeout":
+        return "timeout"
+    return error
+
+
 def extract_one_repo(cfg: ExtractConfig, row: dict[str, str], blob_store: BlobStore) -> dict:
     with ThreadPoolExecutor(max_workers=1) as pool:
         future = pool.submit(_extract_repo_body, cfg, row, blob_store)
@@ -311,7 +327,7 @@ def extract_one_repo(cfg: ExtractConfig, row: dict[str, str], blob_store: BlobSt
                 "status": "failed",
                 "n_events": 0,
                 "matched_paths": [],
-                "error": f"RepoTimeoutError: exceeded {cfg.repo_timeout}s",
+                "error": "timeout",
                 "skip_reason": None,
                 "clone_removed": not clone_path.exists(),
                 "events": [],
@@ -338,6 +354,8 @@ def _merge_events(
 def run_extract(cfg: ExtractConfig) -> Path:
     load_family(cfg.family)
     registry = read_registry(cfg.registry_path)
+    if cfg.limit is not None:
+        registry = registry[: cfg.limit]
     blob_store = BlobStore(cfg.blobs_dir)
     cfg.events_dir.mkdir(parents=True, exist_ok=True)
     out_path = cfg.events_dir / "events.parquet"
@@ -346,9 +364,13 @@ def run_extract(cfg: ExtractConfig) -> Path:
     new_events: list[dict] = []
     processed_repo_ids: set[str] = set()
     run_profiles: list[ExtractionProfile] = []
+    stale_recovered = 0
+    queue_counts: dict[str, int] = {}
 
     with JobQueue(cfg.queue_path) as queue:
-        queue.reset_stale_running()
+        stale_recovered = queue.reset_stale_running()
+        if stale_recovered:
+            print(f"recovered {stale_recovered} stale running job(s) -> pending", flush=True)
         for row in registry:
             queue.upsert_pending(row["repo_id"], row["normalized_repo_url"], cfg.family, cfg.extraction_wave)
 
@@ -397,7 +419,7 @@ def run_extract(cfg: ExtractConfig) -> Path:
                     n_events=0,
                 )
             else:
-                reason = receipt.get("error") or "unknown_failure"
+                reason = normalize_failure_reason(receipt.get("error"))
                 queue.mark_failed(
                     repo_id,
                     cfg.family,
@@ -405,6 +427,8 @@ def run_extract(cfg: ExtractConfig) -> Path:
                     reason=reason,
                     n_events=0,
                 )
+
+        queue_counts = queue.counts_by_state()
 
     t0 = time.perf_counter()
     merged = _merge_events(existing_events, new_events, replaced_repo_ids=processed_repo_ids)
@@ -448,5 +472,15 @@ def run_extract(cfg: ExtractConfig) -> Path:
             cfg.profile_path,
             csv_path=cfg.profile_path.with_suffix(".csv"),
         )
+
+    print(
+        format_extraction_summary(
+            queue_counts=queue_counts,
+            run_profiles=run_profiles,
+            stale_recovered=stale_recovered,
+            registry_limit=cfg.limit,
+        ),
+        flush=True,
+    )
 
     return out_path

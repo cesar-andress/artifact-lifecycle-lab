@@ -81,7 +81,10 @@ python3.12 -m pytest artifact_lab/tests
 ```bash
 pip install -e ".[dev,paper]"
 
-# Full artifact pipeline: extract → panel → census/fig1/table1 → performance note
+# Bounded development run (3 repos, 120s timeouts, partial exports)
+make e1-pilot
+
+# Full pilot registry (resume-friendly; do not use --force casually)
 make e1
 
 # Copy exports to paper repo and compile LaTeX (no mining)
@@ -90,8 +93,31 @@ make paper
 
 | Target | Scope |
 |--------|-------|
-| `make e1` | Mining + derived datasets + `exports/e1/` + `../paper/notes/pilot_performance.md` |
+| `make e1-pilot` | First 3 registry repos, `--skip-slow`, exports to `exports/e1/` |
+| `make e1` | Full registry extract (resume) → panel → census → performance note |
 | `make paper` | Copy figures/tables to `../paper/` and compile manuscript only |
+
+Use **`make e1-pilot` for development**. Use **`make e1` only for the full pilot**. Avoid `--force` unless you intentionally want to re-extract succeeded repositories.
+
+### Bounded extraction flags
+
+```bash
+python3.12 -m artifact_lab.ingest extract \
+  --registry data/registry/pilot_repos.csv \
+  --family ai_conventions_v1 \
+  --limit 3 \
+  --skip-slow
+```
+
+- `--limit N` — process only the first *N* rows of the registry CSV.
+- `--skip-slow` — cap clone and repo timeouts at 120 s; repos exceeding `--repo-timeout` are marked `failed` with reason `timeout` and the run continues.
+- `--repo-timeout SECS` — per-repo wall-clock limit (default 600; use with `--skip-slow` for bounded runs).
+
+After each extract run, a summary is printed: completed / failed / pending counts, median total time, and slowest aggregate phase.
+
+### Stale-running recovery
+
+At the start of every extract run, jobs left as `running` from an interrupted process are reset to **`pending`** (not failed). They are retried on the next run unless already `succeeded` and `--force` is not set. The number recovered is printed when non-zero.
 
 ## Extraction profiling
 
@@ -150,7 +176,7 @@ sqlite3 data/state/extraction_jobs.db "
 - Each repo is tracked as `pending`, `running`, `succeeded`, or `failed`.
 - The extract CLI prints one profiling block per processed repository and warns when total time exceeds 5 minutes.
 - Profile rows are written to `data/profiling/extraction_profile.parquet`.
-- Re-run the same `extract` command after interruption: stale `running` jobs reset to `pending`.
+- Re-run the same `extract` command after interruption: stale `running` jobs reset to `pending` (see **Stale-running recovery** above).
 - **Succeeded repos are skipped**; their L1 rows are preserved in `events.parquet`.
 - Failed repos are retried on the next run.
 
