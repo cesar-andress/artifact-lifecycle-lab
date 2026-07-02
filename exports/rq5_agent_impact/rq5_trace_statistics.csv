@@ -1,0 +1,16 @@
+metric,condition,agent_id,value,n_runs
+rate_read_instruction,A,stub_agent_v1,1.0,35
+rate_followed_reference,A,stub_agent_v1,0.857143,35
+rate_ignored_reference,A,stub_agent_v1,0.0,35
+rate_detected_inconsistency,A,stub_agent_v1,0.0,35
+rate_repaired_reference,A,stub_agent_v1,0.0,35
+event_count_follow_reference,A,stub_agent_v1,30.0,35
+event_count_read_instruction,A,stub_agent_v1,35.0,35
+rate_read_instruction,B,stub_agent_v1,1.0,35
+rate_followed_reference,B,stub_agent_v1,1.0,35
+rate_ignored_reference,B,stub_agent_v1,0.0,35
+rate_detected_inconsistency,B,stub_agent_v1,0.0,35
+rate_repaired_reference,B,stub_agent_v1,0.0,35
+event_count_follow_reference,B,stub_agent_v1,35.0,35
+event_count_read_instruction,B,stub_agent_v1,35.0,35
+event_count_tool_failure,B,stub_agent_v1,35.0,35

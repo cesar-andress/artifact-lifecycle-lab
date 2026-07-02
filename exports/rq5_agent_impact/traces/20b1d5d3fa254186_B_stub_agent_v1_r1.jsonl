@@ -1,0 +1,3 @@
+{"event_type": "read_instruction", "payload": {"path": "skills/next-dev-loop/SKILL.md"}, "timestamp": "2026-07-02T20:32:26.368403+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": "/_next/mcp"}, "timestamp": "2026-07-02T20:32:26.368419+00:00"}
+{"event_type": "tool_failure", "payload": {"reason": "missing_path", "reference": "/_next/mcp"}, "timestamp": "2026-07-02T20:32:26.368421+00:00"}

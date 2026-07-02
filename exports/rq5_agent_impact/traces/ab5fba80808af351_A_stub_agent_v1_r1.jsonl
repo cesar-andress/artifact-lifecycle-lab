@@ -1,0 +1,2 @@
+{"event_type": "read_instruction", "payload": {"path": "packages/vue/AGENTS.md"}, "timestamp": "2026-07-02T20:32:26.368664+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": "@copilotkit/react"}, "timestamp": "2026-07-02T20:32:26.368682+00:00"}

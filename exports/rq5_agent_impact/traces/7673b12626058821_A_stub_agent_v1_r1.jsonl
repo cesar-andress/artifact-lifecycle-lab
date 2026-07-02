@@ -1,0 +1,2 @@
+{"event_type": "read_instruction", "payload": {"path": "skills/distribution/github-pages-deployer/SKILL.md"}, "timestamp": "2026-07-02T20:32:26.372149+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": ".github/workflows/deploy.yml"}, "timestamp": "2026-07-02T20:32:26.372174+00:00"}

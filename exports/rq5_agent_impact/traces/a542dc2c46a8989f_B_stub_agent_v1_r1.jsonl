@@ -1,0 +1,3 @@
+{"event_type": "read_instruction", "payload": {"path": "AGENTS.md"}, "timestamp": "2026-07-02T20:32:26.371072+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": "/.codex/auth.json"}, "timestamp": "2026-07-02T20:32:26.371094+00:00"}
+{"event_type": "tool_failure", "payload": {"reason": "missing_path", "reference": "/.codex/auth.json"}, "timestamp": "2026-07-02T20:32:26.371096+00:00"}

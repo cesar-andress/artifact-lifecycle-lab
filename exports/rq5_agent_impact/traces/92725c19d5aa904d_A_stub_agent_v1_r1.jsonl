@@ -1,0 +1,2 @@
+{"event_type": "read_instruction", "payload": {"path": ".github/copilot-instructions.md"}, "timestamp": "2026-07-02T20:32:26.376965+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": "/media/plugins/"}, "timestamp": "2026-07-02T20:32:26.376983+00:00"}

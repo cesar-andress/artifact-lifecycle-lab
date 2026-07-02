@@ -1,0 +1,2 @@
+{"event_type": "read_instruction", "payload": {"path": "apps/help-center/AGENTS.md"}, "timestamp": "2026-07-02T20:32:26.365252+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": "@automattic/help-center"}, "timestamp": "2026-07-02T20:32:26.365271+00:00"}

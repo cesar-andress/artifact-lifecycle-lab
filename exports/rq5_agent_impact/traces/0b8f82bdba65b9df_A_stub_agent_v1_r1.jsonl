@@ -1,0 +1,2 @@
+{"event_type": "read_instruction", "payload": {"path": "cli/AGENTS.md"}, "timestamp": "2026-07-02T20:32:26.361100+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": "/guide.ts"}, "timestamp": "2026-07-02T20:32:26.361140+00:00"}

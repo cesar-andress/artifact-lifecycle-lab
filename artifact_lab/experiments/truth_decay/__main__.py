@@ -15,6 +15,10 @@ from artifact_lab.experiments.truth_decay.run_rq1 import DEFAULT_EXPORT_DIR, DEF
 from artifact_lab.experiments.truth_decay.run_rq2 import DEFAULT_RQ2_EXPORT, run_rq2_survival_analysis
 from artifact_lab.experiments.truth_decay.run_rq3 import DEFAULT_EXPORT as DEFAULT_RQ3_EXPORT, run_rq3_observational_analysis
 from artifact_lab.experiments.truth_decay.run_rq4 import DEFAULT_RQ4_EXPORT, run_rq4_lifecycle_analysis
+from artifact_lab.experiments.truth_decay.run_rq5_experiment import (
+    DEFAULT_RQ5_EXPERIMENT_EXPORT,
+    run_rq5_experiment,
+)
 from artifact_lab.experiments.truth_decay.run_rq5_prep import DEFAULT_RQ5_EXPORT, run_rq5_preparation
 from artifact_lab.experiments.truth_pilots.gates_common import DEFAULT_RQ1_LONGITUDINAL
 
@@ -64,6 +68,26 @@ def _cmd_rq4(args: argparse.Namespace) -> int:
     outputs = run_rq4_lifecycle_analysis(
         longitudinal_csv=args.longitudinal_csv,
         output_dir=args.output_dir,
+    )
+    for label, path in outputs.items():
+        print(f"{label} -> {path}")
+    return 0
+
+
+def _cmd_rq5(args: argparse.Namespace) -> int:
+    outputs = run_rq5_experiment(
+        candidate_csv=args.candidate_csv,
+        gfc_confirmatory_csv=args.gfc_confirmatory_csv,
+        blobs_dir=args.blobs_dir,
+        scratch_dir=args.scratch,
+        output_dir=args.output_dir,
+        agents=args.agents,
+        replicates=args.replicates,
+        max_cases=args.max_cases,
+        require_p1=args.require_p1,
+        run_tests=args.run_tests,
+        use_git_workspaces=args.use_git_workspaces,
+        clone_timeout=args.clone_timeout,
     )
     for label, path in outputs.items():
         print(f"{label} -> {path}")
@@ -192,17 +216,40 @@ def main(argv: list[str] | None = None) -> int:
     rq4.add_argument("--output-dir", type=Path, default=DEFAULT_RQ4_EXPORT)
     rq4.set_defaults(func=_cmd_rq4)
 
-    rq5 = sub.add_parser("rq5-prep", help="RQ5 experimental corpus preparation (no agent runs)")
-    rq5.add_argument("--longitudinal-csv", type=Path, default=DEFAULT_RQ1_LONGITUDINAL)
-    rq5.add_argument("--l1", type=Path, action="append", dest="l1_paths")
-    rq5.add_argument("--blobs-dir", type=Path, default=Path("data/blobs"))
-    rq5.add_argument(
+    rq5_prep = sub.add_parser("rq5-prep", help="RQ5 experimental corpus preparation (no agent runs)")
+    rq5_prep.add_argument("--longitudinal-csv", type=Path, default=DEFAULT_RQ1_LONGITUDINAL)
+    rq5_prep.add_argument("--l1", type=Path, action="append", dest="l1_paths")
+    rq5_prep.add_argument("--blobs-dir", type=Path, default=Path("data/blobs"))
+    rq5_prep.add_argument(
         "--reference-summary-csv",
         type=Path,
         default=Path("exports/truth_pilot/reference_summary.csv"),
     )
-    rq5.add_argument("--output-dir", type=Path, default=DEFAULT_RQ5_EXPORT)
-    rq5.set_defaults(func=_cmd_rq5_prep)
+    rq5_prep.add_argument("--output-dir", type=Path, default=DEFAULT_RQ5_EXPORT)
+    rq5_prep.set_defaults(func=_cmd_rq5_prep)
+
+    rq5 = sub.add_parser("rq5", help="RQ5 causal agent-impact experiment")
+    rq5.add_argument(
+        "--candidate-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/rq5_candidate_dataset.csv"),
+    )
+    rq5.add_argument(
+        "--gfc-confirmatory-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/gfc_confirmatory_audit.csv"),
+    )
+    rq5.add_argument("--blobs-dir", type=Path, default=Path("data/blobs"))
+    rq5.add_argument("--scratch", type=Path, default=Path("scratch"))
+    rq5.add_argument("--output-dir", type=Path, default=DEFAULT_RQ5_EXPERIMENT_EXPORT)
+    rq5.add_argument("--agents", action="append", default=["stub"])
+    rq5.add_argument("--replicates", type=int, default=1)
+    rq5.add_argument("--max-cases", type=int, default=None)
+    rq5.add_argument("--require-p1", action="store_true")
+    rq5.add_argument("--run-tests", action="store_true")
+    rq5.add_argument("--use-git-workspaces", action="store_true")
+    rq5.add_argument("--clone-timeout", type=int, default=180)
+    rq5.set_defaults(func=_cmd_rq5)
 
     audit = sub.add_parser("born-stale-audit", help="Audit never-verified (born-stale) references")
     audit.add_argument("--longitudinal-csv", type=Path, default=DEFAULT_RQ1_LONGITUDINAL)

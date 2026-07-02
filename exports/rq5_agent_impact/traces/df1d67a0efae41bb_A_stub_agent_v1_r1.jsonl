@@ -1,0 +1,2 @@
+{"event_type": "read_instruction", "payload": {"path": ".github/instructions/tree-widgets.instructions.md"}, "timestamp": "2026-07-02T20:32:26.364314+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": "src/vs/platform/list/browser/test/listService.test.ts"}, "timestamp": "2026-07-02T20:32:26.364331+00:00"}

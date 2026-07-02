@@ -1,0 +1,2 @@
+estimand,agent_id,n_cases,n_pairs,success_rate_a,success_rate_b,success_difference,success_difference_ci_low,success_difference_ci_high,paired_success_difference,paired_success_difference_ci_low,paired_success_difference_ci_high,cohens_h,bootstrap_iterations
+success_rate_difference_A_minus_B,stub_agent_v1,35,35,1.0,0.0,1.0,0.802191,1.0,1.0,1.0,1.0,3.141593,2000

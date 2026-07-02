@@ -1,0 +1,2 @@
+{"event_type": "read_instruction", "payload": {"path": "docs/AGENTS.md"}, "timestamp": "2026-07-02T20:32:26.370233+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": "/v3/concepts/flows"}, "timestamp": "2026-07-02T20:32:26.370254+00:00"}

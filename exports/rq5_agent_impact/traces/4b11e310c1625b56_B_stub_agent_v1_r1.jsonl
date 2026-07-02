@@ -1,0 +1,3 @@
+{"event_type": "read_instruction", "payload": {"path": ".github/instructions/sessions.instructions.md"}, "timestamp": "2026-07-02T20:32:26.371498+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": "vs/sessions"}, "timestamp": "2026-07-02T20:32:26.371514+00:00"}
+{"event_type": "tool_failure", "payload": {"reason": "missing_path", "reference": "vs/sessions"}, "timestamp": "2026-07-02T20:32:26.371516+00:00"}

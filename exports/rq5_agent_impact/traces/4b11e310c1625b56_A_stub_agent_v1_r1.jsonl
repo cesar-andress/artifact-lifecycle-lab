@@ -1,0 +1,2 @@
+{"event_type": "read_instruction", "payload": {"path": ".github/instructions/sessions.instructions.md"}, "timestamp": "2026-07-02T20:32:26.371347+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": "vs/sessions"}, "timestamp": "2026-07-02T20:32:26.371365+00:00"}

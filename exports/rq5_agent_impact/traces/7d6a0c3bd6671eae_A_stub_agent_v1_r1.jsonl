@@ -1,0 +1,2 @@
+{"event_type": "read_instruction", "payload": {"path": "AGENTS.md"}, "timestamp": "2026-07-02T20:32:26.365656+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": ".cursor/rules/"}, "timestamp": "2026-07-02T20:32:26.365674+00:00"}

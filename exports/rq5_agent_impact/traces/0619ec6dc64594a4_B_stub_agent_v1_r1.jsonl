@@ -1,0 +1,3 @@
+{"event_type": "read_instruction", "payload": {"path": "skills/research/commission-calculator/SKILL.md"}, "timestamp": "2026-07-02T20:32:26.363647+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": "references/list-affitor-api.md"}, "timestamp": "2026-07-02T20:32:26.363667+00:00"}
+{"event_type": "tool_failure", "payload": {"reason": "missing_path", "reference": "references/list-affitor-api.md"}, "timestamp": "2026-07-02T20:32:26.363669+00:00"}

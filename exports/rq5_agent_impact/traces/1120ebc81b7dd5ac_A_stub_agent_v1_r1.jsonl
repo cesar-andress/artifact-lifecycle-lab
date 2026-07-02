@@ -1,0 +1,2 @@
+{"event_type": "read_instruction", "payload": {"path": "apps/blaze-dashboard/AGENTS.md"}, "timestamp": "2026-07-02T20:32:26.363918+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": "/etc/hosts"}, "timestamp": "2026-07-02T20:32:26.363937+00:00"}

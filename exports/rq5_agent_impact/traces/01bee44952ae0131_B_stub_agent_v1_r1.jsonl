@@ -1,0 +1,3 @@
+{"event_type": "read_instruction", "payload": {"path": "AGENTS.md"}, "timestamp": "2026-07-02T20:32:26.376247+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": "client/"}, "timestamp": "2026-07-02T20:32:26.376263+00:00"}
+{"event_type": "tool_failure", "payload": {"reason": "missing_path", "reference": "client/"}, "timestamp": "2026-07-02T20:32:26.376265+00:00"}

@@ -1,0 +1,3 @@
+{"event_type": "read_instruction", "payload": {"path": "skills/copilotkit-debug/SKILL.md"}, "timestamp": "2026-07-02T20:32:26.359726+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": ".codex/config.toml"}, "timestamp": "2026-07-02T20:32:26.359749+00:00"}
+{"event_type": "tool_failure", "payload": {"reason": "missing_path", "reference": ".codex/config.toml"}, "timestamp": "2026-07-02T20:32:26.359752+00:00"}

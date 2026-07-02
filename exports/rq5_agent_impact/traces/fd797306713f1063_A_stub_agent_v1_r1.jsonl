@@ -1,0 +1,2 @@
+{"event_type": "read_instruction", "payload": {"path": "packages/grid/AGENTS.md"}, "timestamp": "2026-07-02T20:32:26.360506+00:00"}
+{"event_type": "follow_reference", "payload": {"reference": "@automattic/grid"}, "timestamp": "2026-07-02T20:32:26.360544+00:00"}
