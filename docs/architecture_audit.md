@@ -124,7 +124,7 @@ flowchart TB
 
 | Source | Assets | Recommendation |
 |--------|--------|----------------|
-| `ai-convention-lifecycle-corpus` | `scripts/lifecycle/extract_history.py`, `git_utils.py`, `discover_v2.py` | **REFERENCE** — already mapped in `platform/docs/legacy_map.md`; ideas reimplemented, do not copy structure |
+| `ai-convention-lifecycle-corpus` | `scripts/lifecycle/extract_history.py`, `git_utils.py`, `discover_v2.py` | **REFERENCE** — already mapped in `artifact_lab/docs/legacy_map.md`; ideas reimplemented, do not copy structure |
 | `maestro` | `paper/scripts/git_policy_change_audit.py` | **IGNORE** — single ERP monorepo, different unit of analysis |
 | `prompt-provenance-framework` | `vdg_archaeology_pilot.py` | **REFERENCE** — GitHub search + workflow YAML mining; future experiment leaf |
 | `vsdlc` | Phases 1–2 only; **no clone/extract** in release | **REFERENCE** for L0, not L1 |
@@ -147,7 +147,7 @@ flowchart TB
 
 | Source | Assets | Recommendation |
 |--------|--------|----------------|
-| `ai-convention-lifecycle-corpus` | pandas `to_parquet` in lifecycle scripts | **IGNORE** — superseded by `platform/store/parquet.py` |
+| `ai-convention-lifecycle-corpus` | pandas `to_parquet` in lifecycle scripts | **IGNORE** — superseded by `artifact_lab/store/parquet.py` |
 | `invert` | LPR corpus loaders (HF/Parquet benchmarks) | **IGNORE** — different domain (code benchmarks, not git events) |
 | `earnbench` | `paper/vendor/swe_verified_test.parquet` | **IGNORE** |
 | `fsm-behavioural-predictors` | `scripts/strengthen_io.py` | **IGNORE** |
@@ -156,7 +156,7 @@ flowchart TB
 
 | Source | Assets | Recommendation |
 |--------|--------|----------------|
-| `artifact-lifecycle-lab` | `platform/store/job_queue.py` (WAL) | **KEEP** — only intentional SQLite queue in the research stack |
+| `artifact-lifecycle-lab` | `artifact_lab/store/job_queue.py` (WAL) | **KEEP** — only intentional SQLite queue in the research stack |
 | Others | None for extraction pipelines | No collision |
 
 ### Protocol YAMLs / detector logic
@@ -173,7 +173,7 @@ flowchart TB
 
 | Source | Assets | Recommendation |
 |--------|--------|----------------|
-| `artifact-lifecycle-lab` | `platform/store/blobs.py` (SHA-256, `.txt`) | **KEEP** |
+| `artifact-lifecycle-lab` | `artifact_lab/store/blobs.py` (SHA-256, `.txt`) | **KEEP** |
 | Legacy | No content-addressed blob store (relied on permanent clones) | N/A — lab innovation, not duplicate |
 
 ### Ownership extraction
@@ -186,7 +186,7 @@ flowchart TB
 
 | Source | Assets | Recommendation |
 |--------|--------|----------------|
-| `ai-convention-lifecycle-corpus` | `scripts/cochange/sync_engine.py`, `extract_changed_files.py`, scope modes | **REUSE SMALL PARTS** as `platform/experiments/cochange_*` leaf — **do not** port into `platform/derive` core |
+| `ai-convention-lifecycle-corpus` | `scripts/cochange/sync_engine.py`, `extract_changed_files.py`, scope modes | **REUSE SMALL PARTS** as `artifact_lab/experiments/cochange_*` leaf — **do not** port into `artifact_lab/derive` core |
 | `prompt-provenance-framework` | CI input/output scope rules | Related conceptually; different construct (gate scope vs file co-touch) |
 
 ### Survival / panel analysis
@@ -194,7 +194,7 @@ flowchart TB
 | Source | Assets | Recommendation |
 |--------|--------|----------------|
 | `ai-convention-lifecycle-corpus` | `ACTIVE`/`DORMANT` states, `decision_impact.py`, Kaplan–Meier in analysis JSON | **REFERENCE** — L2 reimplemented with different state ontology; survival stats belong in **experiments**, not core panel |
-| `artifact-lifecycle-lab` | `platform/derive/panel.py` (`absent/young/active/stale/deleted`) | **KEEP** — deliberate schema break from legacy |
+| `artifact-lifecycle-lab` | `artifact_lab/derive/panel.py` (`absent/young/active/stale/deleted`) | **KEEP** — deliberate schema break from legacy |
 
 ### GitHub Archive processing
 
@@ -220,7 +220,7 @@ flowchart TB
 
 | Source | Assets | Recommendation |
 |--------|--------|----------------|
-| `artifact-lifecycle-lab` | `platform/store/manifest.py`, `contracts/datasets.py` (`v1/` paths) | **KEEP** — canonical going forward |
+| `artifact-lifecycle-lab` | `artifact_lab/store/manifest.py`, `contracts/datasets.py` (`v1/` paths) | **KEEP** — canonical going forward |
 | `ai-convention-lifecycle-corpus` | `metadata/`, Zenodo, `extract_meta.json` | **REFERENCE** — field ideas only |
 | `earnbench`, `invert`, FSM repos | `frozen_manifest.json`, checksums, `ARTIFACT_VERSION` | **REFERENCE** for manifest fields (`code_git_sha` already adopted) |
 | `municipal-ai-evidence-gaps` | `corpus_manifest_v0_2.csv` | **REFERENCE** for document corpora, not git events |
@@ -229,9 +229,9 @@ flowchart TB
 
 | Source | Assets | Recommendation |
 |--------|--------|----------------|
-| Snakemake | **Not used** anywhere under `~/papers/` (only mentioned in vsdlc legacy audit doc) | Lab `platform/dag/` stub is fine; no duplicate workflow engine |
+| Snakemake | **Not used** anywhere under `~/papers/` (only mentioned in vsdlc legacy audit doc) | Lab `artifact_lab/dag/` stub is fine; no duplicate workflow engine |
 | CI | `earnbench`, `fightsafe-ai`, `behavioral-fsm-benchmark`, `fsmrepairbench`, `llm-fsm-local-benchmark` | **IGNORE** — adopt CI for lab when pilot stabilizes; no reuse needed |
-| CLI | Legacy Makefile; FSM Typer CLIs; lab `python -m platform.ingest/derive` | **KEEP** lab pattern — avoid introducing a second CLI framework (Typer) unless ergonomics demand it |
+| CLI | Legacy Makefile; FSM Typer CLIs; lab `python -m artifact_lab.ingest/derive` | **KEEP** lab pattern — avoid introducing a second CLI framework (Typer) unless ergonomics demand it |
 
 ---
 
@@ -290,7 +290,7 @@ flowchart TB
 
 ### 6. Duplicate Git wrappers (low — acceptable)
 
-- `platform/ingest/git_utils.py` reimplements legacy `git_utils.py` with bare-clone policy.  
+- `artifact_lab/ingest/git_utils.py` reimplements legacy `git_utils.py` with bare-clone policy.  
 - **Justified** by different clone contract; not worth extracting to a shared library yet.
 
 ### 7. Manifest format drift (low)
@@ -361,13 +361,13 @@ flowchart TB
 
 | Priority | Action |
 |----------|--------|
-| P0 | Extend `platform/docs/legacy_map.md` with **vsdlc** and **prompt-provenance** cross-links (this audit supersedes for breadth). |
+| P0 | Extend `artifact_lab/docs/legacy_map.md` with **vsdlc** and **prompt-provenance** cross-links (this audit supersedes for breadth). |
 | P0 | Document **repo_id mapping** from legacy `owner/repo` → normalized URL → new hash for any legacy cohort reuse. |
 | P1 | Design **L0 module** that can ingest vsdlc JSONL exports OR static CSV under one registry contract. |
 | P1 | Register **protocol families** (`gh_actions_v1`, `dependabot_v1`, `ci_gate_scope_v1`) as YAML commits without implementing extract yet. |
-| P2 | Plan **L4 co-change** as `platform/experiments/cochange/` port with read-only dependency on L1 Parquet. |
+| P2 | Plan **L4 co-change** as `artifact_lab/experiments/cochange/` port with read-only dependency on L1 Parquet. |
 | P2 | Add **DuckDB views** or thin SQL files as derive leaves, not core ingest. |
-| P3 | Consider renaming import package from `platform` → `artifact_platform` before external consumers appear (CLI can remain `python -m platform.ingest` via shim module). |
+| P3 | Consider renaming import package from `platform` → `artifact_platform` before external consumers appear (CLI can remain `python -m artifact_lab.ingest` via shim module). |
 
 ---
 
@@ -388,7 +388,7 @@ flowchart TB
 
 1. **L0 discovery unification**  
    - **Problem:** Pilot registry is static CSV; vsdlc already implements GitHub search, checkpoints, and contamination-aware filtering.  
-   - **Change:** Treat `data/registry/*.csv` as one **input format** to a future `platform/ingest discover` that can also consume vsdlc JSONL. Do not reimplement GitHub search a fourth time in extract.
+   - **Change:** Treat `data/registry/*.csv` as one **input format** to a future `artifact_lab/ingest discover` that can also consume vsdlc JSONL. Do not reimplement GitHub search a fourth time in extract.
 
 2. **Explicit legacy ID bridge**  
    - **Problem:** Legacy frozen data uses `owner/repo` keys.  
@@ -396,11 +396,11 @@ flowchart TB
 
 3. **Protocol registry discipline**  
    - **Problem:** Detectors live in three silos (legacy YAML, lab YAML, vsdlc Python predicates).  
-   - **Change:** All path predicates for mining must be **YAML families** in `platform/protocol/families/`; vsdlc predicates become exportable YAML, not parallel Python rules.
+   - **Change:** All path predicates for mining must be **YAML families** in `artifact_lab/protocol/families/`; vsdlc predicates become exportable YAML, not parallel Python rules.
 
 4. **Co-change as experiment leaf only**  
    - **Problem:** Legacy `scripts/cochange/` is the largest unreplicated asset for L4.  
-   - **Change:** Port minimally into `platform/experiments/` with frozen inputs; **forbid** writing coupling tables into `data/l1/` or `data/derived/`.
+   - **Change:** Port minimally into `artifact_lab/experiments/` with frozen inputs; **forbid** writing coupling tables into `data/l1/` or `data/derived/`.
 
 5. **Package naming**  
    - **Problem:** `platform` shadows stdlib; shim works but is fragile.  
@@ -408,7 +408,7 @@ flowchart TB
 
 6. **Query layer**  
    - **Problem:** DuckDB is listed in stack but unused; legacy used pandas + ad-hoc scripts.  
-   - **Change:** Add `platform/derive/query/` or documented `.sql` snapshots as versioned artifacts when pilot summary outgrows Python.
+   - **Change:** Add `artifact_lab/derive/query/` or documented `.sql` snapshots as versioned artifacts when pilot summary outgrows Python.
 
 ### What we would **not** redesign
 

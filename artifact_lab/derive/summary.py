@@ -7,8 +7,8 @@ from pathlib import Path
 
 import pyarrow.parquet as pq
 
-from platform.store.job_queue import JobQueue
-from platform.store.parquet import read_parquet, read_parquet_dir
+from artifact_lab.store.job_queue import JobQueue
+from artifact_lab.store.parquet import read_parquet, read_parquet_dir
 
 
 def _read_l1(events_path: Path) -> object | None:

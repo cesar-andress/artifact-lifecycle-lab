@@ -1,6 +1,6 @@
 """Detector matching and exclusion tests."""
 
-from platform.protocol.detector import is_excluded, is_matched_path, match_pattern_id
+from artifact_lab.protocol.detector import is_excluded, is_matched_path, match_pattern_id
 
 
 FAMILY = "ai_conventions_v1"

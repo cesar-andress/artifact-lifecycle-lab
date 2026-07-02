@@ -7,14 +7,14 @@ from pathlib import Path
 
 import pyarrow as pa
 
-from platform.contracts.datasets import L2_DATASET_VERSION
-from platform.contracts.schemas import (
+from artifact_lab.contracts.datasets import L2_DATASET_VERSION
+from artifact_lab.contracts.schemas import (
     FILE_STATE_PANEL_COLUMNS,
     PanelState,
     file_state_panel_schema,
 )
-from platform.store.manifest import write_manifest
-from platform.store.parquet import read_parquet, read_parquet_dir, write_parquet
+from artifact_lab.store.manifest import write_manifest
+from artifact_lab.store.parquet import read_parquet, read_parquet_dir, write_parquet
 
 
 def _as_utc(ts: datetime) -> datetime:

@@ -10,7 +10,7 @@ from typing import Any
 
 import yaml
 
-from platform.contracts.schemas import schema_hash
+from artifact_lab.contracts.schemas import schema_hash
 
 
 def git_sha() -> str | None:

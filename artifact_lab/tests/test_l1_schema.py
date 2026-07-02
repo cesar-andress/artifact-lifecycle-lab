@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 
 import pyarrow as pa
 
-from platform.contracts.schemas import FILE_EVENT_LOG_COLUMNS, file_event_log_schema, validate_columns
+from artifact_lab.contracts.schemas import FILE_EVENT_LOG_COLUMNS, file_event_log_schema, validate_columns
 
 
 def test_l1_schema_columns():

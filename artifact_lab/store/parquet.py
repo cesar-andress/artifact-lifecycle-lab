@@ -7,7 +7,7 @@ from pathlib import Path
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from platform.contracts.schemas import validate_columns
+from artifact_lab.contracts.schemas import validate_columns
 
 
 def write_parquet(table: pa.Table, path: Path, *, expected_columns: tuple[str, ...] | None = None) -> int:

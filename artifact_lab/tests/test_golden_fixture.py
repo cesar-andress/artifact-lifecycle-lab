@@ -7,11 +7,11 @@ from pathlib import Path
 
 import pyarrow as pa
 
-from platform.contracts.schemas import FILE_EVENT_LOG_COLUMNS, file_event_log_schema
-from platform.derive.panel import build_panel_rows
-from platform.ingest.extract import extract_repo_events
-from platform.store.blobs import BlobStore
-from platform.tests.golden_repo import build_golden_bare_repo
+from artifact_lab.contracts.schemas import FILE_EVENT_LOG_COLUMNS, file_event_log_schema
+from artifact_lab.derive.panel import build_panel_rows
+from artifact_lab.ingest.extract import extract_repo_events
+from artifact_lab.store.blobs import BlobStore
+from artifact_lab.tests.golden_repo import build_golden_bare_repo
 
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures"

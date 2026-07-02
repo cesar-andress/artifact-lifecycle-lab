@@ -1,6 +1,6 @@
 # Repository identifier normalization
 
-See `platform/contracts/repo_id.py` for the implementation.
+See `artifact_lab/contracts/repo_id.py` for the implementation.
 
 ## Rules
 

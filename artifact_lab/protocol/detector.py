@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from functools import lru_cache
 
-from platform.protocol.loader import load_family
+from artifact_lab.protocol.loader import load_family
 
 
 def normalize_path(path: str) -> str:

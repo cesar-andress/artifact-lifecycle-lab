@@ -8,11 +8,11 @@ from pathlib import Path
 
 import pyarrow as pa
 
-from platform.contracts.schemas import FILE_EVENT_LOG_COLUMNS, file_event_log_schema
-from platform.derive.panel import build_panel_rows, classify_state, run_panel
-from platform.ingest.extract import discover_matched_paths, extract_repo_events
-from platform.store.blobs import BlobStore
-from platform.store.parquet import write_parquet
+from artifact_lab.contracts.schemas import FILE_EVENT_LOG_COLUMNS, file_event_log_schema
+from artifact_lab.derive.panel import build_panel_rows, classify_state, run_panel
+from artifact_lab.ingest.extract import discover_matched_paths, extract_repo_events
+from artifact_lab.store.blobs import BlobStore
+from artifact_lab.store.parquet import write_parquet
 
 
 def _git(args: list[str], cwd: Path, env: dict | None = None) -> None:

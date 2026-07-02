@@ -35,7 +35,7 @@ def parse_github_url(url: str) -> tuple[str, str] | None:
     return (m.group(1), m.group(2)) if m else None
 
 
-from platform.contracts.repo_id import normalize_repo_url, repo_id_from_url
+from artifact_lab.contracts.repo_id import normalize_repo_url, repo_id_from_url
 
 
 def clone_bare(url: str, dest: Path, *, timeout: int = 300) -> None:

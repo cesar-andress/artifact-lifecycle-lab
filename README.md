@@ -13,12 +13,12 @@ Research platform for mining **artifact lifecycles** in Git repositories. Git cl
 | L3 | Ownership layer | (future) |
 | L4 | Co-change coupling | (future) |
 | L5 | Semantic drift / LLM | (future) |
-| — | Experiments | isolated leaves under `platform/experiments/` |
+| — | Experiments | isolated leaves under `artifact_lab/experiments/` |
 
 Pipeline state (job queue) lives in `data/state/extraction_jobs.db` (SQLite WAL).
 
 ```
-platform/
+artifact_lab/
   protocol/     YAML detector families
   ingest/       ephemeral clone → L1 + blobs
   contracts/    schema definitions, repo_id, dataset versions
@@ -60,18 +60,18 @@ source .venv/bin/activate
 pip install -e ".[dev]"
 
 # L1: clone-extract-delete over pilot registry
-python3.12 -m platform.ingest extract \
+python3.12 -m artifact_lab.ingest extract \
   --registry data/registry/pilot_repos.csv \
   --family ai_conventions_v1
 
 # L2: monthly file-state panel (T=180 days)
-python3.12 -m platform.derive panel --T 180
+python3.12 -m artifact_lab.derive panel --T 180
 
 # Pilot summary
-python3.12 -m platform.derive summary
+python3.12 -m artifact_lab.derive summary
 
 # Tests
-python3.12 -m pytest platform/tests
+python3.12 -m pytest artifact_lab/tests
 ```
 
 ## Resume workflow
@@ -84,7 +84,7 @@ Extraction uses a SQLite WAL job queue at `data/state/extraction_jobs.db`.
 - Failed repos are retried on the next run.
 
 ```bash
-python3.12 -m platform.ingest extract \
+python3.12 -m artifact_lab.ingest extract \
   --registry data/registry/pilot_repos.csv \
   --family ai_conventions_v1
 ```
@@ -94,7 +94,7 @@ python3.12 -m platform.ingest extract \
 Re-extract all repos (ignore succeeded queue state):
 
 ```bash
-python3.12 -m platform.ingest extract \
+python3.12 -m artifact_lab.ingest extract \
   --registry data/registry/pilot_repos.csv \
   --family ai_conventions_v1 \
   --force
@@ -123,7 +123,7 @@ Registry CSV columns for pre-filtering (no clone attempted):
 
 ## Repository identifiers
 
-`repo_id` is a deterministic 16-char SHA-256 prefix of the normalized URL. The registry stores only `repo_url`. See [`platform/docs/repo_id.md`](platform/docs/repo_id.md).
+`repo_id` is a deterministic 16-char SHA-256 prefix of the normalized URL. The registry stores only `repo_url`. See [`artifact_lab/docs/repo_id.md`](artifact_lab/docs/repo_id.md).
 
 ## Dataset versioning
 
@@ -158,7 +158,7 @@ print(duckdb.sql(\"\"\"
 
 ## Legacy reference
 
-The old project at `~/papers/legacy/ai-artifact-cochange/` is **reference only**. See [`platform/docs/legacy_map.md`](platform/docs/legacy_map.md).
+The old project at `~/papers/legacy/ai-artifact-cochange/` is **reference only**. See [`artifact_lab/docs/legacy_map.md`](artifact_lab/docs/legacy_map.md).
 
 ## Constraints
 
@@ -167,6 +167,4 @@ The old project at `~/papers/legacy/ai-artifact-cochange/` is **reference only**
 - Experiments never write into core datasets
 - All outputs reproducible from protocol + registry + code
 
-## Note on the `platform` package name
-
-The top-level package is intentionally named `platform` (per project layout). `platform/__init__.py` re-exports the **stdlib** `platform` API so dependencies like pytest and pyarrow keep working. Use **Python ≥ 3.11** (3.12 recommended).
+Use **Python ≥ 3.11** (3.12 recommended). The installable package is `artifact_lab` (no conflict with the stdlib `platform` module).

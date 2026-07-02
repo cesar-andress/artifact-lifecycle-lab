@@ -1,6 +1,6 @@
 """Blob store deduplication tests."""
 
-from platform.store.blobs import BlobStore
+from artifact_lab.store.blobs import BlobStore
 
 
 def test_blob_deduplication(tmp_path):

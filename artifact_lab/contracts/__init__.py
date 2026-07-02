@@ -1,6 +1,6 @@
 """Dataset contracts."""
 
-from platform.contracts.schemas import (
+from artifact_lab.contracts.schemas import (
     FILE_EVENT_LOG_COLUMNS,
     FILE_STATE_PANEL_COLUMNS,
     ChangeType,

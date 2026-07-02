@@ -19,8 +19,8 @@ dev = ["pytest>=8.0.0"]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["platform*"]
+include = ["artifact_lab*"]
 
 [tool.pytest.ini_options]
-testpaths = ["platform/tests"]
+testpaths = ["artifact_lab/tests"]
 pythonpath = ["."]

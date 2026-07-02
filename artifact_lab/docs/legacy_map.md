@@ -22,7 +22,7 @@ Reference root: `~/papers/legacy/ai-artifact-cochange/ai-convention-lifecycle-co
 | Shallow discover clones (`--depth 1`) | Non-negotiable constraint: no shallow clones |
 | Paper-first Makefile orchestration | Platform uses CLI modules + manifests, not paper build targets |
 | Frozen panel paths baked into analysis scripts | Datasets must be versioned via manifests, not hard-coded paths |
-| `scripts/lifecycle/corpus_paths.py` monorepo layout | New tree is `platform/` with explicit layers L0–L5 |
+| `scripts/lifecycle/corpus_paths.py` monorepo layout | New tree is `artifact_lab/` with explicit layers L0–L5 |
 | PostgreSQL / long-lived DB assumptions | SQLite WAL (future queue) + Parquet only |
 | `ACTIVE` / `DORMANT` state names | L2 uses `absent`, `young`, `active`, `stale`, `deleted` |
 | Direct experiment writes into `data/lifecycle/` | Experiments are leaves; core datasets are ingest/derive only |

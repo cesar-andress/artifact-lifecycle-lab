@@ -11,14 +11,14 @@ from pathlib import Path
 
 import pyarrow as pa
 
-from platform.contracts.datasets import L1_DATASET_VERSION
-from platform.contracts.repo_id import normalize_repo_url, repo_id_from_url
-from platform.contracts.schemas import (
+from artifact_lab.contracts.datasets import L1_DATASET_VERSION
+from artifact_lab.contracts.repo_id import normalize_repo_url, repo_id_from_url
+from artifact_lab.contracts.schemas import (
     FILE_EVENT_LOG_COLUMNS,
     file_event_log_schema,
     hash_email,
 )
-from platform.ingest.git_utils import (
+from artifact_lab.ingest.git_utils import (
     blob_at_commit,
     clone_bare,
     deletion_commits,
@@ -27,12 +27,12 @@ from platform.ingest.git_utils import (
     remove_clone,
     ts_to_datetime,
 )
-from platform.protocol.detector import is_matched_path, is_text_candidate, safe_normalize_path
-from platform.protocol.loader import family_version, load_family
-from platform.store.blobs import BlobStore
-from platform.store.job_queue import JobQueue
-from platform.store.manifest import write_manifest
-from platform.store.parquet import read_parquet, write_parquet
+from artifact_lab.protocol.detector import is_matched_path, is_text_candidate, safe_normalize_path
+from artifact_lab.protocol.loader import family_version, load_family
+from artifact_lab.store.blobs import BlobStore
+from artifact_lab.store.job_queue import JobQueue
+from artifact_lab.store.manifest import write_manifest
+from artifact_lab.store.parquet import read_parquet, write_parquet
 
 
 @dataclass
@@ -104,7 +104,7 @@ def write_receipt(receipts_dir: Path, repo_id: str, receipt: dict) -> Path:
 
 
 def discover_matched_paths(repo_dir: Path, family: str, *, git_timeout: int) -> set[str]:
-    from platform.ingest.git_utils import list_all_paths
+    from artifact_lab.ingest.git_utils import list_all_paths
 
     matched: set[str] = set()
     for raw in list_all_paths(repo_dir, timeout=git_timeout):

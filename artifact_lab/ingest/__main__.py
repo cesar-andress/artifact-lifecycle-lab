@@ -6,8 +6,8 @@ import argparse
 import sys
 from pathlib import Path
 
-from platform.contracts.datasets import l1_dataset_dir
-from platform.ingest.extract import ExtractConfig, run_extract
+from artifact_lab.contracts.datasets import l1_dataset_dir
+from artifact_lab.ingest.extract import ExtractConfig, run_extract
 
 
 def main(argv: list[str] | None = None) -> int:

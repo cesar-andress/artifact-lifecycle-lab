@@ -2,8 +2,8 @@
 
 import json
 
-from platform.derive.summary import build_summary, format_summary
-from platform.store.job_queue import JobQueue
+from artifact_lab.derive.summary import build_summary, format_summary
+from artifact_lab.store.job_queue import JobQueue
 
 
 def test_summary_counts(tmp_path):

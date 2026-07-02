@@ -6,9 +6,9 @@ import argparse
 import sys
 from pathlib import Path
 
-from platform.contracts.datasets import l1_dataset_dir, l2_dataset_dir
-from platform.derive.panel import run_panel
-from platform.derive.summary import build_summary, format_summary
+from artifact_lab.contracts.datasets import l1_dataset_dir, l2_dataset_dir
+from artifact_lab.derive.panel import run_panel
+from artifact_lab.derive.summary import build_summary, format_summary
 
 
 def main(argv: list[str] | None = None) -> int:

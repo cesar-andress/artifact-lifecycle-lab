@@ -3,9 +3,9 @@
 from pathlib import Path
 from unittest.mock import patch
 
-from platform.contracts.repo_id import repo_id_from_url
-from platform.ingest.extract import ExtractConfig, extract_one_repo
-from platform.store.blobs import BlobStore
+from artifact_lab.contracts.repo_id import repo_id_from_url
+from artifact_lab.ingest.extract import ExtractConfig, extract_one_repo
+from artifact_lab.store.blobs import BlobStore
 
 
 def test_clone_removed_on_failure(tmp_path):
@@ -32,7 +32,7 @@ def test_clone_removed_on_failure(tmp_path):
         (dest / "HEAD").write_text("ref: refs/heads/main\n")
         raise RuntimeError("simulated extract failure")
 
-    with patch("platform.ingest.extract.clone_bare", side_effect=boom):
+    with patch("artifact_lab.ingest.extract.clone_bare", side_effect=boom):
         receipt = extract_one_repo(cfg, registry_row, BlobStore(cfg.blobs_dir))
 
     assert receipt["status"] == "failed"

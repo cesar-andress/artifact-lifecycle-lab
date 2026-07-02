@@ -2,7 +2,7 @@
 
 import pytest
 
-from platform.contracts.repo_id import normalize_repo_url, repo_id_from_url
+from artifact_lab.contracts.repo_id import normalize_repo_url, repo_id_from_url
 
 
 def test_github_url_normalization_is_case_insensitive():

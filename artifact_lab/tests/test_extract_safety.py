@@ -1,6 +1,6 @@
 """Registry skip and receipt tests."""
 
-from platform.ingest.extract import ExtractConfig, registry_skip_reason, run_extract
+from artifact_lab.ingest.extract import ExtractConfig, registry_skip_reason, run_extract
 
 
 def test_registry_skip_archived():
@@ -26,7 +26,7 @@ def test_skipped_repo_writes_receipt_and_marks_failed(tmp_path):
     run_extract(cfg)
     receipts = list(cfg.receipts_dir.glob("*.json"))
     assert len(receipts) == 1
-    from platform.store.job_queue import JobQueue
+    from artifact_lab.store.job_queue import JobQueue
 
     with JobQueue(cfg.queue_path) as q:
         jobs = q.list_jobs()

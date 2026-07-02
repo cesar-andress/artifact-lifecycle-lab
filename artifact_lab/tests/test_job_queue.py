@@ -1,6 +1,6 @@
 """Job queue tests."""
 
-from platform.store.job_queue import JobQueue
+from artifact_lab.store.job_queue import JobQueue
 
 
 def test_resume_skips_succeeded_unless_force(tmp_path):
