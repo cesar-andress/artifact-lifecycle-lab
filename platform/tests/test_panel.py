@@ -62,7 +62,7 @@ def test_classify_state_priority():
 
 def test_panel_from_synthetic_repo(tmp_path):
     bare = _make_repo(tmp_path)
-    paths = discover_matched_paths(bare, "ai_conventions_v1")
+    paths = discover_matched_paths(bare, "ai_conventions_v1", git_timeout=60)
     assert "AGENTS.md" in paths
     events = extract_repo_events(
         bare,
@@ -72,6 +72,7 @@ def test_panel_from_synthetic_repo(tmp_path):
         extraction_wave="test",
         detector_version="1.0.0",
         blob_store=BlobStore(tmp_path / "blobs"),
+        git_timeout=60,
     )
     assert len(events) >= 2
     table = pa.Table.from_pylist(events, schema=file_event_log_schema())

@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pyarrow as pa
 
+from platform.contracts.datasets import L2_DATASET_VERSION
 from platform.contracts.schemas import (
     FILE_STATE_PANEL_COLUMNS,
     PanelState,
@@ -164,7 +165,7 @@ def build_panel_rows(events_table: pa.Table, *, T: int) -> list[dict]:
     return rows
 
 
-def run_panel(*, events_path: Path, output_dir: Path, T: int = 180) -> Path:
+def run_panel(*, events_path: Path, output_dir: Path, T: int = 180, dataset_version: str = L2_DATASET_VERSION) -> Path:
     events_path = events_path.resolve()
     if events_path.is_dir():
         table = read_parquet_dir(events_path)
@@ -192,6 +193,9 @@ def run_panel(*, events_path: Path, output_dir: Path, T: int = 180) -> Path:
         protocol_version=str(protocol_versions[0]) if protocol_versions else "unknown",
         row_count=row_count,
         columns=FILE_STATE_PANEL_COLUMNS,
-        extra={"T_days": T},
+        extra={
+            "T_days": T,
+            "dataset_version": dataset_version,
+        },
     )
     return out_path
