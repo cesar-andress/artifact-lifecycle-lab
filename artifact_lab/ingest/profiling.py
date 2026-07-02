@@ -65,6 +65,7 @@ PROFILE_COLUMNS: tuple[str, ...] = (
     "recorded_at",
     "failure_reason",
     "timeout_phase",
+    "inspection_mode",
 )
 
 
@@ -151,6 +152,7 @@ class ExtractionProfile:
     recorded_at: str = ""
     failure_reason: str | None = None
     timeout_phase: str | None = None
+    inspection_mode: str = "head-only"
 
     @property
     def repo_slug(self) -> str:
@@ -184,6 +186,7 @@ class ExtractionProfile:
             "recorded_at": self.recorded_at,
             "failure_reason": self.failure_reason,
             "timeout_phase": self.timeout_phase,
+            "inspection_mode": self.inspection_mode,
         }
 
 
@@ -251,6 +254,7 @@ class ExtractionLiveState:
                 recorded_at=self.profile.recorded_at,
                 failure_reason=f"timeout:{phase}",
                 timeout_phase=phase,
+                inspection_mode=self.profile.inspection_mode,
             )
 
 
@@ -375,6 +379,7 @@ def _row_to_profile(row: dict) -> ExtractionProfile:
         recorded_at=row.get("recorded_at", ""),
         failure_reason=row.get("failure_reason"),
         timeout_phase=row.get("timeout_phase"),
+        inspection_mode=row.get("inspection_mode", "head-only"),
     )
 
 

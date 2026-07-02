@@ -62,7 +62,16 @@ def remove_clone(dest: Path) -> None:
         shutil.rmtree(dest)
 
 
+def list_head_paths(repo_dir: Path, *, timeout: int = 300) -> set[str]:
+    """List paths present in the HEAD tree only (fast adoption-census inspection)."""
+    proc = run_git(["git", "ls-tree", "-r", "--name-only", "HEAD"], cwd=repo_dir, timeout=timeout)
+    if proc.returncode != 0:
+        return set()
+    return {line.strip() for line in proc.stdout.splitlines() if line.strip()}
+
+
 def list_all_paths(repo_dir: Path, *, timeout: int = 300) -> set[str]:
+    """List paths ever touched in repository history plus HEAD tree."""
     proc = run_git(
         ["git", "log", "--all", "--pretty=format:", "--name-only", "--diff-filter=AMRD"],
         cwd=repo_dir,
@@ -74,12 +83,7 @@ def list_all_paths(repo_dir: Path, *, timeout: int = 300) -> set[str]:
             line = line.strip()
             if line:
                 paths.add(line)
-    proc_head = run_git(["git", "ls-tree", "-r", "--name-only", "HEAD"], cwd=repo_dir)
-    if proc_head.returncode == 0:
-        for line in proc_head.stdout.splitlines():
-            line = line.strip()
-            if line:
-                paths.add(line)
+    paths.update(list_head_paths(repo_dir, timeout=timeout))
     return paths
 
 

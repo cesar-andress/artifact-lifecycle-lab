@@ -114,8 +114,18 @@ python3.12 -m artifact_lab.ingest extract \
 ```
 
 - `--limit N` — process only the first *N* rows of the registry CSV.
-- `--skip-slow` — cap clone and repo timeouts at 120 s; repos exceeding `--repo-timeout` are marked `failed` with reason `timeout` and the run continues.
+- `--skip-slow` — cap clone and repo timeouts at 120 s; repos exceeding `--repo-timeout` are marked `failed` with reason `timeout:<phase>` and the run continues.
 - `--repo-timeout SECS` — per-repo wall-clock limit (default 600; use with `--skip-slow` for bounded runs).
+- `--inspection-mode head-only|full-history` — how candidate paths are discovered (default: `head-only`).
+
+### Inspection modes
+
+| Mode | Git command | Use case |
+|------|-------------|----------|
+| `head-only` (default) | `git ls-tree -r HEAD` | E1 adoption census — current file presence |
+| `full-history` | `git log --all --name-only` + HEAD | Exact lifecycle studies — paths ever touched |
+
+`head-only` is suitable for current-presence / adoption census questions. Use `full-history` when you need deleted or historical paths that are no longer at HEAD. `make e1` and `make e1-pilot` pass `--inspection-mode head-only` by default.
 
 After each extract run, a summary is printed: completed / failed / pending counts, median total time, and slowest aggregate phase.
 
@@ -138,7 +148,7 @@ Profiling now records `local_cpu_s`, `git_network_wait_s`, `git_local_wait_s`, `
 
 Each processed repository records phase timings:
 
-`clone`, `inspection`, `history`, `detector`, `blobs`, `parquet_write`, `manifest_write`, `cleanup`, `total`
+`clone`, `inspection`, `history`, `detector`, `blobs`, `parquet_write`, `manifest_write`, `cleanup`, `total`, `inspection_mode`
 
 Profiles: `data/profiling/extraction_profile.parquet` and `.csv`.
 

@@ -52,7 +52,7 @@ def test_timeout_during_inspection(tmp_path: Path):
     with (
         patch("artifact_lab.ingest.extract.clone_bare", side_effect=fast_clone),
         patch("artifact_lab.ingest.extract.clone_size_bytes", return_value=1000),
-        patch("artifact_lab.ingest.git_utils.list_all_paths", side_effect=slow_list),
+        patch("artifact_lab.ingest.git_utils.list_head_paths", side_effect=slow_list),
         patch("artifact_lab.ingest.extract.remove_clone"),
     ):
         receipt = extract_one_repo(cfg, row, blob_store)
@@ -116,7 +116,7 @@ def test_failed_profile_preserves_elapsed_time_for_prior_phases(tmp_path: Path):
     with (
         patch("artifact_lab.ingest.extract.clone_bare", side_effect=fast_clone),
         patch("artifact_lab.ingest.extract.clone_size_bytes", return_value=1000),
-        patch("artifact_lab.ingest.git_utils.list_all_paths", side_effect=slow_list),
+        patch("artifact_lab.ingest.git_utils.list_head_paths", side_effect=slow_list),
         patch("artifact_lab.ingest.extract.remove_clone"),
     ):
         receipt = extract_one_repo(cfg, row, blob_store)

@@ -22,6 +22,7 @@ PAPER_NOTE := $(PAPER_ROOT)/notes/pilot_performance.md
 
 # Bounded development pilot (default: 3 repos, 120s timeouts via --skip-slow)
 E1_PILOT_LIMIT ?= 3
+INSPECTION_MODE ?= head-only
 
 .PHONY: e1 e1-pilot paper ingest panel e1-exports profile-report test install-paper e1-pilot-extract e1-pilot-derive e1-pilot-exports
 
@@ -34,7 +35,8 @@ e1-pilot-extract:
 	  --registry $(REGISTRY) \
 	  --family $(FAMILY) \
 	  --limit $(E1_PILOT_LIMIT) \
-	  --skip-slow
+	  --skip-slow \
+	  --inspection-mode $(INSPECTION_MODE)
 
 e1-pilot-derive:
 	$(PY) -m artifact_lab.derive panel --T 180
@@ -54,7 +56,7 @@ install-paper:
 	$(PIP) install -e ".[dev,paper]"
 
 $(L1_EVENTS): $(REGISTRY)
-	$(PY) -m artifact_lab.ingest extract --registry $(REGISTRY) --family $(FAMILY)
+	$(PY) -m artifact_lab.ingest extract --registry $(REGISTRY) --family $(FAMILY) --inspection-mode $(INSPECTION_MODE)
 
 $(L2_PANEL): $(L1_EVENTS)
 	$(PY) -m artifact_lab.derive panel --T 180

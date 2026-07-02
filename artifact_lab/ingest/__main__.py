@@ -10,7 +10,9 @@ from artifact_lab.contracts.datasets import l1_dataset_dir
 from artifact_lab.contracts.paths import EXTRACTION_QUEUE_PATH
 from artifact_lab.ingest.extract import (
     DEFAULT_CLONE_TIMEOUT,
+    DEFAULT_INSPECTION_MODE,
     DEFAULT_REPO_TIMEOUT,
+    INSPECTION_MODES,
     SKIP_SLOW_CLONE_TIMEOUT,
     SKIP_SLOW_REPO_TIMEOUT,
     ExtractConfig,
@@ -41,6 +43,12 @@ def main(argv: list[str] | None = None) -> int:
         help=f"Cap clone/repo timeouts at {SKIP_SLOW_CLONE_TIMEOUT}s (bounded pilot runs)",
     )
     extract_p.add_argument("--force", action="store_true")
+    extract_p.add_argument(
+        "--inspection-mode",
+        choices=INSPECTION_MODES,
+        default=DEFAULT_INSPECTION_MODE,
+        help="head-only: HEAD tree paths (E1 adoption census); full-history: all paths ever touched",
+    )
 
     args = parser.parse_args(argv)
     if args.command == "extract":
@@ -64,6 +72,7 @@ def main(argv: list[str] | None = None) -> int:
             max_clone_bytes=args.max_clone_mb * 1_000_000,
             force=args.force,
             limit=args.limit,
+            inspection_mode=args.inspection_mode,
         )
         out = run_extract(cfg)
         print(f"wrote L1 events -> {out}")

@@ -50,6 +50,17 @@ from artifact_lab.store.manifest import write_manifest
 from artifact_lab.store.parquet import read_parquet, write_parquet
 
 
+DEFAULT_CLONE_TIMEOUT = 300
+DEFAULT_REPO_TIMEOUT = 600
+SKIP_SLOW_CLONE_TIMEOUT = 120
+SKIP_SLOW_REPO_TIMEOUT = 120
+
+INSPECTION_MODE_HEAD_ONLY = "head-only"
+INSPECTION_MODE_FULL_HISTORY = "full-history"
+DEFAULT_INSPECTION_MODE = INSPECTION_MODE_HEAD_ONLY
+INSPECTION_MODES: tuple[str, ...] = (INSPECTION_MODE_HEAD_ONLY, INSPECTION_MODE_FULL_HISTORY)
+
+
 @dataclass
 class ExtractConfig:
     registry_path: Path
@@ -67,12 +78,7 @@ class ExtractConfig:
     force: bool = False
     limit: int | None = None
     profile_path: Path = EXTRACTION_PROFILE_PATH
-
-
-DEFAULT_CLONE_TIMEOUT = 300
-DEFAULT_REPO_TIMEOUT = 600
-SKIP_SLOW_CLONE_TIMEOUT = 120
-SKIP_SLOW_REPO_TIMEOUT = 120
+    inspection_mode: str = DEFAULT_INSPECTION_MODE
 
 
 class CloneTooLargeError(RuntimeError):
@@ -132,15 +138,19 @@ def discover_matched_paths(
     *,
     git_timeout: int,
     timings: PhaseTimings,
+    inspection_mode: str = DEFAULT_INSPECTION_MODE,
     live: ExtractionLiveState | None = None,
 ) -> set[str]:
-    from artifact_lab.ingest.git_utils import list_all_paths
+    from artifact_lab.ingest.git_utils import list_all_paths, list_head_paths
 
     if live:
         live.enter_phase("inspection")
     t0 = time.perf_counter()
     try:
-        raw_paths = list_all_paths(repo_dir, timeout=git_timeout)
+        if inspection_mode == INSPECTION_MODE_HEAD_ONLY:
+            raw_paths = list_head_paths(repo_dir, timeout=git_timeout)
+        else:
+            raw_paths = list_all_paths(repo_dir, timeout=git_timeout)
     finally:
         if live is None or live.should_record_timing():
             timings.inspection_s += time.perf_counter() - t0
@@ -172,10 +182,16 @@ def extract_repo_events(
     git_timeout: int,
     timings: PhaseTimings,
     resources: ResourceMetrics,
+    inspection_mode: str = DEFAULT_INSPECTION_MODE,
     live: ExtractionLiveState | None = None,
 ) -> list[dict]:
     paths = discover_matched_paths(
-        repo_dir, family, git_timeout=git_timeout, timings=timings, live=live
+        repo_dir,
+        family,
+        git_timeout=git_timeout,
+        timings=timings,
+        inspection_mode=inspection_mode,
+        live=live,
     )
     events: list[dict] = []
     for path in sorted(paths):
@@ -240,6 +256,7 @@ def _extract_repo_body(
     timings = PhaseTimings()
     profile = live.profile
     profile.timings = timings
+    profile.inspection_mode = cfg.inspection_mode
     receipt: dict = {
         "repo_id": repo_id,
         "repo_url": repo_url,
@@ -290,6 +307,7 @@ def _extract_repo_body(
                 git_timeout=git_timeout,
                 timings=timings,
                 resources=profile.resources,
+                inspection_mode=cfg.inspection_mode,
                 live=live,
             )
             profile.resources.local_cpu_s += timings.detector_s
@@ -345,6 +363,7 @@ def extract_one_repo(cfg: ExtractConfig, row: dict[str, str], blob_store: BlobSt
         timings=PhaseTimings(),
         resources=ResourceMetrics(),
         recorded_at=started.isoformat(),
+        inspection_mode=cfg.inspection_mode,
     )
     live = ExtractionLiveState(profile=profile)
     with ThreadPoolExecutor(max_workers=1) as pool:
