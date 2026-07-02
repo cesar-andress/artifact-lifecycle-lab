@@ -1,0 +1,15 @@
+metric,value,pct_of_cohort
+count_extraction_artifact,2235,12.594
+count_template_placeholder,1926,10.853
+count_normative_prescriptive,5836,32.884
+count_pre_observation_evolution,876,4.936
+count_external_reference,33,0.186
+count_verification_anchor_mismatch,5301,29.87
+count_genuine_false_claim,1532,8.632
+count_unresolved_disagreement,8,0.045
+adjudication_deterministic_high,8579,48.341
+adjudication_deterministic_medium,7628,42.982
+adjudication_llm_agreement,144,0.811
+adjudication_llm_disagreement,6,0.034
+adjudication_llm_quota_exceeded,1390,7.832
+cohort_total,17747,100.0
