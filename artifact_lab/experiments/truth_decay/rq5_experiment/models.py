@@ -56,6 +56,11 @@ class AgentRunResult:
     repaired_reference: bool
     trace_events: list[TraceEvent] = field(default_factory=list)
     error_message: str = ""
+    tool_invocations: int = 0
+    patch_size: int = 0
+    token_usage: int | None = None
+    cost_usd: float | None = None
+    trace_classification: str = ""
 
     def to_row(self) -> dict[str, Any]:
         row = asdict(self)

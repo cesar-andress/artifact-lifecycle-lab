@@ -51,4 +51,9 @@ def evaluate_run(
         repaired_reference=agent_result.repaired_reference,
         trace_events=agent_result.trace_events,
         error_message=agent_result.error_message,
+        tool_invocations=agent_result.tool_invocations,
+        patch_size=agent_result.patch_size,
+        token_usage=agent_result.token_usage,
+        cost_usd=agent_result.cost_usd,
+        trace_classification=agent_result.trace_classification,
     )

@@ -15,11 +15,19 @@ from artifact_lab.experiments.truth_decay.run_rq1 import DEFAULT_EXPORT_DIR, DEF
 from artifact_lab.experiments.truth_decay.run_rq2 import DEFAULT_RQ2_EXPORT, run_rq2_survival_analysis
 from artifact_lab.experiments.truth_decay.run_rq3 import DEFAULT_EXPORT as DEFAULT_RQ3_EXPORT, run_rq3_observational_analysis
 from artifact_lab.experiments.truth_decay.run_rq4 import DEFAULT_RQ4_EXPORT, run_rq4_lifecycle_analysis
+from artifact_lab.experiments.truth_decay.run_rq5_causal_evidence import (
+    DEFAULT_RQ5_CAUSAL_EXPORT,
+    generate_rq5_outputs,
+    run_rq5_causal_evidence,
+    _load_existing_results,
+)
 from artifact_lab.experiments.truth_decay.run_rq5_experiment import (
     DEFAULT_RQ5_EXPERIMENT_EXPORT,
     run_rq5_experiment,
 )
+from artifact_lab.experiments.truth_decay.rq5_experiment.task_selection import select_experiment_cases
 from artifact_lab.experiments.truth_decay.run_rq5_prep import DEFAULT_RQ5_EXPORT, run_rq5_preparation
+from artifact_lab.experiments.truth_decay.run_rq5_uptake_analysis import run_rq5_uptake_analysis
 from artifact_lab.experiments.truth_pilots.gates_common import DEFAULT_RQ1_LONGITUDINAL
 
 
@@ -68,6 +76,65 @@ def _cmd_rq4(args: argparse.Namespace) -> int:
     outputs = run_rq4_lifecycle_analysis(
         longitudinal_csv=args.longitudinal_csv,
         output_dir=args.output_dir,
+    )
+    for label, path in outputs.items():
+        print(f"{label} -> {path}")
+    return 0
+
+
+def _cmd_rq5_uptake(args: argparse.Namespace) -> int:
+    outputs = run_rq5_uptake_analysis(
+        candidate_csv=args.candidate_csv,
+        gfc_confirmatory_csv=args.gfc_confirmatory_csv,
+        output_dir=args.output_dir,
+        max_cases=args.max_cases,
+        require_p1=args.require_p1,
+    )
+    for label, path in outputs.items():
+        print(f"{label} -> {path}")
+    return 0
+
+
+def _cmd_rq5_report(args: argparse.Namespace) -> int:
+    results_csv = args.output_dir / "rq5_results.csv"
+    if not results_csv.exists():
+        print(f"error: missing {results_csv}", file=sys.stderr)
+        return 1
+    cases = select_experiment_cases(
+        candidate_csv=args.candidate_csv,
+        gfc_confirmatory_csv=args.gfc_confirmatory_csv,
+        max_cases=args.max_cases,
+        require_p1=args.require_p1,
+    )
+    results = _load_existing_results(results_csv, cases)
+    agents = sorted({result.agent_id for result in results})
+    outputs = generate_rq5_outputs(
+        cases=cases,
+        results=results,
+        output_dir=args.output_dir,
+        agent_names=agents,
+        replicates=args.replicates,
+    )
+    for label, path in outputs.items():
+        print(f"{label} -> {path}")
+    return 0
+
+
+def _cmd_rq5_run(args: argparse.Namespace) -> int:
+    outputs = run_rq5_causal_evidence(
+        candidate_csv=args.candidate_csv,
+        gfc_confirmatory_csv=args.gfc_confirmatory_csv,
+        blobs_dir=args.blobs_dir,
+        scratch_dir=args.scratch,
+        output_dir=args.output_dir,
+        agents=args.agents,
+        replicates=args.replicates,
+        max_cases=args.max_cases,
+        require_p1=args.require_p1,
+        run_tests=args.run_tests,
+        use_git_workspaces=args.use_git_workspaces,
+        clone_timeout=args.clone_timeout,
+        resume=not args.no_resume,
     )
     for label, path in outputs.items():
         print(f"{label} -> {path}")
@@ -228,7 +295,80 @@ def main(argv: list[str] | None = None) -> int:
     rq5_prep.add_argument("--output-dir", type=Path, default=DEFAULT_RQ5_EXPORT)
     rq5_prep.set_defaults(func=_cmd_rq5_prep)
 
-    rq5 = sub.add_parser("rq5", help="RQ5 causal agent-impact experiment")
+    rq5_report = sub.add_parser(
+        "rq5-report",
+        help="Regenerate RQ5 statistics/figures from existing rq5_results.csv",
+    )
+    rq5_report.add_argument(
+        "--candidate-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/rq5_candidate_dataset.csv"),
+    )
+    rq5_report.add_argument(
+        "--gfc-confirmatory-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/gfc_confirmatory_audit.csv"),
+    )
+    rq5_report.add_argument("--output-dir", type=Path, default=DEFAULT_RQ5_CAUSAL_EXPORT)
+    rq5_report.add_argument("--replicates", type=int, default=3)
+    rq5_report.add_argument("--max-cases", type=int, default=None)
+    rq5_report.add_argument("--require-p1", action="store_true")
+    rq5_report.set_defaults(func=_cmd_rq5_report)
+
+    rq5_uptake = sub.add_parser(
+        "rq5-uptake",
+        help="Post-hoc RQ5 instruction uptake analysis from existing traces",
+    )
+    rq5_uptake.add_argument(
+        "--candidate-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/rq5_candidate_dataset.csv"),
+    )
+    rq5_uptake.add_argument(
+        "--gfc-confirmatory-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/gfc_confirmatory_audit.csv"),
+    )
+    rq5_uptake.add_argument("--output-dir", type=Path, default=DEFAULT_RQ5_CAUSAL_EXPORT)
+    rq5_uptake.add_argument("--max-cases", type=int, default=None)
+    rq5_uptake.add_argument("--require-p1", action="store_true")
+    rq5_uptake.set_defaults(func=_cmd_rq5_uptake)
+
+    rq5_run = sub.add_parser(
+        "rq5-run",
+        help="RQ5 causal evidence collection with real CLI agents (checkpoint/resume)",
+    )
+    rq5_run.add_argument(
+        "--candidate-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/rq5_candidate_dataset.csv"),
+    )
+    rq5_run.add_argument(
+        "--gfc-confirmatory-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/gfc_confirmatory_audit.csv"),
+    )
+    rq5_run.add_argument("--blobs-dir", type=Path, default=Path("data/blobs"))
+    rq5_run.add_argument("--scratch", type=Path, default=Path("scratch"))
+    rq5_run.add_argument("--output-dir", type=Path, default=DEFAULT_RQ5_CAUSAL_EXPORT)
+    rq5_run.add_argument(
+        "--agents",
+        action="append",
+        default=None,
+        help="Agent ids (default: auto-detect claude_code/copilot_cli)",
+    )
+    rq5_run.add_argument("--replicates", type=int, default=3)
+    rq5_run.add_argument("--max-cases", type=int, default=None)
+    rq5_run.add_argument("--require-p1", action="store_true")
+    rq5_run.add_argument("--run-tests", action="store_true", default=True)
+    rq5_run.add_argument("--no-run-tests", action="store_false", dest="run_tests")
+    rq5_run.add_argument("--use-git-workspaces", action="store_true", default=True)
+    rq5_run.add_argument("--no-git-workspaces", action="store_false", dest="use_git_workspaces")
+    rq5_run.add_argument("--clone-timeout", type=int, default=180)
+    rq5_run.add_argument("--no-resume", action="store_true", help="Ignore existing rq5_results.csv")
+    rq5_run.set_defaults(func=_cmd_rq5_run)
+
+    rq5 = sub.add_parser("rq5", help="RQ5 causal agent-impact experiment (stub/infrastructure)")
     rq5.add_argument(
         "--candidate-csv",
         type=Path,
