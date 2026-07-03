@@ -1,0 +1,15 @@
+row_type,condition,causal_role,count,frequency,success_rate,n_runs,rate_read,rate_quoted_or_referenced,rate_used_in_tool_call,rate_obstacle,rate_corrected,rate_ignored_after_reading,rate_failed_before_mattered,rate_failed_because_of_claim,rate_succeeded_despite_claim,metric,value_A,value_B,delta_A_minus_B
+causal_role,A,reference_ignored_after_reading,18,0.276923,0.055556,,,,,,,,,,,,,,
+causal_role,A,reference_used_and_failed,40,0.615385,0.0,,,,,,,,,,,,,,
+causal_role,A,reference_used_and_succeeded,7,0.107692,1.0,,,,,,,,,,,,,,
+condition_summary,A,,,,0.123077,65,1.0,1.0,0.723077,0.184615,0.046154,0.276923,0.261538,0.0,0.107692,,,,
+causal_role,B,false_claim_caused_failure,12,0.190476,0.0,,,,,,,,,,,,,,
+causal_role,B,false_claim_irrelevant_to_failure,27,0.428571,0.0,,,,,,,,,,,,,,
+causal_role,B,obstacle_recovered,5,0.079365,0.6,,,,,,,,,,,,,,
+causal_role,B,uptake_but_not_load_bearing,19,0.301587,0.263158,,,,,,,,,,,,,,
+condition_summary,B,,,,0.126984,63,1.0,1.0,0.777778,0.269841,0.079365,0.222222,0.222222,0.190476,0.126984,,,,
+paired_comparison,,,,,,,,,,,,,,,,success_rate,0.123077,0.126984,-0.003907
+paired_comparison,,,,,,,,,,,,,,,,rate_used_in_tool_call,0.723077,0.777778,-0.054701
+paired_comparison,,,,,,,,,,,,,,,,rate_obstacle,0.184615,0.269841,-0.085226
+paired_comparison,,,,,,,,,,,,,,,,rate_failed_because_of_claim,0.0,0.190476,-0.190476
+paired_comparison,,,,,,,,,,,,,,,,rate_succeeded_despite_claim,0.107692,0.126984,-0.019292

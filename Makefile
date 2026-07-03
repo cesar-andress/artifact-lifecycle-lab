@@ -276,6 +276,10 @@ truth-decay-rq5-uptake: install-paper
 	$(PY) -m artifact_lab.experiments.truth_decay rq5-uptake \
 	  --output-dir exports/rq5_agent_impact
 
+truth-decay-rq5-mediation: install-paper
+	$(PY) -m artifact_lab.experiments.truth_decay rq5-mediation \
+	  --output-dir exports/rq5_agent_impact
+
 truth-decay-born-stale-audit: install-paper
 	$(PY) -m artifact_lab.experiments.truth_decay born-stale-audit \
 	  --output-dir exports/truth_decay_pilot

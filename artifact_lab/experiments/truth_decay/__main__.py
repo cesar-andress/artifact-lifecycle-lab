@@ -27,6 +27,7 @@ from artifact_lab.experiments.truth_decay.run_rq5_experiment import (
 )
 from artifact_lab.experiments.truth_decay.rq5_experiment.task_selection import select_experiment_cases
 from artifact_lab.experiments.truth_decay.run_rq5_prep import DEFAULT_RQ5_EXPORT, run_rq5_preparation
+from artifact_lab.experiments.truth_decay.run_rq5_mediation_analysis import run_rq5_mediation_analysis
 from artifact_lab.experiments.truth_decay.run_rq5_uptake_analysis import run_rq5_uptake_analysis
 from artifact_lab.experiments.truth_pilots.gates_common import DEFAULT_RQ1_LONGITUDINAL
 
@@ -76,6 +77,19 @@ def _cmd_rq4(args: argparse.Namespace) -> int:
     outputs = run_rq4_lifecycle_analysis(
         longitudinal_csv=args.longitudinal_csv,
         output_dir=args.output_dir,
+    )
+    for label, path in outputs.items():
+        print(f"{label} -> {path}")
+    return 0
+
+
+def _cmd_rq5_mediation(args: argparse.Namespace) -> int:
+    outputs = run_rq5_mediation_analysis(
+        candidate_csv=args.candidate_csv,
+        gfc_confirmatory_csv=args.gfc_confirmatory_csv,
+        output_dir=args.output_dir,
+        max_cases=args.max_cases,
+        require_p1=args.require_p1,
     )
     for label, path in outputs.items():
         print(f"{label} -> {path}")
@@ -333,6 +347,25 @@ def main(argv: list[str] | None = None) -> int:
     rq5_uptake.add_argument("--max-cases", type=int, default=None)
     rq5_uptake.add_argument("--require-p1", action="store_true")
     rq5_uptake.set_defaults(func=_cmd_rq5_uptake)
+
+    rq5_mediation = sub.add_parser(
+        "rq5-mediation",
+        help="Post-hoc RQ5 null-result mediation audit from existing traces",
+    )
+    rq5_mediation.add_argument(
+        "--candidate-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/rq5_candidate_dataset.csv"),
+    )
+    rq5_mediation.add_argument(
+        "--gfc-confirmatory-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/gfc_confirmatory_audit.csv"),
+    )
+    rq5_mediation.add_argument("--output-dir", type=Path, default=DEFAULT_RQ5_CAUSAL_EXPORT)
+    rq5_mediation.add_argument("--max-cases", type=int, default=None)
+    rq5_mediation.add_argument("--require-p1", action="store_true")
+    rq5_mediation.set_defaults(func=_cmd_rq5_mediation)
 
     rq5_run = sub.add_parser(
         "rq5-run",
