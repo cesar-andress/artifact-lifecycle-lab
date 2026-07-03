@@ -1,0 +1,29 @@
+claim,evidence_source,metric,value,limitation
+Zero genuine post-verification decay,rq2_failure_audit_summary.md,adjusted_genuine_decay_count,0/121,single audit pass; extractor heuristics may miss edge cases
+Post-verification failures are mostly artifacts,rq2_failure_audit_summary.md,extractor_artifact_share,73.6%,taxonomy depends on deterministic heuristics
+Born-stale cohort is large and heterogeneous,born_stale_summary.md,genuine_false_claim_raw_count,1405 (7.9% of 17747),raw upper bound before confirmatory audit
+Confirmed false claims at creation,gfc_confirmatory_summary.md,confirmed_false_count,1200/1405 (85.4%),Wilson CI 83.5%-87.2%; LLM not invoked for most cases
+Born-stale adjusted false-claim rate,gfc_confirmatory_summary.md,adjusted_rate_vs_cohort,6.76%,not interchangeable with post-verification decay rate
+Cited paths disproportionately stable,cited_uncited_summary.md,cited_leq_uncited_pair_fraction,85.4%,paired test; mean churn CI crosses zero
+Agent maintenance attribution validated,p4_validation.md,F1,true_agent_maintenance,0.9617,N=200 human gold sample; heuristic classifier not retrained
+Agent maintenance precision gate,p4_validation.md,precision,true_agent_maintenance,0.958,binary positive class only
+Instruction read when present,rq5_uptake_analysis.md,instruction_read_rate,100% (128/128),Claude Code only; file injected pre-run
+Instruction followed condition B,rq5_uptake_analysis.md,instruction_followed_rate_B,77.8% (49/63),inferred from trace events not ground-truth binding
+Instruction followed condition A,rq5_uptake_analysis.md,instruction_followed_rate_A,72.3% (47/65),same trace inference limits
+False claim acted upon condition B,rq5_uptake_analysis.md,false_claim_used_rate,77.8% (49/63),actionable trace heuristic
+No success difference A vs B paired,rq5_abc_comparative_analysis.md,paired_success_difference_A_minus_B,0.00 pp,63 triplets / 22 cases only
+McNemar null A vs B,rq5_abc_comparative_analysis.md,mcnemar_p_value_A_minus_B,1.0000,low power; high baseline failure
+Success rate truthful on triplets,rq5_abc_comparative_analysis.md,success_rate_A,12.7% (8/63),overlap subset not full 35 cases
+Success rate false on triplets,rq5_abc_comparative_analysis.md,success_rate_B,12.7% (8/63),identical success pattern to A on overlap
+Success rate no instruction on triplets,rq5_abc_comparative_analysis.md,success_rate_C,7.9% (5/63),CI overlaps A/B; not significant
+A minus C paired difference,rq5_abc_comparative_analysis.md,paired_success_difference_A_minus_C,+4.76 pp,cluster bootstrap CI includes zero
+B minus C paired difference,rq5_abc_comparative_analysis.md,paired_success_difference_B_minus_C,+4.76 pp,A and B identical on overlap triplets
+Files modified with instruction,rq5_abc_comparative_analysis.md,mean_files_modified_A,99.7,63 paired triplets
+Files modified false instruction,rq5_abc_comparative_analysis.md,mean_files_modified_B,103.0,behavioral amplification not outcome improvement
+Files modified no instruction,rq5_abc_comparative_analysis.md,mean_files_modified_C,1.7,directive+referential presence expands edit scope
+Compile success all conditions,rq5_abc_comparative_analysis.md,compilation_success_rate,100%,outcome failure driven by tests not compile
+Baseline test failure dominates,rq5_uptake_analysis.md,tests_failed_unsuccessful_A,57,environmental task difficulty confound
+Condition C experiment complete,rq5_agent_impact_c/rq5_summary.md,total_runs,105/105,single agent; no A/B on same output dir
+Condition C aggregate success,rq5_agent_impact_c/rq5_results.csv,success_rate_all_C,11.4% (12/105),includes cases without A/B overlap
+Prior A/B partial experiment,rq5_agent_impact/rq5_results.csv,total_runs_AB,128,experiment paused; incomplete case coverage
+RQ5 redesign requires condition C,rq5_redesign_plan.md,design_version,AB_v1 incomplete without C baseline,conceptual; documents pivot rationale
