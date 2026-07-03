@@ -8,7 +8,7 @@ from pathlib import Path
 from artifact_lab.experiments.truth_decay.rq5_experiment.agents.base import AgentRunner
 from artifact_lab.experiments.truth_decay.rq5_experiment.agents.recording import RecordingAgent
 from artifact_lab.experiments.truth_decay.rq5_experiment.evaluation import evaluate_run
-from artifact_lab.experiments.truth_decay.rq5_experiment.models import AgentRunResult, ExperimentCase
+from artifact_lab.experiments.truth_decay.rq5_experiment.models import DEFAULT_CONDITIONS_AB, AgentRunResult, ExperimentCase
 from artifact_lab.experiments.truth_decay.rq5_experiment.workspace import prepared_workspace, write_instruction_to_workspace
 from artifact_lab.store.blobs import BlobStore
 
@@ -21,7 +21,7 @@ def run_experiment_matrix(
     traces_dir: Path,
     blob_store: BlobStore,
     replicates: int = 1,
-    conditions: tuple[str, ...] = ("A", "B"),
+    conditions: tuple[str, ...] = DEFAULT_CONDITIONS_AB,
     run_tests: bool = False,
     use_git_workspaces: bool = True,
     clone_timeout: int = 180,

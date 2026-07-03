@@ -21,7 +21,7 @@ from artifact_lab.experiments.truth_decay.rq5_experiment.causal_statistics impor
     causal_statistics_to_rows,
 )
 from artifact_lab.experiments.truth_decay.rq5_experiment.evaluation import evaluate_run
-from artifact_lab.experiments.truth_decay.rq5_experiment.models import AgentRunResult, ExperimentCase
+from artifact_lab.experiments.truth_decay.rq5_experiment.models import DEFAULT_CONDITIONS_AB, AgentRunResult, ExperimentCase
 from artifact_lab.experiments.truth_decay.rq5_experiment.runner import case_manifest_rows, dataset_rows
 from artifact_lab.experiments.truth_decay.rq5_experiment.task_selection import select_experiment_cases
 from artifact_lab.experiments.truth_decay.rq5_experiment.trace_classifier import (
@@ -137,13 +137,14 @@ def run_causal_matrix_with_checkpoint(
     run_tests: bool = True,
     use_git_workspaces: bool = True,
     clone_timeout: int = 180,
+    conditions: tuple[str, ...] = DEFAULT_CONDITIONS_AB,
 ) -> list[AgentRunResult]:
     completed = _load_completed_keys(results_csv)
     results = _load_existing_results(results_csv, cases)
     case_map = {case.case_id: case for case in cases}
 
     for case in cases:
-        for condition in ("A", "B"):
+        for condition in conditions:
             for agent in agents:
                 recorder = RecordingAgent(agent, traces_dir)
                 for replicate_id in range(1, replicates + 1):
@@ -334,6 +335,7 @@ def run_rq5_causal_evidence(
     use_git_workspaces: bool = True,
     clone_timeout: int = 180,
     resume: bool = True,
+    conditions: tuple[str, ...] = DEFAULT_CONDITIONS_AB,
 ) -> dict[str, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     traces_dir = output_dir / "traces"
@@ -349,6 +351,7 @@ def run_rq5_causal_evidence(
         gfc_confirmatory_csv=gfc_confirmatory_csv,
         max_cases=max_cases,
         require_p1=require_p1,
+        results_csv_for_traces=results_csv if results_csv.exists() else None,
     )
     if not cases:
         raise RuntimeError("no experiment cases selected")
@@ -368,6 +371,7 @@ def run_rq5_causal_evidence(
         run_tests=run_tests,
         use_git_workspaces=use_git_workspaces,
         clone_timeout=clone_timeout,
+        conditions=conditions,
     )
 
     paths = generate_rq5_outputs(

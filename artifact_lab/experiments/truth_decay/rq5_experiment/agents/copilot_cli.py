@@ -57,7 +57,7 @@ class CopilotCLIAgent:
         replicate_id: int,
     ) -> AgentRunResult:
         started = time.perf_counter()
-        prompt = build_experiment_prompt(case)
+        prompt = build_experiment_prompt(case, condition=condition)
         cmd = [
             *self.command,
             "-p",

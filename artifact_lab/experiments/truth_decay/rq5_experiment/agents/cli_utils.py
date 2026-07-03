@@ -13,7 +13,17 @@ from artifact_lab.experiments.truth_decay.rq5_experiment.models import Experimen
 from artifact_lab.ingest.git_utils import run_git
 
 
-def build_experiment_prompt(case: ExperimentCase) -> str:
+def build_experiment_prompt(case: ExperimentCase, *, condition: str = "A") -> str:
+    if condition == "C":
+        return (
+            f"{case.task_prompt}\n\n"
+            "No project instruction file is provided for this run.\n"
+            f"Test command to run before finishing: `{case.test_command}`\n\n"
+            "Constraints:\n"
+            "- Use only files in this repository snapshot.\n"
+            "- Do not fetch new commits or use network except running tests.\n"
+            "- Make a small, bounded change verifiable by the test command.\n"
+        )
     return (
         f"{case.task_prompt}\n\n"
         f"Instruction file (authoritative): `{case.instruction_path}`\n"

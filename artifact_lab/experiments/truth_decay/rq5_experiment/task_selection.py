@@ -7,6 +7,10 @@ import hashlib
 from pathlib import Path
 
 from artifact_lab.experiments.truth_decay.rq5_availability import TEST_COMMAND_PATTERNS
+from artifact_lab.experiments.truth_decay.rq5_experiment.load_bearing import (
+    classify_load_bearing_stratum,
+    trace_rates_by_case,
+)
 from artifact_lab.experiments.truth_decay.rq5_experiment.models import ExperimentCase
 
 DEFAULT_TASK_PROMPT = (
@@ -51,9 +55,11 @@ def select_experiment_cases(
     max_cases: int | None = None,
     require_p1: bool = False,
     require_confirmed_false: bool = True,
+    results_csv_for_traces: Path | None = None,
 ) -> list[ExperimentCase]:
-    """Select natural A/B cases: truthful blob vs confirmed-false instruction swap."""
+    """Select natural A/B/C cases: truthful, confirmed-false, and optional no-instruction baseline."""
     confirmed = load_confirmed_false_keys(gfc_confirmatory_csv) if require_confirmed_false else set()
+    trace_rates = trace_rates_by_case(results_csv_for_traces) if results_csv_for_traces else {}
 
     born_stale_rows: list[dict] = []
     with candidate_csv.open(newline="", encoding="utf-8") as handle:
@@ -86,6 +92,21 @@ def select_experiment_cases(
             continue
 
         case_id = stable_case_id(row["spec_id"], row["anchor_reference"], task_commit)
+        trace = trace_rates.get(case_id, {})
+        stratum, likely_lb, lb_reason = classify_load_bearing_stratum(
+            anchor_reference=row["anchor_reference"],
+            anchor_reference_type=row["anchor_reference_type"],
+            instruction_path=row["instruction_path"],
+            task_availability=row.get("task_availability", "").lower() in ("true", "1"),
+            task_availability_reason=row.get("task_availability_reason", ""),
+            issue_availability=row.get("issue_availability", "").lower() in ("true", "1"),
+            issue_availability_reason=row.get("issue_availability_reason", ""),
+            n_missing_verifiable=int(row.get("n_missing_verifiable") or 0),
+            n_verifiable=int(row.get("n_verifiable") or 0),
+            instruction_text=blob_text,
+            trace_follow_rate_b=trace.get("trace_follow_rate_b"),
+            trace_read_rate_a=trace.get("trace_read_rate_a"),
+        )
         cases.append(
             ExperimentCase(
                 case_id=case_id,
@@ -105,6 +126,9 @@ def select_experiment_cases(
                 selection_reason="born_stale_confirmed_false_with_truthful_pair",
                 confirmed_false=True,
                 p1_sample=row.get("p1_sample", "").lower() in ("true", "1"),
+                likely_load_bearing=likely_lb,
+                load_bearing_stratum=stratum,
+                load_bearing_reason=lb_reason,
             )
         )
 

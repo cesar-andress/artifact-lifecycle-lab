@@ -31,41 +31,53 @@ class StubAgent:
         events: list[TraceEvent] = []
         now = lambda: datetime.now(timezone.utc).isoformat()
 
-        events.append(
-            TraceEvent(
-                timestamp=now(),
-                event_type="read_instruction",
-                payload={"path": case.instruction_path},
-            )
-        )
-
-        anchor_present = case.anchor_reference in instruction.read_text(encoding="utf-8", errors="replace")
-        if anchor_present:
-            events.append(
-                TraceEvent(
-                    timestamp=now(),
-                    event_type="follow_reference",
-                    payload={"reference": case.anchor_reference},
-                )
-            )
-
-        if condition == "B" and self.fail_on_condition_b and anchor_present:
-            events.append(
-                TraceEvent(
-                    timestamp=now(),
-                    event_type="tool_failure",
-                    payload={"reference": case.anchor_reference, "reason": "missing_path"},
-                )
-            )
-            success = False
-            tests_passing = False
-            tool_failures = 1
-        else:
+        if condition == "C" or not instruction.exists():
             success = True
             tests_passing = True
             tool_failures = 0
+            trace_flags = {
+                "read_instruction": False,
+                "followed_reference": False,
+                "ignored_reference": True,
+                "detected_inconsistency": False,
+                "repaired_reference": False,
+            }
+        else:
+            events.append(
+                TraceEvent(
+                    timestamp=now(),
+                    event_type="read_instruction",
+                    payload={"path": case.instruction_path},
+                )
+            )
 
-        trace_flags = trace_from_events(events)
+            anchor_present = case.anchor_reference in instruction.read_text(encoding="utf-8", errors="replace")
+            if anchor_present:
+                events.append(
+                    TraceEvent(
+                        timestamp=now(),
+                        event_type="follow_reference",
+                        payload={"reference": case.anchor_reference},
+                    )
+                )
+
+            if condition == "B" and self.fail_on_condition_b and anchor_present:
+                events.append(
+                    TraceEvent(
+                        timestamp=now(),
+                        event_type="tool_failure",
+                        payload={"reference": case.anchor_reference, "reason": "missing_path"},
+                    )
+                )
+                success = False
+                tests_passing = False
+                tool_failures = 1
+            else:
+                success = True
+                tests_passing = True
+                tool_failures = 0
+
+            trace_flags = trace_from_events(events)
         elapsed = time.perf_counter() - started
         return AgentRunResult(
             agent_id=self.agent_id,

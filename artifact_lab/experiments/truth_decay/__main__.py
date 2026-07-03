@@ -26,6 +26,7 @@ from artifact_lab.experiments.truth_decay.run_rq5_experiment import (
     run_rq5_experiment,
 )
 from artifact_lab.experiments.truth_decay.rq5_experiment.task_selection import select_experiment_cases
+from artifact_lab.experiments.truth_decay.run_rq5_redesign_plan import generate_rq5_redesign_plan
 from artifact_lab.experiments.truth_decay.run_rq5_prep import DEFAULT_RQ5_EXPORT, run_rq5_preparation
 from artifact_lab.experiments.truth_decay.run_rq5_mediation_analysis import run_rq5_mediation_analysis
 from artifact_lab.experiments.truth_decay.run_rq5_uptake_analysis import run_rq5_uptake_analysis
@@ -134,7 +135,20 @@ def _cmd_rq5_report(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_rq5_redesign(args: argparse.Namespace) -> int:
+    path = generate_rq5_redesign_plan(
+        candidate_csv=args.candidate_csv,
+        gfc_confirmatory_csv=args.gfc_confirmatory_csv,
+        results_csv=args.results_csv,
+        output_path=args.output_dir / "rq5_redesign_plan.md",
+        replicates=args.replicates,
+    )
+    print(f"rq5_redesign_plan -> {path}")
+    return 0
+
+
 def _cmd_rq5_run(args: argparse.Namespace) -> int:
+    conditions = tuple(args.conditions) if args.conditions else ("A", "B")
     outputs = run_rq5_causal_evidence(
         candidate_csv=args.candidate_csv,
         gfc_confirmatory_csv=args.gfc_confirmatory_csv,
@@ -149,6 +163,7 @@ def _cmd_rq5_run(args: argparse.Namespace) -> int:
         use_git_workspaces=args.use_git_workspaces,
         clone_timeout=args.clone_timeout,
         resume=not args.no_resume,
+        conditions=conditions,
     )
     for label, path in outputs.items():
         print(f"{label} -> {path}")
@@ -398,8 +413,35 @@ def main(argv: list[str] | None = None) -> int:
     rq5_run.add_argument("--use-git-workspaces", action="store_true", default=True)
     rq5_run.add_argument("--no-git-workspaces", action="store_false", dest="use_git_workspaces")
     rq5_run.add_argument("--clone-timeout", type=int, default=180)
+    rq5_run.add_argument(
+        "--conditions",
+        action="append",
+        choices=["A", "B", "C"],
+        default=None,
+        help="Conditions to run (default: A B only; use A B C for full redesign)",
+    )
     rq5_run.add_argument("--no-resume", action="store_true", help="Ignore existing rq5_results.csv")
     rq5_run.set_defaults(func=_cmd_rq5_run)
+
+    rq5_redesign = sub.add_parser("rq5-redesign", help="Generate RQ5 A/B/C redesign plan (no agent runs)")
+    rq5_redesign.add_argument(
+        "--candidate-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/rq5_candidate_dataset.csv"),
+    )
+    rq5_redesign.add_argument(
+        "--gfc-confirmatory-csv",
+        type=Path,
+        default=Path("exports/truth_decay_pilot/gfc_confirmatory_audit.csv"),
+    )
+    rq5_redesign.add_argument(
+        "--results-csv",
+        type=Path,
+        default=Path("exports/rq5_agent_impact/rq5_results.csv"),
+    )
+    rq5_redesign.add_argument("--output-dir", type=Path, default=DEFAULT_RQ5_CAUSAL_EXPORT)
+    rq5_redesign.add_argument("--replicates", type=int, default=3)
+    rq5_redesign.set_defaults(func=_cmd_rq5_redesign)
 
     rq5 = sub.add_parser("rq5", help="RQ5 causal agent-impact experiment (stub/infrastructure)")
     rq5.add_argument(

@@ -1,7 +1,7 @@
 # RQ5 Agent Impact Experiment Protocol v1
 
-**Status:** Frozen — design only; not implemented  
-**Protocol version:** `RQ5_AGENT_IMPACT_EXPERIMENT_v1`  
+**Status:** v1.1 — A/B/C redesign approved; AB-only execution paused  
+**Protocol version:** `RQ5_AGENT_IMPACT_EXPERIMENT_v1.1`  
 **Parent protocol:** `protocol/TRUTH_DECAY_PROTOCOL_v1.md`  
 **Prerequisite gates:** P3 (rot incidence), P4 (attribution precision), P5 (human doc baseline)
 
@@ -50,10 +50,27 @@ This protocol defines a **controlled agent task experiment** measuring whether *
 | Condition | Documentation |
 |-----------|---------------|
 | **A — Truthful** | Instruction file blob at last snapshot where target references were VERIFIED |
-| **B — Observed rot** | Instruction file blob at snapshot where target references are MISSING (from P3) |
-| **C — Human baseline** (optional) | README.md or CONTRIBUTING.md at same commit (no rot injection) |
+| **B — Confirmed false** | Instruction file blob with confirmed-false (born-stale) reference content |
+| **C — No instruction** | Instruction file **absent** at pinned commit (removed from workspace); baseline for instruction presence |
 
-No synthetic path invention. Condition B uses **real historical stale text** from the laboratory.
+**Optional strata (pre-registered):**
+
+| Stratum | Definition |
+|---------|------------|
+| **Load-bearing** | False claim on task-critical path: issue cue + verified-reference task coupling + anchor in instruction text |
+| **Peripheral** | Stale reference unlikely to bind agent behavior (tangential paths, low task coupling) |
+
+Condition C replaces the earlier optional human-doc baseline. Human README/CONTRIBUTING comparisons remain descriptive (P5), not causal conditions.
+
+**Inference contrasts (primary):**
+
+| Contrast | Estimand |
+|----------|----------|
+| **A − C** | Effect of providing truthful instruction vs none |
+| **B − C** | Effect of providing false instruction vs none |
+| **A − B** | Effect of instruction truth holding presence fixed |
+
+A null **A − B** result without Condition C is **uninterpretable** (cannot distinguish ignored instructions from harmless false claims).
 
 ---
 
@@ -105,11 +122,13 @@ Target: **20–30 rot cases** from P1/P3 sample for pilot; expand only after kil
 
 | Factor | Levels |
 |--------|--------|
-| Condition | A (truthful), B (observed rot) |
+| Condition | A (truthful), B (confirmed false), C (no instruction) |
 | Agent | 2–3 models |
 | Replicates | **≥3 runs** per (case × condition × agent) |
 
-**Total pilot runs (estimate):** 20 cases × 2 conditions × 2 agents × 3 replicates ≈ **240 runs** (upper bound; prune after variance review).
+**Total pilot runs (estimate):** 20 cases × 3 conditions × 2 agents × 3 replicates ≈ **360 runs** (upper bound; prune after variance review).
+
+**Paused AB-only partial run:** 128 runs collected before redesign; reusable for A and B arms only. Condition C requires new runs.
 
 Randomization: case order randomized; condition order counterbalanced across replicates.
 
@@ -151,7 +170,9 @@ Traces stored under `exports/rq5_agent_impact/traces/` (future); not implemented
 
 ## Analysis plan (pilot — no full survival)
 
-**Primary estimand:** Δ success rate = P(success | A) − P(success | B) averaged across cases and agents.
+**Primary estimand:** Δ success for A−C, B−C, and A−B (paired within case × replicate).
+
+**Stratified analysis:** Repeat primary contrasts within load-bearing and peripheral strata.
 
 **Secondary:** Δ median time, Δ test pass rate, trace-coded `failed_on_reference` rate in B only.
 
@@ -207,4 +228,5 @@ RQ5 experiment ───► causal cost of rot (Truth Debt conditional)
 
 | Version | Date | Change |
 |---------|------|--------|
+| v1.1 | 2026-07-03 | A/B/C redesign: Condition C = no instruction; load-bearing strata; AB-only execution paused |
 | v1 | 2026-07-02 | Initial RQ5 agent impact experiment design (not implemented) |

@@ -25,6 +25,14 @@ class ExperimentCase:
     selection_reason: str
     confirmed_false: bool
     p1_sample: bool
+    likely_load_bearing: bool = False
+    load_bearing_stratum: str = "unknown"
+    load_bearing_reason: str = ""
+
+
+# Default A/B conditions; C (no instruction) is opt-in for redesigned protocol.
+DEFAULT_CONDITIONS_AB: tuple[str, ...] = ("A", "B")
+DEFAULT_CONDITIONS_ABC: tuple[str, ...] = ("A", "B", "C")
 
 
 @dataclass(frozen=True)

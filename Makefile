@@ -272,6 +272,10 @@ truth-decay-rq5-report: install-paper
 	  --output-dir exports/rq5_agent_impact \
 	  --replicates 3
 
+truth-decay-rq5-redesign: install-paper
+	$(PY) -m artifact_lab.experiments.truth_decay rq5-redesign \
+	  --output-dir exports/rq5_agent_impact
+
 truth-decay-rq5-uptake: install-paper
 	$(PY) -m artifact_lab.experiments.truth_decay rq5-uptake \
 	  --output-dir exports/rq5_agent_impact
