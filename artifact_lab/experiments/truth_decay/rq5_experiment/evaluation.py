@@ -22,12 +22,18 @@ def evaluate_run(
     tool_failures = agent_result.tool_failures
     execution_time = agent_result.execution_time_seconds
 
-    if run_tests and case.test_command:
+    if run_tests and case.test_command and workspace.resolve().is_dir():
         code, elapsed = run_shell_command(case.test_command, cwd=workspace, timeout=test_timeout)
         tests_passing = code == 0
         execution_time += elapsed
         if code != 0:
             tool_failures += 1
+
+    elif run_tests and case.test_command and not workspace.resolve().is_dir():
+        tests_passing = False
+        tool_failures += 1
+        if not agent_result.error_message:
+            agent_result.error_message = "workspace_missing_after_agent_run"
 
     success = agent_result.success and tests_passing and compilation_success
     return AgentRunResult(

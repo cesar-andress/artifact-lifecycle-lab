@@ -113,6 +113,13 @@ def test_select_cases_include_load_bearing_flags():
     assert all(c.load_bearing_stratum in {"load_bearing", "peripheral", "unknown"} for c in cases)
 
 
+def test_git_workspace_metrics_missing_dir(tmp_path: Path):
+    from artifact_lab.experiments.truth_decay.rq5_experiment.agents.cli_utils import git_workspace_metrics
+
+    metrics = git_workspace_metrics(tmp_path / "missing")
+    assert metrics == {"files_modified": 0, "repository_changes": 0, "patch_size": 0}
+
+
 def test_generate_redesign_plan(tmp_path: Path):
     out = generate_rq5_redesign_plan(
         output_path=tmp_path / "rq5_redesign_plan.md",

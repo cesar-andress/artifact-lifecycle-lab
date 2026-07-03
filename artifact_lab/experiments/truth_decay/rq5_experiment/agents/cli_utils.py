@@ -37,12 +37,16 @@ def build_experiment_prompt(case: ExperimentCase, *, condition: str = "A") -> st
 
 
 def git_workspace_metrics(workspace: Path) -> dict[str, int]:
-    status = run_git(["git", "status", "--porcelain"], cwd=workspace, timeout=60)
+    root = workspace.resolve()
+    if not root.is_dir():
+        return {"files_modified": 0, "repository_changes": 0, "patch_size": 0}
+
+    status = run_git(["git", "status", "--porcelain"], cwd=root, timeout=60)
     files_modified = 0
     if status.returncode == 0:
         files_modified = len([line for line in status.stdout.splitlines() if line.strip()])
 
-    diff = run_git(["git", "diff", "--numstat", "HEAD"], cwd=workspace, timeout=60)
+    diff = run_git(["git", "diff", "--numstat", "HEAD"], cwd=root, timeout=60)
     patch_lines = 0
     if diff.returncode == 0:
         for line in diff.stdout.splitlines():

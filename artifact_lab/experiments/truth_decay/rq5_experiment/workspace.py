@@ -42,6 +42,7 @@ def prepared_workspace(
     clone_timeout: int = 180,
 ):
     """Clone repo at task commit and apply condition A, B, or C instruction treatment."""
+    scratch_dir = scratch_dir.resolve()
     workspace = scratch_dir / f"rq5_{case.case_id}_{condition}"
     clone_path = scratch_dir / f"rq5_clone_{case.repo_id}"
     if workspace.exists():
@@ -66,7 +67,7 @@ def prepared_workspace(
             blob_store=blob_store,
         )
 
-        yield workspace
+        yield workspace.resolve()
     finally:
         run_git(["git", "worktree", "remove", "--force", str(workspace)], cwd=clone_path, timeout=60)
         remove_clone(clone_path)
@@ -91,10 +92,14 @@ def write_instruction_to_workspace(
 def run_shell_command(command: str, *, cwd: Path, timeout: int = 600) -> tuple[int, float]:
     import time
 
+    root = cwd.resolve()
+    if not root.is_dir():
+        return 127, 0.0
+
     started = time.perf_counter()
     proc = subprocess.run(
         command,
-        cwd=cwd,
+        cwd=root,
         shell=True,
         capture_output=True,
         text=True,

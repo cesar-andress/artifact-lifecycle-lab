@@ -19,7 +19,7 @@ from artifact_lab.experiments.truth_decay.rq5_experiment.agents.cli_utils import
     run_subprocess,
     shell_commands_from_events,
 )
-from artifact_lab.experiments.truth_decay.rq5_experiment.models import AgentRunResult, ExperimentCase
+from artifact_lab.experiments.truth_decay.rq5_experiment.models import AgentRunResult, ExperimentCase, TraceEvent
 
 
 class ClaudeCodeAgent:
@@ -69,7 +69,9 @@ class ClaudeCodeAgent:
         env["CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC"] = "1"
 
         error_message = ""
-        events = [read_instruction_event(case.instruction_path)]
+        events: list[TraceEvent] = []
+        if condition != "C":
+            events.append(read_instruction_event(case.instruction_path))
         meta = {
             "iterations": 0,
             "tool_invocations": 0,
@@ -95,7 +97,7 @@ class ClaudeCodeAgent:
         except OSError as exc:
             error_message = str(exc)
 
-        if not instruction_was_read(events, case.instruction_path):
+        if condition != "C" and not instruction_was_read(events, case.instruction_path):
             events.append(read_instruction_event(case.instruction_path))
 
         git_metrics = git_workspace_metrics(workspace)
