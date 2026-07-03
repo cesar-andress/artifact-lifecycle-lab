@@ -1,0 +1,31 @@
+{
+  "protocol_version": "RQ5_FACTORIAL_v1.0",
+  "agents": [
+    "claude_code",
+    "codex",
+    "gemini_cli"
+  ],
+  "cells": [
+    "T+L",
+    "F+L",
+    "T+P",
+    "F+P",
+    "N"
+  ],
+  "replicates": 3,
+  "primary_agent": "claude_code",
+  "replication_agents": [
+    "codex",
+    "gemini_cli"
+  ],
+  "run_timeout_seconds": 1200,
+  "allow_execute": false,
+  "metadata": {
+    "available_agents": [
+      "claude_code",
+      "codex",
+      "gemini_cli"
+    ],
+    "seed": 42
+  }
+}

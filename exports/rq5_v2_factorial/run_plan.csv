@@ -1,0 +1,901 @@
+run_id,case_id,cell_code,agent_id,replicate_id,factor_a,factor_b,factor_c,repo_url,commit_sha,instruction_path,test_command,status
+631b243122ad900de713,d2578b858cfe326f,N,claude_code,1,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+f3299a4f217a7b002cbe,d2578b858cfe326f,T+P,claude_code,1,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+2ebbbe4a0708e7a1eeed,d2578b858cfe326f,F+P,claude_code,1,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+17c9fb0d68bde42be934,d2578b858cfe326f,T+L,claude_code,1,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+0b808a19543dc99f4029,d2578b858cfe326f,F+L,claude_code,1,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+d598c9a41326591b3072,d2578b858cfe326f,N,claude_code,2,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+ec17bef7203cff4df5ef,d2578b858cfe326f,F+L,claude_code,2,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+d96ef82df5c62875530a,d2578b858cfe326f,T+P,claude_code,2,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+ef0084d651b6867ebeaf,d2578b858cfe326f,F+P,claude_code,2,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+4b2ad9ff25111df1673e,d2578b858cfe326f,T+L,claude_code,2,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+9c5b1cf3842c4d55d122,d2578b858cfe326f,F+L,claude_code,3,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+8552eab663426d621ad5,d2578b858cfe326f,T+P,claude_code,3,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+0e077530afffc3722121,d2578b858cfe326f,N,claude_code,3,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+03a944ebe7f80903bc75,d2578b858cfe326f,T+L,claude_code,3,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+6beebfc35dee83b8a13c,d2578b858cfe326f,F+P,claude_code,3,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+ca76c00bf2fafde81d73,d2578b858cfe326f,T+L,codex,1,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+a8266f3f07d235fc2477,d2578b858cfe326f,N,codex,1,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+30e2d887226f716f21e3,d2578b858cfe326f,T+P,codex,1,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+3adffea3e428c41a9716,d2578b858cfe326f,F+P,codex,1,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+df05757580d4fe5dbef8,d2578b858cfe326f,F+L,codex,1,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+92debebd73e1d5704b65,d2578b858cfe326f,T+P,codex,2,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+411442a224a979223550,d2578b858cfe326f,F+L,codex,2,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+1f4c8dc4a364c63fc2c1,d2578b858cfe326f,F+P,codex,2,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+3a975c33d4ff23059163,d2578b858cfe326f,N,codex,2,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+0b67c222f5d22a1d909e,d2578b858cfe326f,T+L,codex,2,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+4b7a0078dc1b36a2c3e0,d2578b858cfe326f,F+L,codex,3,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+f91b79358f96c46d1a4f,d2578b858cfe326f,N,codex,3,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+5564ae97ee68b2f39ca1,d2578b858cfe326f,F+P,codex,3,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+ec9b1f9660008add200f,d2578b858cfe326f,T+P,codex,3,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+7d00c5ca206aee1e2f26,d2578b858cfe326f,T+L,codex,3,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+706af5fa721c80c75cb3,d2578b858cfe326f,T+L,gemini_cli,1,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+fe6b457a15db852a9281,d2578b858cfe326f,F+P,gemini_cli,1,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+a85447be6b4e986f105e,d2578b858cfe326f,F+L,gemini_cli,1,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+462989d9ea6e9985ca2a,d2578b858cfe326f,T+P,gemini_cli,1,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+28e581e177501e91ee16,d2578b858cfe326f,N,gemini_cli,1,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+bd4a9661b55ad93aa3e0,d2578b858cfe326f,T+L,gemini_cli,2,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+1eeaf0efab09a71018eb,d2578b858cfe326f,N,gemini_cli,2,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+f24a0226fe0c692c36f2,d2578b858cfe326f,F+P,gemini_cli,2,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+0ae398ea14b5528b3357,d2578b858cfe326f,T+P,gemini_cli,2,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+c613e3c9082fc4f435fa,d2578b858cfe326f,F+L,gemini_cli,2,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+4b645854b8092dd5f474,d2578b858cfe326f,T+L,gemini_cli,3,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+828ddfe1fb195d03eede,d2578b858cfe326f,T+P,gemini_cli,3,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+51425bfdfbf5e2cf2da7,d2578b858cfe326f,F+L,gemini_cli,3,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+5577047e353d031ebd6c,d2578b858cfe326f,F+P,gemini_cli,3,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+9fd21296ba72cabf1880,d2578b858cfe326f,N,gemini_cli,3,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+d1a6f4c30f91e676dea1,3ff980d65c78fd63,T+L,claude_code,1,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+ec0ea6c8aeb0e3c1b701,3ff980d65c78fd63,T+P,claude_code,1,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+7825f27be7001c7c058f,3ff980d65c78fd63,F+L,claude_code,1,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+47acd29da945eafbd034,3ff980d65c78fd63,F+P,claude_code,1,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+a2e0579f3588c5166df7,3ff980d65c78fd63,N,claude_code,1,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+5b0943adeb07658def19,3ff980d65c78fd63,F+P,claude_code,2,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+983de74955ef543d0a5d,3ff980d65c78fd63,F+L,claude_code,2,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+484657e8bc84b375d2a1,3ff980d65c78fd63,T+P,claude_code,2,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+e664b8c1888596b695d2,3ff980d65c78fd63,T+L,claude_code,2,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+6b6357e95d1bab31ec72,3ff980d65c78fd63,N,claude_code,2,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+5ff6d9ac56f184c7a8cb,3ff980d65c78fd63,T+P,claude_code,3,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+ee6a7d4a934c6d932e02,3ff980d65c78fd63,F+P,claude_code,3,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+f859b847a188794eb4e3,3ff980d65c78fd63,T+L,claude_code,3,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+88b01fcb830635d19bae,3ff980d65c78fd63,F+L,claude_code,3,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+c382eb6e869fa6a1fe14,3ff980d65c78fd63,N,claude_code,3,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+6e58d6004404a831761e,3ff980d65c78fd63,T+L,codex,1,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+4436535378f17207c5d3,3ff980d65c78fd63,N,codex,1,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+b5f15022156f27de9185,3ff980d65c78fd63,T+P,codex,1,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+ec0344d7862a735fd5cd,3ff980d65c78fd63,F+L,codex,1,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+a1ba30e481a895983aaa,3ff980d65c78fd63,F+P,codex,1,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+91b3534842b3e22e2131,3ff980d65c78fd63,T+P,codex,2,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+deccb449313657fcc295,3ff980d65c78fd63,T+L,codex,2,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+ac7757b29dfc3fcf742c,3ff980d65c78fd63,N,codex,2,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+ef1d0462155d13fa9f46,3ff980d65c78fd63,F+P,codex,2,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+01041f937305c92737e0,3ff980d65c78fd63,F+L,codex,2,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+dbedba29fe685dad1884,3ff980d65c78fd63,N,codex,3,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+90a73f17d4c751659f7b,3ff980d65c78fd63,F+L,codex,3,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+1a8cd37c8d1940884817,3ff980d65c78fd63,F+P,codex,3,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+7ab3214ad35a51ea4ca9,3ff980d65c78fd63,T+L,codex,3,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+9542da1f5947e36a28fb,3ff980d65c78fd63,T+P,codex,3,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+5dbd5e53533780050dc9,3ff980d65c78fd63,F+P,gemini_cli,1,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+7da455e17fc0cd993095,3ff980d65c78fd63,T+P,gemini_cli,1,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+336727ca600f632ae112,3ff980d65c78fd63,N,gemini_cli,1,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+825d608df9c1fd14efdb,3ff980d65c78fd63,F+L,gemini_cli,1,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+5cf7e168eb443e59583d,3ff980d65c78fd63,T+L,gemini_cli,1,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+d85f5684e36b19a07bb8,3ff980d65c78fd63,T+P,gemini_cli,2,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+6b6e538d695edd7ea704,3ff980d65c78fd63,N,gemini_cli,2,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+4b0982943d7c12bf3b8b,3ff980d65c78fd63,T+L,gemini_cli,2,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+185ea041ecd3410ecfdb,3ff980d65c78fd63,F+L,gemini_cli,2,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+b46cd0596ee320fabbed,3ff980d65c78fd63,F+P,gemini_cli,2,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+2d1dec4cf70d5f52ceff,3ff980d65c78fd63,F+P,gemini_cli,3,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+75972280f9b711c7a5c1,3ff980d65c78fd63,T+L,gemini_cli,3,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+341777423512cf53ef9e,3ff980d65c78fd63,N,gemini_cli,3,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+af3f39587474e74b3757,3ff980d65c78fd63,T+P,gemini_cli,3,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+64a40825845e3240189a,3ff980d65c78fd63,F+L,gemini_cli,3,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+bf2a01e3dd9e426d9431,1e1131e99f590b53,T+P,claude_code,1,present,truthful,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+7c2b4be3c048ed31cfd9,1e1131e99f590b53,F+L,claude_code,1,present,false,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+5ff47849a000a15f1be5,1e1131e99f590b53,N,claude_code,1,absent,na,na,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+31b1ae3d0bb24a5f217c,1e1131e99f590b53,F+P,claude_code,1,present,false,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+61797f45f7664ce7a6f5,1e1131e99f590b53,T+L,claude_code,1,present,truthful,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+bf1403cf1247f67932aa,1e1131e99f590b53,F+P,claude_code,2,present,false,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+334d4f83b1564bc5b1da,1e1131e99f590b53,N,claude_code,2,absent,na,na,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+11d9ca52c1ab8b667bc7,1e1131e99f590b53,T+L,claude_code,2,present,truthful,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+62058413406bbe65d7ef,1e1131e99f590b53,T+P,claude_code,2,present,truthful,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+55c8983a8c238dbe6d3f,1e1131e99f590b53,F+L,claude_code,2,present,false,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+a77690c6bc5ee8ddabc0,1e1131e99f590b53,F+L,claude_code,3,present,false,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+6a74fb11b85092c92221,1e1131e99f590b53,F+P,claude_code,3,present,false,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+72f223daa517739a980a,1e1131e99f590b53,T+L,claude_code,3,present,truthful,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+9c497d2ad9b86352e7d4,1e1131e99f590b53,T+P,claude_code,3,present,truthful,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+ea4fa3cdd165d7910aa9,1e1131e99f590b53,N,claude_code,3,absent,na,na,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+e13af73bb837c9689931,1e1131e99f590b53,T+P,codex,1,present,truthful,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+51eba916cb8ea9786df4,1e1131e99f590b53,F+P,codex,1,present,false,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+ccb6cf66fc8bd356a01e,1e1131e99f590b53,T+L,codex,1,present,truthful,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+25967326e4d64cdfa1e4,1e1131e99f590b53,N,codex,1,absent,na,na,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+9c88e9fe397679a53633,1e1131e99f590b53,F+L,codex,1,present,false,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+937de17c997f5e82fb39,1e1131e99f590b53,T+L,codex,2,present,truthful,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+44b664f10477f82355aa,1e1131e99f590b53,F+L,codex,2,present,false,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+2873580aec9cce2fc0b4,1e1131e99f590b53,T+P,codex,2,present,truthful,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+0fe4b8bfaec8aadfa1b1,1e1131e99f590b53,N,codex,2,absent,na,na,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+1ff9b057212570f86d03,1e1131e99f590b53,F+P,codex,2,present,false,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+7addedf245705ef29946,1e1131e99f590b53,T+L,codex,3,present,truthful,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+d426d018962bcc7f7c74,1e1131e99f590b53,F+P,codex,3,present,false,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+e65715200325afc54c29,1e1131e99f590b53,T+P,codex,3,present,truthful,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+1c4c7ac8caabd055e569,1e1131e99f590b53,F+L,codex,3,present,false,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+ef1ed204b091f3455872,1e1131e99f590b53,N,codex,3,absent,na,na,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+3c592b56154a698673dd,1e1131e99f590b53,N,gemini_cli,1,absent,na,na,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+a991207a0aa045416ee0,1e1131e99f590b53,F+L,gemini_cli,1,present,false,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+506883db17bd88e6ede1,1e1131e99f590b53,T+L,gemini_cli,1,present,truthful,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+fb6a8551490232f8e61d,1e1131e99f590b53,F+P,gemini_cli,1,present,false,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+85b67741fa953566bd62,1e1131e99f590b53,T+P,gemini_cli,1,present,truthful,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+d398a45b0cf7aeba83b1,1e1131e99f590b53,F+P,gemini_cli,2,present,false,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+3ececaf4251f4ffd22f3,1e1131e99f590b53,T+P,gemini_cli,2,present,truthful,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+fbeff4413bacb789296d,1e1131e99f590b53,F+L,gemini_cli,2,present,false,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+886666a10b332662c9e1,1e1131e99f590b53,N,gemini_cli,2,absent,na,na,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+18f0fc43dfca4a2fd451,1e1131e99f590b53,T+L,gemini_cli,2,present,truthful,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+1bab8677cc22ebdd2f51,1e1131e99f590b53,N,gemini_cli,3,absent,na,na,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+1042079fd56310a71bac,1e1131e99f590b53,T+L,gemini_cli,3,present,truthful,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+42c25b2d39f0d5d3ab24,1e1131e99f590b53,T+P,gemini_cli,3,present,truthful,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+1054f10190cee7ebcdb7,1e1131e99f590b53,F+L,gemini_cli,3,present,false,yes,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+5c19664fb99f331c17c6,1e1131e99f590b53,F+P,gemini_cli,3,present,false,no,https://github.com/vercel/next.js,059edd0b2256f4d0b5a2cb59338a32ec702fae89,AGENTS.md,pytest,planned
+ee5932cc1444420fd5a6,abced8248ab90fb1,F+L,claude_code,1,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+ff1c1cc6b6b660eadf54,abced8248ab90fb1,T+L,claude_code,1,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+470fd03481afbd798d47,abced8248ab90fb1,N,claude_code,1,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+9a53f168b58ebc735f91,abced8248ab90fb1,T+P,claude_code,1,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+ca5a7e1edad4673b5b07,abced8248ab90fb1,F+P,claude_code,1,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+7b64865b46485fec206e,abced8248ab90fb1,F+P,claude_code,2,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+ec6408783f1fa32e5044,abced8248ab90fb1,F+L,claude_code,2,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+2bc4b94ac19643aaaee0,abced8248ab90fb1,N,claude_code,2,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+8fd81dfbe447a214b744,abced8248ab90fb1,T+P,claude_code,2,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+0ffd9d615c8818e18786,abced8248ab90fb1,T+L,claude_code,2,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+bef9c20da6e1ed5de5ce,abced8248ab90fb1,N,claude_code,3,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+e4ef8dca1474bc0c33c4,abced8248ab90fb1,F+P,claude_code,3,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+4cc4157c39343af0da8f,abced8248ab90fb1,F+L,claude_code,3,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+ba80c1249b8c9372307a,abced8248ab90fb1,T+P,claude_code,3,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+ffee943c69b1c6f59875,abced8248ab90fb1,T+L,claude_code,3,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+2ea20af1e2b4bcf940d5,abced8248ab90fb1,F+P,codex,1,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+54f42cc49e0d43369417,abced8248ab90fb1,F+L,codex,1,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+a17362933d87fd02fbc7,abced8248ab90fb1,T+P,codex,1,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+b036d4971ef99bb90177,abced8248ab90fb1,T+L,codex,1,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+056188d013f5857dbec9,abced8248ab90fb1,N,codex,1,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+8033073461d04751822e,abced8248ab90fb1,N,codex,2,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+de43d46ed6598a683e8f,abced8248ab90fb1,T+L,codex,2,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+aece410ac10e9de3bc16,abced8248ab90fb1,T+P,codex,2,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+2c498fad91cd96d8c713,abced8248ab90fb1,F+L,codex,2,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+3111020f4fff7ffe3a4b,abced8248ab90fb1,F+P,codex,2,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+2d48e97719d4147be22f,abced8248ab90fb1,F+P,codex,3,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+9ce5eb8479ac5570b843,abced8248ab90fb1,N,codex,3,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+69d1700913a4ba8a4f50,abced8248ab90fb1,T+L,codex,3,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+e2239f4d658e3e626590,abced8248ab90fb1,F+L,codex,3,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+e8f29887a475435db6bd,abced8248ab90fb1,T+P,codex,3,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+8733b8feb4e486d86fac,abced8248ab90fb1,N,gemini_cli,1,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+e15e300628bf8c1549ac,abced8248ab90fb1,F+P,gemini_cli,1,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+0276bdf596b5bdc3a684,abced8248ab90fb1,T+P,gemini_cli,1,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+f352b140994149d75f4a,abced8248ab90fb1,T+L,gemini_cli,1,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+87c04b16c7cff0ecc64f,abced8248ab90fb1,F+L,gemini_cli,1,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+ac3bb1cd59e2fb887353,abced8248ab90fb1,T+P,gemini_cli,2,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+b89e5cd34bee37929991,abced8248ab90fb1,F+L,gemini_cli,2,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+3cb0ab0571b4191321a5,abced8248ab90fb1,F+P,gemini_cli,2,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+c154ae968f712f96b75e,abced8248ab90fb1,T+L,gemini_cli,2,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+7d8f410172a8323e7592,abced8248ab90fb1,N,gemini_cli,2,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+d149b24ccfdbb344ec91,abced8248ab90fb1,N,gemini_cli,3,absent,na,na,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+e2a490d3805bac183f39,abced8248ab90fb1,F+P,gemini_cli,3,present,false,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+613961ed67eea030b968,abced8248ab90fb1,T+L,gemini_cli,3,present,truthful,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+bc470b44af068ddf466e,abced8248ab90fb1,F+L,gemini_cli,3,present,false,yes,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+d001e608acff4c316113,abced8248ab90fb1,T+P,gemini_cli,3,present,truthful,no,https://github.com/fixmyberlin/tilda-geo,b6d9037991f7b133d4e0c93f928ab79c5c32b453,.agents/skills/tech-stack/SKILL.md,Vitest,planned
+38302b8843887efbcc64,d5303ea5b426c7be,F+P,claude_code,1,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+c71fde8a1468646ce340,d5303ea5b426c7be,T+L,claude_code,1,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+8f40dc3447887c9c96ad,d5303ea5b426c7be,N,claude_code,1,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+ce2ce3bfa4be3f6cd935,d5303ea5b426c7be,F+L,claude_code,1,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+58e485b667fd285e43d1,d5303ea5b426c7be,T+P,claude_code,1,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+9be6a4a112d36562bc2f,d5303ea5b426c7be,T+P,claude_code,2,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+ad65248a0a7e36a8a72c,d5303ea5b426c7be,F+P,claude_code,2,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+1e6de47ad87446bff43c,d5303ea5b426c7be,T+L,claude_code,2,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+0929b879faa3effd5b03,d5303ea5b426c7be,F+L,claude_code,2,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+54064e664db44ea608b2,d5303ea5b426c7be,N,claude_code,2,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+84d20671677f01e44e98,d5303ea5b426c7be,T+P,claude_code,3,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+2e8faebeb58eb8db4eb1,d5303ea5b426c7be,T+L,claude_code,3,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+b4cd0841e057d1c504e5,d5303ea5b426c7be,F+P,claude_code,3,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+8f4d02e4f02fdac47615,d5303ea5b426c7be,N,claude_code,3,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+1827a91d993160a78e9c,d5303ea5b426c7be,F+L,claude_code,3,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+239a84d96f96e83b3bea,d5303ea5b426c7be,T+P,codex,1,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+50320a7589c4a9db0dba,d5303ea5b426c7be,N,codex,1,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+2b04feb334afd6218a91,d5303ea5b426c7be,F+L,codex,1,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+a413f706dc25d319e63c,d5303ea5b426c7be,F+P,codex,1,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+3a2da167f764715fd97c,d5303ea5b426c7be,T+L,codex,1,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+d70a22d1247ec06c286b,d5303ea5b426c7be,T+L,codex,2,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+18f1ca9a834cb46d6a74,d5303ea5b426c7be,F+P,codex,2,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+a712fc83db36ce5910d4,d5303ea5b426c7be,N,codex,2,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+fcca1f16965a49ec0e00,d5303ea5b426c7be,F+L,codex,2,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+2a962221b1bb9eaa63e9,d5303ea5b426c7be,T+P,codex,2,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+d845c7f217bab9b2e7b3,d5303ea5b426c7be,F+L,codex,3,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+c476d62506d74fb558fb,d5303ea5b426c7be,T+L,codex,3,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+b74ebf3fd0b673bbaf6e,d5303ea5b426c7be,N,codex,3,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+d6b6488f319fd556cdd6,d5303ea5b426c7be,T+P,codex,3,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+f302fc6172687fa1567e,d5303ea5b426c7be,F+P,codex,3,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+e4016978450786b66a38,d5303ea5b426c7be,T+L,gemini_cli,1,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+376e612dee2ddc4987c4,d5303ea5b426c7be,F+P,gemini_cli,1,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+7c859942b5ca262693d5,d5303ea5b426c7be,T+P,gemini_cli,1,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+676774b90f34b99916f8,d5303ea5b426c7be,F+L,gemini_cli,1,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+2fddfc9ce0ea0dc46d58,d5303ea5b426c7be,N,gemini_cli,1,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+e89a882feb7982f1ef9a,d5303ea5b426c7be,T+L,gemini_cli,2,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+7989ca1f0604e6a37849,d5303ea5b426c7be,F+P,gemini_cli,2,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+e97a420167367a33a00d,d5303ea5b426c7be,N,gemini_cli,2,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+81a187b658e885ae7c26,d5303ea5b426c7be,F+L,gemini_cli,2,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+d65cd9d36f834af42c3c,d5303ea5b426c7be,T+P,gemini_cli,2,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+bbbb5b99fccbc507be1a,d5303ea5b426c7be,F+L,gemini_cli,3,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+4ffbdb45665b47d4d07a,d5303ea5b426c7be,T+L,gemini_cli,3,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+59c3e040ab267b79f246,d5303ea5b426c7be,N,gemini_cli,3,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+3346065fb3128f030a6c,d5303ea5b426c7be,T+P,gemini_cli,3,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+7cae49e5f51ba2b06020,d5303ea5b426c7be,F+P,gemini_cli,3,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+1277c9ce0f66bcf220e9,6aab689b93e84025,T+L,claude_code,1,present,truthful,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+0af182ccfef3994140a9,6aab689b93e84025,N,claude_code,1,absent,na,na,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+de1f749774a6ec47f429,6aab689b93e84025,F+L,claude_code,1,present,false,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+4feca9375443c8f4ada9,6aab689b93e84025,F+P,claude_code,1,present,false,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+1f8ee62f8c4d4e80ee3b,6aab689b93e84025,T+P,claude_code,1,present,truthful,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+f29dee7f44f2f1c729fb,6aab689b93e84025,T+P,claude_code,2,present,truthful,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+6b4b5d098b8ee0625907,6aab689b93e84025,T+L,claude_code,2,present,truthful,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+3cd20b24b70adb0ec9b2,6aab689b93e84025,F+L,claude_code,2,present,false,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+fe2b1fc3c46d4cb5e2c4,6aab689b93e84025,N,claude_code,2,absent,na,na,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+1349d50945b07141f621,6aab689b93e84025,F+P,claude_code,2,present,false,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+10751836f2c21f5d3cea,6aab689b93e84025,F+L,claude_code,3,present,false,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+fee315b243f961b27e1e,6aab689b93e84025,T+P,claude_code,3,present,truthful,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+7e31c776dcede9654113,6aab689b93e84025,N,claude_code,3,absent,na,na,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+444e5f234365b74a1c26,6aab689b93e84025,T+L,claude_code,3,present,truthful,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+c4241557a84e6be3711a,6aab689b93e84025,F+P,claude_code,3,present,false,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+d4f4b59c2bdc4c1d48c2,6aab689b93e84025,N,codex,1,absent,na,na,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+46bba6fa6b45370d6ca9,6aab689b93e84025,T+P,codex,1,present,truthful,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+dff253f870785e5cfc75,6aab689b93e84025,T+L,codex,1,present,truthful,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+d66fcbefc52a930ba834,6aab689b93e84025,F+L,codex,1,present,false,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+cd5c87dd02b1d80fddcb,6aab689b93e84025,F+P,codex,1,present,false,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+7913b72f3a9c8d25f42f,6aab689b93e84025,T+P,codex,2,present,truthful,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+7b4ae11efbd3e20805c9,6aab689b93e84025,N,codex,2,absent,na,na,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+c743a10181ae3597d0e6,6aab689b93e84025,T+L,codex,2,present,truthful,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+699474bcb40d1590bbae,6aab689b93e84025,F+P,codex,2,present,false,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+9ef1b599a7de6ade8cb1,6aab689b93e84025,F+L,codex,2,present,false,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+516c12d1030256ef5c7d,6aab689b93e84025,F+P,codex,3,present,false,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+b98bd6a98c5a20e2a720,6aab689b93e84025,T+L,codex,3,present,truthful,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+aea51e3de7fde40041f6,6aab689b93e84025,T+P,codex,3,present,truthful,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+53380c236122674d9620,6aab689b93e84025,N,codex,3,absent,na,na,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+5de0f791699b42e0b7f1,6aab689b93e84025,F+L,codex,3,present,false,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+dc33d53c39b75145d739,6aab689b93e84025,T+L,gemini_cli,1,present,truthful,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+2f9bba53f8b9879c0a6a,6aab689b93e84025,N,gemini_cli,1,absent,na,na,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+7d56043ba0a538489e0d,6aab689b93e84025,F+L,gemini_cli,1,present,false,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+a1ca3db71174b39004aa,6aab689b93e84025,F+P,gemini_cli,1,present,false,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+84d14e387f27c48b6596,6aab689b93e84025,T+P,gemini_cli,1,present,truthful,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+c1758f9a8138d124e4ab,6aab689b93e84025,F+P,gemini_cli,2,present,false,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+38728c54a6ff53a0c9ef,6aab689b93e84025,F+L,gemini_cli,2,present,false,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+8068c8e1040e9b0c2a20,6aab689b93e84025,T+P,gemini_cli,2,present,truthful,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+b9c2e6b366f287eec75d,6aab689b93e84025,T+L,gemini_cli,2,present,truthful,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+231f2fee55db23e36119,6aab689b93e84025,N,gemini_cli,2,absent,na,na,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+945551bb4f0466e0c507,6aab689b93e84025,N,gemini_cli,3,absent,na,na,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+3d54a63f28105564ab5c,6aab689b93e84025,T+P,gemini_cli,3,present,truthful,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+89ec7c10d2713b50102d,6aab689b93e84025,T+L,gemini_cli,3,present,truthful,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+37bdbd7b9a08a100a9b1,6aab689b93e84025,F+P,gemini_cli,3,present,false,no,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+0e3f8e5230a2e06e5aa1,6aab689b93e84025,F+L,gemini_cli,3,present,false,yes,https://github.com/vercel/next.js,1c081802bd00f0031de31dc93bbd5b5c042c8848,.agents/skills/create-pr/SKILL.md,pytest,planned
+77d83fbdb8d0a40f9262,150fbfaadda24570,F+L,claude_code,1,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+d9415629eb29bd096ff9,150fbfaadda24570,F+P,claude_code,1,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+be310fd4b1f6a04a1df1,150fbfaadda24570,T+L,claude_code,1,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+58f1e7dc829325537cce,150fbfaadda24570,N,claude_code,1,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+49c5b7435e859ae35d94,150fbfaadda24570,T+P,claude_code,1,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+8d194fe872470917549c,150fbfaadda24570,T+L,claude_code,2,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+337a7215e3313f38e3ff,150fbfaadda24570,F+P,claude_code,2,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+e2bad1e7bb2bd940e1e6,150fbfaadda24570,F+L,claude_code,2,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+ae28238fc414368fe570,150fbfaadda24570,N,claude_code,2,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+67c37233e9d217d02d2c,150fbfaadda24570,T+P,claude_code,2,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+517fe8adb1ebbf77c537,150fbfaadda24570,T+L,claude_code,3,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+9dd6202ef0ec0916dc11,150fbfaadda24570,F+P,claude_code,3,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+ea6ab6c1798d3ae0382b,150fbfaadda24570,T+P,claude_code,3,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+e7cc34ee6e4c3ba74d29,150fbfaadda24570,F+L,claude_code,3,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+3db5a5d5ff8d191848ad,150fbfaadda24570,N,claude_code,3,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+555ab0a0e4a39d844252,150fbfaadda24570,F+L,codex,1,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+f80fda9f4713682cac02,150fbfaadda24570,T+L,codex,1,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+0c50321199db7828483a,150fbfaadda24570,T+P,codex,1,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+1267e4ed04a928124a08,150fbfaadda24570,F+P,codex,1,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+95e7df5fbbda7c2b3e46,150fbfaadda24570,N,codex,1,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+a022d6d95f8e91ba7cc2,150fbfaadda24570,F+P,codex,2,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+a49918a18964f6f01c65,150fbfaadda24570,F+L,codex,2,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+809e62049add392ea75f,150fbfaadda24570,N,codex,2,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+471eaede431dcf679735,150fbfaadda24570,T+L,codex,2,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+a3e10ccf13410cd95e2f,150fbfaadda24570,T+P,codex,2,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+eaecc5eec64fa5559c61,150fbfaadda24570,N,codex,3,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+a98e5150c077e0136e3c,150fbfaadda24570,T+P,codex,3,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+83583b0b87f21a2de5d2,150fbfaadda24570,F+P,codex,3,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+e0566244170da3ce5a62,150fbfaadda24570,T+L,codex,3,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+d2aedab48b4e93006274,150fbfaadda24570,F+L,codex,3,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+1dcbced275a3024e9a9b,150fbfaadda24570,N,gemini_cli,1,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+43fc272df09ffb0591c2,150fbfaadda24570,T+P,gemini_cli,1,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+7db6401eee37b6f13fe9,150fbfaadda24570,F+P,gemini_cli,1,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+ff3b3e53f4ad63c350e6,150fbfaadda24570,T+L,gemini_cli,1,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+bff8e6a736fd699d9d66,150fbfaadda24570,F+L,gemini_cli,1,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+31de346ec6b8b9df4459,150fbfaadda24570,N,gemini_cli,2,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+45a7425af3e02727f366,150fbfaadda24570,F+P,gemini_cli,2,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+4c816c83b2d8bdbe1350,150fbfaadda24570,F+L,gemini_cli,2,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+b56a852d86f8ea4e6f5c,150fbfaadda24570,T+P,gemini_cli,2,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+bf66ab15dcaadebc8d87,150fbfaadda24570,T+L,gemini_cli,2,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+19db260d29677293e170,150fbfaadda24570,T+L,gemini_cli,3,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+d1b40557ebaeb14167c8,150fbfaadda24570,N,gemini_cli,3,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+37d9505e60285b3d08eb,150fbfaadda24570,F+P,gemini_cli,3,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+e567609b9423cecf94a7,150fbfaadda24570,F+L,gemini_cli,3,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+53cdaa48df9d7b0278f5,150fbfaadda24570,T+P,gemini_cli,3,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+391dbb05fa1a50409521,ea5545b3e36e5c4b,T+P,claude_code,1,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+5b96748dee4f32e1c35a,ea5545b3e36e5c4b,F+P,claude_code,1,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+042ca848a039dcb58d65,ea5545b3e36e5c4b,T+L,claude_code,1,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+2bd22964cdcafe7a0ed1,ea5545b3e36e5c4b,N,claude_code,1,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+1dbd1e762eb0254d89dc,ea5545b3e36e5c4b,F+L,claude_code,1,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+8005488bb7f994a50380,ea5545b3e36e5c4b,F+L,claude_code,2,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+7c6b363fd6be0d23f0e6,ea5545b3e36e5c4b,N,claude_code,2,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+77c296c60dfe1465d0fa,ea5545b3e36e5c4b,T+P,claude_code,2,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+c9d2da434de0b9c3c7a8,ea5545b3e36e5c4b,T+L,claude_code,2,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+bf1481ec5c536729907a,ea5545b3e36e5c4b,F+P,claude_code,2,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+dcd3b49e900394b746c1,ea5545b3e36e5c4b,N,claude_code,3,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+cc82c30d610971df24fc,ea5545b3e36e5c4b,F+L,claude_code,3,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+28250466fd0a2b1b3e17,ea5545b3e36e5c4b,F+P,claude_code,3,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+12b38d5b1d57d16a0e7e,ea5545b3e36e5c4b,T+P,claude_code,3,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+42033c1c87de2f3ee42c,ea5545b3e36e5c4b,T+L,claude_code,3,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+2aeca875e41d0c36155f,ea5545b3e36e5c4b,N,codex,1,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+185d76abdc313dd13796,ea5545b3e36e5c4b,F+P,codex,1,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+be674ae5942fbc3ae788,ea5545b3e36e5c4b,F+L,codex,1,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+da74fed8d546dae821f7,ea5545b3e36e5c4b,T+L,codex,1,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+9645832dd22cd1878fb2,ea5545b3e36e5c4b,T+P,codex,1,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+108f58b88adacb4f9050,ea5545b3e36e5c4b,T+L,codex,2,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+b8143a19a61bdc8555e0,ea5545b3e36e5c4b,F+P,codex,2,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+142be120a358860947b1,ea5545b3e36e5c4b,T+P,codex,2,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+92ebcda245b031ddde14,ea5545b3e36e5c4b,F+L,codex,2,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+92989e61c7a01efc628d,ea5545b3e36e5c4b,N,codex,2,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+f4b14663fd996695c7e2,ea5545b3e36e5c4b,F+L,codex,3,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+28714e4b450dc756cc60,ea5545b3e36e5c4b,F+P,codex,3,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+32acda1af0b6a6398a65,ea5545b3e36e5c4b,T+L,codex,3,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+09ef7c4552489de69e3e,ea5545b3e36e5c4b,T+P,codex,3,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+f03eed7424e432feb7f2,ea5545b3e36e5c4b,N,codex,3,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+fbf2dfe8acfd18d55e4f,ea5545b3e36e5c4b,F+L,gemini_cli,1,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+3815ba245435d09a25c3,ea5545b3e36e5c4b,F+P,gemini_cli,1,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+b5a8a2113c009247e500,ea5545b3e36e5c4b,N,gemini_cli,1,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+978c9c8d118a5a9d39a2,ea5545b3e36e5c4b,T+L,gemini_cli,1,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+528cdf55fca85f702b8b,ea5545b3e36e5c4b,T+P,gemini_cli,1,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+6ee210fcde1c6372e062,ea5545b3e36e5c4b,F+P,gemini_cli,2,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+a68ec27f23a6811c009c,ea5545b3e36e5c4b,T+P,gemini_cli,2,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+30051a6edabb8bd8421b,ea5545b3e36e5c4b,N,gemini_cli,2,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+f575c0d57a413ef29b88,ea5545b3e36e5c4b,F+L,gemini_cli,2,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+acb0a97bbe0133b4ae92,ea5545b3e36e5c4b,T+L,gemini_cli,2,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+95471abdd43d0dbcee6f,ea5545b3e36e5c4b,T+P,gemini_cli,3,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+b6207814a7fa8173d43e,ea5545b3e36e5c4b,N,gemini_cli,3,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+a586b87b9485cccbb703,ea5545b3e36e5c4b,F+P,gemini_cli,3,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+ab43b280d7659f0eb34d,ea5545b3e36e5c4b,T+L,gemini_cli,3,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+f92f029bbbcddf7302ec,ea5545b3e36e5c4b,F+L,gemini_cli,3,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/go-conventions.mdc,go test,planned
+285b1c7206550f07c0ed,67c22d7f97cdb50d,N,claude_code,1,absent,na,na,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+21f31251e21c6ffe16cb,67c22d7f97cdb50d,T+P,claude_code,1,present,truthful,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+e07871773bc5f1c4e724,67c22d7f97cdb50d,F+L,claude_code,1,present,false,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+ff6ba1df4276ce7d6a77,67c22d7f97cdb50d,F+P,claude_code,1,present,false,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+46f61a1184728ec03966,67c22d7f97cdb50d,T+L,claude_code,1,present,truthful,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+02556790886fc4620836,67c22d7f97cdb50d,F+L,claude_code,2,present,false,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+099ab7d88395e932a9d5,67c22d7f97cdb50d,F+P,claude_code,2,present,false,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+547af2949db5e6cb03a8,67c22d7f97cdb50d,T+P,claude_code,2,present,truthful,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+27b4e147f13e6865083b,67c22d7f97cdb50d,T+L,claude_code,2,present,truthful,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+60a9d0e59bfb625aea95,67c22d7f97cdb50d,N,claude_code,2,absent,na,na,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+5acf3d72d55f2a49e4e9,67c22d7f97cdb50d,F+L,claude_code,3,present,false,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+215c6acfcc32c73297a0,67c22d7f97cdb50d,T+P,claude_code,3,present,truthful,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+e43f659c4a89de024851,67c22d7f97cdb50d,F+P,claude_code,3,present,false,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+daaa569f2629cc882b82,67c22d7f97cdb50d,T+L,claude_code,3,present,truthful,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+a8075df7afbfd68d5bfd,67c22d7f97cdb50d,N,claude_code,3,absent,na,na,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+0df160da4f6761abe341,67c22d7f97cdb50d,F+L,codex,1,present,false,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+fe5e3907337763b1a73e,67c22d7f97cdb50d,N,codex,1,absent,na,na,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+27dd41ed7dc3694828e1,67c22d7f97cdb50d,T+P,codex,1,present,truthful,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+5e31966ee8e635fff7be,67c22d7f97cdb50d,F+P,codex,1,present,false,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+9597ed8239054263dce4,67c22d7f97cdb50d,T+L,codex,1,present,truthful,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+16d177e9f5cbb50b005a,67c22d7f97cdb50d,N,codex,2,absent,na,na,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+6e18c9c3bf01747eb7c8,67c22d7f97cdb50d,T+L,codex,2,present,truthful,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+83d78e6cfeaec257d995,67c22d7f97cdb50d,T+P,codex,2,present,truthful,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+b37c30fadabe1e66bdb3,67c22d7f97cdb50d,F+L,codex,2,present,false,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+b8dacbe869c9227edb88,67c22d7f97cdb50d,F+P,codex,2,present,false,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+9222e05781a5de735e2d,67c22d7f97cdb50d,N,codex,3,absent,na,na,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+39faff747345f8b0e107,67c22d7f97cdb50d,T+L,codex,3,present,truthful,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+43aababf26140e110f9a,67c22d7f97cdb50d,T+P,codex,3,present,truthful,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+ca4ce2bf050bc062baaa,67c22d7f97cdb50d,F+L,codex,3,present,false,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+0981b9dc6aa830a9f36c,67c22d7f97cdb50d,F+P,codex,3,present,false,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+2252615e7eda3579a375,67c22d7f97cdb50d,T+P,gemini_cli,1,present,truthful,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+13433d26316190eeb162,67c22d7f97cdb50d,N,gemini_cli,1,absent,na,na,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+4dcf09c4c9bdf7e3bbb3,67c22d7f97cdb50d,F+L,gemini_cli,1,present,false,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+1df666079fa0896c1228,67c22d7f97cdb50d,F+P,gemini_cli,1,present,false,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+5485e5928bd400e83693,67c22d7f97cdb50d,T+L,gemini_cli,1,present,truthful,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+2c1bd79adcb724d424f8,67c22d7f97cdb50d,T+L,gemini_cli,2,present,truthful,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+157134934e1b67e69e75,67c22d7f97cdb50d,F+L,gemini_cli,2,present,false,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+6702d2d2d150641d9411,67c22d7f97cdb50d,F+P,gemini_cli,2,present,false,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+a4cc965fe32cae6c73d4,67c22d7f97cdb50d,T+P,gemini_cli,2,present,truthful,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+d183faa2e4705e3598dd,67c22d7f97cdb50d,N,gemini_cli,2,absent,na,na,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+669c22e95f874fd47b8e,67c22d7f97cdb50d,T+L,gemini_cli,3,present,truthful,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+39a1d6d67afdc4a3effa,67c22d7f97cdb50d,T+P,gemini_cli,3,present,truthful,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+99ddb0dc63230467a564,67c22d7f97cdb50d,F+P,gemini_cli,3,present,false,no,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+2edbab92eba2a08b0606,67c22d7f97cdb50d,N,gemini_cli,3,absent,na,na,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+c5fc2ca2251332f84235,67c22d7f97cdb50d,F+L,gemini_cli,3,present,false,yes,https://github.com/microsoft/vscode,da5341960035abab03944ad203c9f74136164c43,.github/prompts/codenotify.prompt.md,pytest,planned
+e9454c08d78a3a803a25,9040e7f7272a3e24,F+L,claude_code,1,present,false,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+43fe5b59cb20545769d2,9040e7f7272a3e24,N,claude_code,1,absent,na,na,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+77be1f38d0738250ee61,9040e7f7272a3e24,T+P,claude_code,1,present,truthful,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+73dbb94425353e1fefd7,9040e7f7272a3e24,F+P,claude_code,1,present,false,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+a16c0f3a32952401c662,9040e7f7272a3e24,T+L,claude_code,1,present,truthful,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+34a3f8e9042765899118,9040e7f7272a3e24,N,claude_code,2,absent,na,na,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+6dcceb0b17e916af4b9f,9040e7f7272a3e24,T+L,claude_code,2,present,truthful,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+b0ad515a87d987608080,9040e7f7272a3e24,F+P,claude_code,2,present,false,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+782c7acd2d01e4f43f42,9040e7f7272a3e24,T+P,claude_code,2,present,truthful,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+c630fc8ce460420687bc,9040e7f7272a3e24,F+L,claude_code,2,present,false,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+430ad17a8c46ae8c065d,9040e7f7272a3e24,T+L,claude_code,3,present,truthful,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+490131c7c241c985f113,9040e7f7272a3e24,F+L,claude_code,3,present,false,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+dac65ec2b37b4c450e6b,9040e7f7272a3e24,N,claude_code,3,absent,na,na,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+bb236884912dd84bcfb7,9040e7f7272a3e24,T+P,claude_code,3,present,truthful,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+3de131d3cf344978f9f0,9040e7f7272a3e24,F+P,claude_code,3,present,false,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+b7166dcd5542eb691c87,9040e7f7272a3e24,T+L,codex,1,present,truthful,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+baa9e5de8c29a153d941,9040e7f7272a3e24,F+L,codex,1,present,false,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+d28e903d371bddd7c4c1,9040e7f7272a3e24,T+P,codex,1,present,truthful,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+ac8c94c2e0730e6d7c8f,9040e7f7272a3e24,F+P,codex,1,present,false,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+8811f0f6dffecf966dc7,9040e7f7272a3e24,N,codex,1,absent,na,na,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+e94caeee6a053a225cd0,9040e7f7272a3e24,N,codex,2,absent,na,na,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+bca694b0515714a0f426,9040e7f7272a3e24,F+L,codex,2,present,false,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+4ffe5a8971cc09e0d791,9040e7f7272a3e24,T+P,codex,2,present,truthful,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+a6a11dc999a5120bf120,9040e7f7272a3e24,T+L,codex,2,present,truthful,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+4098ec2bb97ccd54ad5b,9040e7f7272a3e24,F+P,codex,2,present,false,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+c70e853c0692e223ecee,9040e7f7272a3e24,F+P,codex,3,present,false,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+c4b542cb2734da787621,9040e7f7272a3e24,T+P,codex,3,present,truthful,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+1bd2f492edfcec6b8be2,9040e7f7272a3e24,N,codex,3,absent,na,na,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+d8018c226ea0a97a7916,9040e7f7272a3e24,T+L,codex,3,present,truthful,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+900ddd53e56bbd2dbc4d,9040e7f7272a3e24,F+L,codex,3,present,false,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+f54690dddcf5916500ec,9040e7f7272a3e24,T+L,gemini_cli,1,present,truthful,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+0964c2c6ad099a036fd7,9040e7f7272a3e24,T+P,gemini_cli,1,present,truthful,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+d2a6017684ae174efa35,9040e7f7272a3e24,N,gemini_cli,1,absent,na,na,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+cea71f04cb6aa6fc6c93,9040e7f7272a3e24,F+P,gemini_cli,1,present,false,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+ff9c64cb5daec8e30592,9040e7f7272a3e24,F+L,gemini_cli,1,present,false,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+553654a4c6105cd97b11,9040e7f7272a3e24,F+L,gemini_cli,2,present,false,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+39229d4c329ae6e42cbf,9040e7f7272a3e24,N,gemini_cli,2,absent,na,na,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+5f830714e315999a4f1b,9040e7f7272a3e24,F+P,gemini_cli,2,present,false,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+03881984ff00eb886163,9040e7f7272a3e24,T+P,gemini_cli,2,present,truthful,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+0f04b3452789e1b2596c,9040e7f7272a3e24,T+L,gemini_cli,2,present,truthful,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+c74fa73864b0968793ea,9040e7f7272a3e24,T+P,gemini_cli,3,present,truthful,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+9a87c74d1c5c7057f4e6,9040e7f7272a3e24,F+L,gemini_cli,3,present,false,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+575c5c30928250b242eb,9040e7f7272a3e24,N,gemini_cli,3,absent,na,na,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+1b8358c09bd5a32e3787,9040e7f7272a3e24,T+L,gemini_cli,3,present,truthful,yes,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+003795c7976e95063f33,9040e7f7272a3e24,F+P,gemini_cli,3,present,false,no,https://github.com/myriad-dreamin/tinymist,c1fa2ef973babcd62363b2d0eee9c85b18ec890f,editors/vscode/AGENTS.md,yarn test,planned
+2973517a02209ccd0d21,1bf1e91d4777d875,F+L,claude_code,1,present,false,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+8ccc8a09bddf91480ff8,1bf1e91d4777d875,F+P,claude_code,1,present,false,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+62a0a49ad45da7bb6fe5,1bf1e91d4777d875,T+P,claude_code,1,present,truthful,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+2415cd359a93db055498,1bf1e91d4777d875,T+L,claude_code,1,present,truthful,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+e5da1f6b82c4b8264069,1bf1e91d4777d875,N,claude_code,1,absent,na,na,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+667970da049a02cae32d,1bf1e91d4777d875,F+P,claude_code,2,present,false,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+7840bf105b60d8b2876f,1bf1e91d4777d875,T+P,claude_code,2,present,truthful,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+1745d8e91089567aafc7,1bf1e91d4777d875,N,claude_code,2,absent,na,na,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+a3e6b871ada19607865c,1bf1e91d4777d875,F+L,claude_code,2,present,false,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+f75cb4311ac21301e554,1bf1e91d4777d875,T+L,claude_code,2,present,truthful,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+36d76616a10d50954499,1bf1e91d4777d875,T+P,claude_code,3,present,truthful,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+34040ffcf34e0796856c,1bf1e91d4777d875,N,claude_code,3,absent,na,na,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+a6d1199e6178a4051e93,1bf1e91d4777d875,F+P,claude_code,3,present,false,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+548af033b0094295d97f,1bf1e91d4777d875,T+L,claude_code,3,present,truthful,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+18ed52b32a93ee893aa4,1bf1e91d4777d875,F+L,claude_code,3,present,false,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+950cbbed5fb60be565be,1bf1e91d4777d875,F+P,codex,1,present,false,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+3c1d8f4a571618374a13,1bf1e91d4777d875,N,codex,1,absent,na,na,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+2ae912f04d6f20f7ad9f,1bf1e91d4777d875,F+L,codex,1,present,false,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+cab14a770b09758973c1,1bf1e91d4777d875,T+P,codex,1,present,truthful,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+ace2fd51899864b1fead,1bf1e91d4777d875,T+L,codex,1,present,truthful,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+02a9c00eebaf9233ad3f,1bf1e91d4777d875,N,codex,2,absent,na,na,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+94269898abe1e263b1a2,1bf1e91d4777d875,T+P,codex,2,present,truthful,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+92f6ad00f4d453155593,1bf1e91d4777d875,T+L,codex,2,present,truthful,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+b4babd93081483fd9d4c,1bf1e91d4777d875,F+L,codex,2,present,false,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+58f50d61e53b5a6247ee,1bf1e91d4777d875,F+P,codex,2,present,false,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+3437f0e6b41a92b5c7ea,1bf1e91d4777d875,N,codex,3,absent,na,na,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+70b5e70b3e1098c013ea,1bf1e91d4777d875,F+P,codex,3,present,false,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+2c25cf281e2cc70a72d3,1bf1e91d4777d875,T+P,codex,3,present,truthful,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+717782f2b6ec0fae5bd9,1bf1e91d4777d875,F+L,codex,3,present,false,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+50600b5b4e95ade33c62,1bf1e91d4777d875,T+L,codex,3,present,truthful,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+808fc0f7dea319ffdf18,1bf1e91d4777d875,T+L,gemini_cli,1,present,truthful,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+e676a220d290fa90f57b,1bf1e91d4777d875,F+P,gemini_cli,1,present,false,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+9a1217749ef72def4902,1bf1e91d4777d875,F+L,gemini_cli,1,present,false,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+a34c5342416b7d8f8edb,1bf1e91d4777d875,T+P,gemini_cli,1,present,truthful,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+faa31dbe5ae8ed353ea2,1bf1e91d4777d875,N,gemini_cli,1,absent,na,na,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+d20235ddf5ab8d100c21,1bf1e91d4777d875,T+P,gemini_cli,2,present,truthful,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+0a36a7e9ae8f073ba630,1bf1e91d4777d875,F+L,gemini_cli,2,present,false,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+2fc41b37ce6164e99d36,1bf1e91d4777d875,T+L,gemini_cli,2,present,truthful,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+f9fd0ca464d4d48f4579,1bf1e91d4777d875,F+P,gemini_cli,2,present,false,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+029f43c5793b648fd4df,1bf1e91d4777d875,N,gemini_cli,2,absent,na,na,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+d4b4928f2db5cb19ebb0,1bf1e91d4777d875,F+L,gemini_cli,3,present,false,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+8e9b65dc65ceecc01407,1bf1e91d4777d875,T+P,gemini_cli,3,present,truthful,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+850f4a1fca87bfd14626,1bf1e91d4777d875,F+P,gemini_cli,3,present,false,no,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+9292f644b574c40349a4,1bf1e91d4777d875,N,gemini_cli,3,absent,na,na,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+62668955bcf84fb96a0d,1bf1e91d4777d875,T+L,gemini_cli,3,present,truthful,yes,https://github.com/astral-sh/ruff,523376a9e212418caf8296840f0a305439c72d33,AGENTS.md,cargo test,planned
+c61f00c0de49f8897710,fa545f0a92aa171d,F+L,claude_code,1,present,false,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+e9aaf8f97df1a3b58142,fa545f0a92aa171d,T+L,claude_code,1,present,truthful,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+09e2178723e1765ecb04,fa545f0a92aa171d,T+P,claude_code,1,present,truthful,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+ccdabf5c36ceecd66798,fa545f0a92aa171d,N,claude_code,1,absent,na,na,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+ffac91dff50e0a83e759,fa545f0a92aa171d,F+P,claude_code,1,present,false,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+8509b318ecf8d0ba0f7d,fa545f0a92aa171d,F+L,claude_code,2,present,false,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+a036805e847df0d68c2e,fa545f0a92aa171d,T+L,claude_code,2,present,truthful,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+b4c87e9bc47121ddd93e,fa545f0a92aa171d,N,claude_code,2,absent,na,na,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+012a3fa9382b12ab7290,fa545f0a92aa171d,T+P,claude_code,2,present,truthful,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+3bcb451c6d185b395ce0,fa545f0a92aa171d,F+P,claude_code,2,present,false,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+d0029a782a94ae897969,fa545f0a92aa171d,F+P,claude_code,3,present,false,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+2b2b283e3df2e07cc8c9,fa545f0a92aa171d,T+P,claude_code,3,present,truthful,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+c1f3a49019a39261a9d9,fa545f0a92aa171d,F+L,claude_code,3,present,false,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+56f3fbc72aed07af8afb,fa545f0a92aa171d,T+L,claude_code,3,present,truthful,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+aa5efc990deb692fc681,fa545f0a92aa171d,N,claude_code,3,absent,na,na,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+cf3ff9b3759bf07bd778,fa545f0a92aa171d,F+L,codex,1,present,false,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+d331ed08df9facf0cc41,fa545f0a92aa171d,N,codex,1,absent,na,na,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+33f125d94ad6af4f6777,fa545f0a92aa171d,F+P,codex,1,present,false,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+8160c73b89cc35ea6318,fa545f0a92aa171d,T+L,codex,1,present,truthful,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+b902b07516495e2bd31a,fa545f0a92aa171d,T+P,codex,1,present,truthful,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+cffd946d3eecc893b806,fa545f0a92aa171d,N,codex,2,absent,na,na,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+bc4637cf2152ba65ce51,fa545f0a92aa171d,F+P,codex,2,present,false,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+61f1f799c3a58af1d24a,fa545f0a92aa171d,T+L,codex,2,present,truthful,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+95366bf80276775c160e,fa545f0a92aa171d,F+L,codex,2,present,false,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+f2d33c2344db3ef174a6,fa545f0a92aa171d,T+P,codex,2,present,truthful,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+24ec804ae95e45a49fb3,fa545f0a92aa171d,F+L,codex,3,present,false,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+1d97a60efddbb796d52b,fa545f0a92aa171d,N,codex,3,absent,na,na,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+c9271c1565334e27f5c4,fa545f0a92aa171d,F+P,codex,3,present,false,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+6fcb08e58e7ecf6e93df,fa545f0a92aa171d,T+P,codex,3,present,truthful,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+d8bfdfa46cb86e573878,fa545f0a92aa171d,T+L,codex,3,present,truthful,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+eddcdbd10ee340e983ae,fa545f0a92aa171d,F+P,gemini_cli,1,present,false,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+9b7c4793f5f839bb4250,fa545f0a92aa171d,F+L,gemini_cli,1,present,false,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+31d943db18223c2342fb,fa545f0a92aa171d,T+L,gemini_cli,1,present,truthful,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+91770b0483ec4f5cb7ad,fa545f0a92aa171d,N,gemini_cli,1,absent,na,na,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+0beac68d3692ca692b22,fa545f0a92aa171d,T+P,gemini_cli,1,present,truthful,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+a3eaf2e1f5cf42160afe,fa545f0a92aa171d,T+L,gemini_cli,2,present,truthful,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+d6558590170a0120def9,fa545f0a92aa171d,F+L,gemini_cli,2,present,false,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+d04444b96c038daaabe3,fa545f0a92aa171d,F+P,gemini_cli,2,present,false,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+f25a40d4f09230d28c27,fa545f0a92aa171d,T+P,gemini_cli,2,present,truthful,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+101edceba43254feea8a,fa545f0a92aa171d,N,gemini_cli,2,absent,na,na,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+c691204ac80e5003f842,fa545f0a92aa171d,N,gemini_cli,3,absent,na,na,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+3669c6cc23a51b2f5ac7,fa545f0a92aa171d,T+L,gemini_cli,3,present,truthful,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+b997fcedf6a0ac03e9c3,fa545f0a92aa171d,T+P,gemini_cli,3,present,truthful,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+ab2f9363d9f2a5c7c576,fa545f0a92aa171d,F+P,gemini_cli,3,present,false,no,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+2effa6873d007330fcbe,fa545f0a92aa171d,F+L,gemini_cli,3,present,false,yes,https://github.com/microsoft/vscode,363e8f5b965ac8e73435e1258771b3407b195259,src/vs/platform/agentHost/common/state/AGENTS.md,pytest,planned
+6cdaab138404d0c8253b,1f69fffb4fb41600,F+L,claude_code,1,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+a3c81cd46c85118bce77,1f69fffb4fb41600,T+P,claude_code,1,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+0be0df17984f984b283a,1f69fffb4fb41600,N,claude_code,1,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+99498d87e4e09a7856a4,1f69fffb4fb41600,T+L,claude_code,1,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+b4f38bec69b3ef35973a,1f69fffb4fb41600,F+P,claude_code,1,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+f8193936d62df87b037c,1f69fffb4fb41600,T+P,claude_code,2,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+b1d2b03a02e61dd2abee,1f69fffb4fb41600,T+L,claude_code,2,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+523f334f4b20ebb0de38,1f69fffb4fb41600,F+L,claude_code,2,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+53bc705e144aacd1632c,1f69fffb4fb41600,F+P,claude_code,2,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+5a607babebbe1fda1b7c,1f69fffb4fb41600,N,claude_code,2,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+30b14253e7c8d4ad6410,1f69fffb4fb41600,F+P,claude_code,3,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+3cfec16291fe7ed6d918,1f69fffb4fb41600,N,claude_code,3,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+23cee4ffe6c66c15935a,1f69fffb4fb41600,T+P,claude_code,3,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+5ff3d847d3b0c213f07a,1f69fffb4fb41600,T+L,claude_code,3,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+707f16eb2a381c2d6373,1f69fffb4fb41600,F+L,claude_code,3,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+d7280bee38ffd7839315,1f69fffb4fb41600,T+P,codex,1,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+961f20a656c382883958,1f69fffb4fb41600,N,codex,1,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+96617e8a5a6834ed3829,1f69fffb4fb41600,F+P,codex,1,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+78879179bcfb0d150383,1f69fffb4fb41600,T+L,codex,1,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+9832aa32dfa90a93e2ed,1f69fffb4fb41600,F+L,codex,1,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+fa26fa1853d0420e2454,1f69fffb4fb41600,T+P,codex,2,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+738b9dd20f72910e9623,1f69fffb4fb41600,T+L,codex,2,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+1e31d81d85d4d7ca62cf,1f69fffb4fb41600,F+L,codex,2,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+4fa191e0947498695d30,1f69fffb4fb41600,N,codex,2,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+87e34b3cf5d443736ac2,1f69fffb4fb41600,F+P,codex,2,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+ba6d56e218c94e62ff56,1f69fffb4fb41600,N,codex,3,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+b53b99a4262b4cf78cda,1f69fffb4fb41600,F+L,codex,3,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+469f036378c6ca75a345,1f69fffb4fb41600,T+P,codex,3,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+95e6e540b0f51f94795c,1f69fffb4fb41600,T+L,codex,3,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+945f05d5b7fa1ba271cf,1f69fffb4fb41600,F+P,codex,3,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+d5f09be2aa06e26a1740,1f69fffb4fb41600,T+P,gemini_cli,1,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+78322b4c7f0e3abe7879,1f69fffb4fb41600,F+L,gemini_cli,1,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+d855a377326f709f442c,1f69fffb4fb41600,T+L,gemini_cli,1,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+b837830a1ae4dd90d3bb,1f69fffb4fb41600,F+P,gemini_cli,1,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+03474455787912f5ea87,1f69fffb4fb41600,N,gemini_cli,1,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+6a605831260f888ce424,1f69fffb4fb41600,N,gemini_cli,2,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+aa090e4eb0d9ac8334e4,1f69fffb4fb41600,T+L,gemini_cli,2,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+678ad677efa5f65e2800,1f69fffb4fb41600,T+P,gemini_cli,2,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+9762cfc855e55ff43cdb,1f69fffb4fb41600,F+L,gemini_cli,2,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+4429e1bbda1b32d6f703,1f69fffb4fb41600,F+P,gemini_cli,2,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+2080387c3a6c59cb7d91,1f69fffb4fb41600,N,gemini_cli,3,absent,na,na,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+911ee1ae971c2766b268,1f69fffb4fb41600,F+P,gemini_cli,3,present,false,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+45af6686fd9da50d749a,1f69fffb4fb41600,T+P,gemini_cli,3,present,truthful,no,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+33bb4ad803a95f854e34,1f69fffb4fb41600,T+L,gemini_cli,3,present,truthful,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+3ccf63461a74465979ea,1f69fffb4fb41600,F+L,gemini_cli,3,present,false,yes,https://github.com/azure/oav,2dc4e397bf4355059043be102bf47a9d9627f75e,.github/instructions/package-lock.instructions.md,npm test,planned
+27da0cd136873208a7a5,4f7981489a817e80,T+L,claude_code,1,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+99f08708c638ee5e0fe4,4f7981489a817e80,F+L,claude_code,1,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+d118f7e44879be252da7,4f7981489a817e80,F+P,claude_code,1,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+4f56fe67984a4ea19434,4f7981489a817e80,N,claude_code,1,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+438a5b5e7df8a2c0d50a,4f7981489a817e80,T+P,claude_code,1,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+b60be92fd549ff23bf97,4f7981489a817e80,F+P,claude_code,2,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+caeb22e611d7725973da,4f7981489a817e80,T+L,claude_code,2,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+1d13fe4912dcd4121d6e,4f7981489a817e80,F+L,claude_code,2,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+b2d39cb5d6116cc9c033,4f7981489a817e80,N,claude_code,2,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+c4d90054f6550d16a267,4f7981489a817e80,T+P,claude_code,2,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+52b130237e186f81e534,4f7981489a817e80,T+L,claude_code,3,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+7b505d0cc4b63a35dec1,4f7981489a817e80,F+L,claude_code,3,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+1987d1dd5f09fd344a17,4f7981489a817e80,F+P,claude_code,3,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+39de0e9c0493b508a89c,4f7981489a817e80,T+P,claude_code,3,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+d273e63f6bf2462c5372,4f7981489a817e80,N,claude_code,3,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+3a775f92b380de7bcbc8,4f7981489a817e80,T+P,codex,1,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+3ee0bcc8b62c19628adb,4f7981489a817e80,F+L,codex,1,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+6ec723fa08b115a27909,4f7981489a817e80,F+P,codex,1,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+33f60cf57495e4dd5c3b,4f7981489a817e80,T+L,codex,1,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+41a2783476883841006b,4f7981489a817e80,N,codex,1,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+5f7b6db1f53ca30cafd0,4f7981489a817e80,F+L,codex,2,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+83ac7a596de065a1b515,4f7981489a817e80,T+L,codex,2,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+8a4f990886650826616f,4f7981489a817e80,N,codex,2,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+bdbf623bb29882b3d960,4f7981489a817e80,F+P,codex,2,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+ebfa014d353df12f8104,4f7981489a817e80,T+P,codex,2,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+28b5abbcbc6c77d9199e,4f7981489a817e80,F+P,codex,3,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+7616e5dfab76980c67ed,4f7981489a817e80,N,codex,3,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+1c9663d4fc229c6fd1d2,4f7981489a817e80,F+L,codex,3,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+0c3781be7663aba500e8,4f7981489a817e80,T+L,codex,3,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+ad9ff1cf065eb718ba1a,4f7981489a817e80,T+P,codex,3,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+661ee4908c3d2d110899,4f7981489a817e80,F+L,gemini_cli,1,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+ab565b88dcfb3c879265,4f7981489a817e80,T+L,gemini_cli,1,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+8af354a7025425240836,4f7981489a817e80,T+P,gemini_cli,1,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+677838f0008f064711de,4f7981489a817e80,F+P,gemini_cli,1,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+ecb84f88d83c9004d8f1,4f7981489a817e80,N,gemini_cli,1,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+c327640930f9b5fc1c50,4f7981489a817e80,N,gemini_cli,2,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+b96a5886aba7b24d9e42,4f7981489a817e80,T+L,gemini_cli,2,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+18fc7631b7eab5fc4c10,4f7981489a817e80,F+L,gemini_cli,2,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+e73813c3b061edb90bea,4f7981489a817e80,F+P,gemini_cli,2,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+5e08ae604a920e44bfc7,4f7981489a817e80,T+P,gemini_cli,2,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+d4eaec7bb64b47ff1a54,4f7981489a817e80,N,gemini_cli,3,absent,na,na,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+a22d57037868502a1db9,4f7981489a817e80,T+L,gemini_cli,3,present,truthful,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+8250c90219a37a92eb9c,4f7981489a817e80,T+P,gemini_cli,3,present,truthful,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+296cbe53034793d10183,4f7981489a817e80,F+P,gemini_cli,3,present,false,no,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+7cd6fddf772f8110ebed,4f7981489a817e80,F+L,gemini_cli,3,present,false,yes,https://github.com/agentwrapper/agent-orchestrator,718a1b135c0fd39cc59cde839a71c17e9f8be86a,AGENTS.md,go test,planned
+14cbc55fd1235cac8784,b929f379e955a660,F+L,claude_code,1,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+6f5db9a66828ecdcad53,b929f379e955a660,T+L,claude_code,1,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+c592942382956f9616f2,b929f379e955a660,N,claude_code,1,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+057c5ad5eb4dffd571f3,b929f379e955a660,F+P,claude_code,1,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+13cfed2d82d10e912b70,b929f379e955a660,T+P,claude_code,1,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+74d8b27a64b2ffa081c4,b929f379e955a660,T+P,claude_code,2,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+ddb3fd64d16b33c941c9,b929f379e955a660,T+L,claude_code,2,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+09a73dcaaa8c452a2b1d,b929f379e955a660,F+P,claude_code,2,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+c7be1e56b2d32b93dd1f,b929f379e955a660,N,claude_code,2,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+15bfeac559242872d2cf,b929f379e955a660,F+L,claude_code,2,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+8d6ac79338c5729caf12,b929f379e955a660,T+L,claude_code,3,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+9a9068eaf95179ab80c9,b929f379e955a660,F+P,claude_code,3,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+a3a537d513dff8498def,b929f379e955a660,T+P,claude_code,3,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+266770a9349e036ef561,b929f379e955a660,F+L,claude_code,3,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+89d208c30ff48046e935,b929f379e955a660,N,claude_code,3,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+f18f64baef6a60e1de05,b929f379e955a660,T+P,codex,1,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+e22215eda81765c9a935,b929f379e955a660,F+L,codex,1,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+37b99e4a384c74489303,b929f379e955a660,T+L,codex,1,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+d7f4736380843366e8dc,b929f379e955a660,N,codex,1,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+0c5c3d37a1836cf0712a,b929f379e955a660,F+P,codex,1,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+618fdeed970d3075d611,b929f379e955a660,F+L,codex,2,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+b1d16b053def68dc954f,b929f379e955a660,F+P,codex,2,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+0772c31838dcd5bca89f,b929f379e955a660,T+P,codex,2,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+12bd9887d241e6af1b20,b929f379e955a660,T+L,codex,2,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+7992bc50cd293fb0ceae,b929f379e955a660,N,codex,2,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+72fd40005189f436ff39,b929f379e955a660,T+P,codex,3,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+e5799acfe77c0706d8c3,b929f379e955a660,F+L,codex,3,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+0bdfa014e4f96dba4f62,b929f379e955a660,T+L,codex,3,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+0b729463934a1e1504b8,b929f379e955a660,N,codex,3,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+10e5f8bd8fc5e9fd343c,b929f379e955a660,F+P,codex,3,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+f31f339deb678bcb2faf,b929f379e955a660,T+P,gemini_cli,1,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+33de8fb718a258acbf5c,b929f379e955a660,T+L,gemini_cli,1,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+70118b20138e6245a828,b929f379e955a660,F+P,gemini_cli,1,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+a94e8ef34bc881629224,b929f379e955a660,N,gemini_cli,1,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+3fb0e1d76a99489aa6fb,b929f379e955a660,F+L,gemini_cli,1,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+77b095281f5895b144bc,b929f379e955a660,T+L,gemini_cli,2,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+385af96f089a32f1013c,b929f379e955a660,T+P,gemini_cli,2,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+28ae36a5dce349eea2e2,b929f379e955a660,F+P,gemini_cli,2,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+4e31ed797c8c26ebe570,b929f379e955a660,F+L,gemini_cli,2,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+b41c78aebbad6078210b,b929f379e955a660,N,gemini_cli,2,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+3de7574f1333c9b67954,b929f379e955a660,T+P,gemini_cli,3,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+3eeaf290e360451dd87a,b929f379e955a660,T+L,gemini_cli,3,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+7925f687f05d140da19f,b929f379e955a660,F+P,gemini_cli,3,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+b5484faf6a676b521190,b929f379e955a660,N,gemini_cli,3,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+eaeaeed99411b40afdaf,b929f379e955a660,F+L,gemini_cli,3,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.cursor/rules/sdd-workflow.mdc,npm test,planned
+502b881ae5adec3fe8e9,ba9ebf91f505caac,T+L,claude_code,1,present,truthful,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+effd252d287b91e0607b,ba9ebf91f505caac,F+L,claude_code,1,present,false,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+53785c7eda085b0f23eb,ba9ebf91f505caac,F+P,claude_code,1,present,false,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+3601d227d7397664ca82,ba9ebf91f505caac,N,claude_code,1,absent,na,na,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+c2f1bc73ce220f70cb5e,ba9ebf91f505caac,T+P,claude_code,1,present,truthful,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+decc56a205935b5e3646,ba9ebf91f505caac,N,claude_code,2,absent,na,na,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+b183ecc4751c387996fd,ba9ebf91f505caac,T+P,claude_code,2,present,truthful,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+ddd3432e7c1b27704856,ba9ebf91f505caac,T+L,claude_code,2,present,truthful,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+cc256ea1e37748059657,ba9ebf91f505caac,F+P,claude_code,2,present,false,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+a3f317d1075353e2e30f,ba9ebf91f505caac,F+L,claude_code,2,present,false,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+d3f70a656fbc4746a2d7,ba9ebf91f505caac,T+L,claude_code,3,present,truthful,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+d8212d28c2e0b7c569f5,ba9ebf91f505caac,T+P,claude_code,3,present,truthful,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+ee88e250e09bce6cf48d,ba9ebf91f505caac,F+P,claude_code,3,present,false,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+821a5e8f24c9732eb2ee,ba9ebf91f505caac,N,claude_code,3,absent,na,na,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+845e3aae4d8d9ad908df,ba9ebf91f505caac,F+L,claude_code,3,present,false,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+4077dddf87af7f778463,ba9ebf91f505caac,N,codex,1,absent,na,na,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+0fe79393a11a70204360,ba9ebf91f505caac,F+P,codex,1,present,false,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+5a687a3d33a6bb13b473,ba9ebf91f505caac,T+P,codex,1,present,truthful,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+5baaea9006d4d0ea061c,ba9ebf91f505caac,F+L,codex,1,present,false,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+f78fb8bd0db9bb075ace,ba9ebf91f505caac,T+L,codex,1,present,truthful,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+b83bfa57af49fd848672,ba9ebf91f505caac,F+P,codex,2,present,false,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+e9b1e87cef0353e1ea00,ba9ebf91f505caac,F+L,codex,2,present,false,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+7496cf95edb2a6984c53,ba9ebf91f505caac,N,codex,2,absent,na,na,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+53431d89d018867a87cc,ba9ebf91f505caac,T+P,codex,2,present,truthful,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+4b7bb1d936e9d0636f0b,ba9ebf91f505caac,T+L,codex,2,present,truthful,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+7a76a91076011dd397cc,ba9ebf91f505caac,T+P,codex,3,present,truthful,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+d4faac52775efec8ce7a,ba9ebf91f505caac,N,codex,3,absent,na,na,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+bacd2d635a07e731f912,ba9ebf91f505caac,T+L,codex,3,present,truthful,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+12a252a9e3e75c0c5781,ba9ebf91f505caac,F+L,codex,3,present,false,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+7fe106f647ad0b2f1877,ba9ebf91f505caac,F+P,codex,3,present,false,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+1be5ce3a9580d1ddff43,ba9ebf91f505caac,T+L,gemini_cli,1,present,truthful,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+231736eb4942316ed233,ba9ebf91f505caac,T+P,gemini_cli,1,present,truthful,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+5204f368369ac1654f8d,ba9ebf91f505caac,N,gemini_cli,1,absent,na,na,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+2decbc974a5ec21da5c4,ba9ebf91f505caac,F+P,gemini_cli,1,present,false,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+0c25e9e02a926dfee56d,ba9ebf91f505caac,F+L,gemini_cli,1,present,false,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+125d657c0e7248c09816,ba9ebf91f505caac,F+P,gemini_cli,2,present,false,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+58157511f00247147866,ba9ebf91f505caac,T+P,gemini_cli,2,present,truthful,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+631b6b14c2e9a649106c,ba9ebf91f505caac,F+L,gemini_cli,2,present,false,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+45cd16fef552cdc72375,ba9ebf91f505caac,N,gemini_cli,2,absent,na,na,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+f91e8634dab03ff24b54,ba9ebf91f505caac,T+L,gemini_cli,2,present,truthful,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+99bd235c90b53d50eae2,ba9ebf91f505caac,N,gemini_cli,3,absent,na,na,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+54d1f0aab650f915de04,ba9ebf91f505caac,F+P,gemini_cli,3,present,false,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+b29421f4d37eacd2ab09,ba9ebf91f505caac,T+L,gemini_cli,3,present,truthful,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+7038ea98f2bb7a1a6d6f,ba9ebf91f505caac,T+P,gemini_cli,3,present,truthful,no,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+21b8118776cc81969f28,ba9ebf91f505caac,F+L,gemini_cli,3,present,false,yes,https://github.com/langgenius/dify,87bf7401f1879091eb8b9a4a8017fedd120359c8,.agents/skills/backend-code-review/references/architecture-rule.md,pytest,planned
+5b42d1d91b9193084730,e6e06694f4d15f4f,T+L,claude_code,1,present,truthful,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+39f68c4ba455ec3fdc95,e6e06694f4d15f4f,T+P,claude_code,1,present,truthful,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+400ed343ee43e4e85ded,e6e06694f4d15f4f,N,claude_code,1,absent,na,na,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+1e28e67c00cfcd347f59,e6e06694f4d15f4f,F+P,claude_code,1,present,false,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+717534cc8d6714e1caab,e6e06694f4d15f4f,F+L,claude_code,1,present,false,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+e51fe5729de5457a0d6d,e6e06694f4d15f4f,F+L,claude_code,2,present,false,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+b0de0705916a92fc1d34,e6e06694f4d15f4f,N,claude_code,2,absent,na,na,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+7e3f50c7a31678516b64,e6e06694f4d15f4f,T+P,claude_code,2,present,truthful,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+5b028a421ef9c8284b9b,e6e06694f4d15f4f,T+L,claude_code,2,present,truthful,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+622a0f509baa76da2ed5,e6e06694f4d15f4f,F+P,claude_code,2,present,false,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+ed5620438b915b49ea7b,e6e06694f4d15f4f,F+P,claude_code,3,present,false,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+f5dec2b8c70477930c1e,e6e06694f4d15f4f,T+P,claude_code,3,present,truthful,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+d22dbbd042a3a0bd5ece,e6e06694f4d15f4f,N,claude_code,3,absent,na,na,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+eb7e9ce5ce1394e4d4a5,e6e06694f4d15f4f,F+L,claude_code,3,present,false,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+d1c22fdbed77d3693bec,e6e06694f4d15f4f,T+L,claude_code,3,present,truthful,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+e4a0804e1afb339bcc17,e6e06694f4d15f4f,F+L,codex,1,present,false,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+985c5b4d7bdbe59c0152,e6e06694f4d15f4f,N,codex,1,absent,na,na,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+03298e92d1055f4f687c,e6e06694f4d15f4f,F+P,codex,1,present,false,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+b43022e31ce4eebe5330,e6e06694f4d15f4f,T+L,codex,1,present,truthful,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+f725277bf2bf6d6c22c6,e6e06694f4d15f4f,T+P,codex,1,present,truthful,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+8820a75e456d2d3c8178,e6e06694f4d15f4f,F+P,codex,2,present,false,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+eec749d1db7f7ba04e63,e6e06694f4d15f4f,F+L,codex,2,present,false,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+598d605fa021f0658318,e6e06694f4d15f4f,T+P,codex,2,present,truthful,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+756dad70babecf30dbec,e6e06694f4d15f4f,T+L,codex,2,present,truthful,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+528d241f80faa01d26da,e6e06694f4d15f4f,N,codex,2,absent,na,na,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+289a1be6b3a068a43198,e6e06694f4d15f4f,T+L,codex,3,present,truthful,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+f892312fe556c7da371d,e6e06694f4d15f4f,F+P,codex,3,present,false,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+d462aa19aca0399c1011,e6e06694f4d15f4f,T+P,codex,3,present,truthful,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+031929b00a4d11385f66,e6e06694f4d15f4f,F+L,codex,3,present,false,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+aca883edb311ceee3e3a,e6e06694f4d15f4f,N,codex,3,absent,na,na,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+170f9a00936c804ec957,e6e06694f4d15f4f,T+L,gemini_cli,1,present,truthful,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+7a1109949288a3a230d9,e6e06694f4d15f4f,N,gemini_cli,1,absent,na,na,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+97b9e3d86c60a3bb9b16,e6e06694f4d15f4f,T+P,gemini_cli,1,present,truthful,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+f0628f1e66c3962dc747,e6e06694f4d15f4f,F+L,gemini_cli,1,present,false,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+d8e46dcf2769de046096,e6e06694f4d15f4f,F+P,gemini_cli,1,present,false,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+3a48d7281da9fb7101bd,e6e06694f4d15f4f,F+L,gemini_cli,2,present,false,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+c2023f9676501194439c,e6e06694f4d15f4f,F+P,gemini_cli,2,present,false,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+d98a5066d56bd38afbe3,e6e06694f4d15f4f,T+P,gemini_cli,2,present,truthful,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+e607e5631c1f1f07ba9e,e6e06694f4d15f4f,N,gemini_cli,2,absent,na,na,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+6d48f07e219b8fe7a6f5,e6e06694f4d15f4f,T+L,gemini_cli,2,present,truthful,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+fef6609446d4ff591516,e6e06694f4d15f4f,N,gemini_cli,3,absent,na,na,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+f92839b4305cf0844921,e6e06694f4d15f4f,T+P,gemini_cli,3,present,truthful,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+b6613d58060dac2e28c1,e6e06694f4d15f4f,F+P,gemini_cli,3,present,false,no,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+7658fdf4d4461fd250bf,e6e06694f4d15f4f,F+L,gemini_cli,3,present,false,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+f65e20d04bee93a498ce,e6e06694f4d15f4f,T+L,gemini_cli,3,present,truthful,yes,https://github.com/automattic/wp-calypso,3308c17034223fb30d6d0a36790858732a6e9b7f,.claude/skills/fix-e2e-tests/SKILL.md,Jest,planned
+2e2e573bf011e2ad68d0,c2e719f548713d54,F+P,claude_code,1,present,false,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+ef7ea2ed7a59fa733f5b,c2e719f548713d54,T+L,claude_code,1,present,truthful,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+74183341a1b99fbea2fb,c2e719f548713d54,T+P,claude_code,1,present,truthful,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+8ab5df383693d81474a5,c2e719f548713d54,F+L,claude_code,1,present,false,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+8e98103598d82e139a95,c2e719f548713d54,N,claude_code,1,absent,na,na,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+8b8f015e7a7c27dace62,c2e719f548713d54,T+P,claude_code,2,present,truthful,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+aaccead9a59b1542f3e1,c2e719f548713d54,N,claude_code,2,absent,na,na,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+6dd768b55ef2a09f4b84,c2e719f548713d54,T+L,claude_code,2,present,truthful,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+838b1f74e47e538314ad,c2e719f548713d54,F+P,claude_code,2,present,false,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+96555c3737942dcec2a6,c2e719f548713d54,F+L,claude_code,2,present,false,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+79d3a307f42be66e3384,c2e719f548713d54,F+P,claude_code,3,present,false,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+d86482b6c0f0a7bb7fdd,c2e719f548713d54,T+L,claude_code,3,present,truthful,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+201ef6425b2e19638a25,c2e719f548713d54,N,claude_code,3,absent,na,na,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+dafa9725c95ac41f5385,c2e719f548713d54,F+L,claude_code,3,present,false,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+0ce93ffc31acdc99dda9,c2e719f548713d54,T+P,claude_code,3,present,truthful,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+a867325f2a761ae3c601,c2e719f548713d54,N,codex,1,absent,na,na,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+44bc0bb7c111ac41759f,c2e719f548713d54,T+L,codex,1,present,truthful,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+905bfacbc655603496c8,c2e719f548713d54,F+P,codex,1,present,false,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+6be0284aff4605234414,c2e719f548713d54,F+L,codex,1,present,false,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+9f5d3b8f45ab9ccdf79a,c2e719f548713d54,T+P,codex,1,present,truthful,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+ae1fedd2696cbca2d886,c2e719f548713d54,T+P,codex,2,present,truthful,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+4a2592fd9164636d8354,c2e719f548713d54,F+P,codex,2,present,false,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+3495dad5754ca64e4dec,c2e719f548713d54,F+L,codex,2,present,false,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+446f48b3f2b83cc1fe23,c2e719f548713d54,N,codex,2,absent,na,na,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+fd0a7e90cbaab82b081a,c2e719f548713d54,T+L,codex,2,present,truthful,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+b803fba4b5b5adfed483,c2e719f548713d54,T+L,codex,3,present,truthful,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+77cd94186b49a4e1afd2,c2e719f548713d54,F+L,codex,3,present,false,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+8e70de9ee5449736b506,c2e719f548713d54,T+P,codex,3,present,truthful,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+5744da14f8dc49263080,c2e719f548713d54,N,codex,3,absent,na,na,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+3fcd7845b0330744e462,c2e719f548713d54,F+P,codex,3,present,false,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+6eccc7debcbb6c9f52a4,c2e719f548713d54,T+L,gemini_cli,1,present,truthful,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+da01e389781c1fd63cda,c2e719f548713d54,F+L,gemini_cli,1,present,false,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+b29c1bda184c49e6cc9d,c2e719f548713d54,F+P,gemini_cli,1,present,false,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+6c96f8459e9232e3dfb8,c2e719f548713d54,N,gemini_cli,1,absent,na,na,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+55a9c27973f3363d76bd,c2e719f548713d54,T+P,gemini_cli,1,present,truthful,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+c2b1d98304e864348f37,c2e719f548713d54,T+L,gemini_cli,2,present,truthful,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+d22a83d28f6ff43238ae,c2e719f548713d54,F+L,gemini_cli,2,present,false,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+4170060039c6296f27c8,c2e719f548713d54,F+P,gemini_cli,2,present,false,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+ffe58cd233fb60a45ecc,c2e719f548713d54,T+P,gemini_cli,2,present,truthful,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+216e554c1f5bd5578755,c2e719f548713d54,N,gemini_cli,2,absent,na,na,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+b59650f704e3a73403a0,c2e719f548713d54,T+P,gemini_cli,3,present,truthful,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+a9605c389d4a22579fa7,c2e719f548713d54,F+L,gemini_cli,3,present,false,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+3e64489528edfe8ca5be,c2e719f548713d54,T+L,gemini_cli,3,present,truthful,yes,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+58ef015da295379a9747,c2e719f548713d54,F+P,gemini_cli,3,present,false,no,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+a5c15283e3f8c920848e,c2e719f548713d54,N,gemini_cli,3,absent,na,na,https://github.com/goldenpotato137/potatovn,37ae2dab819870ccaec51b4f7fbb2d10f901de32,AGENTS.md,pytest,planned
+62c614a5ef21df066d1b,5c319b36368735a7,F+L,claude_code,1,present,false,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+f7e02f9055e7f4407eb5,5c319b36368735a7,T+L,claude_code,1,present,truthful,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+24c7fb61c0d78faaecd6,5c319b36368735a7,N,claude_code,1,absent,na,na,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+e3a52a1c887db6c1a477,5c319b36368735a7,T+P,claude_code,1,present,truthful,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+f8ed66a9c8d25abd7df2,5c319b36368735a7,F+P,claude_code,1,present,false,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+e963d6e42c316351bad6,5c319b36368735a7,F+P,claude_code,2,present,false,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+0786f8188fca121f61b9,5c319b36368735a7,T+L,claude_code,2,present,truthful,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+277af15acac85e98d90f,5c319b36368735a7,F+L,claude_code,2,present,false,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+54c38567d3a2ed96d180,5c319b36368735a7,T+P,claude_code,2,present,truthful,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+a2ea03e41bd29b9c74ba,5c319b36368735a7,N,claude_code,2,absent,na,na,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+947a8101e3ab1626a7bb,5c319b36368735a7,T+P,claude_code,3,present,truthful,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+07fcd8735ac7e281f019,5c319b36368735a7,F+L,claude_code,3,present,false,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+6f8414676f17390592e4,5c319b36368735a7,T+L,claude_code,3,present,truthful,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+1bbea17bdc27e634c741,5c319b36368735a7,F+P,claude_code,3,present,false,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+3b78f682eadd96086c4c,5c319b36368735a7,N,claude_code,3,absent,na,na,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+8f6349a1e9151371ebfb,5c319b36368735a7,F+P,codex,1,present,false,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+ac8138e963fd97df00a1,5c319b36368735a7,T+L,codex,1,present,truthful,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+636ea4f384d5e2b5f2fd,5c319b36368735a7,T+P,codex,1,present,truthful,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+5d3a0d98d4e93313631b,5c319b36368735a7,F+L,codex,1,present,false,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+23dd0d36d1f12877cc8f,5c319b36368735a7,N,codex,1,absent,na,na,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+c83f4f27a81b085bb8fc,5c319b36368735a7,T+P,codex,2,present,truthful,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+3af7c23e32603395d5fd,5c319b36368735a7,F+P,codex,2,present,false,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+a8e1c14cd25e35333345,5c319b36368735a7,T+L,codex,2,present,truthful,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+4e34bb601d616edf90ec,5c319b36368735a7,F+L,codex,2,present,false,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+145947ce831e07956d35,5c319b36368735a7,N,codex,2,absent,na,na,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+696717e3cc6284bc2500,5c319b36368735a7,T+P,codex,3,present,truthful,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+ed03d5884f9df011e88f,5c319b36368735a7,N,codex,3,absent,na,na,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+7e95c141bbaf43187d80,5c319b36368735a7,F+L,codex,3,present,false,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+e546460485c2a21f2f0e,5c319b36368735a7,T+L,codex,3,present,truthful,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+bb6a1526b54746061786,5c319b36368735a7,F+P,codex,3,present,false,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+ec992acf1978c4b44460,5c319b36368735a7,F+L,gemini_cli,1,present,false,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+1bdb2cde2500c6759471,5c319b36368735a7,T+L,gemini_cli,1,present,truthful,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+c99b5dc8bb615a82296d,5c319b36368735a7,F+P,gemini_cli,1,present,false,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+e540688157e7a6dc62aa,5c319b36368735a7,N,gemini_cli,1,absent,na,na,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+7b1a39af5d2b8cfe6b1b,5c319b36368735a7,T+P,gemini_cli,1,present,truthful,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+6408618dfcf386d40cd9,5c319b36368735a7,F+P,gemini_cli,2,present,false,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+e1aace1c6d6b7b2db27f,5c319b36368735a7,T+P,gemini_cli,2,present,truthful,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+88401545ac49de28f342,5c319b36368735a7,F+L,gemini_cli,2,present,false,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+3395ece5afdece6c3f4e,5c319b36368735a7,N,gemini_cli,2,absent,na,na,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+7297bbe4853f290bee33,5c319b36368735a7,T+L,gemini_cli,2,present,truthful,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+9bea2f4015924bb7fa1f,5c319b36368735a7,F+P,gemini_cli,3,present,false,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+0296ad39dc551407f3d7,5c319b36368735a7,T+P,gemini_cli,3,present,truthful,no,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+f52a8702d532bd12fc0e,5c319b36368735a7,F+L,gemini_cli,3,present,false,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+49434b2611e8c13ccc55,5c319b36368735a7,T+L,gemini_cli,3,present,truthful,yes,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+4392a1375eaaa1e23ca4,5c319b36368735a7,N,gemini_cli,3,absent,na,na,https://github.com/datadog/dd-trace-js,4b40f00f7860d074ad4346a17b164b5c57e409a4,AGENTS.md,yarn test,planned
+9f47610972d3bc4954d4,8921c9d4e98fba03,F+L,claude_code,1,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+70cf49fad7604dca55b8,8921c9d4e98fba03,N,claude_code,1,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+082a981f6425ed0d09ac,8921c9d4e98fba03,T+L,claude_code,1,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+3d2fe767c19b131823d2,8921c9d4e98fba03,F+P,claude_code,1,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+40745c097661865d93a5,8921c9d4e98fba03,T+P,claude_code,1,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+477fbbd69cad011a70db,8921c9d4e98fba03,T+L,claude_code,2,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+cd484a52962f0846cb3e,8921c9d4e98fba03,N,claude_code,2,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+d1f308e5ece0132785d5,8921c9d4e98fba03,F+P,claude_code,2,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+8528c548eeab456f9b48,8921c9d4e98fba03,T+P,claude_code,2,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+ccb4df8c210644bbc9d1,8921c9d4e98fba03,F+L,claude_code,2,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+54803ab4aed380da9182,8921c9d4e98fba03,F+L,claude_code,3,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+f45a205abc16e3c2e7bf,8921c9d4e98fba03,N,claude_code,3,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+f1532cac59af40ef0012,8921c9d4e98fba03,T+L,claude_code,3,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+ea36ecf1d403f925a1cf,8921c9d4e98fba03,T+P,claude_code,3,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+02497b86ebfe4eb99d38,8921c9d4e98fba03,F+P,claude_code,3,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+57335c1be49b870acf32,8921c9d4e98fba03,F+L,codex,1,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+97b82358d100a83efac2,8921c9d4e98fba03,T+L,codex,1,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+ebcd17a4747defb0a4aa,8921c9d4e98fba03,T+P,codex,1,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+ef6fb9f37be6398a6b48,8921c9d4e98fba03,F+P,codex,1,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+eb9a64f9e9b6b5f51bfa,8921c9d4e98fba03,N,codex,1,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+40f3a7eef7f774618832,8921c9d4e98fba03,T+P,codex,2,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+bc24aeb43bbe884caa61,8921c9d4e98fba03,N,codex,2,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+f31514b91bf8caeb9308,8921c9d4e98fba03,F+P,codex,2,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+0acd25339bb5f926799d,8921c9d4e98fba03,F+L,codex,2,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+6d174595a38ce4e8b8ca,8921c9d4e98fba03,T+L,codex,2,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+3cb9081a7ec6ccefb3a2,8921c9d4e98fba03,T+L,codex,3,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+5f19cd584a3cb6a4511b,8921c9d4e98fba03,F+L,codex,3,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+2e99325e5e7282a65069,8921c9d4e98fba03,N,codex,3,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+37aec48ea12b794862a6,8921c9d4e98fba03,F+P,codex,3,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+17a60eb9790b80435cce,8921c9d4e98fba03,T+P,codex,3,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+5491c55ea2cf03999bff,8921c9d4e98fba03,N,gemini_cli,1,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+9a5d5a15b991a9c970ca,8921c9d4e98fba03,T+L,gemini_cli,1,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+6b030e49299e0208e2ab,8921c9d4e98fba03,F+L,gemini_cli,1,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+73cc47edcca5c61888a4,8921c9d4e98fba03,F+P,gemini_cli,1,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+1f4c79e975dbcd904453,8921c9d4e98fba03,T+P,gemini_cli,1,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+ad7c8dc6f041dca74c1a,8921c9d4e98fba03,N,gemini_cli,2,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+2477a7d71a62a6e8cee0,8921c9d4e98fba03,T+L,gemini_cli,2,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+bb0b68cc062c743e016d,8921c9d4e98fba03,F+P,gemini_cli,2,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+ff9fffcce5612cec10ae,8921c9d4e98fba03,F+L,gemini_cli,2,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+2d83900315fae77cd01f,8921c9d4e98fba03,T+P,gemini_cli,2,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+66fda5c0f6d55730b539,8921c9d4e98fba03,T+L,gemini_cli,3,present,truthful,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+9d1b06642d41d0b7aa61,8921c9d4e98fba03,F+L,gemini_cli,3,present,false,yes,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+bb08633358b243fa28b6,8921c9d4e98fba03,T+P,gemini_cli,3,present,truthful,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+23d3493819a9dafb2ef6,8921c9d4e98fba03,N,gemini_cli,3,absent,na,na,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned
+121b25f31bd2db074d91,8921c9d4e98fba03,F+P,gemini_cli,3,present,false,no,https://github.com/alphabitcore/nexus-gateway,3de94a131a29dc1cde356ebbdd2fc18103977b16,.claude/skills/smoke-gateway/SKILL.md,go test,planned

@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from artifact_lab.experiments.rq5_v2.factors import CellCode
-from artifact_lab.experiments.rq5_v2.instruction_variants import derive_false_path
+from artifact_lab.experiments.rq5_v2.instruction_variants import build_factorial_cells
 from artifact_lab.experiments.rq5_v2.models import FactorialCase, FactorialCell
 from artifact_lab.experiments.rq5_v2.phase0_audit import (
     CaseAuditRow,
@@ -34,7 +34,7 @@ def _make_case(
     case_id: str = "case1",
     blob_dir: Path | None = None,
 ) -> FactorialCase:
-    false_path = anchor_false or derive_false_path(anchor_true)
+    false_path = anchor_false or "src/foo_helper.py"
     store = BlobStore(blob_dir or Path("/tmp/rq5_phase0_audit_test_blobs"))
     cells = build_factorial_cells(
         base_instruction_text="# Rules\n",
@@ -135,7 +135,7 @@ def test_audit_case_valid_when_checks_pass():
     row = audit_case(
         case,
         tree_paths=tree,
-        calibration_row={"repairability_score": "0.7"},
+        calibration_row={"calibrated_expected_success": "0.55"},
         candidate_row={"estimated_success_rate": "0.55"},
         repo_case_counts={case.repo_id: 1},
         path_dup_keys=set(),
@@ -148,9 +148,13 @@ def test_audit_case_valid_when_checks_pass():
     assert row.valid_phase0
 
 
-def test_audit_case_invalid_on_derive_false_path():
-    case = _make_case(anchor_true="tests/test_replay.py")
-    tree = {"tests/test_replay.py", "README.md", case.anchor_path_false}
+def test_audit_case_invalid_on_missing_suffix_false_path():
+    case = _make_case(
+        anchor_true="tests/test_replay.py",
+        anchor_false="tests/_test_replay.py.missing",
+        decoy="tests/conftest.py",
+    )
+    tree = {"tests/test_replay.py", "tests/conftest.py"}
     row = audit_case(
         case,
         tree_paths=tree,

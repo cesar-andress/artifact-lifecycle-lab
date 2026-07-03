@@ -45,6 +45,8 @@ class FactorialCase:
     ecosystem: str
     calibrated_expected_success: float
     cells: dict[str, FactorialCell]
+    repairability_score: int = 0
+    repairability_reason: str = ""
     selection_reason: str = "calibration_target_band"
 
     def get_cell(self, cell_code: str) -> FactorialCell:

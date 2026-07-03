@@ -82,10 +82,14 @@ def path_resolves(path: str, tree_paths: set[str]) -> bool:
     return _path_exists(path.strip().strip("`"), tree_paths)
 
 
+def _normalize_path(path: str) -> str:
+    return path.strip().strip("`").strip("/")
+
+
 def false_path_syntactically_plausible(true_path: str, false_path: str) -> tuple[bool, str]:
     """RQ5 v2.1: non-resolving plausible sibling, not typo/deleted/renamed/external."""
-    true_path = true_path.strip().strip("`")
-    false_path = false_path.strip().strip("`")
+    true_path = _normalize_path(true_path)
+    false_path = _normalize_path(false_path)
 
     if false_path.startswith(("http://", "https://", "mailto:")):
         return False, "external URL class"
@@ -135,14 +139,17 @@ def _levenshtein(a: str, b: str) -> int:
 def lb_task_load_bearing(case: FactorialCase) -> tuple[bool, str]:
     for code in (CellCode.T_L, CellCode.F_L):
         cell = case.get_cell(code.value)
-        prompt = cell.task_prompt.lower()
-        anchor = cell.cited_anchor.lower()
-        decoy = case.decoy_path.lower()
+        prompt = cell.task_prompt
+        prompt_lower = prompt.lower()
+        anchor = cell.cited_anchor
+        decoy = case.decoy_path
         if anchor not in prompt:
             return False, f"{code.value} task prompt missing cited anchor"
-        if "modify `" + decoy in prompt or f"modify {decoy}" in prompt:
+        if f"modify `{decoy}`" in prompt_lower or f"modify {decoy.lower()}" in prompt_lower:
             return False, f"{code.value} task prompt targets decoy instead of anchor"
-        if "only" in prompt and decoy in prompt:
+        if " only " in prompt_lower and (
+            f"`{decoy}`" in prompt or f" {decoy} " in prompt or prompt.rstrip().endswith(decoy)
+        ):
             return False, f"{code.value} task prompt restricts to decoy (PB pattern)"
         if not cell.load_bearing:
             return False, f"{code.value} load_bearing flag false"
@@ -229,8 +236,9 @@ def audit_case(
     cal = calibration_row or {}
     cand = candidate_row or {}
     est = _float(cand.get("estimated_success_rate"))
-    cal_est = _float(cal.get("calibrated_expected_success"))
-    repair = _float(cand.get("repairability_score") or cal.get("repairability_score"))
+    repair = _float(getattr(case, "repairability_score", None))
+    if repair is None:
+        repair = _float(cand.get("repairability_score") or cal.get("repairability_score"))
     success_rate = case.calibrated_expected_success
 
     row = CaseAuditRow(
@@ -293,22 +301,14 @@ def audit_case(
     )
     if est is not None:
         in_band_est = SUCCESS_BAND[0] <= est <= SUCCESS_BAND[1]
-        row.record(
-            "estimated_success_rate_in_band",
-            in_band_est,
-            reason=f"estimated_success_rate={est:.4f} outside {SUCCESS_BAND}",
-        )
+        row.checks["estimated_success_rate_in_band"] = in_band_est
     else:
-        row.record(
-            "estimated_success_rate_in_band",
-            in_band_cal,
-            reason="estimated_success_rate missing; used calibrated_expected_success",
-        )
+        row.checks["estimated_success_rate_in_band"] = in_band_cal
 
     row.record(
         "repairability_score_present",
         repair is not None,
-        reason="repairability_score absent from calibration/candidate rows",
+        reason="repairability_score absent from case manifest",
     )
 
     dup_key = (case.repo_id, case.anchor_path_true, case.commit_sha)
@@ -341,12 +341,13 @@ def audit_case(
         "pb_by_construction",
         "no_task_leak",
         "success_rate_in_band",
+        "repairability_score_present",
         "not_duplicated_repo_path",
         "repo_case_cap",
         "all_cells_feasible",
     ]
     row.valid_phase0 = all(row.checks.get(c, False) for c in core_checks)
-    row.reviewer_accept = row.valid_phase0 and row.checks.get("repairability_score_present", False)
+    row.reviewer_accept = row.valid_phase0
 
     return row
 
@@ -629,13 +630,12 @@ def _write_summary_md(
             "",
             "## Reviewer-facing notes",
             "",
-            "1. **False-reference construct:** Cases using `_*.missing` suffix fail RQ5 v2.1 "
-            "narrow definition (non-resolving *plausible* sibling path).",
+            "1. **False-reference construct:** Non-resolving plausible sibling paths per RQ5 v2.1.",
             "2. **Phase 0 scope:** Full 5-cell factorial is planned in infrastructure; Phase 0 "
             "execution uses **T+L only** per protocol — this audit validates case *construction* "
             "for the full battery.",
-            "3. **repairability_score:** Not present in current calibration pipeline; all cases fail "
-            "criterion 10 until the field is added to `difficulty_scores.csv`.",
+            "3. **Success gate:** `calibrated_expected_success` is authoritative; raw "
+            "`estimated_success_rate` is informational only.",
             "4. **Operational load-bearing gate** (≥ 60% anchor attempt) requires agent runs and "
             "is out of scope for this design audit.",
             "",

@@ -8,6 +8,13 @@ from artifact_lab.experiments.rq5_v2.factors import CellCode, levels_for_cell
 from artifact_lab.experiments.rq5_v2.models import FactorialCell
 from artifact_lab.store.blobs import BlobStore
 
+# Re-export path derivation for callers that need commit-aware paths.
+from artifact_lab.experiments.rq5_v2.path_derivation import (  # noqa: F401
+    derive_decoy_path,
+    derive_false_path,
+    score_repairability,
+)
+
 RELATED_SECTION = "\n\n## Related files\n\n"
 LB_TASK_TEMPLATE = (
     "Complete the bounded coding task described in the project instruction file. "
@@ -29,30 +36,6 @@ ABSENT_TASK_TEMPLATE = (
     "Run `{test_command}` before finishing. "
     "No project instruction file is provided for this run."
 )
-
-
-def derive_false_path(true_path: str) -> str:
-    """Deterministic false anchor (typo suffix) for false cells."""
-    path = true_path.strip().strip("`")
-    if path.startswith("@"):
-        return f"{path}-missing"
-    if "/" in path:
-        parent, name = path.rsplit("/", 1)
-        return f"{parent}/_{name}.missing"
-    return f"_{path}.missing"
-
-
-def derive_decoy_path(true_path: str, instruction_path: str) -> str:
-    """Peripheral-task decoy: sibling README or tests stub."""
-    if true_path.endswith(".md"):
-        return "README.md"
-    if "test" in true_path.lower():
-        base = true_path.rsplit("/", 1)[0] if "/" in true_path else "."
-        return f"{base}/README.md" if base != "." else "README.md"
-    parts = true_path.split("/")
-    if len(parts) > 1:
-        return "/".join(parts[:-1] + ["README.md"])
-    return "README.md"
 
 
 def _inject_lb_section(text: str, anchor: str, *, test_command: str) -> str:
@@ -140,12 +123,12 @@ def build_factorial_cells(
     anchor_true: str,
     test_command: str,
     blob_store: BlobStore,
-    anchor_false: str | None = None,
-    decoy_path: str | None = None,
+    anchor_false: str,
+    decoy_path: str,
 ) -> dict[str, FactorialCell]:
     """Materialize all five cell variants into the blob store."""
-    false_path = anchor_false or derive_false_path(anchor_true)
-    decoy = decoy_path or derive_decoy_path(anchor_true, "")
+    false_path = anchor_false
+    decoy = decoy_path
 
     cells: dict[str, FactorialCell] = {}
     for code in CellCode:
