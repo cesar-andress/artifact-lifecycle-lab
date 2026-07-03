@@ -53,10 +53,13 @@ def evaluate_factorial_run(
 
     if run_tests and case.test_command:
         started = time.perf_counter()
+        test_root = workspace
+        if case.execution_cwd and case.execution_cwd not in (".", ""):
+            test_root = workspace / case.execution_cwd
         try:
             proc = subprocess.run(
                 case.test_command,
-                cwd=workspace,
+                cwd=test_root,
                 shell=True,
                 capture_output=True,
                 text=True,

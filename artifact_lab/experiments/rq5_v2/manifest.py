@@ -23,6 +23,7 @@ def case_from_dict(payload: dict) -> FactorialCase:
 
     cells_raw = payload.pop("cells")
     cells = {code: FactorialCell(**cell) for code, cell in cells_raw.items()}
+    payload.setdefault("execution_cwd", ".")
     return FactorialCase(cells=cells, **payload)
 
 

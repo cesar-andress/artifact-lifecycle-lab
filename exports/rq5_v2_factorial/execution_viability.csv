@@ -1,0 +1,81 @@
+case_id,repository,raw_test_command,normalized_test_command,cwd,classification,exit_code,stderr_excerpt,runtime,failure_class,recommended_action,long_compile,timed_out
+d2578b858cfe326f,fixmyberlin/tilda-geo,Vitest,npm test,app,MINOR_SETUP,127,"sh: 1: vitest: not found
+",0.059,missing dependency,install deps before agent execution,False,False
+3ff980d65c78fd63,agentwrapper/agent-orchestrator,go test,go test ./...,backend,READY,0,"?   	github.com/aoagents/agent-orchestrator/backend	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/cmd/ao	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/cmd/genspec	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/internal/adapters	[no test files]
+ok  	github.com/aoagents/agent-orchestrator/backend/internal/adapters/agent/claudecode	(cac",0.407,,proceed to Phase 0/1 execution,False,False
+1e1131e99f590b53,vercel/next.js,pytest,PYTHONNOUSERSITE=1 python -m pytest --confcutdir=. --rootdir=.,.,MINOR_SETUP,127,"/bin/sh: 1: python: not found
+",0.001,missing dependency,install deps before agent execution,False,False
+abced8248ab90fb1,fixmyberlin/tilda-geo,Vitest,npm test,app,MINOR_SETUP,127,"sh: 1: vitest: not found
+",0.059,missing dependency,install deps before agent execution,False,False
+d5303ea5b426c7be,agentwrapper/agent-orchestrator,go test,go test ./...,backend,READY,0,"?   	github.com/aoagents/agent-orchestrator/backend	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/cmd/ao	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/cmd/genspec	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/internal/adapters	[no test files]
+ok  	github.com/aoagents/agent-orchestrator/backend/internal/adapters/agent/claudecode	(cac",0.407,,proceed to Phase 0/1 execution,False,False
+6aab689b93e84025,vercel/next.js,pytest,PYTHONNOUSERSITE=1 python -m pytest --confcutdir=. --rootdir=.,.,MINOR_SETUP,127,"/bin/sh: 1: python: not found
+",0.001,missing dependency,install deps before agent execution,False,False
+150fbfaadda24570,azure/oav,npm test,npm test,.,MINOR_SETUP,127,"sh: 1: tsc: not found
+",0.120,missing dependency,install deps before agent execution,False,False
+ea5545b3e36e5c4b,alphabitcore/nexus-gateway,go test,go test ./...,packages/agent,READY,0,"ok  	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent	(cached)
+?   	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent/platformshim	[no test files]
+ok  	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent/wiring	(cached)
+?   	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent-tray	[no test files]
+ok  	github.com/AlphaBitCore/nexus-gateway/packages/a",0.545,,proceed to Phase 0/1 execution,False,False
+67c22d7f97cdb50d,microsoft/vscode,pytest,PYTHONNOUSERSITE=1 python -m pytest --confcutdir=. --rootdir=.,.,MINOR_SETUP,127,"/bin/sh: 1: python: not found
+",0.001,missing dependency,install deps before agent execution,False,False
+9040e7f7272a3e24,myriad-dreamin/tinymist,yarn test,yarn test,.,DROP,1,"error Command ""test"" not found.
+",0.119,invalid test command,exclude: npm/yarn test script missing,False,False
+1bf1e91d4777d875,astral-sh/ruff,cargo test,cargo test,.,READY,101,"   Compiling unicode-ident v1.0.24
+   Compiling proc-macro2 v1.0.106
+   Compiling quote v1.0.45
+   Compiling serde_core v1.0.228
+   Compiling memchr v2.8.1
+   Compiling cfg-if v1.0.4
+   Compiling libc v0.2.186
+   Compiling serde v1.0.228
+   Compiling itoa v1.0.15
+   Compiling smallvec v1.15.1
+   Compiling zmij v1.0.10
+   Compiling regex-syntax v0.8.11
+   Compiling rustversion v1.0.22
+   Compiling ",81.903,,tests executed (non-zero exit acceptable for smoke),True,False
+fa545f0a92aa171d,microsoft/vscode,pytest,PYTHONNOUSERSITE=1 python -m pytest --confcutdir=. --rootdir=.,extensions/copilot/test/simulation/fixtures/tests/py-pyproject-toml,MINOR_SETUP,127,"/bin/sh: 1: python: not found
+",0.001,missing dependency,install deps before agent execution,False,False
+1f69fffb4fb41600,azure/oav,npm test,npm test,.,MINOR_SETUP,127,"sh: 1: tsc: not found
+",0.120,missing dependency,install deps before agent execution,False,False
+4f7981489a817e80,agentwrapper/agent-orchestrator,go test,go test ./...,backend,READY,0,"?   	github.com/aoagents/agent-orchestrator/backend	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/cmd/ao	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/cmd/genspec	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/internal/adapters	[no test files]
+ok  	github.com/aoagents/agent-orchestrator/backend/internal/adapters/agent/claudecode	(cac",0.407,,proceed to Phase 0/1 execution,False,False
+b929f379e955a660,alphabitcore/nexus-gateway,npm test,npm test,.,MINOR_SETUP,1,"sh: 1: vitest: not found
+npm error Lifecycle script `test` failed with error:
+npm error code 127
+npm error path /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/phase0_preflight_smoke/preflight_ws_728eba3dd2de5fd6_3de94a13/packages/control-plane-ui
+npm error workspace @nexus-gateway/control-plane-ui@0.1.0
+npm error location /home/cesar/papers/artifact-lifecycle-lab/artifact",0.169,missing dependency,install deps before agent execution,False,False
+ba9ebf91f505caac,langgenius/dify,pytest,PYTHONNOUSERSITE=1 python -m pytest --confcutdir=. --rootdir=.,api,MINOR_SETUP,127,"/bin/sh: 1: python: not found
+",0.001,missing dependency,install deps before agent execution,False,False
+e6e06694f4d15f4f,automattic/wp-calypso,Jest,npm test,.,MINOR_SETUP,127,"sh: 1: run-s: not found
+",0.056,missing dependency,install deps before agent execution,False,False
+c2e719f548713d54,goldenpotato137/potatovn,pytest,PYTHONNOUSERSITE=1 python -m pytest --confcutdir=. --rootdir=.,.,MINOR_SETUP,127,"/bin/sh: 1: python: not found
+",0.001,missing dependency,install deps before agent execution,False,False
+5c319b36368735a7,datadog/dd-trace-js,yarn test,yarn test,.,READY,1,"node:internal/modules/cjs/loader:1433
+  throw err;
+  ^
+
+Error: Cannot find module 'semver'
+Require stack:
+- /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/phase0_preflight_smoke/preflight_ws_045697c18e22b2e6_4b40f00f/scripts/install_plugin_modules.js
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1430:15)
+    at defaultResolveImpl (node:internal/module",0.313,,tests executed (non-zero exit acceptable for smoke),False,False
+8921c9d4e98fba03,alphabitcore/nexus-gateway,go test,go test ./...,packages/agent,READY,0,"ok  	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent	(cached)
+?   	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent/platformshim	[no test files]
+ok  	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent/wiring	(cached)
+?   	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent-tray	[no test files]
+ok  	github.com/AlphaBitCore/nexus-gateway/packages/a",0.545,,proceed to Phase 0/1 execution,False,False
+09be5687edfd506b,automattic/wp-calypso,pytest,PYTHONNOUSERSITE=1 python -m pytest --confcutdir=. --rootdir=.,.,MINOR_SETUP,127,"/bin/sh: 1: python: not found
+",0.001,missing dependency,install deps before agent execution,False,False

@@ -1,0 +1,79 @@
+run_id,case_id,repository,ecosystem,cell_code,test_command,success,failure_class,evidence,preflight_preventable,exclude_case_recommended,recommended_fix
+preflight_d2578b858cfe,d2578b858cfe326f,fixmyberlin/tilda-geo,node,T+L,npm test,True,,"sh: 1: vitest: not found
+",yes,no,install deps before agent execution
+preflight_3ff980d65c78,3ff980d65c78fd63,agentwrapper/agent-orchestrator,other,T+L,go test ./...,True,,"?   	github.com/aoagents/agent-orchestrator/backend	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/cmd/ao	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/cmd/genspec	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/internal/adapters	[no test files]
+ok  	github.com/aoagents/agent-orchestrator/backend/internal/adapters/agent/claudecode	(cac",yes,no,proceed to Phase 0/1 execution
+preflight_1e1131e99f59,1e1131e99f590b53,vercel/next.js,python,T+L,PYTHONNOUSERSITE=1 python -m pytest --confcutdir=. --rootdir=.,True,,"/bin/sh: 1: python: not found
+",yes,no,install deps before agent execution
+preflight_abced8248ab9,abced8248ab90fb1,fixmyberlin/tilda-geo,node,T+L,npm test,True,,"sh: 1: vitest: not found
+",yes,no,install deps before agent execution
+preflight_d5303ea5b426,d5303ea5b426c7be,agentwrapper/agent-orchestrator,other,T+L,go test ./...,True,,"?   	github.com/aoagents/agent-orchestrator/backend	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/cmd/ao	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/cmd/genspec	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/internal/adapters	[no test files]
+ok  	github.com/aoagents/agent-orchestrator/backend/internal/adapters/agent/claudecode	(cac",yes,no,proceed to Phase 0/1 execution
+preflight_6aab689b93e8,6aab689b93e84025,vercel/next.js,python,T+L,PYTHONNOUSERSITE=1 python -m pytest --confcutdir=. --rootdir=.,True,,"/bin/sh: 1: python: not found
+",yes,no,install deps before agent execution
+preflight_150fbfaadda2,150fbfaadda24570,azure/oav,node,T+L,npm test,True,,"sh: 1: tsc: not found
+",yes,no,install deps before agent execution
+preflight_ea5545b3e36e,ea5545b3e36e5c4b,alphabitcore/nexus-gateway,other,T+L,go test ./...,True,,"ok  	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent	(cached)
+?   	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent/platformshim	[no test files]
+ok  	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent/wiring	(cached)
+?   	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent-tray	[no test files]
+ok  	github.com/AlphaBitCore/nexus-gateway/packages/a",yes,no,proceed to Phase 0/1 execution
+preflight_67c22d7f97cd,67c22d7f97cdb50d,microsoft/vscode,python,T+L,PYTHONNOUSERSITE=1 python -m pytest --confcutdir=. --rootdir=.,True,,"/bin/sh: 1: python: not found
+",yes,no,install deps before agent execution
+preflight_1bf1e91d4777,1bf1e91d4777d875,astral-sh/ruff,other,T+L,cargo test,True,,"   Compiling unicode-ident v1.0.24
+   Compiling proc-macro2 v1.0.106
+   Compiling quote v1.0.45
+   Compiling serde_core v1.0.228
+   Compiling memchr v2.8.1
+   Compiling cfg-if v1.0.4
+   Compiling libc v0.2.186
+   Compiling serde v1.0.228
+   Compiling itoa v1.0.15
+   Compiling smallvec v1.15.1
+   Compiling zmij v1.0.10
+   Compiling regex-syntax v0.8.11
+   Compiling rustversion v1.0.22
+   Compiling ",yes,no,tests executed (non-zero exit acceptable for smoke)
+preflight_fa545f0a92aa,fa545f0a92aa171d,microsoft/vscode,python,T+L,PYTHONNOUSERSITE=1 python -m pytest --confcutdir=. --rootdir=.,True,,"/bin/sh: 1: python: not found
+",yes,no,install deps before agent execution
+preflight_1f69fffb4fb4,1f69fffb4fb41600,azure/oav,node,T+L,npm test,True,,"sh: 1: tsc: not found
+",yes,no,install deps before agent execution
+preflight_4f7981489a81,4f7981489a817e80,agentwrapper/agent-orchestrator,other,T+L,go test ./...,True,,"?   	github.com/aoagents/agent-orchestrator/backend	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/cmd/ao	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/cmd/genspec	[no test files]
+?   	github.com/aoagents/agent-orchestrator/backend/internal/adapters	[no test files]
+ok  	github.com/aoagents/agent-orchestrator/backend/internal/adapters/agent/claudecode	(cac",yes,no,proceed to Phase 0/1 execution
+preflight_b929f379e955,b929f379e955a660,alphabitcore/nexus-gateway,node,T+L,npm test,True,,"sh: 1: vitest: not found
+npm error Lifecycle script `test` failed with error:
+npm error code 127
+npm error path /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/phase0_preflight_smoke/preflight_ws_728eba3dd2de5fd6_3de94a13/packages/control-plane-ui
+npm error workspace @nexus-gateway/control-plane-ui@0.1.0
+npm error location /home/cesar/papers/artifact-lifecycle-lab/artifact",yes,no,install deps before agent execution
+preflight_ba9ebf91f505,ba9ebf91f505caac,langgenius/dify,python,T+L,PYTHONNOUSERSITE=1 python -m pytest --confcutdir=. --rootdir=.,True,,"/bin/sh: 1: python: not found
+",yes,no,install deps before agent execution
+preflight_e6e06694f4d1,e6e06694f4d15f4f,automattic/wp-calypso,node,T+L,npm test,True,,"sh: 1: run-s: not found
+",yes,no,install deps before agent execution
+preflight_c2e719f54871,c2e719f548713d54,goldenpotato137/potatovn,python,T+L,PYTHONNOUSERSITE=1 python -m pytest --confcutdir=. --rootdir=.,True,,"/bin/sh: 1: python: not found
+",yes,no,install deps before agent execution
+preflight_5c319b363687,5c319b36368735a7,datadog/dd-trace-js,node,T+L,yarn test,True,,"node:internal/modules/cjs/loader:1433
+  throw err;
+  ^
+
+Error: Cannot find module 'semver'
+Require stack:
+- /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/phase0_preflight_smoke/preflight_ws_045697c18e22b2e6_4b40f00f/scripts/install_plugin_modules.js
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1430:15)
+    at defaultResolveImpl (node:internal/module",yes,no,tests executed (non-zero exit acceptable for smoke)
+preflight_8921c9d4e98f,8921c9d4e98fba03,alphabitcore/nexus-gateway,other,T+L,go test ./...,True,,"ok  	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent	(cached)
+?   	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent/platformshim	[no test files]
+ok  	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent/wiring	(cached)
+?   	github.com/AlphaBitCore/nexus-gateway/packages/agent/cmd/agent-tray	[no test files]
+ok  	github.com/AlphaBitCore/nexus-gateway/packages/a",yes,no,proceed to Phase 0/1 execution
+preflight_09be5687edfd,09be5687edfd506b,automattic/wp-calypso,python,T+L,PYTHONNOUSERSITE=1 python -m pytest --confcutdir=. --rootdir=.,True,,"/bin/sh: 1: python: not found
+",yes,no,install deps before agent execution

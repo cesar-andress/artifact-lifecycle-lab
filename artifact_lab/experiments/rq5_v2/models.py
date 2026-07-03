@@ -48,6 +48,7 @@ class FactorialCase:
     repairability_score: int = 0
     repairability_reason: str = ""
     selection_reason: str = "calibration_target_band"
+    execution_cwd: str = "."
 
     def get_cell(self, cell_code: str) -> FactorialCell:
         if cell_code not in self.cells:
@@ -101,6 +102,13 @@ class FactorialRunResult:
     dry_run: bool = True
     error_message: str = ""
     trace_path: str = ""
+    cost_usd: float | None = None
+    token_usage: int | None = None
+    commands_executed: int = 0
+    iterations: int = 0
+    anchor_attempted: bool = False
+    instruction_read: bool = False
+    timed_out: bool = False
 
     def to_row(self) -> dict[str, Any]:
         return asdict(self)
