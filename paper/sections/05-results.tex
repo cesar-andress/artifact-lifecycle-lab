@@ -1,0 +1,55 @@
+\section{Results}
+\label{sec:results}
+
+We organize results by research question.
+All values below are copied from frozen exports; see Table~\ref{tab:evidence-map} and \path{exports/paper_synthesis/late_binding_evidence_table.csv}.
+
+\input{tables/evidence-summary}
+
+\subsection{RQ1--RQ2: Static reference integrity}
+\paragraph{Post-verification decay.}
+Of 121 post-verification failure events audited, adjusted genuine decay count is \textbf{0/121} (0.0\%; Wilson 95\% CI: 0.0\%--3.1\%) (\path{rq2_failure_audit_summary.md}).
+73.6\% of failures are classified as extractor artifacts.
+
+\paragraph{Born-stale prevalence.}
+Raw \texttt{genuine\_false\_claim} count: 1{,}405 (7.9\% of 17{,}747 born-stale cohort) (\path{born_stale_summary.md}).
+
+\subsection{Confirmatory audits}
+\paragraph{Confirmed false at creation.}
+GFC confirmatory audit: \textbf{1{,}200 / 1{,}405} (85.4\%; Wilson 95\% CI: 83.5\%--87.2\%) (\path{gfc_confirmatory_summary.md}).
+Adjusted born-stale false-claim rate: 6.76\% of cohort.
+
+\paragraph{Path stability selection.}
+Cited vs.\ uncited audit: in \textbf{85.4\%} of 2{,}259 matched pairs, cited path git churn $\leq$ uncited control (\path{cited_uncited_summary.md}).
+Mean paired difference in churn: 0.44 commits (95\% bootstrap CI: $-0.21$--1.15; includes zero).
+
+\subsection{P4: Agent maintenance attribution}
+Precision 0.958; F1 0.9617 on $N=200$ human-reviewed commits (\path{p4_validation.md}).
+
+\subsection{RQ5: Agent behavior and outcomes}
+
+\subsubsection{Uptake funnel (A/B; $n=128$)}
+\begin{itemize}
+  \item \texttt{instruction\_read}: 128/128 (100\%).
+  \item \texttt{instruction\_followed}: 47/65 (72.3\%) condition A; 49/63 (77.8\%) condition B.
+  \item Task success: 8/65 (12.3\%) A; 8/63 (12.7\%) B.
+\end{itemize}
+Source: \path{rq5_uptake_analysis.md}.
+
+\subsubsection{Behavioral amplification (paired triplets; $n=63$)}
+Mean files modified: A = 99.7; B = 103.0; C = 1.7 (\path{rq5_abc_comparative_analysis.md}).
+Compilation success: 100\% all conditions on triplets.
+
+\subsubsection{Causal contrasts (paired triplets)}
+\begin{itemize}
+  \item \textbf{A $-$ B:} $\Delta$ success = 0.00~pp; cluster bootstrap 95\% CI [$-6.35$, $+6.35$]; McNemar $p = 1.0$.
+  \item \textbf{A $-$ C:} $\Delta$ success = +4.76~pp; cluster bootstrap 95\% CI [$-12.70$, $+22.22$]; McNemar $p = 0.5811$.
+  \item \textbf{B $-$ C:} $\Delta$ success = +4.76~pp (identical to A$-$C on overlap triplets where A and B success patterns match).
+\end{itemize}
+Success rates on triplets: A = 12.7\% (8/63); B = 12.7\% (8/63); C = 7.9\% (5/63).
+
+\subsubsection{Condition C complete cohort ($n=105$)}
+Aggregate success: 12/105 (11.4\%) (\path{exports/rq5_agent_impact_c/rq5_results.csv}).
+
+\paragraph{Figures.}
+\todo{Reference paper/figures copies of export PDFs for camera-ready.}

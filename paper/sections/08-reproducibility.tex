@@ -1,0 +1,29 @@
+\section{Data and Reproducibility}
+\label{sec:reproducibility}
+
+\subsection{Artifact structure}
+\begin{itemize}
+  \item \path{exports/truth_decay_pilot/} --- RQ1--RQ4 tables, audits, figures.
+  \item \path{exports/truth_pilot/p4_validation.md} --- attribution validation.
+  \item \path{exports/rq5_agent_impact/} --- partial A/B runs, uptake, ABC analysis.
+  \item \path{exports/rq5_agent_impact_c/} --- complete condition~C runs.
+  \item \path{exports/paper_synthesis/late_binding_evidence_table.csv} --- claim-to-evidence map.
+  \item \path{docs/LATE_BINDING_MODEL_v1.md} --- conceptual synthesis.
+  \item \path{protocol/RQ5_AGENT_IMPACT_EXPERIMENT_v1.md} --- experiment protocol v1.1.
+\end{itemize}
+
+\subsection{Replication commands}
+\todo{Insert exact Makefile targets from repository freeze commit.}
+Example frozen invocations (no agent reruns required for observational track):
+\begin{verbatim}
+make truth-decay-rq1 truth-decay-rq2 ...
+make truth-decay-rq5-redesign   # plan only
+\end{verbatim}
+
+\subsection{Experiment freeze statement}
+As of paper-writing mode, \textbf{no further agent experiments are scheduled}.
+RQ5 A/B partial (128 runs) and C complete (105 runs) are frozen.
+
+\subsection{Evidence table maintenance}
+Each row in \path{late_binding_evidence_table.csv} includes a \texttt{limitation} column.
+Authors must not cite a row without its stated limitation in the narrative.

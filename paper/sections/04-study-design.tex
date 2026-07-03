@@ -1,0 +1,36 @@
+\section{Study Design}
+\label{sec:design}
+
+\subsection{Corpus and gates}
+\todo{Summarize registry, P1--P5 gates, RQ1 longitudinal export path.}
+All reported numbers derive from frozen exports under \path{exports/truth_decay_pilot/}, \path{exports/truth_pilot/}, \path{exports/rq5_agent_impact/}, and \path{exports/rq5_agent_impact_c/}.
+
+\subsection{RQ1--RQ4: Observational track}
+\begin{itemize}
+  \item \textbf{RQ1:} Longitudinal feasibility --- reference states over commit history.
+  \item \textbf{RQ2:} Survival / first-missing events after verification.
+  \item \textbf{RQ3:} Observational integrity by maintenance regime.
+  \item \textbf{RQ4:} Multi-state lifecycle dynamics.
+\end{itemize}
+\todo{Insert cohort sizes from \path{rq1_feasibility.md}, \path{rq2_summary.md}.}
+
+\subsection{Confirmatory audits}
+\textbf{Born-stale autopsy} classifies 17{,}747 born-stale references into heterogeneous categories (\path{born_stale_summary.md}).
+\textbf{GFC confirmatory audit} re-evaluates 1{,}405 \texttt{genuine\_false\_claim} labels.
+\textbf{RQ2 failure audit} adjudicates 121 post-verification \texttt{first\_missing} events.
+\textbf{Cited vs.\ uncited audit} matches 2{,}259 path pairs across 78 repositories.
+
+\subsection{P4: Agent maintenance validation}
+Human gold labels on 200 commits; frozen heuristic classifier evaluated without retraining.
+
+\subsection{RQ5: Controlled agent experiment}
+\begin{itemize}
+  \item \textbf{A:} Truthful instruction blob at pinned commit.
+  \item \textbf{B:} Confirmed-false instruction blob; all else identical.
+  \item \textbf{C:} Instruction file removed (no-instruction baseline).
+\end{itemize}
+Agent: Claude Code CLI (\texttt{claude\_code} adapter).
+Partial A/B: 128 runs on 22/35 cases (\path{exports/rq5_agent_impact/rq5_results.csv}).
+Complete C: 105 runs on 35/35 cases (\path{exports/rq5_agent_impact_c/rq5_results.csv}).
+Paired ABC analysis: 63 triplets (22-case overlap).
+\todo{Insert exact task prompt and test-command policy from protocol.}

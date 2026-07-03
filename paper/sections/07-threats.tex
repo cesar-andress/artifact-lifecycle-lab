@@ -1,0 +1,25 @@
+\section{Threats to Validity}
+\label{sec:threats}
+
+\paragraph{Construct validity.}
+\texttt{instruction\_followed} is inferred from tool traces, not ground-truth binding.
+VERIFIED/MISSING states depend on extraction heuristics (73.6\% extractor-artifact rate among post-verification failures).
+
+\paragraph{Internal validity.}
+RQ5 ABC overlap covers 22/35 cases (63 triplets); 13 cases have C only.
+A/B and C runs live in separate export directories; pairing assumes matching \texttt{case\_id} and \texttt{replicate\_id}.
+
+\paragraph{External validity.}
+Single agent platform (Claude Code CLI).
+Corpus drawn from open-source AI-convention repositories; \todo{state registry size}.
+
+\paragraph{Statistical conclusion validity.}
+Low success rates ($\sim$11--13\%) yield wide confidence intervals; cluster bootstrap CIs for A$-$C and B$-$C include zero.
+McNemar tests are underpowered at $n=63$ triplets.
+
+\paragraph{Ecological validity.}
+Pinned-commit workspaces with injected instruction blobs may differ from IDE-integrated agent sessions.
+
+\paragraph{Supported vs.\ unsupported claims.}
+Table~\ref{tab:evidence-map} maps evidentiary limits per claim.
+Section~8 of \path{docs/LATE_BINDING_MODEL_v1.md} lists claims \emph{not} supported.

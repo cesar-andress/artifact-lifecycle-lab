@@ -1,0 +1,20 @@
+\begin{table*}[t]
+  \caption{Selected frozen evidence mapped to paper claims (full table in CSV).}
+  \label{tab:evidence-map}
+  \small
+  \begin{tabular}{@{}p{0.28\linewidth}p{0.22\linewidth}p{0.14\linewidth}p{0.26\linewidth}@{}}
+  \toprule
+  \textbf{Claim} & \textbf{Source export} & \textbf{Value} & \textbf{Limitation} \\
+  \midrule
+  Zero genuine post-verification decay & \path{rq2_failure_audit_summary.md} & 0/121 & Single audit pass \\
+  Confirmed false at creation & \path{gfc_confirmatory_summary.md} & 1200/1405 (85.4\%) & Wilson CI 83.5--87.2\% \\
+  Cited paths stable vs.\ controls & \path{cited_uncited_summary.md} & 85.4\% pairs & Mean churn CI crosses 0 \\
+  Agent maintenance F1 & \path{p4_validation.md} & 0.9617 & $N=200$ gold sample \\
+  Instruction read (A/B) & \path{rq5_uptake_analysis.md} & 128/128 & Claude Code only \\
+  Instruction followed (B) & \path{rq5_uptake_analysis.md} & 77.8\% (49/63) & Trace heuristic \\
+  Paired $\Delta$ success A$-$B & \path{rq5_abc_comparative_analysis.md} & 0.00 pp & 63 triplets \\
+  Files modified A vs.\ C & \path{rq5_abc_comparative_analysis.md} & 99.7 vs.\ 1.7 & Behavioral, not outcome \\
+  Condition C complete & \path{rq5_agent_impact_c/} & 105/105 runs & No matched A/B on 13 cases \\
+  \bottomrule
+  \end{tabular}
+\end{table*}

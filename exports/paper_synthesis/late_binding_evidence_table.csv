@@ -5,8 +5,8 @@ Born-stale cohort is large and heterogeneous,born_stale_summary.md,genuine_false
 Confirmed false claims at creation,gfc_confirmatory_summary.md,confirmed_false_count,1200/1405 (85.4%),Wilson CI 83.5%-87.2%; LLM not invoked for most cases
 Born-stale adjusted false-claim rate,gfc_confirmatory_summary.md,adjusted_rate_vs_cohort,6.76%,not interchangeable with post-verification decay rate
 Cited paths disproportionately stable,cited_uncited_summary.md,cited_leq_uncited_pair_fraction,85.4%,paired test; mean churn CI crosses zero
-Agent maintenance attribution validated,p4_validation.md,F1,true_agent_maintenance,0.9617,N=200 human gold sample; heuristic classifier not retrained
-Agent maintenance precision gate,p4_validation.md,precision,true_agent_maintenance,0.958,binary positive class only
+Agent maintenance attribution validated,p4_validation.md,F1_true_agent_maintenance,0.9617,N=200 human gold sample; heuristic classifier not retrained
+Agent maintenance precision gate,p4_validation.md,precision_true_agent_maintenance,0.958,binary positive class only
 Instruction read when present,rq5_uptake_analysis.md,instruction_read_rate,100% (128/128),Claude Code only; file injected pre-run
 Instruction followed condition B,rq5_uptake_analysis.md,instruction_followed_rate_B,77.8% (49/63),inferred from trace events not ground-truth binding
 Instruction followed condition A,rq5_uptake_analysis.md,instruction_followed_rate_A,72.3% (47/65),same trace inference limits

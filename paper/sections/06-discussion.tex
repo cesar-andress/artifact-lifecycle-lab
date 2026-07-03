@@ -1,0 +1,30 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Reconciling observational and causal evidence}
+Observational work establishes widespread \emph{static} referential problems (born-false prevalence, heterogeneous taxonomy) while showing negligible \emph{genuine post-verification decay} in the audited cohort.
+RQ5 shows agents \emph{consume} instruction files (100\% read) and often \emph{bind} to anchor references ($\sim$77\% on B) yet \emph{do not} exhibit different success rates when static referential truth is swapped (A vs.\ B).
+
+The late-binding model reconciles these findings:
+static panel labels measure authoring-time alignment; task outcomes are gated primarily by \textbf{environmental task difficulty} ($\sim$88\% failure on unsuccessful runs) and secondarily by whether a reference is \textbf{causally load-bearing}.
+
+\subsection{Directive vs.\ referential coupling}
+The $\sim$50$\times$ gap in files modified between instruction-present (A/B) and absent (C) conditions indicates the \textbf{directive channel is strongly executive}: it expands agent edit scope even when success remains low.
+Referential static truth, by contrast, appears \textbf{weakly coupled} to success in our pilot tasks.
+
+\subsection{Implications for ``Truth Debt''}
+Operational cost claims require measurable downstream harm.
+Current RQ5 evidence \textbf{does not support} promoting Truth Debt beyond observational Truth Decay: paired A$-$B success difference is null on available triplets.
+\todo{Qualify Truth Debt paragraph with CI width and power limits.}
+
+\subsection{Alternative explanations considered}
+\begin{itemize}
+  \item \textbf{Decorative instructions:} weakened by 100\% read and majority follow rates.
+  \item \textbf{Agent robustness to false refs:} weakened; false claim used in 77.8\% of B runs without improved success.
+  \item \textbf{Measurement artifact only:} partially supported for post-verification decay; not for confirmed born-false claims.
+  \item \textbf{Task difficulty dominates:} supported by high \texttt{tests\_failed} counts and 100\% compile success.
+\end{itemize}
+
+\subsection{Implications for tool builders}
+Separate linting for directive vs.\ referential content; resolve pointers at agent start; annotate load-bearing references; telemetry for read--repair events.
+See \path{docs/LATE_BINDING_MODEL_v1.md} \S7.

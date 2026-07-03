@@ -1,0 +1,81 @@
+%% Late Binding in Machine-Consumed Instruction Files
+%% ACM TOSEM submission skeleton — values from frozen exports only.
+%% Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
+
+\documentclass[acmsmall,review,anonymous]{acmart}
+
+\usepackage{xcolor}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\AtBeginDocument{%
+  \providecommand\BibTeX{{Bib\TeX}}}
+
+\setcopyright{none}
+\copyrightyear{2026}
+\acmYear{2026}
+\acmDOI{TODO}
+\acmJournal{TOSEM}
+\acmVolume{TODO}
+\acmNumber{TODO}
+\acmArticle{TODO}
+
+\title{Late Binding in Machine-Consumed Instruction Files}
+
+\author{TODO Author One}
+\affiliation{%
+  \institution{TODO Institution}
+  \city{TODO}
+  \country{TODO}}
+\email{todo@example.com}
+
+\author{TODO Author Two}
+\affiliation{%
+  \institution{TODO Institution}
+  \city{TODO}
+  \country{TODO}}
+\email{todo@example.com}
+
+\begin{abstract}
+Machine-consumed instruction files (\eg AGENTS.md, skills manifests, IDE rule packs) are increasingly treated as project documentation, yet coding agents consume them under different semantics than human readers.
+We propose a \emph{late-binding model}: these artifacts combine a \textbf{directive channel} that shapes agent behavior with a \textbf{referential channel} whose pointers are resolved against the live repository at use time.
+Using a longitudinal panel of instruction-file references (RQ1--RQ4), confirmatory audits of born-stale claims, validated agent-maintenance attribution (P4), and a controlled A/B/C agent experiment (RQ5), we show that (i) genuine post-verification reference decay is rare in our cohort (0/121 adjusted failures), (ii) a large class of references is \emph{confirmed false at creation} (1200/1405; 85.4\%), (iii) agents read instructions universally when present (128/128) and follow anchor references in a majority of runs (77.8\% on condition~B), (iv) instruction presence amplifies edit scope ($\sim$100 vs $\sim$2 files modified), yet (v) static referential truth is weakly coupled to task success (paired $\Delta$ A$-$B = 0.00~pp on 63 triplets).
+We argue that observational \emph{truth decay} and causal \emph{operational cost} must be separated, and we document threats to validity and unsupported claims explicitly.
+\end{abstract}
+
+\begin{CCSXML}
+<ccs2012>
+<concept>
+<concept_id>10011007.10011006</concept_id>
+<concept_desc>Software and its engineering~Software maintenance tools</concept_desc>
+<concept_significance>500</concept_significance>
+</concept>
+<concept>
+<concept_id>10010147.10010178</concept_id>
+<concept_desc>Computing methodologies~Artificial intelligence</concept_desc>
+<concept_significance>300</concept_significance>
+</concept>
+</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Software and its engineering~Software maintenance tools}
+\ccsdesc[300]{Computing methodologies~Artificial intelligence}
+
+\keywords{software documentation, coding agents, instruction files, reference integrity, empirical study}
+
+\begin{document}
+\maketitle
+
+\input{sections/01-introduction}
+\input{sections/02-background}
+\input{sections/03-conceptual-model}
+\input{sections/04-study-design}
+\input{sections/05-results}
+\input{sections/06-discussion}
+\input{sections/07-threats}
+\input{sections/08-reproducibility}
+\input{sections/09-conclusion}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}
