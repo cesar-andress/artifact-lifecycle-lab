@@ -5,6 +5,7 @@ __pycache__/
 .venv/
 venv/
 scratch/
+paper/
 data/blobs/
 data/l1/
 data/derived/
