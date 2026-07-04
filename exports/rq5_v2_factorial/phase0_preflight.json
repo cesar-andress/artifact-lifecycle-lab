@@ -1,0 +1,19 @@
+{
+  "ok": false,
+  "checks": {
+    "repaired_manifest_selected": true,
+    "execute_env_required": true,
+    "execution_gated": true,
+    "ledger_checkpointing": true,
+    "cost_logging_enabled": true,
+    "trace_storage_enabled": true,
+    "tl_cell_only": true,
+    "primary_agent_only": true,
+    "expected_run_count": true,
+    "manifest_hash_recorded": true
+  },
+  "messages": [
+    "manifest_path not provided for repaired-manifest check"
+  ],
+  "manifest_sha256": "305f8dc618dabf374a11aa1d8ac64d9c2f7ab2076929830149fb9f7530f4d678"
+}

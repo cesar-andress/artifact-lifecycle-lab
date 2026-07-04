@@ -6,10 +6,13 @@ import os
 from pathlib import Path
 
 from artifact_lab.experiments.rq5_v2.agents.registry import build_agents
+from artifact_lab.execution.atomic_io import atomic_write_text
 from artifact_lab.experiments.rq5_v2.evaluation import evaluate_factorial_run
+from artifact_lab.experiments.rq5_v2.phase0_trace import enrich_result_from_trace
 from artifact_lab.experiments.rq5_v2.factors import levels_for_cell
 from artifact_lab.experiments.rq5_v2.ledger import append_result, pending_entries
 from artifact_lab.experiments.rq5_v2.models import ExperimentConfig, FactorialCase, FactorialRunResult, RunPlanEntry
+from artifact_lab.experiments.rq5_v2.phase0_setup import CaseSetupSpec, run_case_setup
 from artifact_lab.experiments.rq5_v2.workspace import prepared_factorial_workspace
 from artifact_lab.store.blobs import BlobStore
 
@@ -53,6 +56,9 @@ def run_factorial_matrix(
     run_tests: bool = True,
     clone_timeout: int = 180,
     max_runs: int | None = None,
+    case_setup: dict[str, CaseSetupSpec] | None = None,
+    setup_log: list | None = None,
+    excluded_case_ids: set[str] | None = None,
 ) -> list[FactorialRunResult]:
     """
     Execute or dry-plan factorial runs.
@@ -76,9 +82,12 @@ def run_factorial_matrix(
     traces_dir.mkdir(parents=True, exist_ok=True)
     results: list[FactorialRunResult] = []
 
+    excluded = excluded_case_ids or set()
+    failed_setup: set[str] = set()
+
     for entry in todo:
         case = case_map.get(entry.case_id)
-        if case is None:
+        if case is None or entry.case_id in excluded or entry.case_id in failed_setup:
             continue
 
         if not execute:
@@ -95,6 +104,34 @@ def run_factorial_matrix(
             blob_store=blob_store,
             clone_timeout=clone_timeout,
         ) as workspace:
+            spec = (case_setup or {}).get(entry.case_id)
+            if spec and spec.setup_command:
+                setup_result = run_case_setup(
+                    case_id=entry.case_id,
+                    workspace=workspace,
+                    setup_command=spec.setup_command,
+                    execution_cwd=spec.execution_cwd,
+                )
+                if setup_log is not None:
+                    setup_log.append(setup_result)
+                if not setup_result.ok:
+                    failed_setup.add(entry.case_id)
+                    result = FactorialRunResult(
+                        run_id=entry.run_id,
+                        case_id=entry.case_id,
+                        cell_code=entry.cell_code,
+                        agent_id=entry.agent_id,
+                        replicate_id=entry.replicate_id,
+                        factor_a=entry.factor_a,
+                        factor_b=entry.factor_b,
+                        factor_c=entry.factor_c,
+                        success=False,
+                        dry_run=False,
+                        error_message="setup_failed",
+                    )
+                    results.append(result)
+                    append_result(results_csv, result)
+                    continue
             raw = agent.run(
                 case=case,
                 cell_code=entry.cell_code,
@@ -110,8 +147,29 @@ def run_factorial_matrix(
                 run_tests=run_tests,
             )
             trace_path = traces_dir / f"{entry.run_id}.jsonl"
-            trace_path.write_text("", encoding="utf-8")
+            stdout_trace = getattr(raw, "_stdout_trace", "") or ""
+            atomic_write_text(trace_path, stdout_trace)
             result.trace_path = str(trace_path)
+            if not result.instruction_read or not result.anchor_attempted:
+                row = enrich_result_from_trace(
+                    case=case,
+                    cell_code=entry.cell_code,
+                    result_row=result.to_row(),
+                    trace_path=trace_path,
+                )
+                for key in (
+                    "instruction_read",
+                    "read_instruction",
+                    "anchor_attempted",
+                    "commands_executed",
+                    "iterations",
+                    "tool_failures",
+                    "cost_usd",
+                    "token_usage",
+                    "timed_out",
+                ):
+                    if key in row:
+                        setattr(result, key, row[key])
             results.append(result)
             append_result(results_csv, result)
 

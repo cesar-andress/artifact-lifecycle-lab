@@ -1,0 +1,632 @@
+[
+  {
+    "case_id": "9040e7f7272a3e24",
+    "candidate_id": "lbv2_0169",
+    "repo_id": "4818d222565fc432",
+    "repo_url": "https://github.com/myriad-dreamin/tinymist",
+    "repository": "myriad-dreamin/tinymist",
+    "instruction_path": "editors/vscode/AGENTS.md",
+    "commit_sha": "c1fa2ef973babcd62363b2d0eee9c85b18ec890f",
+    "anchor_path_true": "README.md",
+    "anchor_path_false": "api.md",
+    "decoy_path": "AGENTS.md",
+    "test_command": "yarn test",
+    "reference_type": "path",
+    "load_bearing_role": "edit",
+    "ecosystem": "node",
+    "calibrated_expected_success": 0.4717,
+    "cells": {
+      "T+L": {
+        "cell_code": "T+L",
+        "instruction_blob_sha": "37e496130d07880d5772a7b05a7dc4b94a553629aee010368f2c3b02e6c9da50",
+        "cited_anchor": "README.md",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `README.md` to satisfy the required change. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": true
+      },
+      "F+L": {
+        "cell_code": "F+L",
+        "instruction_blob_sha": "2c94357770cd1990690610202dc99f3804c7ca9ffc57088d65b976bd8abe7993",
+        "cited_anchor": "api.md",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `api.md` to satisfy the required change. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": true
+      },
+      "T+P": {
+        "cell_code": "T+P",
+        "instruction_blob_sha": "2712b59865de8fb34ce5baffcac949e011615b069e99f225305274c0911bf3c4",
+        "cited_anchor": "README.md",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `AGENTS.md` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": false
+      },
+      "F+P": {
+        "cell_code": "F+P",
+        "instruction_blob_sha": "09c8e57292b6c7be9a34b8110e59e95c6293a2156819ad30f61866e23cbe2e1f",
+        "cited_anchor": "api.md",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `AGENTS.md` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": false
+      },
+      "N": {
+        "cell_code": "N",
+        "instruction_blob_sha": "",
+        "cited_anchor": "README.md",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task using only the repository at the pinned commit. Modify `AGENTS.md` with a small, bounded change verifiable by tests. Run `yarn test` before finishing. No project instruction file is provided for this run.",
+        "load_bearing": false
+      }
+    },
+    "repairability_score": 3,
+    "repairability_reason": "same extension; same-directory sibling; similar basename; shallow path depth",
+    "selection_reason": "calibration_target_band",
+    "execution_cwd": "."
+  },
+  {
+    "case_id": "5582c9ab02a349f0",
+    "candidate_id": "lbv2_0072",
+    "repo_id": "045697c18e22b2e6",
+    "repo_url": "https://github.com/datadog/dd-trace-js",
+    "repository": "datadog/dd-trace-js",
+    "instruction_path": ".agents/skills/apm-integrations/references/new-integration-guide.md",
+    "commit_sha": "5e3de4ed38f08decf4592d397f5a0c72d483d519",
+    "anchor_path_true": "index.d.ts",
+    "anchor_path_false": "index.api.ts",
+    "decoy_path": "docs/test.ts",
+    "test_command": "npm run test",
+    "reference_type": "path",
+    "load_bearing_role": "edit",
+    "ecosystem": "node",
+    "calibrated_expected_success": 0.4548,
+    "cells": {
+      "T+L": {
+        "cell_code": "T+L",
+        "instruction_blob_sha": "f7e7b1c38e69f02adb25e60f6218718085799dfd2a51814d8aa9c5d7ab0c8cee",
+        "cited_anchor": "index.d.ts",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `index.d.ts` to satisfy the required change. Use only the repository state at the pinned commit. Run `npm run test` before finishing.",
+        "load_bearing": true
+      },
+      "F+L": {
+        "cell_code": "F+L",
+        "instruction_blob_sha": "5cc90a188f47b9da4b2adfbc94ad73c23bedfb5b09d12d1c99d8777542857423",
+        "cited_anchor": "index.api.ts",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `index.api.ts` to satisfy the required change. Use only the repository state at the pinned commit. Run `npm run test` before finishing.",
+        "load_bearing": true
+      },
+      "T+P": {
+        "cell_code": "T+P",
+        "instruction_blob_sha": "adff417a1269bb15b5e326c458f664865f79b3b62e39a465a0a25bb6e0478b11",
+        "cited_anchor": "index.d.ts",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `docs/test.ts` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `npm run test` before finishing.",
+        "load_bearing": false
+      },
+      "F+P": {
+        "cell_code": "F+P",
+        "instruction_blob_sha": "93d83e9239eea209bdb77fae83327827449f04349fb2e3c46472e2f5983cdbf2",
+        "cited_anchor": "index.api.ts",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `docs/test.ts` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `npm run test` before finishing.",
+        "load_bearing": false
+      },
+      "N": {
+        "cell_code": "N",
+        "instruction_blob_sha": "",
+        "cited_anchor": "index.d.ts",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task using only the repository at the pinned commit. Modify `docs/test.ts` with a small, bounded change verifiable by tests. Run `npm run test` before finishing. No project instruction file is provided for this run.",
+        "load_bearing": false
+      }
+    },
+    "repairability_score": 3,
+    "repairability_reason": "same extension; same-directory sibling; similar basename; shared naming pattern nearby; shallow path depth",
+    "selection_reason": "calibration_target_band",
+    "execution_cwd": "."
+  },
+  {
+    "case_id": "57821450411f673e",
+    "candidate_id": "lbv2_0294",
+    "repo_id": "1b2e6c6b097e37df",
+    "repo_url": "https://github.com/agents2agentsai/ata",
+    "repository": "agents2agentsai/ata",
+    "instruction_path": "AGENTS.md",
+    "commit_sha": "40e24059989ffa808152c758a31f63756e0ec6e7",
+    "anchor_path_true": "docs/",
+    "anchor_path_false": "core",
+    "decoy_path": ".bazelrc",
+    "test_command": "cargo test",
+    "reference_type": "directory",
+    "load_bearing_role": "edit",
+    "ecosystem": "other",
+    "calibrated_expected_success": 0.399,
+    "cells": {
+      "T+L": {
+        "cell_code": "T+L",
+        "instruction_blob_sha": "a98f560f4d61519bfbd6bbb988950488947ff13302ea71d8c6380b6a71fcb313",
+        "cited_anchor": "docs/",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `docs/` to satisfy the required change. Use only the repository state at the pinned commit. Run `cargo test` before finishing.",
+        "load_bearing": true
+      },
+      "F+L": {
+        "cell_code": "F+L",
+        "instruction_blob_sha": "f7d23398389e0015d8a763d9596005a56787fe55fcc3dfe0b2921671cb5d54b7",
+        "cited_anchor": "core",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `core` to satisfy the required change. Use only the repository state at the pinned commit. Run `cargo test` before finishing.",
+        "load_bearing": true
+      },
+      "T+P": {
+        "cell_code": "T+P",
+        "instruction_blob_sha": "d03fd915dc480de54967c12f0c1fced5456563b318098a5a1808d69d6db39cc2",
+        "cited_anchor": "docs/",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `.bazelrc` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `cargo test` before finishing.",
+        "load_bearing": false
+      },
+      "F+P": {
+        "cell_code": "F+P",
+        "instruction_blob_sha": "e53b5d565b12f50c134fc34c773d5ebe8d67e6dd42e0493fb9c2ada4238a2a95",
+        "cited_anchor": "core",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `.bazelrc` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `cargo test` before finishing.",
+        "load_bearing": false
+      },
+      "N": {
+        "cell_code": "N",
+        "instruction_blob_sha": "",
+        "cited_anchor": "docs/",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task using only the repository at the pinned commit. Modify `.bazelrc` with a small, bounded change verifiable by tests. Run `cargo test` before finishing. No project instruction file is provided for this run.",
+        "load_bearing": false
+      }
+    },
+    "repairability_score": 2,
+    "repairability_reason": "same-directory sibling; similar basename; shallow path depth",
+    "selection_reason": "calibration_target_band",
+    "execution_cwd": "."
+  },
+  {
+    "case_id": "720c4a8f3edc21fc",
+    "candidate_id": "lbv2_0231",
+    "repo_id": "3f33ab9828ac52ad",
+    "repo_url": "https://github.com/automattic/wp-calypso",
+    "repository": "automattic/wp-calypso",
+    "instruction_path": ".claude/skills/dashboard-create-screen/SKILL.md",
+    "commit_sha": "9e4a3b3849afcaf0b80b8d4962a17e05be7f5ed6",
+    "anchor_path_true": "client/dashboard/app/primary-menu/index.tsx",
+    "anchor_path_false": "client/dashboard/app/primary-menu/model.tsx",
+    "decoy_path": "client/dashboard/app/command-palette/commands.tsx",
+    "test_command": "pytest",
+    "reference_type": "path",
+    "load_bearing_role": "edit",
+    "ecosystem": "python",
+    "calibrated_expected_success": 0.5034,
+    "cells": {
+      "T+L": {
+        "cell_code": "T+L",
+        "instruction_blob_sha": "aff99e9239833ddcd344c2a96300adfe71fa31d904e8f704dc631ab0ad56577f",
+        "cited_anchor": "client/dashboard/app/primary-menu/index.tsx",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `client/dashboard/app/primary-menu/index.tsx` to satisfy the required change. Use only the repository state at the pinned commit. Run `pytest` before finishing.",
+        "load_bearing": true
+      },
+      "F+L": {
+        "cell_code": "F+L",
+        "instruction_blob_sha": "7faf0517140bbb2850f8e3d0770055e6e3f33a7e35fee6a2fa0fbda14ce48065",
+        "cited_anchor": "client/dashboard/app/primary-menu/model.tsx",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `client/dashboard/app/primary-menu/model.tsx` to satisfy the required change. Use only the repository state at the pinned commit. Run `pytest` before finishing.",
+        "load_bearing": true
+      },
+      "T+P": {
+        "cell_code": "T+P",
+        "instruction_blob_sha": "ee4f3d249164cf18c95f4616bcdd2e7c039a72bd18b4b17db09fb2e802300e84",
+        "cited_anchor": "client/dashboard/app/primary-menu/index.tsx",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `client/dashboard/app/command-palette/commands.tsx` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `pytest` before finishing.",
+        "load_bearing": false
+      },
+      "F+P": {
+        "cell_code": "F+P",
+        "instruction_blob_sha": "2b54c7a949407901d385b53ec17d2f541d624026aa70afb944e64607de2ddfa5",
+        "cited_anchor": "client/dashboard/app/primary-menu/model.tsx",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `client/dashboard/app/command-palette/commands.tsx` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `pytest` before finishing.",
+        "load_bearing": false
+      },
+      "N": {
+        "cell_code": "N",
+        "instruction_blob_sha": "",
+        "cited_anchor": "client/dashboard/app/primary-menu/index.tsx",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task using only the repository at the pinned commit. Modify `client/dashboard/app/command-palette/commands.tsx` with a small, bounded change verifiable by tests. Run `pytest` before finishing. No project instruction file is provided for this run.",
+        "load_bearing": false
+      }
+    },
+    "repairability_score": 2,
+    "repairability_reason": "same extension; same-directory sibling; similar basename; large repository",
+    "selection_reason": "calibration_target_band",
+    "execution_cwd": "."
+  },
+  {
+    "case_id": "13a46fbf3e737f7e",
+    "candidate_id": "lbv2_0172",
+    "repo_id": "4818d222565fc432",
+    "repo_url": "https://github.com/myriad-dreamin/tinymist",
+    "repository": "myriad-dreamin/tinymist",
+    "instruction_path": "editors/vscode/AGENTS.md",
+    "commit_sha": "c1fa2ef973babcd62363b2d0eee9c85b18ec890f",
+    "anchor_path_true": "locales/tinymist-vscode.toml",
+    "anchor_path_false": "locales/tinymist-core.toml",
+    "decoy_path": "locales/tinymist-rt.toml",
+    "test_command": "yarn test",
+    "reference_type": "path",
+    "load_bearing_role": "edit",
+    "ecosystem": "node",
+    "calibrated_expected_success": 0.445,
+    "cells": {
+      "T+L": {
+        "cell_code": "T+L",
+        "instruction_blob_sha": "418e2481634fa5bf3d20fd66b4aeca349ef6f293ad2dea12730377c35c9a89d8",
+        "cited_anchor": "locales/tinymist-vscode.toml",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `locales/tinymist-vscode.toml` to satisfy the required change. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": true
+      },
+      "F+L": {
+        "cell_code": "F+L",
+        "instruction_blob_sha": "60b07edf21abb148134764b25592b9f37c91c10dc8bc7a2a5ae6a4977528d2b1",
+        "cited_anchor": "locales/tinymist-core.toml",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `locales/tinymist-core.toml` to satisfy the required change. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": true
+      },
+      "T+P": {
+        "cell_code": "T+P",
+        "instruction_blob_sha": "5bad21ee320df200dfb3bf0c70749bc04acd1553b055cee3c4b082528aa14cf2",
+        "cited_anchor": "locales/tinymist-vscode.toml",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `locales/tinymist-rt.toml` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": false
+      },
+      "F+P": {
+        "cell_code": "F+P",
+        "instruction_blob_sha": "90d2275006f9e9a10df113bd43afe36f310431a5fd94730ed97e0445e9af2fc1",
+        "cited_anchor": "locales/tinymist-core.toml",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `locales/tinymist-rt.toml` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": false
+      },
+      "N": {
+        "cell_code": "N",
+        "instruction_blob_sha": "",
+        "cited_anchor": "locales/tinymist-vscode.toml",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task using only the repository at the pinned commit. Modify `locales/tinymist-rt.toml` with a small, bounded change verifiable by tests. Run `yarn test` before finishing. No project instruction file is provided for this run.",
+        "load_bearing": false
+      }
+    },
+    "repairability_score": 3,
+    "repairability_reason": "same extension; same-directory sibling; similar basename; shared naming pattern nearby; shallow path depth",
+    "selection_reason": "calibration_target_band",
+    "execution_cwd": "."
+  },
+  {
+    "case_id": "dc6a8342fb7db60f",
+    "candidate_id": "lbv2_0291",
+    "repo_id": "2a7f0fddd2dac162",
+    "repo_url": "https://github.com/1jehuang/jcode",
+    "repository": "1jehuang/jcode",
+    "instruction_path": "AGENTS.md",
+    "commit_sha": "f731f76775428e80bc1779e077bf50c9398d852d",
+    "anchor_path_true": "Cargo.toml",
+    "anchor_path_false": "api.toml",
+    "decoy_path": ".gitignore",
+    "test_command": "cargo test",
+    "reference_type": "path",
+    "load_bearing_role": "edit",
+    "ecosystem": "other",
+    "calibrated_expected_success": 0.3946,
+    "cells": {
+      "T+L": {
+        "cell_code": "T+L",
+        "instruction_blob_sha": "7562b3ac5d6b882b6816d64a8c769e53ec42b5519302f896b9bbf55bf8f881c9",
+        "cited_anchor": "Cargo.toml",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `Cargo.toml` to satisfy the required change. Use only the repository state at the pinned commit. Run `cargo test` before finishing.",
+        "load_bearing": true
+      },
+      "F+L": {
+        "cell_code": "F+L",
+        "instruction_blob_sha": "1e3fe43c6051ebc2de1e15766aeb9ddd6792b70afe3503fd6c17175705089f18",
+        "cited_anchor": "api.toml",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `api.toml` to satisfy the required change. Use only the repository state at the pinned commit. Run `cargo test` before finishing.",
+        "load_bearing": true
+      },
+      "T+P": {
+        "cell_code": "T+P",
+        "instruction_blob_sha": "e5820a2c29b4bf67004e20a098c2074da99101b71e2a79cf407093ef497fc6a6",
+        "cited_anchor": "Cargo.toml",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `.gitignore` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `cargo test` before finishing.",
+        "load_bearing": false
+      },
+      "F+P": {
+        "cell_code": "F+P",
+        "instruction_blob_sha": "f1d881b6448b2f81620ca508586c024afabaf3853e88bbc397f360e31d856b86",
+        "cited_anchor": "api.toml",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `.gitignore` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `cargo test` before finishing.",
+        "load_bearing": false
+      },
+      "N": {
+        "cell_code": "N",
+        "instruction_blob_sha": "",
+        "cited_anchor": "Cargo.toml",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task using only the repository at the pinned commit. Modify `.gitignore` with a small, bounded change verifiable by tests. Run `cargo test` before finishing. No project instruction file is provided for this run.",
+        "load_bearing": false
+      }
+    },
+    "repairability_score": 3,
+    "repairability_reason": "same extension; same-directory sibling; similar basename; shallow path depth; small repository",
+    "selection_reason": "calibration_target_band",
+    "execution_cwd": "."
+  },
+  {
+    "case_id": "8a7f1e4871c76637",
+    "candidate_id": "lbv2_0381",
+    "repo_id": "97dcab4759c83fdb",
+    "repo_url": "https://github.com/langgenius/dify",
+    "repository": "langgenius/dify",
+    "instruction_path": "api/AGENTS.md",
+    "commit_sha": "f00d823f9f951460f3cb8dfd06f326b9b978cb68",
+    "anchor_path_true": "dev/",
+    "anchor_path_false": "model",
+    "decoy_path": "AUTHORS",
+    "test_command": "make test",
+    "reference_type": "directory",
+    "load_bearing_role": "edit",
+    "ecosystem": "python",
+    "calibrated_expected_success": 0.5037,
+    "cells": {
+      "T+L": {
+        "cell_code": "T+L",
+        "instruction_blob_sha": "79144010558b4d09bbb7827d83477235515e587856ddc2478cee3ef30141591c",
+        "cited_anchor": "dev/",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `dev/` to satisfy the required change. Use only the repository state at the pinned commit. Run `make test` before finishing.",
+        "load_bearing": true
+      },
+      "F+L": {
+        "cell_code": "F+L",
+        "instruction_blob_sha": "8406887f655d6522ecf0dae06519afa198e9cb30a9b77f616bd41f695ec2a040",
+        "cited_anchor": "model",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `model` to satisfy the required change. Use only the repository state at the pinned commit. Run `make test` before finishing.",
+        "load_bearing": true
+      },
+      "T+P": {
+        "cell_code": "T+P",
+        "instruction_blob_sha": "40b59ac3656af6e397d99da33ebcfc3fac9dda7a2bf0814e05fb237b461f8c26",
+        "cited_anchor": "dev/",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `AUTHORS` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `make test` before finishing.",
+        "load_bearing": false
+      },
+      "F+P": {
+        "cell_code": "F+P",
+        "instruction_blob_sha": "b2888dd2529c1411031952846233e195aa64be9d991af96656d27508544aa587",
+        "cited_anchor": "model",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `AUTHORS` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `make test` before finishing.",
+        "load_bearing": false
+      },
+      "N": {
+        "cell_code": "N",
+        "instruction_blob_sha": "",
+        "cited_anchor": "dev/",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task using only the repository at the pinned commit. Modify `AUTHORS` with a small, bounded change verifiable by tests. Run `make test` before finishing. No project instruction file is provided for this run.",
+        "load_bearing": false
+      }
+    },
+    "repairability_score": 2,
+    "repairability_reason": "same-directory sibling; similar basename; shallow path depth; large repository",
+    "selection_reason": "calibration_target_band",
+    "execution_cwd": "."
+  },
+  {
+    "case_id": "0eaabdc19e0a1d07",
+    "candidate_id": "lbv2_0171",
+    "repo_id": "4818d222565fc432",
+    "repo_url": "https://github.com/myriad-dreamin/tinymist",
+    "repository": "myriad-dreamin/tinymist",
+    "instruction_path": "editors/vscode/AGENTS.md",
+    "commit_sha": "c1fa2ef973babcd62363b2d0eee9c85b18ec890f",
+    "anchor_path_true": "locales/tinymist-vscode-rt.toml",
+    "anchor_path_false": "locales/tinymist-vscode-api.toml",
+    "decoy_path": "locales/tinymist-rt.toml",
+    "test_command": "yarn test",
+    "reference_type": "path",
+    "load_bearing_role": "edit",
+    "ecosystem": "node",
+    "calibrated_expected_success": 0.445,
+    "cells": {
+      "T+L": {
+        "cell_code": "T+L",
+        "instruction_blob_sha": "48a3f7dd7362eb30bcccd54c26a0570f50bbe2d338651504ef9558f27cc4344a",
+        "cited_anchor": "locales/tinymist-vscode-rt.toml",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `locales/tinymist-vscode-rt.toml` to satisfy the required change. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": true
+      },
+      "F+L": {
+        "cell_code": "F+L",
+        "instruction_blob_sha": "16614dc4463e588bae3c4299af985c5d64472e8de9dc79df4fa5096a02c206a8",
+        "cited_anchor": "locales/tinymist-vscode-api.toml",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `locales/tinymist-vscode-api.toml` to satisfy the required change. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": true
+      },
+      "T+P": {
+        "cell_code": "T+P",
+        "instruction_blob_sha": "564fc0d00ef54b4e7c1514df7a399465bdbe72a314b56e2313407a9d9b6dbdb5",
+        "cited_anchor": "locales/tinymist-vscode-rt.toml",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `locales/tinymist-rt.toml` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": false
+      },
+      "F+P": {
+        "cell_code": "F+P",
+        "instruction_blob_sha": "a4885b1dfcadec62afc52176cb896875564900533114997f33a4f12893b9ea32",
+        "cited_anchor": "locales/tinymist-vscode-api.toml",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `locales/tinymist-rt.toml` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": false
+      },
+      "N": {
+        "cell_code": "N",
+        "instruction_blob_sha": "",
+        "cited_anchor": "locales/tinymist-vscode-rt.toml",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task using only the repository at the pinned commit. Modify `locales/tinymist-rt.toml` with a small, bounded change verifiable by tests. Run `yarn test` before finishing. No project instruction file is provided for this run.",
+        "load_bearing": false
+      }
+    },
+    "repairability_score": 3,
+    "repairability_reason": "same extension; same-directory sibling; similar basename; shared naming pattern nearby; shallow path depth",
+    "selection_reason": "calibration_target_band",
+    "execution_cwd": "."
+  },
+  {
+    "case_id": "ce38ec4ec194a318",
+    "candidate_id": "lbv2_0408",
+    "repo_id": "dcb792d718508bec",
+    "repo_url": "https://github.com/vercel/next.js",
+    "repository": "vercel/next.js",
+    "instruction_path": ".agents/skills/write-api-reference/SKILL.md",
+    "commit_sha": "fb0686d866613f0fb1c88121a80f36b491e88f37",
+    "anchor_path_true": "docs/01-app/03-api-reference/",
+    "anchor_path_false": "docs/01-app/03-api-service",
+    "decoy_path": "docs/01-app/04-glossary.mdx",
+    "test_command": "pytest",
+    "reference_type": "directory",
+    "load_bearing_role": "edit",
+    "ecosystem": "python",
+    "calibrated_expected_success": 0.4949,
+    "cells": {
+      "T+L": {
+        "cell_code": "T+L",
+        "instruction_blob_sha": "86e440c501cdd3489bf73b0d90a4d48ca9fc92d1f226b9334d9a7e72833455d0",
+        "cited_anchor": "docs/01-app/03-api-reference/",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `docs/01-app/03-api-reference/` to satisfy the required change. Use only the repository state at the pinned commit. Run `pytest` before finishing.",
+        "load_bearing": true
+      },
+      "F+L": {
+        "cell_code": "F+L",
+        "instruction_blob_sha": "7c5a84827ba430fe1e295ad87622c64499121714dfb02f603ba32af00f6a8c25",
+        "cited_anchor": "docs/01-app/03-api-service",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `docs/01-app/03-api-service` to satisfy the required change. Use only the repository state at the pinned commit. Run `pytest` before finishing.",
+        "load_bearing": true
+      },
+      "T+P": {
+        "cell_code": "T+P",
+        "instruction_blob_sha": "164521302b0e6519f3b58875c55c5f506db009039ed45dba966f03c6e7d6d5f2",
+        "cited_anchor": "docs/01-app/03-api-reference/",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `docs/01-app/04-glossary.mdx` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `pytest` before finishing.",
+        "load_bearing": false
+      },
+      "F+P": {
+        "cell_code": "F+P",
+        "instruction_blob_sha": "b54cd9399a233c9ce2a85bddb85dea92005b4fb19113a48793ac8a15eae5b21a",
+        "cited_anchor": "docs/01-app/03-api-service",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `docs/01-app/04-glossary.mdx` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `pytest` before finishing.",
+        "load_bearing": false
+      },
+      "N": {
+        "cell_code": "N",
+        "instruction_blob_sha": "",
+        "cited_anchor": "docs/01-app/03-api-reference/",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task using only the repository at the pinned commit. Modify `docs/01-app/04-glossary.mdx` with a small, bounded change verifiable by tests. Run `pytest` before finishing. No project instruction file is provided for this run.",
+        "load_bearing": false
+      }
+    },
+    "repairability_score": 2,
+    "repairability_reason": "same-directory sibling; similar basename; shallow path depth; large repository",
+    "selection_reason": "calibration_target_band",
+    "execution_cwd": "."
+  },
+  {
+    "case_id": "95030e45b4415001",
+    "candidate_id": "lbv2_0067",
+    "repo_id": "045697c18e22b2e6",
+    "repo_url": "https://github.com/datadog/dd-trace-js",
+    "repository": "datadog/dd-trace-js",
+    "instruction_path": "AGENTS.md",
+    "commit_sha": "4b40f00f7860d074ad4346a17b164b5c57e409a4",
+    "anchor_path_true": ".github/pull_request_template.md",
+    "anchor_path_false": ".github/pull_request_helper.md",
+    "decoy_path": ".github/codeql_config.yml",
+    "test_command": "yarn test",
+    "reference_type": "path",
+    "load_bearing_role": "edit",
+    "ecosystem": "node",
+    "calibrated_expected_success": 0.4242,
+    "cells": {
+      "T+L": {
+        "cell_code": "T+L",
+        "instruction_blob_sha": "52266f18a506764c8714c09d570827fab4929e9ede5971ae0cc341632ff5e7d4",
+        "cited_anchor": ".github/pull_request_template.md",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `.github/pull_request_template.md` to satisfy the required change. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": true
+      },
+      "F+L": {
+        "cell_code": "F+L",
+        "instruction_blob_sha": "f531d39616c0a88c8991e48982988e4345d02f9b941f402f4b7a0e741b178050",
+        "cited_anchor": ".github/pull_request_helper.md",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Treat the instruction file as authoritative project context. You must modify `.github/pull_request_helper.md` to satisfy the required change. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": true
+      },
+      "T+P": {
+        "cell_code": "T+P",
+        "instruction_blob_sha": "02a782a8ccccbac4e72e605a4624fffb219546d2150435cf2a519e344dc56eb6",
+        "cited_anchor": ".github/pull_request_template.md",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `.github/codeql_config.yml` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": false
+      },
+      "F+P": {
+        "cell_code": "F+P",
+        "instruction_blob_sha": "28dc85d6794096c115404db1f22f58c760e2a981161e1ebd22c5a9b42eac1bb6",
+        "cited_anchor": ".github/pull_request_helper.md",
+        "mechanical_truth": false,
+        "task_prompt": "Complete the bounded coding task described in the project instruction file. Modify `.github/codeql_config.yml` only to satisfy the required change. Do not edit other files unless required by tests. Use only the repository state at the pinned commit. Run `yarn test` before finishing.",
+        "load_bearing": false
+      },
+      "N": {
+        "cell_code": "N",
+        "instruction_blob_sha": "",
+        "cited_anchor": ".github/pull_request_template.md",
+        "mechanical_truth": true,
+        "task_prompt": "Complete the bounded coding task using only the repository at the pinned commit. Modify `.github/codeql_config.yml` with a small, bounded change verifiable by tests. Run `yarn test` before finishing. No project instruction file is provided for this run.",
+        "load_bearing": false
+      }
+    },
+    "repairability_score": 3,
+    "repairability_reason": "same extension; same-directory sibling; similar basename; shallow path depth",
+    "selection_reason": "calibration_target_band",
+    "execution_cwd": "."
+  }
+]

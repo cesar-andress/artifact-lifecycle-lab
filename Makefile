@@ -60,7 +60,7 @@ GENERAL_OSS_POOL := data/registry/sources/general_oss_candidates.jsonl
 	e1-100-extract e1-100-derive e1-100-exports e1-100-performance e1-100-summary \
 	e1-1000-registry e1-1000-extract e1-1000-derive e1-1000-exports e1-1000-performance e1-1000-summary e1-1000-qa \
 	recover verify truth-pilot-p1 truth-pilot-p2 truth-pilot-go-no-go truth-pilots \
-	truth-decay-rq1 truth-decay-rq2 truth-decay-rq3 truth-decay-rq4 truth-decay-rq5-prep truth-decay-rq5-v2-candidates rq5-v2-execution-viability rq5-v2-factorial-plan rq5-v2-phase0-execution-viability task-calibration rq5-v2-phase0-analysis rq5-v2-phase0-status rq5-v2-phase0-toolchain-audit truth-decay-rq5 truth-decay-rq5-run truth-decay-born-stale-audit truth-decay-born-stale-autopsy truth-decay-rq2-failure-audit truth-decay-gfc-confirmatory-audit truth-decay-cited-uncited-audit truth-decay-selection-study truth-pilot-p3 truth-pilot-p4 truth-pilot-p4-validate truth-pilot-p5 pre-scaling-gates
+	truth-decay-rq1 truth-decay-rq2 truth-decay-rq3 truth-decay-rq4 truth-decay-rq5-prep truth-decay-rq5-v2-candidates rq5-v2-execution-viability rq5-v2-factorial-plan rq5-v2-phase0-execution-viability rq5-v2-phase0-prepare-relaunch rq5-v2-phase0-run task-calibration rq5-v2-phase0-analysis rq5-v2-phase0-status rq5-v2-phase0-toolchain-audit truth-decay-rq5 truth-decay-rq5-run truth-decay-born-stale-audit truth-decay-born-stale-autopsy truth-decay-rq2-failure-audit truth-decay-gfc-confirmatory-audit truth-decay-cited-uncited-audit truth-decay-selection-study truth-pilot-p3 truth-pilot-p4 truth-pilot-p4-validate truth-pilot-p5 pre-scaling-gates
 
 e1: install-paper e1-extract e1-derive e1-exports-run profile-report
 
@@ -287,6 +287,16 @@ rq5-v2-phase0-execution-viability: install-paper
 	$(PY) -m artifact_lab.experiments.rq5_v2.phase0_execution_viability \
 	  --output-dir exports/rq5_v2_factorial \
 	  --manifest exports/rq5_v2_factorial/factorial_case_manifest.json
+
+rq5-v2-phase0-prepare-relaunch: install-paper
+	$(PY) -m artifact_lab.experiments.rq5_v2 prepare-phase0-relaunch \
+	  --output-dir exports/rq5_v2_factorial \
+	  --manifest exports/rq5_v2_factorial/phase0_manifest_repaired.json
+
+rq5-v2-phase0-run: install-paper
+	$(PY) -m artifact_lab.experiments.rq5_v2 run-phase0 \
+	  --output-dir exports/rq5_v2_factorial \
+	  --manifest exports/rq5_v2_factorial/phase0_manifest_repaired.json
 
 truth-decay-rq5: install-paper
 	$(PY) -m artifact_lab.experiments.truth_decay rq5 \
