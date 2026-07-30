@@ -6,6 +6,9 @@
 
 ## Purpose
 
+Archival entry point for this package: [`REPLICATION.md`](../REPLICATION.md) (tag `v1.0.0`).
+
+
 This document enumerates every empirical claim currently supported by **existing, read-only laboratory outputs**. It is the authoritative claim inventory for the ACM TOSEM submission. No new experiments, no regeneration of datasets, and no modification of export directories are permitted after this freeze.
 
 ## Provenance policy
@@ -189,7 +192,7 @@ Direct measurements from git-tracked exports with high confidence. No causal lan
 | **Exact wording** | In **128** Claude Code runs with instruction files injected (A=65, B=63), **100%** exhibit `instruction_read` and `instruction_quoted` trace events. |
 | **Supporting datasets** | `exports/rq5_agent_impact/rq5_uptake_dataset.csv`, `rq5_uptake_by_condition.csv` |
 | **Supporting figures** | `exports/rq5_agent_impact/figure_uptake_flow.pdf` |
-| **Supporting tables** | Uptake funnel in `rq5_uptake_analysis.md`; `paper/tables/evidence-summary.tex` (row: instruction read) |
+| **Supporting tables** | Uptake funnel in `rq5_uptake_analysis.md`; `companion manuscript evidence-summary table (not in this repository)` (row: instruction read) |
 | **Statistical evidence** | Condition A: **65/65** (100.0%) read; Condition B: **63/63** (100.0%) read. |
 | **Limitations** | Single agent (Claude Code CLI); instruction file injected pre-run; trace classifier heuristic. |
 | **Confidence** | High |
@@ -204,7 +207,7 @@ Direct measurements from git-tracked exports with high confidence. No causal lan
 | **Exact wording** | On **63** paired A/B/C triplets (22 overlap cases), task success is **12.7%** (8/63) for both A and B; paired Δ(A−B) = **0.00 pp**. |
 | **Supporting datasets** | `exports/rq5_agent_impact/rq5_dataset.csv`, `rq5_effect_sizes.csv` |
 | **Supporting figures** | `exports/rq5_agent_impact/figure_success_rate.pdf` |
-| **Supporting tables** | Aggregate metrics + A−B contrast in `rq5_abc_comparative_analysis.md`; `paper/tables/evidence-summary.tex` |
+| **Supporting tables** | Aggregate metrics + A−B contrast in `rq5_abc_comparative_analysis.md`; `companion manuscript evidence-summary table (not in this repository)` |
 | **Statistical evidence** | Wilson 95% CI A and B: **[6.6%, 23.1%]** each. Bootstrap 95% CI (cluster case) for Δ(A−B): **[−6.35, +6.35] pp**. McNemar exact **p = 1.0000**; discordant pairs **2 / 2**; Cohen's **h = 0.0000**. |
 | **Limitations** | **63** triplets / **21** cases only; **13** cases have C without matching A/B; high baseline failure (~88%); low power. |
 | **Confidence** | High (for null paired contrast on overlap subset) |
@@ -373,7 +376,7 @@ Supported by existing outputs but requiring heuristics, observational design, su
 |-------|-------|
 | **Claim ID** | MS-09 |
 | **Exact wording** | Condition C executed **105** runs (**35** cases × **3** replicates) for Claude Code in `exports/rq5_agent_impact_c/`. |
-| **Supporting datasets** | `exports/rq5_agent_impact_c/rq5_results.csv` (**workspace-local**, 105 data rows + header) |
+| **Supporting datasets** | `exports/rq5_agent_impact_c/rq5_results.csv` (git-tracked; 105 data rows + header) |
 | **Supporting figures** | `exports/rq5_agent_impact_c/figure_success.pdf` (now git-tracked; was workspace-local at freeze) |
 | **Supporting tables** | Paired subset in `exports/rq5_agent_impact/rq5_abc_comparative_analysis.md` (uses C from local dir) |
 | **Statistical evidence** | Row count in `rq5_results.csv`; ABC analysis confirms **63** paired triplets from overlap with partial A/B. |
@@ -580,7 +583,7 @@ Claims that are **not** supported by frozen outputs, are explicitly contradicted
 
 Full CSV: `exports/paper_synthesis/late_binding_evidence_table.csv`  
 Conceptual framing: `docs/LATE_BINDING_MODEL_v1.md`  
-LaTeX skeleton: `paper/main.tex`
+LaTeX skeleton: `companion manuscript (not in this repository; see REPLICATION.md)`
 
 ---
 

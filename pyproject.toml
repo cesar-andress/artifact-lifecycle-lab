@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "artifact-lifecycle-lab"
-version = "0.1.0"
-description = "Research platform for mining artifact lifecycles in Git repositories"
+version = "1.0.0"
+description = "Replication package and research platform for mechanical reference integrity in machine-consumed instruction files"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [

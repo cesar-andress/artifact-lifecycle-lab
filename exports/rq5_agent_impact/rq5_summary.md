@@ -1,5 +1,10 @@
 # RQ5 — Causal Evidence Summary
 
+> **OBSOLETE — DO NOT CITE FOR RUN COUNTS.**  
+> This file reports only **9** runs and is superseded by  
+> `rq5_uptake_analysis.md` (128 A/B runs) and `rq5_abc_comparative_analysis.md`.  
+> Retained only for provenance. See `docs/SCIENTIFIC_EVIDENCE_FREEZE.md` §Stale.
+
 ## Design (frozen protocol)
 
 - Condition **A:** truthful instruction blob at pinned commit.

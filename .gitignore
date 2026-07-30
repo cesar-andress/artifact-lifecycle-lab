@@ -6,6 +6,7 @@ __pycache__/
 venv/
 scratch/
 paper/
+# Local regenerable / large working state (not part of the Zenodo archival tree)
 data/blobs/
 data/l1/
 data/derived/
@@ -13,5 +14,17 @@ data/receipts/
 data/state/
 data/profiling/
 *.parquet
-# Blind annotation: keep private ID maps out of default sharing surfaces
+# Private ID maps (never distribute)
 exports/rq5_lb_blind_annotation/private/
+# Editor / OS noise
+*~
+*.bak
+*.swp
+.DS_Store
+comment.cut
+*.aux
+*.log
+*.out
+*.blg
+*.fls
+*.fdb_latexmk

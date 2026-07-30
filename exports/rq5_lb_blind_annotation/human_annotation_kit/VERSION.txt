@@ -1,6 +1,0 @@
-protocol_version=RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c
-kit_generator_version=1.0.0
-repository_commit=3251a21fddabbfbe9191f44555c508e1fe768962
-generation_timestamp=2026-07-30T21:29:45Z
-packet_seed=42
-n_packets=24

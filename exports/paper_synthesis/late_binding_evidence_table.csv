@@ -23,7 +23,7 @@ Files modified false instruction,rq5_abc_comparative_analysis.md,mean_files_modi
 Files modified no instruction,rq5_abc_comparative_analysis.md,mean_files_modified_C,1.7,directive+referential presence expands edit scope
 Compile success all conditions,rq5_abc_comparative_analysis.md,compilation_success_rate,100%,outcome failure driven by tests not compile
 Baseline test failure dominates,rq5_uptake_analysis.md,tests_failed_unsuccessful_A,57,environmental task difficulty confound
-Condition C experiment complete,rq5_agent_impact_c/rq5_summary.md,total_runs,105/105,single agent; no A/B on same output dir
+Condition C experiment complete,rq5_agent_impact_c/rq5_results.csv,total_runs,105/105,single agent; no A/B on same output dir
 Condition C aggregate success,rq5_agent_impact_c/rq5_results.csv,success_rate_all_C,11.4% (12/105),includes cases without A/B overlap
 Prior A/B partial experiment,rq5_agent_impact/rq5_results.csv,total_runs_AB,128,experiment paused; incomplete case coverage
 RQ5 redesign requires condition C,rq5_redesign_plan.md,design_version,AB_v1 incomplete without C baseline,conceptual; documents pivot rationale

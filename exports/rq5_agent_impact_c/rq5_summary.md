@@ -1,5 +1,11 @@
 # RQ5 — Causal Evidence Summary
 
+> **OBSOLETE FOR MANUSCRIPT COUNTS — DO NOT CITE AS PRIMARY.**  
+> Prefer `rq5_results.csv` in this directory (105 condition-C rows) and  
+> `../rq5_agent_impact/rq5_abc_comparative_analysis.md` for paired ABC analysis.  
+> Header text may still describe A/B design; use the CSV row count.  
+> See `docs/SCIENTIFIC_EVIDENCE_FREEZE.md` §Stale.
+
 ## Design (frozen protocol)
 
 - Condition **A:** truthful instruction blob at pinned commit.

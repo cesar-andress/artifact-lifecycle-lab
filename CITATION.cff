@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this replication package, please cite it as below."
+type: software
+title: "Artifact Lifecycle Lab: Replication Package for Measuring Mechanical Reference Integrity in Machine-Consumed Instruction Files"
+version: "1.0.0"
+date-released: "2026-07-31"
+authors:
+  - family-names: Andrés
+    given-names: César
+    orcid: "https://orcid.org/0009-0001-8968-3404"
+    email: cesar.andress@ucjc.edu
+    affiliation: "CRIA-BDHS Research Group, Higher Polytechnic School of Technology and Science, Universidad Camilo José Cela"
+repository-code: "https://github.com/cesar-andress/artifact-lifecycle-lab"
+url: "https://github.com/cesar-andress/artifact-lifecycle-lab"
+license: MIT
+keywords:
+  - software documentation
+  - coding agents
+  - instruction files
+  - reference integrity
+  - empirical software engineering
+  - replication package
+abstract: >-
+  Replication package for the ACM TOSEM manuscript Measuring Mechanical
+  Reference Integrity in Machine-Consumed Instruction Files. Contains frozen
+  observational exports, confirmatory audit summaries, exploratory RQ5 ledgers,
+  protocols, and regeneration scripts. Science freeze date: 2026-07-03.

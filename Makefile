@@ -195,7 +195,7 @@ verify:
 	  --events-dir $(E1_1000_L1_DIR)
 
 TRUTH_PILOT_EXPORT := exports/truth_pilot
-P4_GOLD_CSV ?= /home/cesar/Downloads/human_code.txt
+P4_GOLD_CSV ?= exports/truth_pilot/agent_attribution_gold_worksheet.csv
 TRUTH_PILOT_N ?= 400
 TRUTH_PILOT_N_MIN ?= 300
 TRUTH_PILOT_N_MAX ?= 500
@@ -401,7 +401,15 @@ paper:
 	cp $(FIG1_CSV) $(PAPER_ROOT)/figures/fig1.csv
 	cp $(TABLE1) $(PAPER_ROOT)/tables/table1.csv
 	@test -f $(E1_PILOT_PERF) && cp $(E1_PILOT_PERF) $(PAPER_ROOT)/notes/pilot_performance.md || echo "note: $(E1_PILOT_PERF) not found; skipping performance note copy"
-	$(MAKE) -C $(PAPER_ROOT) pdf
+	@if [ ! -f $(PAPER_ROOT)/Makefile ]; then \
+	  echo "No main.tex found — skipping LaTeX compile"; \
+	elif grep -qE '^pdf:' $(PAPER_ROOT)/Makefile; then \
+	  $(MAKE) -C $(PAPER_ROOT) pdf; \
+	elif [ -f $(PAPER_ROOT)/main.tex ]; then \
+	  $(MAKE) -C $(PAPER_ROOT) all; \
+	else \
+	  echo "No main.tex found — skipping LaTeX compile"; \
+	fi
 
 test:
 	$(PY) -m pytest artifact_lab/tests -q

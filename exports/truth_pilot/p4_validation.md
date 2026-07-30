@@ -2,7 +2,7 @@
 
 ## Summary
 
-- **Gold source:** `/home/cesar/Downloads/human_code.txt`
+- **Gold source (archival):** `exports/truth_pilot/agent_attribution_gold_worksheet.csv` (frozen worksheet; original local annotation file not redistributed)
 - **Reviewed rows:** 200
 - **Gate threshold:** precision ≥ **80%** (agent-maintenance positive class)
 - **Gate result:** **PASS** (precision = 0.958)

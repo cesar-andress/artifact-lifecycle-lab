@@ -37,7 +37,15 @@ def test_make_e1_invokes_full_extraction():
 
 
 def test_make_paper_does_not_invoke_extraction():
-    output = _dry_run_make("paper")
+    result = subprocess.run(
+        ["make", "-n", "paper"],
+        cwd=REPO_ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    output = result.stdout + result.stderr
+    # Recipe must never re-run mining; recursive LaTeX may be absent in sibling paper trees.
     assert "artifact_lab.ingest extract" not in output
     assert "artifact_lab.derive panel" not in output
     assert "artifact_lab.experiments.e1_adoption_census" not in output

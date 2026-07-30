@@ -1,3 +1,5 @@
+> **Note (archival):** Absolute local paths below are developer-machine inventory notes and are not required to use this replication package. See REPLICATION.md.
+
 # Architecture audit — `~/papers/` vs `artifact-lifecycle-lab`
 
 **Date:** 2026-07-02  

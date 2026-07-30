@@ -39,9 +39,9 @@ engineering regression cohort.
 
 1. **Seed:** `42` (deterministic; stratum-specific derived seeds `42`, `43`, `44`)
 2. Load candidate pools:
-   - Instruction frame: `/home/cesar/papers/vsdlc/vsdlc/data/interim/eligible_repos_enriched.jsonl`
+   - Instruction frame: `external VSDLC eligible JSONL (not shipped; see registry build docs)`
    - General OSS: `data/registry/sources/general_oss_candidates.jsonl`
-   - Mixed/control: `/home/cesar/papers/vsdlc/vsdlc/data/raw/second_frame_candidates.jsonl`
+   - Mixed/control: `external VSDLC second-frame JSONL (not shipped)`
 3. Group candidates within each stratum by `(family_or_language_or_topic, star_bucket)`
 4. Sort within groups by `repository_url` (case-insensitive)
 5. Shuffle group keys with stratum seed; round-robin draw one repo per group per pass
