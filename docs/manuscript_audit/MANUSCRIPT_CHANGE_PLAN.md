@@ -197,15 +197,15 @@ Execute in order. Each step lists target files, concrete actions, and accept/rej
 
 ## Acceptance checklist (before declaring alignment done)
 
-- [ ] Title unchanged: *Late Binding in Machine-Consumed Instruction Files*.  
-- [ ] No confirmatory “causal track / controlled experiment proves…” wording for RQ5.  
-- [ ] No 73% / mediation non-LB explanation in abstract, results, discussion, or conclusion.  
-- [ ] No implication that humans validated load-bearing or material necessity.  
-- [ ] Design/Threats state blind LB annotation **NOT FEASIBLE** and v2 kit **DO NOT DISTRIBUTE**.  
-- [ ] A/B/C uptake, Δ success, edit scope retained only as exploratory descriptive pilot with limits.  
-- [ ] Truth Debt not promoted; agent robustness not promoted.  
-- [ ] Construct table does not evidence LB via null A−B.  
-- [ ] Archive / STORYLINE / mediation summary banners updated or marked stale.
+- [x] Title unchanged: *Late Binding in Machine-Consumed Instruction Files*.  
+- [x] No confirmatory “causal track / controlled experiment proves…” wording for RQ5.  
+- [x] No 73% / mediation non-LB explanation in abstract, results, discussion, or conclusion.  
+- [x] No implication that humans validated load-bearing or material necessity.  
+- [x] Design/Threats state blind LB annotation **NOT FEASIBLE** and v2 kit **DO NOT DISTRIBUTE**.  
+- [x] A/B/C uptake, Δ success, edit scope retained only as exploratory descriptive pilot with limits.  
+- [x] Truth Debt not promoted; agent robustness not promoted.  
+- [x] Construct table does not evidence LB via null A−B.  
+- [x] Archive / mediation summary banners updated (`current_claims.md`, mediation export banner).
 
 ---
 

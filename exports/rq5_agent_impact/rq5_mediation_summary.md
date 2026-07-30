@@ -1,5 +1,11 @@
 # RQ5 — Null-Result Mediation Audit
 
+> **MANUSCRIPT STATUS (binding):** Exploratory **post-hoc** heuristic export only.
+> **Not** confirmatory evidence of material necessity / load-bearing.
+> The ~73% “non-load-bearing” / causal-role partitions must **not** be cited as independently validated explanation of the null A−B contrast.
+> Blinded human LB annotation on RQ5 v1 is **NOT FEASIBLE**; the v2 annotation kit is **DO NOT DISTRIBUTE**.
+> Do not treat this file as manuscript-supported explanatory evidence.
+
 Post-hoc trace audit only. Does not modify the experiment, agents, or datasets.
 
 ## Scope
