@@ -104,11 +104,12 @@ Notes:
 
 - License: [LICENSE](LICENSE) (MIT)
 - Citation: [CITATION.cff](CITATION.cff)
-- Zenodo metadata template: [.zenodo.json](.zenodo.json)
+- Archival DOI: [https://doi.org/10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432) (version 1.0.0)
+- Development repository: [https://github.com/cesar-andress/artifact-lifecycle-lab](https://github.com/cesar-andress/artifact-lifecycle-lab)
 
 ## Known limitations
 
 1. L1b blob store (`data/blobs/`) is not shipped (size); full re-mine from registries requires re-extraction.
-2. Zenodo DOI is assigned at deposit time; until then cite the GitHub tag `v1.0.0` and commit SHA.
+2. Prefer the Zenodo v1.0.0 deposit over a moving `main` clone when citing frozen numbers.
 3. RQ5 success/uptake numbers are ledger-frozen; agent products and model versions may drift if rerun.
 4. Development notes under `docs/` (gap analyses, storyline drafts) are not manuscript claims; use the freeze inventory.

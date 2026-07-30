@@ -11,7 +11,12 @@ authors:
     email: cesar.andress@ucjc.edu
     affiliation: "CRIA-BDHS Research Group, Higher Polytechnic School of Technology and Science, Universidad Camilo José Cela"
 repository-code: "https://github.com/cesar-andress/artifact-lifecycle-lab"
-url: "https://github.com/cesar-andress/artifact-lifecycle-lab"
+url: "https://doi.org/10.5281/zenodo.21711432"
+doi: "10.5281/zenodo.21711432"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21711432"
+    description: Zenodo archival deposit v1.0.0
 license: MIT
 keywords:
   - software documentation

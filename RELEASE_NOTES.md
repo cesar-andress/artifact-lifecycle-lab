@@ -20,7 +20,8 @@ First archival release of the replication package accompanying the manuscript
 
 ## How to cite
 
-Use `CITATION.cff`, or cite the GitHub repository at tag `v1.0.0` until a Zenodo DOI is minted.
+Use `CITATION.cff`, or cite the Zenodo deposit  
+[https://doi.org/10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432) (version 1.0.0).
 
 ## Start here
 
