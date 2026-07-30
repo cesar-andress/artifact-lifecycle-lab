@@ -1,0 +1,11 @@
+{
+  "commit": "e41902c3c4fc75415742a2f544776051b376ae33",
+  "generated_at": "2026-07-30T21:05:14Z",
+  "kit_dir": "exports/rq5_lb_blind_annotation/human_annotation_kit",
+  "kit_leak_hits": [],
+  "manual_review_packets": 31,
+  "n_packets": 31,
+  "n_qa_ok": 31,
+  "qa_failures": [],
+  "seed": 42
+}

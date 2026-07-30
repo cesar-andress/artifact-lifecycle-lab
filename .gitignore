@@ -13,3 +13,5 @@ data/receipts/
 data/state/
 data/profiling/
 *.parquet
+# Blind annotation: keep private ID maps out of default sharing surfaces
+exports/rq5_lb_blind_annotation/private/

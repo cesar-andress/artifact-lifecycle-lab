@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rq5_v1_blind_lb_annotation_form",
+  "title": "RQ5 v1 Blind Load-Bearing Annotation Form",
+  "description": "Rater-facing fields only. Final load-bearing is derived by blind_lb_derive.derive_final_classification per docs/RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md (e41902c).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "neutral_id",
+    "annotator_id",
+    "reference_relevance",
+    "material_necessity",
+    "confidence",
+    "justification",
+    "protocol_version",
+    "annotation_timestamp"
+  ],
+  "properties": {
+    "neutral_id": {
+      "type": "string",
+      "minLength": 8,
+      "description": "Opaque packet ID; never the experimental case_id."
+    },
+    "annotator_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reference_relevance": {
+      "type": "string",
+      "enum": [
+        "irrelevant",
+        "contextually_relevant",
+        "directly_relevant",
+        "ambiguous"
+      ]
+    },
+    "material_necessity": {
+      "type": "string",
+      "enum": [
+        "not_necessary",
+        "helpful_but_substitutable",
+        "materially_necessary",
+        "ambiguous"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"]
+    },
+    "justification": {
+      "type": "string",
+      "minLength": 20,
+      "description": "2–5 sentences; pre-treatment evidence only."
+    },
+    "protocol_version": {
+      "type": "string",
+      "const": "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c"
+    },
+    "annotation_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

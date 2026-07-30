@@ -1,0 +1,28 @@
+{
+  "blinding": {
+    "access_model": "access_separated_private_id_map_not_cryptographically_sealed",
+    "case_id_omitted": true,
+    "outcomes_omitted": true,
+    "paths_redacted": true,
+    "repo_url_omitted": true,
+    "traces_omitted": true
+  },
+  "excerpts": [
+    {
+      "field": "instruction_citation_excerpts",
+      "note": "Path tokens replaced with [[REF]]; contrast blob inspected only for ban-list.",
+      "sanitized": true,
+      "source_kind": "instruction_blob_pre_treatment"
+    }
+  ],
+  "neutral_id": "be858faa4705fb53",
+  "packet_sha256": "952f5b3954d58f84f308dc593764ee68b6f1f2339ce2d626748b554f5af9a1f5",
+  "protocol_version": "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c",
+  "seed": 42,
+  "sources": [
+    "rq5_case_manifest.csv",
+    "rq5_candidate_dataset.csv",
+    "blob_store:0ca41c3c85bcebb4",
+    "blob_store:contrast_inspected_not_emitted"
+  ]
+}
