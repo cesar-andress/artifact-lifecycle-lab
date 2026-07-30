@@ -1,14 +1,109 @@
 {
+  "annotator_question": "Is Referenced artifact R1 materially necessary for completing THIS software engineering task in THIS repository snapshot?",
   "anonymous_snapshot_id": "b30df23f49f5a1d2",
-  "artifact_role_description": "Referenced artifact R1 denotes a directory path cited by the project instruction text. Its identity is withheld as a path string so treatment assignment cannot be inferred. The instruction context around the citation is provided below with the path replaced by [[REF]].",
+  "artifact_role_description": "Referenced artifact R1 is a repository artifact cited by the project instruction text (reference kind: directory). Its literal path string is withheld and shown as [[REF]] so treatment assignment cannot be inferred from path identity. Use the citation excerpts, task brief, and snapshot context below to judge relevance and necessity.",
   "instruction_citation_excerpts": [
-    "- No `[[REF]]` directory or `.cursorrules` file was found at repo root."
+    "## Read These First\n- Copilot rule found: `.github/copilot-instructions.md`.\n- Its instruction is mandatory: before doing anything else, read `.kilocode/rules/project-main.md`.\n- If you work on the client, also read `.kilocode/rules/project-info-galgamemanager.md`.\n- If client work changes UI/XAML/custom controls, also read `.kilocode/rules/project-info-controls.md`.\n- If you work on the server, also read `.kilocode/rules/project-info-galgamemanager-server.md`.\n- Additional agent docs exist under `.github/.clinerules/`; they are not Cursor rules, but they contain useful repo knowledge.\n- `.github/.clinerules/main.md` asks agents to update the `project-info` knowledge files with general reusable knowledge after finishing a task.\n- No `[[REF]]` directory or `.cursorrules` file was found at repo root.\n\n## Repository Map\n- `GalgameManager/`: main WinUI 3 desktop client.\n- `GalgameManager.Core/`: shared/core .NET library.\n- `GalgameManager.Server/`: ASP.NET Core Web API sync server.\n- `GalgameManager.Test/`: client-side NUnit tests.\n- `GalgameManager.Server.Test/`: server-side NUnit tests.\n- `PotatoVN.Doc/`: docs site built with VitePress."
   ],
+  "instruction_language_original": "en",
+  "instruction_provided_in": "en",
+  "nearby_configuration_paths": [
+    ".github/workflows/build-signed-package.yml",
+    ".github/workflows/build.yml",
+    ".github/workflows/crowdin-fetch.yml",
+    ".github/workflows/crowdin-push.yml",
+    ".github/workflows/server-build-push.yml",
+    ".github/workflows/update-db.yml",
+    "FAQ/zh-CN.json",
+    "GalgameManager.Server/Dockerfile",
+    "GalgameManager.Server/Properties/launchSettings.json",
+    "GalgameManager.Server/appsettings.Development.json"
+  ],
+  "nearby_documentation_paths": [
+    "[[REF]]",
+    "GalgameManager.Core/README.md",
+    "GalgameManager.Server/README.md",
+    "GalgameManager/README.md",
+    "README.md",
+    "docs/README_EN.md"
+  ],
+  "neighbor_paths": [],
   "neutral_id": "8a7005d04252096c",
-  "path_policy": "Manipulated and experimental path strings are withheld. Citations use [[REF]] / Referenced artifact R1 so treatment assignment cannot be read from path identity.",
+  "packet_spec_version": "rq5_v1_blind_packet_spec_v2",
+  "path_policy": "Path identity for the cited artifact and for contrast-only manipulated paths is replaced by [[REF]] using semantic whole-path tokenization (not substring replacement). Other snapshot paths may appear when they do not reveal treatment assignment. Do not infer experimental treatment from path placeholders.",
   "protocol_version": "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c",
   "reference_type": "directory",
   "referenced_artifact_alias": "Referenced artifact R1",
-  "repository_tree_excerpt": "A full repository tree excerpt is not included in this offline packet build. Judge from the task brief and the instruction citation context only.",
-  "task_brief": "Complete a small, bounded change in the pinned repository snapshot so that the project test command `pytest` passes. Use only files present in the snapshot. Judge whether Referenced artifact R1 is materially necessary for that task."
+  "repository_tree_excerpt": [
+    "\".github/ISSUE_TEMPLATE/\\346\\226\\260\\345\\212\\237\\350\\203\\275\\345\\273\\272\\350\\256\\256.md\"",
+    "\".github/ISSUE_TEMPLATE/\\351\\234\\200\\350\\246\\201\\345\\270\\256\\345\\212\\251.md\"",
+    ".clinerules",
+    ".dockerignore",
+    ".editorconfig",
+    ".github/.clinerules/main.md",
+    ".github/.clinerules/project-info-galgamemanager-server.md",
+    ".github/.clinerules/project-info-galgamemanager.md",
+    ".github/.clinerules/project-info.md",
+    ".github/ISSUE_TEMPLATE/bug_report.md",
+    ".github/copilot-instructions.md",
+    ".github/workflows/build-signed-package.yml",
+    ".github/workflows/build.yml",
+    ".github/workflows/crowdin-fetch.yml",
+    ".github/workflows/crowdin-push.yml",
+    ".github/workflows/server-build-push.yml",
+    ".github/workflows/update-db.yml",
+    ".gitignore",
+    ".gitmodules",
+    ".kilocode/rules/project-info-controls.md",
+    ".kilocode/rules/project-info-galgamemanager-server.md",
+    ".kilocode/rules/project-info-galgamemanager.md",
+    ".kilocode/rules/project-main.md",
+    ".vsconfig",
+    "[[REF]]",
+    "Directory.Build.props",
+    "GalgameManager.sln",
+    "GalgameManager.sln.DotSettings",
+    "LICENSE",
+    "NuGet.Config",
+    "PotatoVN.Doc",
+    "PrivacyPolicy.md",
+    "README.md",
+    "crowdin.yml"
+  ],
+  "snapshot_file_excerpts": [
+    {
+      "content": "# [[INSTRUCTION]]\n\n## Purpose\n- This repository contains several related apps: a WinUI 3 client, an ASP.NET Core sync server, NUnit test projects, and a VitePress docs site.\n- Use this file as the fast path for build/test/style guidance before making changes.\n- When repo-specific instruction files conflict with generic habits, prefer the repo-specific instruction files.\n\n## Read These First\n- Copilot rule found: `.github/copilot-instructions.md`.\n- Its instruction is mandatory: before doing anything else, read `.kilocode/rules/project-main.md`.\n- If you work on the client, also read `.kilocode/rules/project-info-galgamemanager.md`.\n- If client work changes UI/XAML/custom controls, also read `.kilocode/rules/project-info-controls.md`.\n- If you work on the server, also read `.kilocode/rules/project-info-galgamemanager-server.md`.\n- Additional agent docs exist under `.github/.clinerules/`; they are not Cursor rules, but they contain useful repo knowledge.\n- `.github/.clinerules/main.md` asks agents to update the `project-info` knowledge files with general reusable knowledge after finishing a task.\n- No `[[REF]]` directory or `.cursorrules` file was found at repo root.\n\n## Repository Map\n- `GalgameManager/`: main WinUI 3 desktop client.\n- `GalgameManager.Core/`: shared/core .NET library.\n- `GalgameManager.Server/`: ASP.NET Core Web API sync server.\n- `GalgameManager.Test/`: client-side NUnit tests.\n- `GalgameManager.Server.Test/`: server-side NUnit tests.\n- `PotatoVN.Doc/`: docs site built with VitePress.\n- `AuthServer/`: separate Flask-based auth component (Deperated, move into GalgameManager.Server).\n- `GalgameManager.Tool/`: separate C++ utility project.\n- `Directory.Build.props`: test platform defaults and Windows App SDK test overrides.\n- `.editorconfig`: main formatting and naming rules.\n\n## Environment Notes\n- The client is Windows-specific and uses WinUI 3 plus Windows App SDK.\n- Client packaging/build automation is MSBuild-based, not a simple cross-platform `d",
+      "file_alias": "snapshot_file_1",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "\ufeff*Recommended Markdown Viewer: [Markdown Editor](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.MarkdownEditor2)*\n\n## Getting Started\n\nThe Core project contains code that can be [reused across multiple application projects](https://docs.microsoft.com/dotnet/standard/net-standard#net-5-and-net-standard).\n",
+      "file_alias": "snapshot_file_2",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# PotatoVN \u540c\u6b65\u670d\u52a1\u5668\n\n## \u7b80\u4ecb\nPotatoVN \u540c\u6b65\u670d\u52a1\u5668\u662f\u4e00\u4e2a\u7528\u4e8e\u5e2e\u52a9PotatoVN\u8de8\u7535\u8111\u540c\u6b65/\u5907\u4efd\u6570\u636e\u7684\u670d\u52a1\u5668\uff0c\u5b83\u63d0\u4f9b\u4e86\u4e00\u4e2aRESTful API\u7528\u4e8e\u5ba2\u6237\u7aef\u4e0e\u670d\u52a1\u5668\u4e4b\u95f4\u7684\u901a\u4fe1\u3002\n\n\u5b83\u80fd\u540c\u6b65\u4ec0\u4e48\uff1a[\u8bf7\u53c2\u8003potatovn wiki](https://potatovn.net/usage/advance/data-exchange.html)\n\n## \u90e8\u7f72\n### \u63a8\u8350\u90e8\u7f72\u65b9\u5f0f\uff1aDocker (Compose)\n1. \u5728\u670d\u52a1\u5668\u4efb\u610f\u4f4d\u7f6e\u521b\u5efa\u4e00\u4e2a\u6587\u4ef6\u5939\uff0c\u5b83\u5c06\u7528\u6765\u5b58\u653edocker-compose.yml\u6587\u4ef6\u53ca\u6570\u636e\u5e93\u6570\u636e\u3002**\u4ee5\u4e0b\u64cd\u4f5c\u5747\u5728\u6b64\u6587\u4ef6\u5939\u5185\u8fdb\u884c**\u3002\n2. \u4e0b\u8f7ddocker-compose.yml\u6587\u4ef6\uff1a\n```shell\ncurl -O https://raw.githubusercontent.com/GoldenPotato137/PotatoVN/refs/heads/dev/GalgameManager.Server/docker-compose.yml\n```\n> \u56fd\u5185\u670d\u52a1\u5668\u5728\u8bbf\u95eegithub\u65f6\u53ef\u80fd\u4f1a\u9047\u5230\u7f51\u7edc\u95ee\u9898\uff0c\u53ef\u4ee5\u4f7f\u7528\u4ee3\u7406\u89e3\u51b3\u8fd9\u4e2a\u95ee\u9898\uff0c\u6216\u8005\u76f4\u63a5\u4e0b\u8f7ddocker-compose.yml\u6587\u4ef6\u5230\u672c\u5730\uff0c\u7136\u540e\u4e0a\u4f20\u5230\u670d\u52a1\u5668\u3002\n\n3. \u4fee\u6539docker-compose.yml\u91cc\u5fc5\u586b\u5185\u5bb9\uff0c\u8be5\u6587\u4ef6\u5185\u5305\u542b\u8be6\u7ec6\u6ce8\u91ca\uff0c\u6309\u7167\u6ce8\u91ca\u586b\u5199\u5373\u53ef\u3002\n```shell\nnano docker-compose.yml\n```\n\n4. \u65b0\u5efa\u4e00\u4e2a`data`\u6587\u4ef6\u5939\uff0c\u5e76\u4fee\u6539\u5176\u6743\u9650\uff0c\u5176\u7528\u4e8e\u5b58\u653e\u6570\u636e\u5e93\u6570\u636e\u3002\n```shell\nmkdir data\nsudo chown -R 1001:1001 ./data\n```\n5. \u6d4b\u8bd5\u6027\u542f\u52a8\u670d\u52a1\n```shell\nsudo docker-compose up\n```\n\u68c0\u67e5\u662f\u5426\u6b63\u5e38\u542f\u52a8\uff0c\u5c1d\u8bd5\u7528potatovn\u5ba2\u6237\u7aef\u94fe\u63a5\u670d\u52a1\u5668\u3002\u5982\u679c\u4f60\u6ca1\u6709\u4fee\u6539docker-compose.yml\u6587\u4ef6\u4e2d\u7684\u7aef\u53e3\uff0c\n\u90a3\u4e48potatovn\u4e2d\u5e94\u8be5\u8f93\u5165\u7684\u670d\u52a1\u5668\u5730\u5740\u4e3a`http://\u4f60\u7684\u670d\u52a1\u5668\u5730\u5740:8080` \uff08\u5982\uff1a http://192.168.114.114:8080\uff09\u3002\n\n6. \u5982\u679c\u4e00\u5207\u6b63\u5e38\uff0c\u6309`Ctrl+C`\u505c\u6b62\u670d\u52a1\uff0c\u7136\u540e\u4f7f\u7528\u4ee5\u4e0b\u547d\u4ee4\u6b63\u5f0f\u542f\u52a8\u670d\u52a1\uff1a\n```shell\nsudo docker-compose down\nsudo docker-compose up -d\n```\n\n7. \uff08\u53ef\u9009\uff09\u4f7f\u7528https\u4fdd\u62a4\u4f60\u7684\u670d\u52a1\u5668\uff0c\u81ea\u884c\u4f7f\u7528\u4efb\u4f55\u4f60\u559c\u6b22\u7684\u53cd\u5411\u4ee3\u7406\u5de5\u5177\u4ee3\u7406\u670d\u52a1\u5373\u53ef\uff0c\u5982Nginx\u3001Caddy\u7b49\u3002\n\n\u4ee5\u4e0b\u4e3a\u4e00\u4e2a\u7b80\u5355\u7684\u4f7f\u7528Caddy\u7684\u914d\u7f6e\u6587\u4ef6\u793a\u4f8b\uff1a\n```caddy\nyour.domain.name {\n    reverse_proxy localhost:8080\n    encode zstd gzip\n}\n```\n\n### \u4e8c\u8fdb\u5236\u90e8\u7f72\n\n> \u8bf7\u6ce8\u610f\uff0c\u4e8c\u8fdb\u5236\u90e8\u7f72\u9700\u8981\u4f60\u81ea\u884c\u5b89\u88c5\u5e76\u914d\u7f6ePostgreSQL\u6570\u636e\u5e93\uff0c\u4ee5\u53ca\u8bbe\u7f6e\u73af\u5883\u53d8\u91cf\u3002\n\n\u8be5\u90e8\u5206\u6587\u6863TODO\n\n### \u5728\u6d4b\u8bd5\u73af\u5883\u4e2d\u8fd0\u884c\n\u521d\u59cb\u5316\u7528\u6237\u5bc6\u94a5:\n```shell\ndotnet user-secrets init\n```\n\u8bbe\u7f6e\u5404\u7c7b\u73af\u5883\u53d8\u91cf\uff1a\n```shell\ndotnet user-secrets set \"Key\" \"Value\"\n```\n\u5e94\u8be5\u8bbe\u7f6e\u7684\u73af\u5883\u53d8\u91cf\u6709\uff08Key\uff09\uff1a\n* `ConnectionStrings:DefaultConnection` \u6570\u636e\u5e93\u8fde\u63a5\u5b57\u7b26\u4e32\uff0c**\u6570\u636e\u5e93\u5fc5\u987b\u662fPostgreSQL**\n* `AppSettings:JwtKey` JWT\u79d8\u94a5\uff0c**\u81f3\u5c1164\u4f4d\u957f**\n* `AppSettings:Minio:EndPoint` \ufffd",
+      "file_alias": "snapshot_file_3",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "\ufeffname: Build And Sign Package\n\non:\n  push:\n    branches:\n      - flight-released\n      - released\n  workflow_dispatch:\n\njobs:\n  build:\n    runs-on: windows-latest\n\n    strategy:\n      matrix:\n        platform: ${{ github.ref_name == 'flight-released' && fromJSON('[\"x64\"]') || fromJSON('[\"x86\", \"x64\", \"ARM64\"]') }}\n\n    env:\n      BRANCH_NAME: ${{ github.ref_name }}\n\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Install .NET Core\n        uses: actions/setup-dotnet@v4\n        with:\n          dotnet-version: 8.0.x\n\n      - name: Setup MSBuild.exe\n        uses: microsoft/setup-msbuild@v2\n        \n      - name: Add WindowsAppSDKSelfContained\n        shell: pwsh\n        run: |\n          $csprojPath = \"GalgameManager/GalgameManager.csproj\"\n          # \u8bfb\u53d6 csproj \u6587\u4ef6\n          [xml]$xml = Get-Content $csprojPath\n          # \u7b5b\u9009\u51fa\u5305\u542b <TargetFramework> \u7684 PropertyGroup\uff08\u4e3b PropertyGroup\uff09\n          $propertyGroup = $xml.Project.PropertyGroup | Where-Object { $_.TargetFramework }\n          if (!$propertyGroup) {\n            Write-Host \"\u672a\u627e\u5230\u5305\u542b <TargetFramework> \u7684 PropertyGroup\uff0c\u6539\u4e3a\u4f7f\u7528\u7b2c\u4e00\u4e2a PropertyGroup\u3002\"\n            $propertyGroup = $xml.Project.PropertyGroup | Select-Object -First 1\n            if (!$propertyGroup) {\n              Write-Error \"\u6ca1\u6709\u53ef\u7528\u7684 PropertyGroup\u3002\"\n              exit 1\n            }\n          }\n          # \u5982\u679c\u5f53\u524d\u6ca1\u6709 WindowsAppSDKSelfContained\uff0c\u5219\u521b\u5efa\u8be5\u8282\u70b9\u5e76\u8ffd\u52a0\n          if (!$propertyGroup.WindowsAppSDKSelfContained) {\n            $newElement = $xml.CreateElement(\"WindowsAppSDKSelfContained\")\n            $newElement.InnerText = \"true\"\n            $propertyGroup.AppendChild($newElement) | Out-Null\n          }\n          # \u4fdd\u5b58\n          $xml.Save($csprojPath)\n\n      - name: Set PUBLISHER\n        run: |\n          $manifestPath = \"GalgameManager\\Package.appxmanifest\"\n          if (!(Test-Path $manifestPath)) {\n            Write-Error \"\u65e0\u6cd5\u627e\u5230 AppxManifest.xml \u6587\u4ef6\uff0c\u8def\u5f84\u4e3a $manifestPath\"\n            exit 1\n          }\n          [xml]$xml = Get-Content $manifestPath\n          $xml.Packag",
+      "file_alias": "snapshot_file_4",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "name: build\n\non:\n  workflow_dispatch:\n  push:\n    branches:\n      - dev\n    paths:\n      - 'GalgameManager/**'\n      - 'GalgameManager.Core/**'\n      - 'GalgameManager.Server/**'\n      - 'GalgameManager.Test/**'\n  pull_request:\n    paths:\n      - 'GalgameManager/**'\n      - 'GalgameManager.Core/**'\n      - 'GalgameManager.Server/**'\n      - 'GalgameManager.Test/**'\n\njobs:\n  build:\n    runs-on: windows-latest\n\n    strategy:\n      matrix:\n        platform: [\"x86\", \"x64\", \"ARM64\"]\n    \n    steps:\n    - uses: actions/checkout@v4\n\n    - name: Install .NET Core\n      uses: actions/setup-dotnet@v4\n      with:\n        dotnet-version: 8.0.x\n\n    - name: Setup MSBuild.exe\n      uses: microsoft/setup-msbuild@v2\n\n    - name: Update version\n      shell: pwsh\n      run: |\n        $manifestPath = \"GalgameManager/Package.appxmanifest\"\n        [xml]$manifest = Get-Content $manifestPath\n        $version = $manifest.Package.Identity.Version\n        $versionParts = $version.Split('.')\n        $versionParts[3] = [string]([int]$versionParts[3] + 1)\n        $versionParts[3] = $env:GITHUB_RUN_NUMBER\n        $newVersion = [string]::Join('.', $versionParts)\n        $manifest.Package.Identity.Version = $newVersion\n        $manifest.Save($manifestPath)\n        echo \"Updated version to $newVersion\"\n\n    - name: Update app icon\n      shell: pwsh\n      run: |\n        xcopy \"GalgameManager\\Assets\\Pictures\\icon-dev\\*\" \"GalgameManager\\Assets\\\" /s /e /y\n        echo \"Updated app icon\"\n\n    - name: Create the app package\n      run: msbuild GalgameManager\\GalgameManager.csproj /restore \"/p:Platform=${{ matrix.platform }};Configuration=Release;UapAppxPackageBuildMode=SideloadOnly;AppxPackageDir=..\\publish\\;GenerateAppxPackageOnBuild=true;AppxPackageSigningEnabled=true;PackageCertificateKeyFile=GalgameManager_TemporaryKey.pfx\"\n\n    - name: Move package\n      shell: pwsh\n      run: |\n        # \u5c06 msix \u548c cer \u79fb\u52a8\u5230 publish \u6839\u76ee\u5f55\n        $subFolder = Get-ChildItem -Path publish -Directory | Select-Object -First 1",
+      "file_alias": "snapshot_file_5",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "\ufeffname: Crowdin Fetch Action\n\non:\n  workflow_dispatch:\n    \npermissions: write-all\n\njobs:\n  crowdin:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v3\n\n      - name: Synchronize with Crowdin\n        uses: crowdin/github-action@v1\n        with:\n          upload_sources: false\n          upload_translations: false\n          download_translations: true\n          localization_branch_name: l10n_crowdin_translations\n\n          create_pull_request: true\n          pull_request_title: 'New Crowdin translations'\n          pull_request_body: 'New Crowdin pull request with translations'\n          pull_request_base_branch_name: 'dev'\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n          CROWDIN_PROJECT_ID: 581621\n          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}\n",
+      "file_alias": "snapshot_file_6",
+      "role": "pinned_snapshot_excerpt"
+    }
+  ],
+  "task_brief": "Engineering task (derived only from the pinned instruction text and snapshot signals):\n\nDocument title: [[INSTRUCTION]]. Purpose Section: - This repository contains several related apps: a WinUI 3 client, an ASP.NET Core sync server, NUnit test projects, and a VitePress docs site. - Use this file as the fast path for build/test/style guidance before making changes. - When repo-specific instruction files conflict with generic habits, prefer the repo-specific instruction files. Instruction overview: ## Purpose - This repository contains several related apps: a WinUI 3 client, an ASP.NET Core sync server, NUnit test projects, and a VitePress docs site. - Use this file as the fast path for build/test/style guidance before making changes. - When repo-specific instruction files conflict with generic habits, prefer the repo-specific instruction files.\n\nWhile performing this work, the instruction cites Referenced artifact R1. Your annotation question is whether that cited artifact is materially necessary for completing this task in the provided snapshot.\n\nNo automated verification command was identified from the pinned repository manifests. Judge necessity from the stated engineering task and the supplied snapshot materials only.",
+  "task_brief_source": "purpose_section,h1_title,paragraph",
+  "verification_command_observed": "",
+  "verification_evidence": "no verification command identified from pinned manifests"
 }

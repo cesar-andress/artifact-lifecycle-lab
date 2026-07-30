@@ -1,28 +1,42 @@
 {
   "blinding": {
+    "absence_statements_forbidden": true,
     "access_model": "access_separated_private_id_map_not_cryptographically_sealed",
     "case_id_omitted": true,
     "outcomes_omitted": true,
-    "paths_redacted": true,
     "repo_url_omitted": true,
+    "semantic_path_redaction": true,
     "traces_omitted": true
   },
-  "excerpts": [
-    {
-      "field": "instruction_citation_excerpts",
-      "note": "Path tokens replaced with [[REF]]; contrast blob inspected only for ban-list.",
-      "sanitized": true,
-      "source_kind": "instruction_blob_pre_treatment"
-    }
-  ],
+  "n_reference_aliases_internal": 1,
+  "n_tree_paths": 5000,
   "neutral_id": "b6f1d2c6e3328de2",
-  "packet_sha256": "375eebef0768a0a3a0eaba95a447ceb892ceb9803845e9615b5766897e3684ab",
+  "packet_sha256": "298d2b72a27f033e54a8a928e88a68e2b21e887bfe4c24e475b4f975e799907a",
+  "packet_spec_version": "rq5_v1_blind_packet_spec_v2",
   "protocol_version": "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c",
   "seed": 42,
+  "software_signals": [
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:contributing.md",
+    "manifest_or_doc:package.json",
+    "manifest_or_doc:pyproject.toml",
+    "manifest_or_doc:pyproject.toml",
+    "manifest_or_doc:contributing.md",
+    "manifest_or_doc:pyproject.toml",
+    "manifest_or_doc:pyproject.toml",
+    "manifest_or_doc:agents.md",
+    "manifest_or_doc:pyproject.toml",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:pyproject.toml"
+  ],
   "sources": [
     "rq5_case_manifest.csv",
+    "packet_spec:rq5_v1_blind_packet_spec_v2",
     "rq5_candidate_dataset.csv",
     "blob_store:f500df70b3fc23ca",
-    "blob_store:contrast_inspected_not_emitted"
-  ]
+    "blob_store:contrast_inspected_not_emitted",
+    "git_tree:107bba011639"
+  ],
+  "task_brief_source": "h1_title,paragraph",
+  "verification_command_observed": "npm run lint"
 }

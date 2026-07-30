@@ -1,14 +1,165 @@
 {
+  "annotator_question": "Is Referenced artifact R1 materially necessary for completing THIS software engineering task in THIS repository snapshot?",
   "anonymous_snapshot_id": "fe32b1344d01de1b",
-  "artifact_role_description": "Referenced artifact R1 denotes a file path cited by the project instruction text. Its identity is withheld as a path string so treatment assignment cannot be inferred. The instruction context around the citation is provided below with the path replaced by [[REF]].",
+  "artifact_role_description": "Referenced artifact R1 is a repository artifact cited by the project instruction text (reference kind: path). Its literal path string is withheld and shown as [[REF]] so treatment assignment cannot be inferred from path identity. Use the citation excerpts, task brief, and snapshot context below to judge relevance and necessity.",
   "instruction_citation_excerpts": [
-    "- **`[[REF]]`** \u2014 Pytest fixtures for WebSocket servers, events clients (`AssertingEventsClient`, `AssertingPassthroughEventsClient`), and CSRF/ephemeral-mode overrides. Imported in `tests/conftest.py`."
+    "Provides the `prefect_test_harness` context manager and assertion helpers consumed by both the Prefect test suite and downstream user code. Does **not** own pytest fixtures (those live in `tests/`) or integration-test infrastructure.\n\n## Entry Points & Contracts\n\n- **`prefect_test_harness()`** (`utilities.py`) \u2014 Context manager that spins up a temporary SQLite-backed `SubprocessASGIServer` and overrides `PREFECT_API_URL` for the duration of the block. Safe to nest; restores prior state on exit.\n- **`assert_does_not_warn()`** \u2014 Converts warnings to errors inside the block. Accepts an `ignore_warnings` list for expected categories.\n- **`assert_blocks_equal()`** / **`assert_uses_result_serializer()`** / **`assert_uses_result_storage()`** \u2014 Deep-equality helpers for blocks and result metadata.\n- **`[[REF]]`** \u2014 Pytest fixtures for WebSocket servers, events clients (`AssertingEventsClient`, `AssertingPassthroughEventsClient`), and CSRF/ephemeral-mode overrides. Imported in `tests/conftest.py`.\n- **`standard_test_suites/`** \u2014 Reusable test suite classes (e.g., `BlockStandardTestSuite`) for testing block implementations.\n\n## Invariants\n\n- **`prefect_test_harness` registers the test server under `SubprocessASGIServer._instances[None]`.** `SubprocessASGIServer` is a port-keyed singleton. The harness creates a server with an explicit port (keyed by that port), then also registers it under the `None` key. This ensures that internal `SubprocessASGIServer()` calls during flow execution return the *same* managed instance rather than spawning a second unmanaged subprocess. On exit the prior `None`-keyed entry is restored (or removed if there was none). Violating this invariant causes a leaked server process that keeps pytest hanging after test completion \u2014 see issue #21544.\n- **`p"
+  ],
+  "instruction_language_original": "en",
+  "instruction_provided_in": "en",
+  "nearby_configuration_paths": [
+    ".claude/settings.json",
+    ".github/ISSUE_TEMPLATE/1_bug_report.yaml",
+    ".github/ISSUE_TEMPLATE/2_feature_enhancement.yaml",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    ".github/codeql-config.yml",
+    ".github/dependabot.yml",
+    ".github/labeler.yml",
+    ".github/pyrightconfig-ci.json",
+    ".github/release.yml",
+    ".github/workflows/agents-md-update.yml"
+  ],
+  "nearby_documentation_paths": [
+    ".github/CONTRIBUTING.md",
+    "[[INSTRUCTION]]",
+    "README.md",
+    "benches/README.md",
+    "client/[[INSTRUCTION]]",
+    "client/README.md",
+    "client/pyproject.toml",
+    "docs/[[INSTRUCTION]]",
+    "load_testing/README.md",
+    "load_testing/local-telemetry/README.md"
+  ],
+  "neighbor_paths": [
+    "src/prefect/testing/__init__.py",
+    "src/prefect/testing/cli.py",
+    "src/prefect/testing/docker.py",
+    "src/prefect/testing/fixtures.py",
+    "src/prefect/testing/utilities.py"
   ],
   "neutral_id": "91ecefdc5a31edaf",
-  "path_policy": "Manipulated and experimental path strings are withheld. Citations use [[REF]] / Referenced artifact R1 so treatment assignment cannot be read from path identity.",
+  "packet_spec_version": "rq5_v1_blind_packet_spec_v2",
+  "path_policy": "Path identity for the cited artifact and for contrast-only manipulated paths is replaced by [[REF]] using semantic whole-path tokenization (not substring replacement). Other snapshot paths may appear when they do not reveal treatment assignment. Do not infer experimental treatment from path placeholders.",
   "protocol_version": "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c",
   "reference_type": "path",
   "referenced_artifact_alias": "Referenced artifact R1",
-  "repository_tree_excerpt": "A full repository tree excerpt is not included in this offline packet build. Judge from the task brief and the instruction citation context only.",
-  "task_brief": "Complete a small, bounded change in the pinned repository snapshot so that the project test command `pytest` passes. Use only files present in the snapshot. Judge whether Referenced artifact R1 is materially necessary for that task."
+  "repository_tree_excerpt": [
+    ".claude/commands/repro.md",
+    ".claude/hooks/symlink-agents-to-claude.sh",
+    ".claude/settings.json",
+    ".claude/skills/agents-md-sync/SKILL.md",
+    ".claude/skills/backlog-management/SKILL.md",
+    ".claude/skills/document-changes/SKILL.md",
+    ".claude/skills/write-docs/SKILL.md",
+    ".claude/skills/write-docs/template-concept.mdx",
+    ".claude/skills/write-docs/template-howto.mdx",
+    ".dockerignore",
+    ".github/CODEOWNERS",
+    ".github/CONTRIBUTING.md",
+    ".github/ISSUE_TEMPLATE/1_bug_report.yaml",
+    ".github/ISSUE_TEMPLATE/2_feature_enhancement.yaml",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    ".github/codeql-config.yml",
+    ".github/dependabot.yml",
+    ".github/docker/old-sqlite.Dockerfile",
+    ".github/labeler.yml",
+    ".github/pull_request_template.md",
+    ".github/pyrightconfig-ci.json",
+    ".github/release.yml",
+    ".github/workflows/agents-md-update.yml",
+    ".github/workflows/api-compatibility-tests.yaml",
+    ".github/workflows/benchmarks.yaml",
+    ".github/workflows/claude.yml",
+    ".github/workflows/codeql-analysis.yml",
+    ".github/workflows/codspeed-benchmarks.yaml",
+    ".github/workflows/copy-linked-issue-labels.yml",
+    ".github/workflows/dbt-benchmarks.yaml",
+    ".github/workflows/devin-fix-flaky-tests.yaml",
+    ".github/workflows/docker-images.yaml",
+    ".github/workflows/docs-broken-links.yaml",
+    ".github/workflows/docs-update.yml",
+    ".github/workflows/helm-chart-release.yaml",
+    ".github/workflows/integration-package-release.yaml",
+    ".github/workflows/integration-package-tests.yaml",
+    ".github/workflows/integration-tests.yaml",
+    ".github/workflows/k8s-integration-tests.yaml",
+    ".github/workflows/kickoff-release.yaml",
+    ".github/workflows/labeler.yml",
+    ".github/workflows/markdown-tests.yaml",
+    ".github/workflows/nightly-release.yaml",
+    ".github/workflows/npm_update_latest_prefect.yaml",
+    ".github/workflows/prefect-aws-docker-images.yaml",
+    ".github/workflows/prefect-aws-docker-test.yaml",
+    ".github/workflows/prefect-azure-docker-images.yaml",
+    ".github/workflows/prefect-azure-docker-test.yaml",
+    ".github/workflows/prefect-client-publish.yaml",
+    ".github/workflows/prefect-client.yaml",
+    ".github/workflows/prefect-gcp-docker-images.yaml",
+    ".github/workflows/prefect-gcp-docker-test.yaml",
+    ".github/workflows/proxy-test.yaml",
+    ".github/workflows/python-package.yaml",
+    ".github/workflows/python-tests.yaml",
+    ".github/workflows/sqlite-builder.yaml",
+    ".github/workflows/stale.yml",
+    ".github/workflows/static-analysis.yaml",
+    ".github/workflows/time-docker-build.yaml",
+    ".github/workflows/ui-tests.yml"
+  ],
+  "snapshot_file_excerpts": [
+    {
+      "content": "# Testing Utilities\n\nTest helpers and fixtures shipped with the Prefect SDK for testing flows against a real local server.\n\n## Purpose & Scope\n\nProvides the `prefect_test_harness` context manager and assertion helpers consumed by both the Prefect test suite and downstream user code. Does **not** own pytest fixtures (those live in `tests/`) or integration-test infrastructure.\n\n## Entry Points & Contracts\n\n- **`prefect_test_harness()`** (`utilities.py`) \u2014 Context manager that spins up a temporary SQLite-backed `SubprocessASGIServer` and overrides `PREFECT_API_URL` for the duration of the block. Safe to nest; restores prior state on exit.\n- **`assert_does_not_warn()`** \u2014 Converts warnings to errors inside the block. Accepts an `ignore_warnings` list for expected categories.\n- **`assert_blocks_equal()`** / **`assert_uses_result_serializer()`** / **`assert_uses_result_storage()`** \u2014 Deep-equality helpers for blocks and result metadata.\n- **`[[REF]]`** \u2014 Pytest fixtures for WebSocket servers, events clients (`AssertingEventsClient`, `AssertingPassthroughEventsClient`), and CSRF/ephemeral-mode overrides. Imported in `tests/conftest.py`.\n- **`standard_test_suites/`** \u2014 Reusable test suite classes (e.g., `BlockStandardTestSuite`) for testing block implementations.\n\n## Invariants\n\n- **`prefect_test_harness` registers the test server under `SubprocessASGIServer._instances[None]`.** `SubprocessASGIServer` is a port-keyed singleton. The harness creates a server with an explicit port (keyed by that port), then also registers it under the `None` key. This ensures that internal `SubprocessASGIServer()` calls during flow execution return the *same* managed instance rather than spawning a second unmanaged subprocess. On exit the prior `None`-keyed entry is restored (or removed if there was none). Violating this invariant causes a leaked server process that keeps pytest hanging after test completion \u2014 see issue #21544.\n- **`prefect_test_harness` drains `APILogWorker` and `EventsWo",
+      "file_alias": "snapshot_file_1",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "",
+      "file_alias": "snapshot_file_2",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "from __future__ import annotations\n\nimport contextlib\nimport getpass\nimport io\nimport os\nimport re\nimport sys\nimport textwrap\nimport warnings\nfrom typing import Iterable\n\nimport readchar\nfrom rich.console import Console\n\n# Regex pattern to match ANSI escape codes\n_ANSI_ESCAPE_PATTERN = re.compile(r\"\\x1b\\[[0-9;]*m\")\n\n\ndef _strip_ansi_codes(text: str) -> str:\n    \"\"\"Remove ANSI escape codes from text.\n\n    This is necessary because Typer/Rich may output ANSI codes in CI environments\n    (e.g., GitHub Actions) even when Click's CliRunner has color=False, due to\n    Typer's terminal detection logic.\n    \"\"\"\n    return _ANSI_ESCAPE_PATTERN.sub(\"\", text)\n\n\nclass _TTYStringIO(io.StringIO):\n    \"\"\"A StringIO that reports isatty()=True.\n\n    Rich's Console.is_interactive checks file.isatty() to decide whether to\n    show prompts.  By emulating a TTY, any Console created while sys.stdout\n    points to this buffer will behave interactively \u2014 matching real terminal\n    behavior and allowing Confirm.ask / Prompt.ask to work correctly.\n    \"\"\"\n\n    def isatty(self) -> bool:\n        return True\n\n\nclass CycloptsResult:\n    \"\"\"Result of a cyclopts CLI invocation.\n\n    Compatible with typer's Result so existing invoke_and_assert callers\n    can work with either runner without changes.\n    \"\"\"\n\n    def __init__(\n        self,\n        stdout: str,\n        stderr: str,\n        exit_code: int,\n        exception: BaseException | None,\n    ):\n        self.stdout = stdout\n        self.stderr = stderr\n        # Click's CliRunner merges stdout and stderr into one stream.\n        # Match that behavior so `result.output` always contains both.\n        self.output: str = stdout + stderr\n        self.exit_code = exit_code\n        self.exception = exception\n\n\nclass CycloptsCliRunner:\n    \"\"\"In-process test runner for the cyclopts CLI.\n\n    Analogous to Click's CliRunner: captures stdout/stderr, simulates stdin,\n    emulates a TTY for Rich Console interactive mode, and isolates global\n    state betw",
+      "file_alias": "snapshot_file_3",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "from contextlib import contextmanager\nfrom typing import Any, Generator\nfrom unittest import mock\n\nfrom prefect.utilities.dockerutils import ImageBuilder\n\n\n@contextmanager\ndef capture_builders() -> Generator[list[ImageBuilder], None, None]:\n    \"\"\"Captures any instances of ImageBuilder created while this context is active\"\"\"\n    builders: list[ImageBuilder] = []\n\n    original_init = ImageBuilder.__init__\n\n    def capture(self: ImageBuilder, *args: Any, **kwargs: Any):\n        builders.append(self)\n        original_init(self, *args, **kwargs)\n\n    with mock.patch.object(ImageBuilder, \"__init__\", capture):\n        yield builders\n",
+      "file_alias": "snapshot_file_4",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "import asyncio\nimport json\nimport os\nimport signal\nimport socket\nimport subprocess\nimport sys\nfrom contextlib import contextmanager\nfrom typing import Any, AsyncGenerator, Callable, Generator, List, Optional, Union\nfrom unittest import mock\nfrom unittest.mock import AsyncMock\nfrom uuid import UUID\n\nimport anyio\nimport httpx\nimport pytest\nfrom starlette.status import WS_1008_POLICY_VIOLATION\nfrom websockets.asyncio.server import (\n    Server,\n    ServerConnection,\n    serve,\n)\nfrom websockets.exceptions import ConnectionClosed\n\nfrom prefect._internal.compatibility.async_dispatch import async_dispatch\nfrom prefect.events import Event\nfrom prefect.events.clients import (\n    AssertingEventsClient,\n    AssertingPassthroughEventsClient,\n)\nfrom prefect.events.filters import EventFilter\nfrom prefect.events.worker import EventsWorker\nfrom prefect.server.api.server import SubprocessASGIServer\nfrom prefect.server.events.pipeline import EventsPipeline\nfrom prefect.settings import (\n    PREFECT_API_URL,\n    PREFECT_SERVER_ALLOW_EPHEMERAL_MODE,\n    PREFECT_SERVER_CSRF_PROTECTION_ENABLED,\n    get_current_settings,\n    temporary_settings,\n)\nfrom prefect.types._datetime import DateTime, now\nfrom prefect.utilities.asyncutils import run_coro_as_sync\nfrom prefect.utilities.processutils import open_process\n\n\n@pytest.fixture(autouse=True)\ndef add_prefect_loggers_to_caplog(\n    caplog: pytest.LogCaptureFixture,\n) -> Generator[None, None, None]:\n    import logging\n\n    logger = logging.getLogger(\"prefect\")\n    logger.propagate = True\n\n    try:\n        yield\n    finally:\n        logger.propagate = False\n\n\ndef is_port_in_use(port: int) -> bool:\n    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:\n        return s.connect_ex((\"localhost\", port)) == 0\n\n\n@pytest.fixture(scope=\"session\")\nasync def hosted_api_server(\n    unused_tcp_port_factory: Callable[[], int],\n    test_database_connection_url: Optional[str],\n) -> AsyncGenerator[str, None]:\n    \"\"\"\n    Runs an instance of the Pref",
+      "file_alias": "snapshot_file_5",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "\"\"\"\nInternal utilities for tests.\n\"\"\"\n\nfrom __future__ import annotations\n\nimport atexit\nimport inspect\nimport shutil\nimport socket\nimport warnings\nfrom contextlib import ExitStack, contextmanager\nfrom pathlib import Path\nfrom pprint import pprint\nfrom tempfile import mkdtemp\nfrom typing import TYPE_CHECKING, Any, Generator\n\nimport prefect.context\nimport prefect.settings\nfrom prefect.blocks.core import Block\nfrom prefect.client.orchestration import get_client\nfrom prefect.client.schemas import sorting\nfrom prefect.client.schemas.filters import FlowFilter, FlowFilterName\nfrom prefect.client.utilities import inject_client\nfrom prefect.events.worker import EventsWorker\nfrom prefect.logging.handlers import APILogWorker\nfrom prefect.results import (\n    ResultRecord,\n    ResultRecordMetadata,\n    ResultStore,\n    get_default_result_storage,\n)\nfrom prefect.serializers import Serializer\nfrom prefect.server.api.server import SubprocessASGIServer\nfrom prefect.states import State\nfrom prefect.utilities.asyncutils import run_coro_as_sync\n\nif TYPE_CHECKING:\n    from prefect.client.orchestration import PrefectClient\n    from prefect.client.schemas.objects import FlowRun\n    from prefect.filesystems import ReadableFileSystem\n\n\ndef exceptions_equal(a: Exception, b: Exception) -> bool:\n    \"\"\"\n    Exceptions cannot be compared by `==`. They can be compared using `is` but this\n    will fail if the exception is serialized/deserialized so this utility does its\n    best to assert equality using the type and args used to initialize the exception\n    \"\"\"\n    if a == b:\n        return True\n    return type(a) is type(b) and getattr(a, \"args\", None) == getattr(b, \"args\", None)\n\n\ndef _find_available_port() -> int:\n    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:\n        sock.bind((\"127.0.0.1\", 0))\n        return int(sock.getsockname()[1])\n\n\ndef kubernetes_environments_equal(\n    actual: list[dict[str, str]],\n    expected: list[dict[str, str]] | dict[str, str],\n) -> bool:\n ",
+      "file_alias": "snapshot_file_6",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# Contributing\n\nThanks for considering contributing to Prefect!\n\nTo navigate our codebase with confidence, see our [contribution guidelines](https://docs.prefect.io/contribute/).",
+      "file_alias": "snapshot_file_7",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "Prefect is a workflow orchestration platform that coordinates and observes data pipelines. It provides a Python SDK for building workflows, a server backend for orchestration, and a web-based UI for managing and monitoring workflows.\n\n# Guiding Principles\n\nYour primary responsibility is to the project and its users. Every change should serve the broader user base \u2014 not just the immediate request. Be a quality gate: prefer correct, minimal, well-tested changes over fast ones.\n\n# Directory Structure\n\n```\nprefect/\n\u251c\u2500\u2500 benches/                         # Benchmarks (CLI, flows, tasks, imports)\n\u251c\u2500\u2500 client/                          # prefect-client build: subset of src/prefect/ published as a separate PyPI package\n\u251c\u2500\u2500 compat-tests/                    # Tests for REST API compatibility with Prefect Cloud\n\u251c\u2500\u2500 Dockerfile                       # Production container image\n\u251c\u2500\u2500 docs/                            # Mintlify documentation (see docs/[[INSTRUCTION]])\n\u251c\u2500\u2500 examples/                        # Example flows (auto-published to docs)\n\u251c\u2500\u2500 integration-tests/               # End-to-end integration tests (require running server)\n\u251c\u2500\u2500 justfile                         # Task runner (just <command>)\n\u251c\u2500\u2500 load_testing/                    # Load/performance testing\n\u251c\u2500\u2500 plans/                           # Design/implementation plan documents\n\u251c\u2500\u2500 pyproject.toml                   # Root package config\n\u251c\u2500\u2500 schemas/                         # JSON schemas (prefect.yaml, settings)\n\u251c\u2500\u2500 scripts/                         # Code generation and release scripts\n\u251c\u2500\u2500 src/\n\u2502   \u251c\u2500\u2500 integrations/                # External service integrations (see src/integrations/[[INSTRUCTION]])\n\u2502   \u2514\u2500\u2500 prefect/                     # Core package: SDK, server, CLI (see src/prefect/[[INSTRUCTION]])\n\u251c\u2500\u2500 tests/                           # Test suite, mirrors src/prefect/ (see tests/[[INSTRUCTION]])\n\u251c\u2500\u2500 tools/                           # Build tools\n\u251c\u2500\u2500 ui/                              # Vue UI (legacy, will be replaced by ui-v2)\n\u251c\u2500\u2500 ui-v2/       ",
+      "file_alias": "snapshot_file_8",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "<p align=\"center\"><img src=\"https://github.com/PrefectHQ/prefect/assets/3407835/c654cbc6-63e8-4ada-a92a-efd2f8f24b85\" width=1000></p>\n\n<p align=\"center\">\n    <a href=\"https://pypi.org/project/prefect/\" alt=\"PyPI version\">\n        <img alt=\"PyPI\" src=\"https://img.shields.io/pypi/v/prefect?color=0052FF&labelColor=090422\" />\n    </a>\n    <a href=\"https://pypi.org/project/prefect/\" alt=\"PyPI downloads/month\">\n        <img alt=\"Downloads\" src=\"https://img.shields.io/pypi/dm/prefect?color=0052FF&labelColor=090422\" />\n    </a>\n    <a href=\"[repository]/\" alt=\"Stars\">\n        <img src=\"https://img.shields.io/github/stars/prefecthq/prefect?color=0052FF&labelColor=090422\" />\n    </a>\n    <a href=\"[repository]/pulse\" alt=\"Activity\">\n        <img src=\"https://img.shields.io/github/commit-activity/m/prefecthq/prefect?color=0052FF&labelColor=090422\" />\n    </a>\n    <br>\n    <a href=\"https://prefect.io/slack\" alt=\"Slack\">\n        <img src=\"https://img.shields.io/badge/slack-join_community-red.svg?color=0052FF&labelColor=090422&logo=slack\" />\n    </a>\n    <a href=\"https://www.youtube.com/c/PrefectIO/\" alt=\"YouTube\">\n        <img src=\"https://img.shields.io/badge/youtube-watch_videos-red.svg?color=0052FF&labelColor=090422&logo=youtube\" />\n    </a>\n</p>\n\n\n<p align=\"center\">\n    <a href=\"https://docs.prefect.io/v3/get-started/index?utm_source=oss&utm_medium=oss&utm_campaign=oss_gh_repo&utm_term=none&utm_content=none\">\n        Installation\n    </a>\n    \u00b7\n    <a href=\"https://docs.prefect.io/v3/get-started/quickstart?utm_source=oss&utm_medium=oss&utm_campaign=oss_gh_repo&utm_term=none&utm_content=none\">\n        Quickstart\n    </a>\n    \u00b7\n    <a href=\"https://docs.prefect.io/v3/how-to-guides/workflows/write-and-run?utm_source=oss&utm_medium=oss&utm_campaign=oss_gh_repo&utm_term=none&utm_content=none\">\n        Build workflows\n    </a>\n    \u00b7\n    <a href=\"https://docs.prefect.io/v3/concepts/deployments?utm_source=oss&utm_medium=oss&utm_campaign",
+      "file_alias": "snapshot_file_9",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "{\n  \"$schema\": \"https://json.schemastore.org/claude-code-settings.json\",\n  \"hooks\": {\n    \"SessionStart\": [\n      {\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"$CLAUDE_PROJECT_DIR/.claude/hooks/symlink-agents-to-claude.sh\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
+      "file_alias": "snapshot_file_10",
+      "role": "pinned_snapshot_excerpt"
+    }
+  ],
+  "task_brief": "Engineering task (derived only from the pinned instruction text and snapshot signals):\n\nDocument title: Testing Utilities. Instruction overview: Test helpers and fixtures shipped with the Prefect SDK for testing flows against a real local server.\n\nWhile performing this work, the instruction cites Referenced artifact R1. Your annotation question is whether that cited artifact is materially necessary for completing this task in the provided snapshot.\n\nVerification command observed in the pinned repository manifests: `pytest`. Use this only as a snapshot signal of how the project checks work; do not assume other commands.",
+  "task_brief_source": "h1_title,paragraph",
+  "verification_command_observed": "pytest",
+  "verification_evidence": "Python test config present"
 }

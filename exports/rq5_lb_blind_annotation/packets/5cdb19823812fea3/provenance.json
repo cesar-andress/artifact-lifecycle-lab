@@ -1,28 +1,42 @@
 {
   "blinding": {
+    "absence_statements_forbidden": true,
     "access_model": "access_separated_private_id_map_not_cryptographically_sealed",
     "case_id_omitted": true,
     "outcomes_omitted": true,
-    "paths_redacted": true,
     "repo_url_omitted": true,
+    "semantic_path_redaction": true,
     "traces_omitted": true
   },
-  "excerpts": [
-    {
-      "field": "instruction_citation_excerpts",
-      "note": "Path tokens replaced with [[REF]]; contrast blob inspected only for ban-list.",
-      "sanitized": true,
-      "source_kind": "instruction_blob_pre_treatment"
-    }
-  ],
+  "n_reference_aliases_internal": 1,
+  "n_tree_paths": 5000,
   "neutral_id": "5cdb19823812fea3",
-  "packet_sha256": "cfff3b73238f8c1d18ee335e71ae569020140bb3446e00eca7bb08b7a4b174b3",
+  "packet_sha256": "39c2e72e02d6149392464259c764a8f5925998b4b52e17fca26d060c4cd0ac89",
+  "packet_spec_version": "rq5_v1_blind_packet_spec_v2",
   "protocol_version": "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c",
   "seed": 42,
+  "software_signals": [
+    "manifest_or_doc:package.json",
+    "manifest_or_doc:package.json",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:package.json",
+    "manifest_or_doc:composer.json",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:package.json",
+    "manifest_or_doc:readme.md"
+  ],
   "sources": [
     "rq5_case_manifest.csv",
+    "packet_spec:rq5_v1_blind_packet_spec_v2",
     "rq5_candidate_dataset.csv",
     "blob_store:96f0351f7cf2c606",
-    "blob_store:contrast_inspected_not_emitted"
-  ]
+    "blob_store:contrast_inspected_not_emitted",
+    "git_tree:f1f128fe6dd8"
+  ],
+  "task_brief_source": "purpose_section,guidance_section,h1_title",
+  "verification_command_observed": null
 }

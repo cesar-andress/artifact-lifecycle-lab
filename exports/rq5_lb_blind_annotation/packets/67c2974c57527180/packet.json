@@ -1,16 +1,170 @@
 {
+  "annotator_question": "Is Referenced artifact R1 materially necessary for completing THIS software engineering task in THIS repository snapshot?",
   "anonymous_snapshot_id": "b8faa07291c6c05b",
-  "artifact_role_description": "Referenced artifact R1 denotes a file path cited by the project instruction text. Its identity is withheld as a path string so treatment assignment cannot be inferred. The instruction context around the citation is provided below with the path replaced by [[REF]].",
+  "artifact_role_description": "Referenced artifact R1 is a repository artifact cited by the project instruction text (reference kind: path). Its literal path string is withheld and shown as [[REF]] so treatment assignment cannot be inferred from path identity. Use the citation excerpts, task brief, and snapshot context below to judge relevance and necessity.",
   "instruction_citation_excerpts": [
-    "`[[REF]]` copies `src/prefect/` into a temp directory, **deletes** server-only and CLI code, then builds with `client/pyproject.toml`. The resulting package has the same version as `prefect` but fewer dependencies.",
-    "- **Manual** \u2014 `bash client/[[REF]]`",
-    "If the CI build fails, reproduce locally with `bash client/[[REF]]` and run the smoke tests (`client_flow.py`, `client_deploy.py`)."
+    "## Key Contracts\n\n- **Dependency changes in root `pyproject.toml` that affect client-side code must be mirrored in `client/pyproject.toml`.** This is the most common source of build failures.\n- **New imports in `src/prefect/` can break this build** if they pull in server-only dependencies. The build strips server code, so any import that reaches `server/database`, `server/models`, etc. from client-side code will fail.\n- **The build is tested automatically on every PR** via `.github/workflows/prefect-client.yaml`.\n\n## How It Works\n\n`[[REF]]` copies `src/prefect/` into a temp directory, **deletes** server-only and CLI code, then builds with `client/pyproject.toml`. The resulting package has the same version as `prefect` but fewer dependencies.\n\n### What gets removed\n\n- `cli/` \u2014 entire CLI\n- `server/` \u2014 database, models, orchestration, schemas, services, utilities (keeps only `server/api/`)\n- `deployments/recipes/` and `deployments/templates/`\n- `testing/`",
+    "- `server/` \u2014 database, models, orchestration, schemas, services, utilities (keeps only `server/api/`)\n- `deployments/recipes/` and `deployments/templates/`\n- `testing/`\n\n## Build Triggers\n\n- **PR created** \u2014 CI builds and smoke-tests\n- **GitHub release published** \u2014 CI builds and publishes to PyPI (same version as `prefect`)\n- **Manual** \u2014 `bash client/build_client.sh`\n\nIf the CI build fails, reproduce locally with `bash client/build_client.sh` and run the smoke tests (`client_flow.py`, `client_deploy.py`).\n\n## Related\n\n- `src/prefect/client/` \u2192 Actual client SDK source code\n- Root `pyproject.toml` \u2192 Must stay in sync with `client/pyproject.toml` for shared dependencies",
+    "- `testing/`\n\n## Build Triggers\n\n- **PR created** \u2014 CI builds and smoke-tests\n- **GitHub release published** \u2014 CI builds and publishes to PyPI (same version as `prefect`)\n- **Manual** \u2014 `bash client/build_client.sh`\n\nIf the CI build fails, reproduce locally with `bash client/build_client.sh` and run the smoke tests (`client_flow.py`, `client_deploy.py`).\n\n## Related\n\n- `src/prefect/client/` \u2192 Actual client SDK source code\n- Root `pyproject.toml` \u2192 Must stay in sync with `client/pyproject.toml` for shared dependencies"
+  ],
+  "instruction_language_original": "en",
+  "instruction_provided_in": "en",
+  "nearby_configuration_paths": [
+    ".claude/settings.json",
+    ".github/ISSUE_TEMPLATE/1_bug_report.yaml",
+    ".github/ISSUE_TEMPLATE/2_feature_enhancement.yaml",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    ".github/codeql-config.yml",
+    ".github/dependabot.yml",
+    ".github/labeler.yml",
+    ".github/pyrightconfig-ci.json",
+    ".github/release.yml",
+    ".github/workflows/api-compatibility-tests.yaml"
+  ],
+  "nearby_documentation_paths": [
+    ".github/CONTRIBUTING.md",
+    "[[INSTRUCTION]]",
+    "README.md",
+    "benches/README.md",
+    "[[REF]]",
+    "client/README.md",
+    "client/pyproject.toml",
+    "docs/[[INSTRUCTION]]",
+    "load_testing/README.md",
+    "load_testing/local-telemetry/README.md"
+  ],
+  "neighbor_paths": [
+    "client/Dockerfile",
+    "client/INFO.md",
+    "client/README.md",
+    "client/build_client.sh",
+    "client/client_deploy.py",
+    "client/client_flow.py",
+    "client/prefect-cli-stub",
+    "client/pyproject.toml"
   ],
   "neutral_id": "67c2974c57527180",
-  "path_policy": "Manipulated and experimental path strings are withheld. Citations use [[REF]] / Referenced artifact R1 so treatment assignment cannot be read from path identity.",
+  "packet_spec_version": "rq5_v1_blind_packet_spec_v2",
+  "path_policy": "Path identity for the cited artifact and for contrast-only manipulated paths is replaced by [[REF]] using semantic whole-path tokenization (not substring replacement). Other snapshot paths may appear when they do not reveal treatment assignment. Do not infer experimental treatment from path placeholders.",
   "protocol_version": "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c",
   "reference_type": "path",
   "referenced_artifact_alias": "Referenced artifact R1",
-  "repository_tree_excerpt": "A full repository tree excerpt is not included in this offline packet build. Judge from the task brief and the instruction citation context only.",
-  "task_brief": "Complete a small, bounded change in the pinned repository snapshot so that the project test command `pytest` passes. Use only files present in the snapshot. Judge whether Referenced artifact R1 is materially necessary for that task."
+  "repository_tree_excerpt": [
+    ".claude/commands/repro.md",
+    ".claude/hooks/symlink-agents-to-claude.sh",
+    ".claude/settings.json",
+    ".claude/skills/agents-md-sync/SKILL.md",
+    ".claude/skills/backlog-management/SKILL.md",
+    ".claude/skills/write-docs/SKILL.md",
+    ".claude/skills/write-docs/template-concept.mdx",
+    ".claude/skills/write-docs/template-howto.mdx",
+    ".dockerignore",
+    ".github/CODEOWNERS",
+    ".github/CONTRIBUTING.md",
+    ".github/ISSUE_TEMPLATE/1_bug_report.yaml",
+    ".github/ISSUE_TEMPLATE/2_feature_enhancement.yaml",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    ".github/codeql-config.yml",
+    ".github/dependabot.yml",
+    ".github/docker/old-sqlite.Dockerfile",
+    ".github/labeler.yml",
+    ".github/pull_request_template.md",
+    ".github/pyrightconfig-ci.json",
+    ".github/release.yml",
+    ".github/workflows/api-compatibility-tests.yaml",
+    ".github/workflows/benchmarks.yaml",
+    ".github/workflows/claude.yml",
+    ".github/workflows/codeql-analysis.yml",
+    ".github/workflows/codspeed-benchmarks.yaml",
+    ".github/workflows/copy-linked-issue-labels.yml",
+    ".github/workflows/dbt-benchmarks.yaml",
+    ".github/workflows/devin-fix-flaky-tests.yaml",
+    ".github/workflows/docker-images.yaml",
+    ".github/workflows/helm-chart-release.yaml",
+    ".github/workflows/integration-package-release.yaml",
+    ".github/workflows/integration-package-tests.yaml",
+    ".github/workflows/integration-tests.yaml",
+    ".github/workflows/k8s-integration-tests.yaml",
+    ".github/workflows/kickoff-release.yaml",
+    ".github/workflows/labeler.yml",
+    ".github/workflows/markdown-tests.yaml",
+    ".github/workflows/nightly-release.yaml",
+    ".github/workflows/npm_update_latest_prefect.yaml",
+    ".github/workflows/prefect-aws-docker-images.yaml",
+    ".github/workflows/prefect-aws-docker-test.yaml",
+    ".github/workflows/prefect-azure-docker-images.yaml",
+    ".github/workflows/prefect-azure-docker-test.yaml",
+    ".github/workflows/prefect-client-publish.yaml",
+    ".github/workflows/prefect-client.yaml",
+    ".github/workflows/prefect-gcp-docker-images.yaml",
+    ".github/workflows/prefect-gcp-docker-test.yaml",
+    ".github/workflows/proxy-test.yaml",
+    ".github/workflows/python-package.yaml",
+    ".github/workflows/python-tests.yaml",
+    ".github/workflows/sqlite-builder.yaml",
+    ".github/workflows/stale.yml",
+    ".github/workflows/static-analysis.yaml",
+    ".github/workflows/time-docker-build.yaml",
+    ".github/workflows/ui-tests.yml",
+    ".github/workflows/ui-v2-checks.yml",
+    ".github/workflows/ui-v2-e2e-tests.yml",
+    ".github/workflows/validate_worker_metadata.yaml",
+    ".github/workflows/windows-tests.yaml"
+  ],
+  "snapshot_file_excerpts": [
+    {
+      "content": "# prefect-client Package Build\n\nBuild configuration for `prefect-client`, a lightweight subset of `prefect` published as a separate PyPI package. This directory does **not** contain source code \u2014 it selects files from `src/prefect/` and repackages them.\n\n## Key Contracts\n\n- **Dependency changes in root `pyproject.toml` that affect client-side code must be mirrored in `client/pyproject.toml`.** This is the most common source of build failures.\n- **New imports in `src/prefect/` can break this build** if they pull in server-only dependencies. The build strips server code, so any import that reaches `server/database`, `server/models`, etc. from client-side code will fail.\n- **The build is tested automatically on every PR** via `.github/workflows/prefect-client.yaml`.\n\n## How It Works\n\n`[[REF]]` copies `src/prefect/` into a temp directory, **deletes** server-only and CLI code, then builds with `client/pyproject.toml`. The resulting package has the same version as `prefect` but fewer dependencies.\n\n### What gets removed\n\n- `cli/` \u2014 entire CLI\n- `server/` \u2014 database, models, orchestration, schemas, services, utilities (keeps only `server/api/`)\n- `deployments/recipes/` and `deployments/templates/`\n- `testing/`\n\n## Build Triggers\n\n- **PR created** \u2014 CI builds and smoke-tests\n- **GitHub release published** \u2014 CI builds and publishes to PyPI (same version as `prefect`)\n- **Manual** \u2014 `bash client/build_client.sh`\n\nIf the CI build fails, reproduce locally with `bash client/build_client.sh` and run the smoke tests (`client_flow.py`, `client_deploy.py`).\n\n## Related\n\n- `src/prefect/client/` \u2192 Actual client SDK source code\n- Root `pyproject.toml` \u2192 Must stay in sync with `client/pyproject.toml` for shared dependencies\n",
+      "file_alias": "snapshot_file_1",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "ARG PYTHON_VERSION=3.10\n# SQLite version \u2014 must match the tag published to prefecthq/prefect-sqlite on DockerHub\n# See Dockerfile.sqlite-builder and .github/workflows/sqlite-builder.yaml\nARG SQLITE_VERSION=3.50.4\n\n# Pull pre-compiled SQLite binaries (built by .github/workflows/sqlite-builder.yaml).\n# This avoids compiling SQLite from source on every build.\n# To publish a new version: bump SQLITE_VERSION and run the sqlite-builder workflow.\nFROM prefecthq/prefect-sqlite:${SQLITE_VERSION} AS sqlite-builder\n\n# Build the Python distributable.\n# Without this build step, versioningit cannot infer the version without git\nFROM python:${PYTHON_VERSION}-slim AS python-builder\n\nWORKDIR /opt/prefect\n\nRUN apt-get update && \\\n    apt-get install --no-install-recommends -y \\\n    gpg \\\n    git=1:2.* \\\n    && apt-get clean && rm -rf /var/lib/apt/lists/*\n\n# Install UV from official image - pin to specific version for build caching\nCOPY --from=ghcr.io/astral-sh/uv:0.5.30 /uv /bin/uv\n\n# Copy the repository in; requires full git history for versions to generate correctly\nCOPY . ./\n\n# Create a source distributable archive; ensuring existing dists are removed first\nENV TMPDIR=/tmp/prefect-client-build\nRUN mkdir -p $TMPDIR && \\\n    sh client/build_client.sh && \\\n    cd $TMPDIR && \\\n    uv build --sdist --out-dir /opt/prefect/dist\nRUN mv \"dist/prefect_client-\"*\".tar.gz\" \"dist/prefect_client.tar.gz\"\n\n\nFROM python:${PYTHON_VERSION}-slim\n\n# Redeclare ARGs needed in this stage\nARG PYTHON_VERSION\nARG SQLITE_VERSION\n\nENV LC_ALL=C.UTF-8\nENV LANG=C.UTF-8\n\nENV UV_COMPILE_BYTECODE=1\nENV UV_LINK_MODE=copy\nENV UV_SYSTEM_PYTHON=1\n\n# Ensure Python uses the upgraded SQLite library\nENV LD_LIBRARY_PATH=/usr/local/lib\n\nLABEL maintainer=\"help@prefect.io\" \\\n    io.prefect.python-version=${PYTHON_VERSION} \\\n    io.prefect.sqlite-version=${SQLITE_VERSION} \\\n    org.label-schema.schema-version=\"1.0\" \\\n    org.label-schema.name=\"prefect\" \\\n    org.label-schema.url=\"https://www.prefect.io/\"\n\nWORKDIR /opt/prefect\n\n#",
+      "file_alias": "snapshot_file_2",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# Overview\n\nThis directory contains files for building and publishing the `prefect-client` \nlibrary. `prefect-client` is built by removing source code from `prefect` and \npackages its own `requirements.txt` and `setup.py`. This process can happen \nin one of three ways:\n\n- automatically whenever a PR is created (see \n`.github/workflows/prefect-client.yaml`)\n- automatically whenever a Github release is published (see \n`.github/workflows/prefect-client-publish.yaml`)\n- manually by running the `client/build_client.sh` script locally\n\nNote that whenever a Github release is published the `prefect-client` will \nnot only get built but will also be distributed to PyPI. `prefect-client` \nreleases will have the same versioning as `prefect` - only the package names \nwill be different.\n\nThis directory also includes a \"minimal\" flow that is used for smoke \ntests to ensure that the built `prefect-client` is functional.\n\nIn general, these builds, smoke tests, and publish steps should be transparent. \nIt these automated steps fail, use the `client/build_client.sh` script to run \nthe build and smoke test locally and iterate on a fix. The failures will likely \nbe from:\n\n- including a new dependency that is not installed in `prefect-client`\n- re-arranging or adding files in such a way that a necessary file is rm'd at \n  build time\n",
+      "file_alias": "snapshot_file_3",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "<p align=\"center\"><img src=\"https://github.com/PrefectHQ/prefect/assets/3407835/c654cbc6-63e8-4ada-a92a-efd2f8f24b85\" width=1000></p>\n\n<p align=\"center\">\n    <a href=\"https://pypi.python.org/pypi/prefect-client/\" alt=\"PyPI version\">\n        <img alt=\"PyPI\" src=\"https://img.shields.io/pypi/v/prefect-client?color=0052FF&labelColor=090422\"></a>\n    <a href=\"[repository]/\" alt=\"Stars\">\n        <img src=\"https://img.shields.io/github/stars/prefecthq/prefect?color=0052FF&labelColor=090422\" /></a>\n    <a href=\"https://pepy.tech/badge/prefect-client/\" alt=\"Downloads\">\n        <img src=\"https://img.shields.io/pypi/dm/prefect-client?color=0052FF&labelColor=090422\" /></a>\n    <a href=\"[repository]/pulse\" alt=\"Activity\">\n        <img src=\"https://img.shields.io/github/commit-activity/m/prefecthq/prefect?color=0052FF&labelColor=090422\" /></a>\n    <br>\n    <a href=\"https://prefect.io/slack\" alt=\"Slack\">\n        <img src=\"https://img.shields.io/badge/slack-join_community-red.svg?color=0052FF&labelColor=090422&logo=slack\" /></a>\n    <a href=\"https://www.youtube.com/c/PrefectIO/\" alt=\"YouTube\">\n        <img src=\"https://img.shields.io/badge/youtube-watch_videos-red.svg?color=0052FF&labelColor=090422&logo=youtube\" /></a>\n</p>\n\n# prefect-client\n\nThe `prefect-client` package is a minimal-installation of `prefect` which is designed for interacting with Prefect Cloud\nor remote any `prefect` server. It sheds some functionality and dependencies in exchange for a smaller installation size,\nmaking it ideal for use in lightweight or ephemeral environments. These characteristics make it ideal for use in lambdas\nor other resource-constrained environments.\n\n\n## Getting started\n\n`prefect-client` shares the same installation requirements as prefect. To install, make sure you are on Python 3.10 or\nlater and run the following command:\n\n```bash\npip install prefect-client\n```\n\nNext, ensure that your `prefect-client` has access to a remote `prefect` serve",
+      "file_alias": "snapshot_file_4",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "#!/bin/bash\n\nCWD=$(pwd)\n\n# if running in GH Actions, this will already be set\nif [ -z ${TMPDIR+x} ];\n    then\n        TMPDIR=$(mktemp -d);\n        echo \"Using workspace at $TMPDIR\";\n    else echo \"Using workspace at $TMPDIR\";\nfi\n\n# init the workspace\ncp -rf ./ $TMPDIR\ncd $TMPDIR/src/prefect\n\n# delete the files we don't need\nrm -rf cli/\nrm -rf deployments/recipes/\nrm -rf deployments/templates\nrm -rf server/__init__.py\nfind ./server \\\n    -not -path \"./server\" \\\n    -not -path \"./server/api\" \\\n    -not -path \"./server/api/*\" \\\n    -delete\nrm -rf server/database\nrm -rf server/models\nrm -rf server/orchestration\nrm -rf server/schemas\nrm -rf server/services\nrm -rf testing\nrm -rf server/utilities\n\n# replace old build files with client build files\ncd $TMPDIR\ncp client/pyproject.toml .\ncp client/README.md .\n\ncd $CWD\n",
+      "file_alias": "snapshot_file_5",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "\"\"\"\nThis PR tests the code path for remote execution works for prefect-client. Because of prefect-client's reduced\ndependency set, we need to guard against accidentally adding extraneous dependencies to this code path.\n\"\"\"\n\nimport asyncio\nimport inspect\nfrom pathlib import Path\nfrom typing import TYPE_CHECKING\n\nfrom prefect import Flow, get_client\nfrom prefect.client.schemas.actions import WorkPoolCreate\nfrom prefect.exceptions import ObjectNotFound\nfrom prefect.runner.runner import Runner\n\n\nasync def main():\n    async with get_client() as client:\n        # Check if the smoke-test work pool exists\n        try:\n            await client.read_work_pool(\"smoke-test\")\n        except ObjectNotFound:\n            # Create the work pool if it doesn't exist\n            await client.create_work_pool(\n                WorkPoolCreate(name=\"smoke-test\", type=\"process\")\n            )\n\n        # Deploy the flow\n        smoke_test_flow = await Flow.afrom_source(\n            source=Path(__file__).resolve().parent,\n            entrypoint=\"client_flow.py:smoke_test_flow\",\n        )\n\n        coro = smoke_test_flow.deploy(\n            name=\"prefect-client-smoke-test\",\n            work_pool_name=\"smoke-test\",\n            print_next_steps=False,\n        )\n        if TYPE_CHECKING:\n            assert inspect.iscoroutine(coro)\n\n        deployment_id = await coro\n\n        # Execute a run via a runner\n        flow_run = await client.create_flow_run_from_deployment(\n            deployment_id=deployment_id\n        )\n\n        await Runner().execute_flow_run(flow_run.id)\n\n\nif __name__ == \"__main__\":\n    asyncio.run(main())\n",
+      "file_alias": "snapshot_file_6",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# Contributing\n\nThanks for considering contributing to Prefect!\n\nTo navigate our codebase with confidence, see our [contribution guidelines](https://docs.prefect.io/contribute/).",
+      "file_alias": "snapshot_file_7",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "Prefect is a workflow orchestration platform that coordinates and observes data pipelines. It provides a Python SDK for building workflows, a server backend for orchestration, and a web-based UI for managing and monitoring workflows.\n\n# Guiding Principles\n\nYour primary responsibility is to the project and its users. Every change should serve the broader user base \u2014 not just the immediate request. Be a quality gate: prefer correct, minimal, well-tested changes over fast ones.\n\n# Directory Structure\n\n```\nprefect/\n\u251c\u2500\u2500 benches/                         # Benchmarks (CLI, flows, tasks, imports)\n\u251c\u2500\u2500 client/                          # prefect-client build: subset of src/prefect/ published as a separate PyPI package\n\u251c\u2500\u2500 compat-tests/                    # Tests for REST API compatibility with Prefect Cloud\n\u251c\u2500\u2500 Dockerfile                       # Production container image\n\u251c\u2500\u2500 docs/                            # Mintlify documentation (see docs/[[INSTRUCTION]])\n\u251c\u2500\u2500 examples/                        # Example flows (auto-published to docs)\n\u251c\u2500\u2500 integration-tests/               # End-to-end integration tests (require running server)\n\u251c\u2500\u2500 justfile                         # Task runner (just <command>)\n\u251c\u2500\u2500 load_testing/                    # Load/performance testing\n\u251c\u2500\u2500 plans/                           # Design/implementation plan documents\n\u251c\u2500\u2500 pyproject.toml                   # Root package config\n\u251c\u2500\u2500 schemas/                         # JSON schemas (prefect.yaml, settings)\n\u251c\u2500\u2500 scripts/                         # Code generation and release scripts\n\u251c\u2500\u2500 src/\n\u2502   \u251c\u2500\u2500 integrations/                # External service integrations (see src/integrations/[[INSTRUCTION]])\n\u2502   \u2514\u2500\u2500 prefect/                     # Core package: SDK, server, CLI (see src/prefect/[[INSTRUCTION]])\n\u251c\u2500\u2500 tests/                           # Test suite, mirrors src/prefect/ (see tests/[[INSTRUCTION]])\n\u251c\u2500\u2500 tools/                           # Build tools\n\u251c\u2500\u2500 ui/                              # Vue UI (legacy, will be replaced by ui-v2)\n\u251c\u2500\u2500 ui-v2/       ",
+      "file_alias": "snapshot_file_8",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "<p align=\"center\"><img src=\"https://github.com/PrefectHQ/prefect/assets/3407835/c654cbc6-63e8-4ada-a92a-efd2f8f24b85\" width=1000></p>\n\n<p align=\"center\">\n    <a href=\"https://pypi.org/project/prefect/\" alt=\"PyPI version\">\n        <img alt=\"PyPI\" src=\"https://img.shields.io/pypi/v/prefect?color=0052FF&labelColor=090422\" />\n    </a>\n    <a href=\"https://pypi.org/project/prefect/\" alt=\"PyPI downloads/month\">\n        <img alt=\"Downloads\" src=\"https://img.shields.io/pypi/dm/prefect?color=0052FF&labelColor=090422\" />\n    </a>\n    <a href=\"[repository]/\" alt=\"Stars\">\n        <img src=\"https://img.shields.io/github/stars/prefecthq/prefect?color=0052FF&labelColor=090422\" />\n    </a>\n    <a href=\"[repository]/pulse\" alt=\"Activity\">\n        <img src=\"https://img.shields.io/github/commit-activity/m/prefecthq/prefect?color=0052FF&labelColor=090422\" />\n    </a>\n    <br>\n    <a href=\"https://prefect.io/slack\" alt=\"Slack\">\n        <img src=\"https://img.shields.io/badge/slack-join_community-red.svg?color=0052FF&labelColor=090422&logo=slack\" />\n    </a>\n    <a href=\"https://www.youtube.com/c/PrefectIO/\" alt=\"YouTube\">\n        <img src=\"https://img.shields.io/badge/youtube-watch_videos-red.svg?color=0052FF&labelColor=090422&logo=youtube\" />\n    </a>\n</p>\n\n\n<p align=\"center\">\n    <a href=\"https://docs.prefect.io/v3/get-started/index?utm_source=oss&utm_medium=oss&utm_campaign=oss_gh_repo&utm_term=none&utm_content=none\">\n        Installation\n    </a>\n    \u00b7\n    <a href=\"https://docs.prefect.io/v3/get-started/quickstart?utm_source=oss&utm_medium=oss&utm_campaign=oss_gh_repo&utm_term=none&utm_content=none\">\n        Quickstart\n    </a>\n    \u00b7\n    <a href=\"https://docs.prefect.io/v3/how-to-guides/workflows/write-and-run?utm_source=oss&utm_medium=oss&utm_campaign=oss_gh_repo&utm_term=none&utm_content=none\">\n        Build workflows\n    </a>\n    \u00b7\n    <a href=\"https://docs.prefect.io/v3/concepts/deployments?utm_source=oss&utm_medium=oss&utm_campaign",
+      "file_alias": "snapshot_file_9",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "{\n  \"$schema\": \"https://json.schemastore.org/claude-code-settings.json\",\n  \"hooks\": {\n    \"SessionStart\": [\n      {\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"$CLAUDE_PROJECT_DIR/.claude/hooks/symlink-agents-to-claude.sh\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
+      "file_alias": "snapshot_file_10",
+      "role": "pinned_snapshot_excerpt"
+    }
+  ],
+  "task_brief": "Engineering task (derived only from the pinned instruction text and snapshot signals):\n\nDocument title: prefect-client Package Build. Instruction overview: Build configuration for `prefect-client`, a lightweight subset of `prefect` published as a separate PyPI package. This directory does **not** contain source code \u2014 it selects files from `src/prefect/` and repackages them.\n\nWhile performing this work, the instruction cites Referenced artifact R1. Your annotation question is whether that cited artifact is materially necessary for completing this task in the provided snapshot.\n\nVerification command observed in the pinned repository manifests: `pytest`. Use this only as a snapshot signal of how the project checks work; do not assume other commands.",
+  "task_brief_source": "h1_title,paragraph",
+  "verification_command_observed": "pytest",
+  "verification_evidence": "Python test config present"
 }

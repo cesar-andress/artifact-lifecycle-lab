@@ -1,28 +1,42 @@
 {
   "blinding": {
+    "absence_statements_forbidden": true,
     "access_model": "access_separated_private_id_map_not_cryptographically_sealed",
     "case_id_omitted": true,
     "outcomes_omitted": true,
-    "paths_redacted": true,
     "repo_url_omitted": true,
+    "semantic_path_redaction": true,
     "traces_omitted": true
   },
-  "excerpts": [
-    {
-      "field": "instruction_citation_excerpts",
-      "note": "Path tokens replaced with [[REF]]; contrast blob inspected only for ban-list.",
-      "sanitized": true,
-      "source_kind": "instruction_blob_pre_treatment"
-    }
-  ],
+  "n_reference_aliases_internal": 1,
+  "n_tree_paths": 5000,
   "neutral_id": "a38973860e5d4712",
-  "packet_sha256": "ab8eae3c649d65709e4d067a41f2495872a8d2cfe80154cab6bba20a0b934f97",
+  "packet_sha256": "88cf8f9904e545880749c8c3bd609ad4ad777e6032df0d4a1c46c7510f02d3e9",
+  "packet_spec_version": "rq5_v1_blind_packet_spec_v2",
   "protocol_version": "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c",
   "seed": 42,
+  "software_signals": [
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:makefile",
+    "manifest_or_doc:makefile",
+    "manifest_or_doc:makefile",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:makefile",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:makefile",
+    "manifest_or_doc:makefile",
+    "manifest_or_doc:makefile",
+    "manifest_or_doc:readme.md"
+  ],
   "sources": [
     "rq5_case_manifest.csv",
+    "packet_spec:rq5_v1_blind_packet_spec_v2",
     "rq5_candidate_dataset.csv",
     "blob_store:4ddff1fb04bc8988",
-    "blob_store:contrast_inspected_not_emitted"
-  ]
+    "blob_store:contrast_inspected_not_emitted",
+    "git_tree:d570a73facd1"
+  ],
+  "task_brief_source": "guidance_section,h1_title,paragraph",
+  "verification_command_observed": null
 }

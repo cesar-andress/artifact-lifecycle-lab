@@ -1,14 +1,94 @@
 {
+  "annotator_question": "Is Referenced artifact R1 materially necessary for completing THIS software engineering task in THIS repository snapshot?",
   "anonymous_snapshot_id": "95dd2caab4d57ca2",
-  "artifact_role_description": "Referenced artifact R1 denotes a file path cited by the project instruction text. Its identity is withheld as a path string so treatment assignment cannot be inferred. The instruction context around the citation is provided below with the path replaced by [[REF]].",
+  "artifact_role_description": "Referenced artifact R1 is a repository artifact cited by the project instruction text (reference kind: path). Its literal path string is withheld and shown as [[REF]] so treatment assignment cannot be inferred from path identity. Use the citation excerpts, task brief, and snapshot context below to judge relevance and necessity.",
   "instruction_citation_excerpts": [
-    "**Model:** `gpt-5.2-codex` is the default (set in ~[[REF]])"
+    "```\n\n**Why workdir matters:** Agent wakes up in a focused directory, doesn't wander off reading unrelated files (like your soul.md \ud83d\ude05).\n\n---\n\n## Codex CLI\n\n**Model:** `gpt-5.2-codex` is the default (set in ~[[REF]])\n\n### Flags\n\n| Flag            | Effect                                             |\n| --------------- | -------------------------------------------------- |\n| `exec \"prompt\"` | One-shot execution, exits when done                |\n| `--full-auto`   | Sandboxed but auto-approves in workspace           |\n| `--yolo`        | NO sandbox, NO approvals (fastest, most dangerous) |"
   ],
+  "instruction_language_original": "en",
+  "instruction_provided_in": "en",
+  "nearby_configuration_paths": [
+    ".detect-secrets.cfg",
+    ".github/workflows/ci.yml",
+    ".github/workflows/orchestrator-release.yml",
+    ".oxlintrc.json",
+    ".pre-commit-config.yaml",
+    ".swiftlint.yml",
+    "Dockerfile",
+    "benchmarks/biomemeval/results/biomemeval-report.json",
+    "benchmarks/biomemeval/results/vitest-results.json",
+    "benchmarks/longmemeval/data/longmemeval_oracle.json"
+  ],
+  "nearby_documentation_paths": [
+    "AGENTS.md",
+    "CONTRIBUTING.md",
+    "README.md",
+    "benchmarks/biomemeval/README.md",
+    "benchmarks/dream-ablation/README.md",
+    "benchmarks/longmemeval/README.md",
+    "deploy/bootnode/README.md",
+    "desktop/README.md",
+    "desktop/package.json",
+    "desktop/src-tauri/Cargo.toml"
+  ],
+  "neighbor_paths": [],
   "neutral_id": "c7ee59d30924c48f",
-  "path_policy": "Manipulated and experimental path strings are withheld. Citations use [[REF]] / Referenced artifact R1 so treatment assignment cannot be read from path identity.",
+  "packet_spec_version": "rq5_v1_blind_packet_spec_v2",
+  "path_policy": "Path identity for the cited artifact and for contrast-only manipulated paths is replaced by [[REF]] using semantic whole-path tokenization (not substring replacement). Other snapshot paths may appear when they do not reveal treatment assignment. Do not infer experimental treatment from path placeholders.",
   "protocol_version": "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c",
   "reference_type": "path",
   "referenced_artifact_alias": "Referenced artifact R1",
-  "repository_tree_excerpt": "A full repository tree excerpt is not included in this offline packet build. Judge from the task brief and the instruction citation context only.",
-  "task_brief": "Complete a small, bounded change in the pinned repository snapshot so that the project test command `pytest` passes. Use only files present in the snapshot. Judge whether Referenced artifact R1 is materially necessary for that task."
+  "repository_tree_excerpt": [
+    ".detect-secrets.cfg",
+    ".dockerignore",
+    ".env.example",
+    ".gitattributes",
+    ".github/workflows/ci.yml",
+    ".github/workflows/orchestrator-release.yml",
+    ".gitignore",
+    ".markdownlint-cli2.jsonc",
+    ".npmrc",
+    "[[REF]]"
+  ],
+  "snapshot_file_excerpts": [
+    {
+      "content": "---\nname: coding-agent\ndescription: Run Codex CLI, Claude Code, OpenCode, or Pi Coding Agent via background process for programmatic control.\nmetadata:\n  {\n    \"bitterbot\":\n      { \"emoji\": \"\ud83e\udde9\", \"requires\": { \"anyBins\": [\"claude\", \"codex\", \"opencode\", \"pi\"] } },\n  }\n---\n\n# Coding Agent (bash-first)\n\nUse **bash** (with optional background mode) for all coding agent work. Simple and effective.\n\n## \u26a0\ufe0f PTY Mode Required!\n\nCoding agents (Codex, Claude Code, Pi) are **interactive terminal applications** that need a pseudo-terminal (PTY) to work correctly. Without PTY, you'll get broken output, missing colors, or the agent may hang.\n\n**Always use `pty:true`** when running coding agents:\n\n```bash\n# \u2705 Correct - with PTY\nbash pty:true command:\"codex exec 'Your prompt'\"\n\n# \u274c Wrong - no PTY, agent may break\nbash command:\"codex exec 'Your prompt'\"\n```\n\n### Bash Tool Parameters\n\n| Parameter    | Type    | Description                                                                 |\n| ------------ | ------- | --------------------------------------------------------------------------- |\n| `command`    | string  | The shell command to run                                                    |\n| `pty`        | boolean | **Use for coding agents!** Allocates a pseudo-terminal for interactive CLIs |\n| `workdir`    | string  | Working directory (agent sees only this folder's context)                   |\n| `background` | boolean | Run in background, returns sessionId for monitoring                         |\n| `timeout`    | number  | Timeout in seconds (kills process on expiry)                                |\n| `elevated`   | boolean | Run on host instead of sandbox (if allowed)                                 |\n\n### Process Tool Actions (for background sessions)\n\n| Action      | Description                                          |\n| ----------- | ---------------------------------------------------- |\n| `list`      | List all running/recent sessions                     |\n| `poll`      | ",
+      "file_alias": "snapshot_file_1",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# Bitterbot \u2014 Repository Guidelines\n\n## What is Bitterbot?\n\nA self-hosted AI agent gateway with a biological memory system that dreams, gets curious, and evolves a personality. Bitterbot connects to your chat apps (WhatsApp, Telegram, Discord, Signal, Slack, and more) and runs AI agents that actually _remember_ \u2014 with a dream engine that consolidates knowledge while idle, a curiosity function that drives self-directed learning, a hormonal system that shapes personality in real-time, and an economic layer that lets agents transact. Agents share skills through a P2P marketplace, earn reputation, and develop persistent identities across sessions.\n\n## What Makes Bitterbot Different\n\n### 1. Memory System (`src/memory/`)\n\nA consciousness-inspired memory pipeline with no equivalent in any other agent framework:\n\n- **Knowledge Crystals**: Atomic memory units with embeddings, semantic types (fact, preference, skill, episode, insight, goal, relationship, task_pattern), importance scores, and a full lifecycle (generated \u2192 activated \u2192 consolidated \u2192 archived \u2192 expired). Skills are `frozen` (immune to decay).\n- **Consolidation Pipeline**: Runs every 30 minutes \u2014 hormonal decay, Ebbinghaus importance recalculation, chunk merging (cosine \u2265 0.92), low-importance forgetting, governance TTL enforcement, stalled goal detection.\n- **Session Transcript Indexing**: Conversations are automatically chunked, embedded, and made searchable. The agent can recall prior exchanges semantically.\n- **Governance**: Sensitivity tagging (normal/personal/confidential), TTL enforcement, audit trails on all memory operations. Anti-catastrophic forgetting safeguards.\n- **User Profile**: Automatically learned preferences (directive, world_fact, mental_model, experience types) persisted across sessions.\n\n### 2. Dream Engine (`src/memory/dream-engine.ts`)\n\nThe agent thinks while it sleeps. Every 2 hours, the dream engine runs autonomous cycles with 7 modes:\n\n- **Replay**: Re-process recent high-importance me",
+      "file_alias": "snapshot_file_2",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# Contributing to Bitterbot\n\nThanks for wanting to contribute! Bitterbot is an open-source project and we welcome PRs from humans and AI alike.\n\n## Quick Start\n\n```bash\ngit clone https://github.com/Bitterbot-AI/bitterbot-desktop.git && cd bitterbot-desktop\ncp .env.example .env   # Add your API keys\npnpm install && pnpm build\n```\n\n**Runtime:** Node \u2265 22. **Package manager:** pnpm.\n\n### Development Mode\n\nThe fastest way to get both the gateway and the Control UI running:\n\n```bash\npnpm dev:all\n```\n\nThis spawns the gateway and the Vite dev server in one terminal with color-tagged output. Ctrl+C stops both. The gateway auto-rebuilds on TypeScript changes.\n\nIf you prefer separate terminals (useful when debugging one process in isolation):\n\n```bash\n# Terminal 1 \u2014 Gateway with auto-reload on TS changes\npnpm gateway:watch\n\n# Terminal 2 \u2014 Control UI (Vite, hot reload)\ncd desktop && pnpm dev\n```\n\nOpen `http://localhost:5173` for the Control UI. It connects to the gateway on port 19001 automatically.\n\n> **Note:** `pnpm gateway:watch` auto-rebuilds on TS changes (use this for dev). `pnpm start gateway` is one-shot with no file watching (production). The orchestrator (P2P sidecar) is spawned automatically by the gateway.\n\n**Control UI auth:** the onboarding wizard (`pnpm bitterbot onboard`) auto-generates `desktop/.env` with the gateway token. If you skipped the wizard, copy `desktop/.env.example` to `desktop/.env` and paste your token from `~/.bitterbot/bitterbot.json \u2192 gateway.auth.token`.\n\n## Project Structure\n\n| Directory       | What's In There                                                              |\n| --------------- | ---------------------------------------------------------------------------- |\n| `src/agents/`   | Agent runtime, tools, system prompt, identity, endocrine state               |\n| `src/memory/`   | Memory system: dream engine, curiosity/GCCRF, crystals, hormones, governance |\n| `src/gateway/`  | Gateway server, RPC methods, A2A protocol, routing        ",
+      "file_alias": "snapshot_file_3",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "<p align=\"center\">\n  <img src=\"docs/public/Bitterbot_logo.svg\" alt=\"Bitterbot logo\" width=\"72\">\n</p>\n\n<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/public/bitterbot-title-dark.svg\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"docs/public/bitterbot-title-light.svg\">\n    <img src=\"docs/public/bitterbot-title-light.svg\" alt=\"bitterbot\" height=\"48\">\n  </picture>\n</p>\n\n<p align=\"center\">\n  <strong>A local-first personal AI with biological memory, a dream engine, and a P2P skills economy.</strong>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/Bitterbot-AI/bitterbot-desktop/releases\"><img src=\"https://img.shields.io/badge/version-2026.2.15--beta-7c3aed?style=flat-square\" alt=\"Version\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-a855f7?style=flat-square\" alt=\"MIT License\"></a>\n  <img src=\"https://img.shields.io/badge/node-%E2%89%A5%2022-c084fc?style=flat-square&logo=node.js&logoColor=white\" alt=\"Node >= 22\">\n  <img src=\"https://img.shields.io/badge/platform-macOS%20%C2%B7%20Linux%20%C2%B7%20Windows-9333ea?style=flat-square\" alt=\"Platform\">\n  <a href=\"https://x.com/Bitterbot_AI\"><img src=\"https://img.shields.io/badge/@Bitterbot__AI-000000?style=flat-square&logo=x&logoColor=white\" alt=\"X / Twitter\"></a>\n</p>\n\nMost AI agents are stateless wrappers around an LLM API. Close the terminal, and they forget you exist.\n\n**Bitterbot is different.** It's a personal AI that lives on your devices, remembers your life, and actually _does_ things, browses the web, runs code, talks to you on WhatsApp. While you sleep, it dreams: consolidating knowledge, discovering new skills, and evolving a persistent personality. It packages those learned skills and trades them with other agents on a P2P marketplace for USDC.\n\n[About](https://about.bitterbot.ai) \u00b7 [Docs](docs/) \u00b7 [Getting Started](docs/start/getting-started.md)\n\n---\n\n## Quick Start\n\n**Runtime: Node \u2265 22** \u00b7 **Package manager: pnpm**\n\n```b",
+      "file_alias": "snapshot_file_4",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# detect-secrets exclusion patterns (regex)\n#\n# Note: detect-secrets does not read this file by default. If you want these\n# applied, wire them into your scan command (e.g. translate to --exclude-files\n# / --exclude-lines) or into a baseline's filters_used.\n\n[exclude-files]\n# pnpm lockfiles contain lots of high-entropy package integrity blobs.\npattern = (^|/)pnpm-lock\\.yaml$\n# Generated output and vendored assets.\npattern = (^|/)(dist|vendor)/\n# Local config file with allowlist patterns.\npattern = (^|/)\\.detect-secrets\\.cfg$\n\n[exclude-lines]\n# Fastlane checks for private key marker; not a real key.\npattern = key_content\\.include\\?\\(\"BEGIN PRIVATE KEY\"\\)\n# UI label string for Anthropic auth mode.\npattern = case \\.apiKeyEnv: \"API key \\(env var\\)\"\n# CodingKeys mapping uses apiKey literal.\npattern = case apikey = \"apiKey\"\n# Schema labels referencing password fields (not actual secrets).\npattern = \"gateway\\.remote\\.password\"\npattern = \"gateway\\.auth\\.password\"\n# Schema label for talk API key (label text only).\npattern = \"talk\\.apiKey\"\n# checking for typeof is not something we care about.\npattern = === \"string\"\n# specific optional-chaining password check that didn't match the line above.\npattern = typeof remote\\?\\.password === \"string\"\n",
+      "file_alias": "snapshot_file_5",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "name: CI\n\non:\n  push:\n    branches: [main]\n  pull_request:\n    branches: [main]\n\nconcurrency:\n  group: ci-${{ github.ref }}\n  cancel-in-progress: true\n\njobs:\n  build:\n    name: Build & Test\n    runs-on: ubuntu-latest\n    timeout-minutes: 15\n\n    strategy:\n      matrix:\n        node-version: [22]\n\n    steps:\n      - uses: actions/checkout@v4\n\n      - uses: pnpm/action-setup@v4\n\n      - uses: actions/setup-node@v4\n        with:\n          node-version: ${{ matrix.node-version }}\n          cache: pnpm\n\n      - name: Install dependencies\n        run: pnpm install --frozen-lockfile\n\n      - name: Type check\n        run: npx tsc --noEmit\n\n      - name: Build\n        run: pnpm build\n\n      - name: Unit tests\n        run: pnpm test:fast\n\n  lint:\n    name: Lint\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n\n    steps:\n      - uses: actions/checkout@v4\n\n      - uses: pnpm/action-setup@v4\n\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n          cache: pnpm\n\n      - name: Install dependencies\n        run: pnpm install --frozen-lockfile\n\n      - name: Lint\n        run: pnpm lint\n\n      - name: Format check\n        run: pnpm format:check\n",
+      "file_alias": "snapshot_file_6",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "name: Orchestrator Release\n\n# Tag-triggered build + publish of prebuilt bitterbot-orchestrator binaries\n# for the 5 supported platforms. Bump orchestrator/Cargo.toml version, commit,\n# and push a matching `orchestrator-v<version>` tag to run this workflow.\n\non:\n  push:\n    tags:\n      - \"orchestrator-v*\"\n  workflow_dispatch:\n    inputs:\n      tag:\n        description: \"Tag to build (e.g. orchestrator-v0.1.0). Must already exist.\"\n        required: true\n        type: string\n\nconcurrency:\n  group: orchestrator-release-${{ github.ref }}\n  cancel-in-progress: false\n\npermissions:\n  contents: write # required by softprops/action-gh-release to publish\n\njobs:\n  build:\n    name: Build ${{ matrix.target }}\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 45\n\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n          - target: linux-x64\n            os: ubuntu-latest\n            rust-target: x86_64-unknown-linux-gnu\n            bin: bitterbot-orchestrator\n            asset: bitterbot-orchestrator-linux-x64\n          - target: linux-arm64\n            os: ubuntu-22.04-arm\n            rust-target: aarch64-unknown-linux-gnu\n            bin: bitterbot-orchestrator\n            asset: bitterbot-orchestrator-linux-arm64\n          - target: darwin-x64\n            os: macos-14\n            rust-target: x86_64-apple-darwin\n            bin: bitterbot-orchestrator\n            asset: bitterbot-orchestrator-darwin-x64\n          - target: darwin-arm64\n            os: macos-14\n            rust-target: aarch64-apple-darwin\n            bin: bitterbot-orchestrator\n            asset: bitterbot-orchestrator-darwin-arm64\n          - target: win32-x64\n            os: windows-latest\n            rust-target: x86_64-pc-windows-msvc\n            bin: bitterbot-orchestrator.exe\n            asset: bitterbot-orchestrator-win32-x64.exe\n\n    steps:\n      - uses: actions/checkout@v4\n        with:\n          ref: ${{ inputs.tag || github.ref }}\n\n      - name: Install Rust toolchain\n        uses",
+      "file_alias": "snapshot_file_7",
+      "role": "pinned_snapshot_excerpt"
+    }
+  ],
+  "task_brief": "Engineering task (derived only from the pinned instruction text and snapshot signals):\n\nDocument title: Coding Agent (bash-first). Skill/module name: coding-agent. Stated purpose: Run Codex CLI, Claude Code, OpenCode, or Pi Coding Agent via background process for programmatic control. Instruction overview: Use **bash** (with optional background mode) for all coding agent work. Simple and effective.\n\nWhile performing this work, the instruction cites Referenced artifact R1. Your annotation question is whether that cited artifact is materially necessary for completing this task in the provided snapshot.\n\nVerification command observed in the pinned repository manifests: `npm run test`. Use this only as a snapshot signal of how the project checks work; do not assume other commands.",
+  "task_brief_source": "frontmatter.name,frontmatter.description,h1_title,paragraph",
+  "verification_command_observed": "npm run test",
+  "verification_evidence": "package.json scripts.test"
 }

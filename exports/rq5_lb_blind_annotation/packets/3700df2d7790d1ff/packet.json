@@ -1,14 +1,167 @@
 {
+  "annotator_question": "Is Referenced artifact R1 materially necessary for completing THIS software engineering task in THIS repository snapshot?",
   "anonymous_snapshot_id": "16ebbcd434a230b1",
-  "artifact_role_description": "Referenced artifact R1 denotes a file path cited by the project instruction text. Its identity is withheld as a path string so treatment assignment cannot be inferred. The instruction context around the citation is provided below with the path replaced by [[REF]].",
+  "artifact_role_description": "Referenced artifact R1 is a repository artifact cited by the project instruction text (reference kind: path). Its literal path string is withheld and shown as [[REF]] so treatment assignment cannot be inferred from path identity. Use the citation excerpts, task brief, and snapshot context below to judge relevance and necessity.",
   "instruction_citation_excerpts": [
-    "- `[[REF]]`: backend startup log"
+    "pnpm e2e:middleware:down\n```\n\nArtifacts and diagnostics:\n\n- `cucumber-report/report.html`: HTML report\n- `cucumber-report/report.json`: JSON report\n- `cucumber-report/artifacts/`: failure screenshots and HTML captures\n- `[[REF]]`: backend startup log\n- `.logs/cucumber-web.log`: frontend startup log\n\nOpen the HTML report locally with:\n\n```bash\nopen cucumber-report/report.html\n```"
+  ],
+  "instruction_language_original": "en",
+  "instruction_provided_in": "en",
+  "nearby_configuration_paths": [
+    ".agents/skills/frontend-query-mutation/agents/openai.yaml",
+    ".claude/settings.json",
+    ".devcontainer/Dockerfile",
+    ".devcontainer/devcontainer.json",
+    ".gemini/config.yaml",
+    ".github/DISCUSSION_TEMPLATE/general.yml",
+    ".github/DISCUSSION_TEMPLATE/help.yml",
+    ".github/DISCUSSION_TEMPLATE/suggestion.yml",
+    ".github/ISSUE_TEMPLATE/bug_report.yml",
+    ".github/ISSUE_TEMPLATE/config.yml"
+  ],
+  "nearby_documentation_paths": [
+    ".devcontainer/README.md",
+    ".vscode/README.md",
+    "[[INSTRUCTION]]",
+    "CLAUDE.md",
+    "CONTRIBUTING.md",
+    "Makefile",
+    "README.md",
+    "api/[[INSTRUCTION]]",
+    "api/README.md",
+    "api/core/rag/datasource/vdb/clickzetta/README.md"
+  ],
+  "neighbor_paths": [
+    "e2e/.gitignore",
+    "e2e/README.md",
+    "e2e/cucumber.config.ts",
+    "e2e/package.json",
+    "e2e/test-env.ts",
+    "e2e/tsconfig.json",
+    "e2e/vite.config.ts"
   ],
   "neutral_id": "3700df2d7790d1ff",
-  "path_policy": "Manipulated and experimental path strings are withheld. Citations use [[REF]] / Referenced artifact R1 so treatment assignment cannot be read from path identity.",
+  "packet_spec_version": "rq5_v1_blind_packet_spec_v2",
+  "path_policy": "Path identity for the cited artifact and for contrast-only manipulated paths is replaced by [[REF]] using semantic whole-path tokenization (not substring replacement). Other snapshot paths may appear when they do not reveal treatment assignment. Do not infer experimental treatment from path placeholders.",
   "protocol_version": "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c",
   "reference_type": "path",
   "referenced_artifact_alias": "Referenced artifact R1",
-  "repository_tree_excerpt": "A full repository tree excerpt is not included in this offline packet build. Judge from the task brief and the instruction citation context only.",
-  "task_brief": "Complete a small, bounded change in the pinned repository snapshot so that the project test command `pytest` passes. Use only files present in the snapshot. Judge whether Referenced artifact R1 is materially necessary for that task."
+  "repository_tree_excerpt": [
+    ".agents/skills/backend-code-review/SKILL.md",
+    ".agents/skills/backend-code-review/references/architecture-rule.md",
+    ".agents/skills/backend-code-review/references/db-schema-rule.md",
+    ".agents/skills/backend-code-review/references/repositories-rule.md",
+    ".agents/skills/backend-code-review/references/sqlalchemy-rule.md",
+    ".agents/skills/component-refactoring/SKILL.md",
+    ".agents/skills/component-refactoring/references/complexity-patterns.md",
+    ".agents/skills/component-refactoring/references/component-splitting.md",
+    ".agents/skills/component-refactoring/references/hook-extraction.md",
+    ".agents/skills/frontend-code-review/SKILL.md",
+    ".agents/skills/frontend-code-review/references/business-logic.md",
+    ".agents/skills/frontend-code-review/references/code-quality.md",
+    ".agents/skills/frontend-code-review/references/performance.md",
+    ".agents/skills/frontend-query-mutation/SKILL.md",
+    ".agents/skills/frontend-query-mutation/agents/openai.yaml",
+    ".agents/skills/frontend-query-mutation/references/contract-patterns.md",
+    ".agents/skills/frontend-query-mutation/references/runtime-rules.md",
+    ".agents/skills/frontend-testing/SKILL.md",
+    ".agents/skills/frontend-testing/assets/component-test.template.tsx",
+    ".agents/skills/frontend-testing/assets/hook-test.template.ts",
+    ".agents/skills/frontend-testing/assets/utility-test.template.ts",
+    ".agents/skills/frontend-testing/references/async-testing.md",
+    ".agents/skills/frontend-testing/references/checklist.md",
+    ".agents/skills/frontend-testing/references/common-patterns.md",
+    ".agents/skills/frontend-testing/references/domain-components.md",
+    ".agents/skills/frontend-testing/references/mocking.md",
+    ".agents/skills/frontend-testing/references/workflow.md",
+    ".claude/settings.json",
+    ".claude/skills/backend-code-review",
+    ".claude/skills/component-refactoring",
+    ".claude/skills/frontend-code-review",
+    ".claude/skills/frontend-query-mutation",
+    ".claude/skills/frontend-testing",
+    ".coveragerc",
+    ".devcontainer/Dockerfile",
+    ".devcontainer/README.md",
+    ".devcontainer/devcontainer.json",
+    ".devcontainer/noop.txt",
+    ".devcontainer/post_create_command.sh",
+    ".devcontainer/post_start_command.sh",
+    ".devcontainer/troubleshooting.png",
+    ".editorconfig",
+    ".gemini/config.yaml",
+    ".gitattributes",
+    ".github/CODEOWNERS",
+    ".github/CODE_OF_CONDUCT.md",
+    ".github/DISCUSSION_TEMPLATE/general.yml",
+    ".github/DISCUSSION_TEMPLATE/help.yml",
+    ".github/DISCUSSION_TEMPLATE/suggestion.yml",
+    ".github/ISSUE_TEMPLATE/bug_report.yml",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    ".github/ISSUE_TEMPLATE/feature_request.yml",
+    ".github/ISSUE_TEMPLATE/refactor.yml",
+    ".github/actions/setup-web/action.yml",
+    ".github/dependabot.yml",
+    ".github/labeler.yml",
+    ".github/linters/.hadolint.yaml",
+    ".github/linters/.isort.cfg",
+    ".github/linters/.yaml-lint.yml",
+    ".github/linters/editorconfig-checker.json"
+  ],
+  "snapshot_file_excerpts": [
+    {
+      "content": "# E2E\n\nThis package contains the repository-level end-to-end tests for Dify.\n\nThis file is the canonical package guide for `e2e/`. Keep detailed workflow, architecture, debugging, and reporting documentation here. Keep `README.md` as a minimal pointer to this file so the two documents do not drift.\n\nThe suite uses Cucumber for scenario definitions and Playwright as the browser execution layer.\n\nIt tests:\n\n- backend API started from source\n- frontend served from the production artifact\n- middleware services started from Docker\n\n## Prerequisites\n\n- Node.js `^22.22.1`\n- `pnpm`\n- `uv`\n- Docker\n\nRun the following commands from the repository root.\n\nInstall Playwright browsers once:\n\n```bash\npnpm install\npnpm -C e2e e2e:install\npnpm -C e2e check\n```\n\n`pnpm install` is resolved through the repository workspace and uses the shared root lockfile plus `pnpm-workspace.yaml`.\n\nUse `pnpm check` as the default local verification step after editing E2E TypeScript, Cucumber support code, or feature glue. It runs formatting, linting, and type checks for this package.\n\nCommon commands:\n\n```bash\n# authenticated-only regression (default excludes @fresh)\n# expects backend API, frontend artifact, and middleware stack to already be running\npnpm -C e2e e2e\n\n# full reset + fresh install + authenticated scenarios\n# starts required middleware/dependencies for you\npnpm -C e2e e2e:full\n\n# run a tagged subset\npnpm -C e2e e2e -- --tags @smoke\n\n# headed browser\npnpm -C e2e e2e:headed -- --tags @smoke\n\n# slow down browser actions for local debugging\nE2E_SLOW_MO=500 pnpm -C e2e e2e:headed -- --tags @smoke\n```\n\nFrontend artifact behavior:\n\n- if `web/.next/BUILD_ID` exists, E2E reuses the existing build by default\n- if you set `E2E_FORCE_WEB_BUILD=1`, E2E rebuilds the frontend before starting it\n\n## Lifecycle\n\n```mermaid\nflowchart TD\n  A[\"Start E2E run\"] --> B[\"run-cucumber.ts orchestrates setup/API/frontend\"]\n  B --> C[\"support/web-server.ts starts or reuses frontend directly\"]\n  C --> D[\"Cucumber lo",
+      "file_alias": "snapshot_file_1",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "node_modules/\n.auth/\nplaywright-report/\ntest-results/\ncucumber-report/\n.logs/\n",
+      "file_alias": "snapshot_file_2",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# E2E\n\nCanonical documentation for this package lives in [[[INSTRUCTION]]](./[[INSTRUCTION]]).\n",
+      "file_alias": "snapshot_file_3",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "import type { IConfiguration } from '@cucumber/cucumber'\n\nconst config = {\n  format: [\n    'progress-bar',\n    'summary',\n    'html:./cucumber-report/report.html',\n    'json:./cucumber-report/report.json',\n  ],\n  import: ['features/**/*.ts'],\n  parallel: 1,\n  paths: ['features/**/*.feature'],\n  tags: process.env.E2E_CUCUMBER_TAGS || 'not @fresh and not @skip',\n  timeout: 60_000,\n} satisfies Partial<IConfiguration> & {\n  timeout: number\n}\n\nexport default config\n",
+      "file_alias": "snapshot_file_4",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "{\n  \"name\": \"dify-e2e\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"scripts\": {\n    \"check\": \"vp check --fix\",\n    \"e2e\": \"tsx ./scripts/run-cucumber.ts\",\n    \"e2e:full\": \"tsx ./scripts/run-cucumber.ts --full\",\n    \"e2e:full:headed\": \"tsx ./scripts/run-cucumber.ts --full --headed\",\n    \"e2e:headed\": \"tsx ./scripts/run-cucumber.ts --headed\",\n    \"e2e:install\": \"playwright install --with-deps chromium\",\n    \"e2e:middleware:down\": \"tsx ./scripts/setup.ts middleware-down\",\n    \"e2e:middleware:up\": \"tsx ./scripts/setup.ts middleware-up\",\n    \"e2e:reset\": \"tsx ./scripts/setup.ts reset\"\n  },\n  \"devDependencies\": {\n    \"@cucumber/cucumber\": \"catalog:\",\n    \"@playwright/test\": \"catalog:\",\n    \"@types/node\": \"catalog:\",\n    \"tsx\": \"catalog:\",\n    \"typescript\": \"catalog:\",\n    \"vite-plus\": \"catalog:\"\n  }\n}\n",
+      "file_alias": "snapshot_file_5",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "export const defaultBaseURL = 'http://127.0.0.1:3000'\nexport const defaultApiURL = 'http://127.0.0.1:5001'\nexport const defaultLocale = 'en-US'\n\nexport const baseURL = process.env.E2E_BASE_URL || defaultBaseURL\nexport const apiURL = process.env.E2E_API_URL || defaultApiURL\n\nexport const cucumberHeadless = process.env.CUCUMBER_HEADLESS !== '0'\nexport const cucumberSlowMo = Number(process.env.E2E_SLOW_MO || 0)\nexport const reuseExistingWebServer = process.env.E2E_REUSE_WEB_SERVER\n  ? process.env.E2E_REUSE_WEB_SERVER !== '0'\n  : !process.env.CI\n",
+      "file_alias": "snapshot_file_6",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# Development with devcontainer\n\nThis project includes a devcontainer configuration that allows you to open the project in a container with a fully configured development environment.\nBoth frontend and backend environments are initialized when the container is started.\n\n## GitHub Codespaces\n\n[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/langgenius/dify)\n\nyou can simply click the button above to open this project in GitHub Codespaces.\n\nFor more info, check out the [GitHub documentation](https://docs.github.com/en/free-pro-team@latest/github/developing-online-with-codespaces/creating-a-codespace#creating-a-codespace).\n\n## VS Code Dev Containers\n\n[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=[repository])\n\nif you have VS Code installed, you can click the button above to open this project in VS Code Dev Containers.\n\nYou can learn more in the [Dev Containers documentation](https://code.visualstudio.com/docs/devcontainers/containers).\n\n## Pros of Devcontainer\n\nUnified Development Environment: By using devcontainers, you can ensure that all developers are developing in the same environment, reducing the occurrence of \"it works on my machine\" type of issues.\n\nQuick Start: New developers can set up their development environment in a few simple steps, without spending a lot of time on environment configuration.\n\nIsolation: Devcontainers isolate your project from your host operating system, reducing the chance of OS updates or other application installations impacting the development environment.\n\n## Cons of Devcontainer\n\nLearning Curve: For developers unfamiliar with Docker and VS Code, using devcontainers may be somewhat complex.\n\nPerformance Impact: While usually minimal, programs running inside a devcontainer may be slightly sl",
+      "file_alias": "snapshot_file_7",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# Debugging with VS Code\n\nThis `launch.json.template` file provides various debug configurations for the Dify project within VS Code / Cursor. To use these configurations, you should copy the contents of this file into a new file named `launch.json` in the same `.vscode` directory.\n\n## How to Use\n\n1. **Create `launch.json`**: If you don't have one, create a file named `launch.json` inside the `.vscode` directory.\n1. **Copy Content**: Copy the entire content from `launch.json.template` into your newly created `launch.json` file.\n1. **Select Debug Configuration**: Go to the Run and Debug view in VS Code / Cursor (Ctrl+Shift+D or Cmd+Shift+D).\n1. **Start Debugging**: Select the desired configuration from the dropdown menu and click the green play button.\n\n## Tips\n\n- If you need to debug with Edge browser instead of Chrome, modify the `serverReadyAction` configuration in the \"Next.js: debug full stack\" section, change `\"debugWithChrome\"` to `\"debugWithEdge\"` to use Microsoft Edge for debugging.\n",
+      "file_alias": "snapshot_file_8",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# [[INSTRUCTION]]\n\n## Project Overview\n\nDify is an open-source platform for developing LLM applications with an intuitive interface combining agentic AI workflows, RAG pipelines, agent capabilities, and model management.\n\nThe codebase is split into:\n\n- **Backend API** (`/api`): Python Flask application organized with Domain-Driven Design\n- **Frontend Web** (`/web`): Next.js application using TypeScript and React\n- **Docker deployment** (`/docker`): Containerized deployment configurations\n\n## Backend Workflow\n\n- Read `api/[[INSTRUCTION]]` for details\n- Run backend CLI commands through `uv run --project api <command>`.\n- Integration tests are CI-only and are not expected to run in the local environment.\n\n## Frontend Workflow\n\n- Read `web/[[INSTRUCTION]]` for details\n\n## Testing & Quality Practices\n\n- Follow TDD: red \u2192 green \u2192 refactor.\n- Use `pytest` for backend tests with Arrange-Act-Assert structure.\n- Enforce strong typing; avoid `Any` and prefer explicit type annotations.\n- Write self-documenting code; only add comments that explain intent.\n\n## Language Style\n\n- **Python**: Keep type hints on functions and attributes, and implement relevant special methods (e.g., `__repr__`, `__str__`). Prefer `TypedDict` over `dict` or `Mapping` for type safety and better code documentation.\n- **TypeScript**: Use the strict config, rely on ESLint (`pnpm lint:fix` preferred) plus `pnpm type-check:tsgo`, and avoid `any` types.\n\n## General Practices\n\n- Prefer editing existing files; add new documentation only when requested.\n- Inject dependencies through constructors and preserve clean architecture boundaries.\n- Handle errors with domain-specific exceptions at the correct layer.\n\n## Project Conventions\n\n- Backend architecture adheres to DDD and Clean Architecture principles.\n- Async work runs through Celery with Redis as the broker.\n- Frontend user-facing strings must use `web/i18n/en-US/`; avoid hardcoded text.\n",
+      "file_alias": "snapshot_file_9",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "interface:\n  display_name: \"Frontend Query & Mutation\"\n  short_description: \"Dify TanStack Query and oRPC patterns\"\n  default_prompt: \"Use this skill when implementing or reviewing Dify frontend contracts, query and mutation call sites, conditional queries, invalidation, or legacy query/mutation migrations.\"\n",
+      "file_alias": "snapshot_file_10",
+      "role": "pinned_snapshot_excerpt"
+    }
+  ],
+  "task_brief": "Engineering task (derived only from the pinned instruction text and snapshot signals):\n\nDocument title: E2E. Instruction overview: This package contains the repository-level end-to-end tests for Dify. Key instruction points: - backend API started from source - frontend served from the production artifact - middleware services started from Docker - if `web/.next/BUILD_ID` exists, E2E reuses the existing build by default - if you set `E2E_FORCE_WEB_BUILD=1`, E2E rebuilds the frontend before starting it - `scripts/setup.ts` is the single environment entrypoint for reset, middleware, backend, and frontend startup - `run-cucumber.ts` orchestrates the E2E run and Cucumber invocation - `support/web-server.ts` manages frontend reuse, startup, readiness, and shutdown\n\nWhile performing this work, the instruction cites Referenced artifact R1. Your annotation question is whether that cited artifact is materially necessary for completing this task in the provided snapshot.\n\nVerification command observed in the pinned repository manifests: `make test`. Use this only as a snapshot signal of how the project checks work; do not assume other commands.",
+  "task_brief_source": "h1_title,paragraph,bullets",
+  "verification_command_observed": "make test",
+  "verification_evidence": "Makefile target test"
 }

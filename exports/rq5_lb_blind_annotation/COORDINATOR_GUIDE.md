@@ -3,7 +3,11 @@
 This file is **not** part of the annotator distribution.
 Distribute only `human_annotation_kit/` (or a ZIP of that directory).
 
-Protocol: `RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c`
+Protocol: `RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c`  
+Packet spec: `rq5_v1_blind_packet_spec_v2` (see `PACKET_SPEC_V2.md`, `PACKET_REDESIGN_V2.md`)
+
+Distribute **only eligible packets** already placed in the kit (`PACKETS/`).
+Excluded cases are listed in `exclusions.csv` and must not be annotated under this wave.
 
 ## Distribute
 

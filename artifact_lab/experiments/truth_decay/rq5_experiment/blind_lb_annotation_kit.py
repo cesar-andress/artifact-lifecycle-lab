@@ -28,15 +28,26 @@ PROTOCOL_VERSION = "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c"
 ALLOWED_PACKET_KEYS = frozenset(
     {
         "anonymous_snapshot_id",
+        "annotator_question",
         "artifact_role_description",
         "instruction_citation_excerpts",
+        "instruction_language_original",
+        "instruction_provided_in",
+        "nearby_configuration_paths",
+        "nearby_documentation_paths",
+        "neighbor_paths",
         "neutral_id",
+        "packet_spec_version",
         "path_policy",
         "protocol_version",
         "reference_type",
         "referenced_artifact_alias",
         "repository_tree_excerpt",
+        "snapshot_file_excerpts",
         "task_brief",
+        "task_brief_source",
+        "verification_command_observed",
+        "verification_evidence",
     }
 )
 FORM_COLUMNS = [
@@ -649,12 +660,9 @@ def build_packet_index(
             el = eligibility.get(nid, {})
             status = el.get("eligibility_status", "unknown")
             note = el.get("reason_code", "")
-            if status == "requires_manual_packet_review":
-                notes = (
-                    f"{note}; coordinator flagged for human QA of task-brief sufficiency"
-                )
-            else:
-                notes = note
+            notes = note or ""
+            if status != "eligible":
+                notes = f"{notes}; not in distribution set" if notes else "not in distribution set"
             w.writerow(
                 {
                     "neutral_id": nid,
@@ -687,14 +695,16 @@ def qa_packet(packet_dir: Path, *, generated_at: str) -> dict[str, Any]:
     if js.exists():
         packet_obj = json.loads(js.read_text(encoding="utf-8"))
         keys = set(packet_obj.keys())
-        if keys <= ALLOWED_PACKET_KEYS and "neutral_id" in keys:
+        unexpected = keys - ALLOWED_PACKET_KEYS
+        required = {"neutral_id", "task_brief", "instruction_citation_excerpts", "annotator_question"}
+        if not unexpected and required <= keys:
             schema_valid = True
         else:
-            issues.append(
-                f"unexpected_or_missing_keys:{sorted(keys - ALLOWED_PACKET_KEYS)}"
-            )
-            if "neutral_id" not in keys:
-                issues.append("missing_neutral_id")
+            if unexpected:
+                issues.append(f"unexpected_keys:{sorted(unexpected)}")
+            missing = required - keys
+            if missing:
+                issues.append(f"missing_keys:{sorted(missing)}")
         for k in keys:
             kl = k.lower()
             for bad in KIT_FORBIDDEN_EXTRA:

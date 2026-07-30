@@ -1,14 +1,160 @@
 {
+  "annotator_question": "Is Referenced artifact R1 materially necessary for completing THIS software engineering task in THIS repository snapshot?",
   "anonymous_snapshot_id": "73cd71803e2ed400",
-  "artifact_role_description": "Referenced artifact R1 denotes a file path cited by the project instruction text. Its identity is withheld as a path string so treatment assignment cannot be inferred. The instruction context around the citation is provided below with the path replaced by [[REF]].",
+  "artifact_role_description": "Referenced artifact R1 is a repository artifact cited by the project instruction text (reference kind: path). Its literal path string is withheld and shown as [[REF]] so treatment assignment cannot be inferred from path identity. Use the citation excerpts, task brief, and snapshot context below to judge relevance and necessity.",
   "instruction_citation_excerpts": [
-    "| guide     | `src/commands/**/<cmd>[[REF]]` | Per-command agent guide string. Export `agentGuide`, assign `static agentGuide = agentGuide` in command class. Surfaced via `--help`. |"
+    "| --------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |\n| commands  | `src/commands/`                  | Command class shells (extend `DifyCommand`). Only place framework imports run.                                                        |\n| domain    | `src/run/`, `src/get/`, etc.     | Plain TS modules. Take typed deps via options. Testable without the framework.                                                        |\n| api       | `src/api/`                       | One typed client per resource. Each takes `KyInstance`.                                                                               |\n| http      | `src/http/`                      | `createClient` + middleware (auth, retry, logging, error mapping). Only place ky runs.                                                |\n| io        | `src/io/`                        | Streams + spinner. Fence between data-out and progress UI.                                                                            |\n| printers  | `src/printers/`                  | `CompositePrintFlags` + `-o {json,yaml,name,wide,text}` matrix.                                                                       |\n| errors    | `src/errors/`                    | `BaseError`, `ErrorCode` enum, `ExitCode` enum, dispatch table, `formatErrorForCli`.                                                  |\n| guide     | `[[REF]]` | Per-command agent guide string. Export `agentGuide`, assign `static agentGuide = agentGuide` in command class. Surfaced via `--help`. |\n| cache     | `src/cache/`                     | On-disk caches (app-info, etc.).                                                      "
+  ],
+  "instruction_language_original": "en",
+  "instruction_provided_in": "en",
+  "nearby_configuration_paths": [
+    ".agents/skills/e2e-cucumber-playwright/agents/openai.yaml",
+    ".claude/settings.json",
+    ".devcontainer/Dockerfile",
+    ".devcontainer/devcontainer.json",
+    ".gemini/config.yaml",
+    ".github/DISCUSSION_TEMPLATE/general.yml",
+    ".github/DISCUSSION_TEMPLATE/help.yml",
+    ".github/DISCUSSION_TEMPLATE/suggestion.yml",
+    ".github/ISSUE_TEMPLATE/bug_report.yml",
+    ".github/ISSUE_TEMPLATE/config.yml"
+  ],
+  "nearby_documentation_paths": [
+    ".devcontainer/README.md",
+    ".vscode/README.md",
+    "[[INSTRUCTION]]",
+    "CLAUDE.md",
+    "CONTRIBUTING.md",
+    "Makefile",
+    "README.md",
+    "api/[[INSTRUCTION]]",
+    "api/README.md",
+    "api/enterprise/telemetry/README.md"
+  ],
+  "neighbor_paths": [
+    "cli/.gitignore",
+    "cli/ARD.md",
+    "cli/README.md",
+    "cli/package.json",
+    "cli/tsconfig.json",
+    "cli/vite.config.ts"
   ],
   "neutral_id": "b6f1d2c6e3328de2",
-  "path_policy": "Manipulated and experimental path strings are withheld. Citations use [[REF]] / Referenced artifact R1 so treatment assignment cannot be read from path identity.",
+  "packet_spec_version": "rq5_v1_blind_packet_spec_v2",
+  "path_policy": "Path identity for the cited artifact and for contrast-only manipulated paths is replaced by [[REF]] using semantic whole-path tokenization (not substring replacement). Other snapshot paths may appear when they do not reveal treatment assignment. Do not infer experimental treatment from path placeholders.",
   "protocol_version": "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c",
   "reference_type": "path",
   "referenced_artifact_alias": "Referenced artifact R1",
-  "repository_tree_excerpt": "A full repository tree excerpt is not included in this offline packet build. Judge from the task brief and the instruction citation context only.",
-  "task_brief": "Complete a small, bounded change in the pinned repository snapshot so that the project test command `pytest` passes. Use only files present in the snapshot. Judge whether Referenced artifact R1 is materially necessary for that task."
+  "repository_tree_excerpt": [
+    ".agents/skills/backend-code-review/SKILL.md",
+    ".agents/skills/backend-code-review/references/architecture-rule.md",
+    ".agents/skills/backend-code-review/references/db-schema-rule.md",
+    ".agents/skills/backend-code-review/references/repositories-rule.md",
+    ".agents/skills/backend-code-review/references/sqlalchemy-rule.md",
+    ".agents/skills/component-refactoring/SKILL.md",
+    ".agents/skills/component-refactoring/references/complexity-patterns.md",
+    ".agents/skills/component-refactoring/references/component-splitting.md",
+    ".agents/skills/component-refactoring/references/hook-extraction.md",
+    ".agents/skills/e2e-cucumber-playwright/SKILL.md",
+    ".agents/skills/e2e-cucumber-playwright/agents/openai.yaml",
+    ".agents/skills/e2e-cucumber-playwright/references/cucumber-best-practices.md",
+    ".agents/skills/e2e-cucumber-playwright/references/playwright-best-practices.md",
+    ".agents/skills/frontend-code-review/SKILL.md",
+    ".agents/skills/frontend-code-review/references/business-logic.md",
+    ".agents/skills/frontend-code-review/references/code-quality.md",
+    ".agents/skills/frontend-code-review/references/performance.md",
+    ".agents/skills/frontend-testing/SKILL.md",
+    ".agents/skills/frontend-testing/assets/component-test.template.tsx",
+    ".agents/skills/frontend-testing/assets/hook-test.template.ts",
+    ".agents/skills/frontend-testing/assets/utility-test.template.ts",
+    ".agents/skills/frontend-testing/references/async-testing.md",
+    ".agents/skills/frontend-testing/references/checklist.md",
+    ".agents/skills/frontend-testing/references/common-patterns.md",
+    ".agents/skills/frontend-testing/references/domain-components.md",
+    ".agents/skills/frontend-testing/references/mocking.md",
+    ".agents/skills/frontend-testing/references/workflow.md",
+    ".agents/skills/how-to-write-component/SKILL.md",
+    ".claude/settings.json",
+    ".claude/skills/backend-code-review",
+    ".claude/skills/component-refactoring",
+    ".claude/skills/e2e-cucumber-playwright",
+    ".claude/skills/frontend-code-review",
+    ".claude/skills/frontend-query-mutation",
+    ".claude/skills/frontend-testing",
+    ".codex",
+    ".coveragerc",
+    ".devcontainer/Dockerfile",
+    ".devcontainer/README.md",
+    ".devcontainer/devcontainer.json",
+    ".devcontainer/noop.txt",
+    ".devcontainer/post_create_command.sh",
+    ".devcontainer/post_start_command.sh",
+    ".devcontainer/troubleshooting.png",
+    ".dockerignore",
+    ".editorconfig",
+    ".gemini/config.yaml",
+    "cli/.gitignore",
+    "[[REF]]",
+    "cli/ARD.md",
+    "cli/README.md",
+    "cli/package.json",
+    "cli/tsconfig.json",
+    "cli/vite.config.ts"
+  ],
+  "snapshot_file_excerpts": [
+    {
+      "content": "# [[INSTRUCTION]] \u2014 difyctl (TypeScript CLI)\n\nTypeScript port of difyctl. Stack: custom CLI framework (`src/framework/`), Node 22+, ESM, ky for HTTP, vitest, eslint via @antfu/eslint-config.\n\n> Architecture patterns, scaffolding recipe, printer chain, strategy pattern, testing conventions, anti-patterns: see **[`ARD.md`]**.\n\n## Code rules\n\n- **Spaces, not tabs.**\n- **Minimum comments.** Code speak for self. Comment only non-obvious WHY \u2014 hidden constraints, subtle invariants, bug-workaround notes. Never restate code. Never reference tasks, PRs, current callers.\n- **No magic strings or numbers.** Enums or named constants for bounded value sets.\n- **No long positional arg lists.** Use options objects.\n- **No long if/switch ladders on discriminator.** Polymorphism, dispatch tables, or strategy pattern. Name concept, let implementations plug in.\n- **No `any`. No `unknown` outside genuine wire boundaries** (HTTP body parse, env vars). Narrow types everywhere else.\n- **Avoid `!` non-null assertions.** Narrow instead.\n- **`readonly` on inputs not mutated.**\n- **Discriminated unions** for variant data (SSE events, run outputs, error shapes), not optional-field bags.\n- **No backwards-compat shims.** No re-exports of old names, no `// removed:` markers, no deprecation notes. Delete, update callers.\n- **No new dependencies without explicit approval.**\n- **No CLI behavior changes in refactor commit.** Same flags, same output, same exit codes.\n- **Every leaf command extends `DifyCommand`.** Add `static agentGuide` string when command benefits from agent workflow docs \u2014 see `src/commands/[[INSTRUCTION]]`.\n\n## Layering\n\n| Layer     | Path                             | Role                                                                                                                                  |\n| --------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |\n| command",
+      "file_alias": "snapshot_file_1",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "dist/\ncoverage/\nnode_modules/\n*.tsbuildinfo\n.vitest-cache/\ndocs/specs/\ncontext/",
+      "file_alias": "snapshot_file_2",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# ARD \u2014 Architecture & Design Reference\n\nOnboarding ref for `dify/cli/` contributors. Cover canonical patterns, layer contracts, scaffolding recipe, dev workflow, anti-patterns. Read before adding command or touching shared infra.\n\nSpec authority: [`docs/specs/`]. Specs own HTTP wire shape + server behavior; this file owns CLI code structure.\n\n---\n\n## Project layout\n\n```\nsrc/\n  commands/          one folder per command leaf\n  api/               HTTP client wrappers (one file per resource)\n  auth/              hosts.yml read/write\n  cache/             app-info cache\n  config/            config.yml read/write\n  errors/            BaseError, ErrorCode, exit codes\n  http/              ky client factory + middleware\n  io/                IOStreams, spinner, printer chain\n  limit/             --limit flag parsing\n  types/             shared TypeScript types\n  util/              small pure helpers\n  workspace/         workspace ID resolution\n```\n\n---\n\n## New command scaffold\n\nRecipe for adding command leaf. Follow order.\n\n**1. Create folder**\n\n```\nsrc/commands/<topic>/<verb>/\n```\n\nExamples: `get/app/`, `auth/devices/revoke/`, `describe/app/`.\n\n**2. Mandatory files**\n\n| File       | Responsibility                                                                          |\n| ---------- | --------------------------------------------------------------------------------------- |\n| `index.ts` | `DifyCommand` subclass. Flag/arg declaration + `run()` wiring only. No business logic.  |\n| `run.ts`   | Pure async function. Typed options + deps. Returns string. No `src/framework/` imports. |\n\n**3. Optional files \u2014 add as needed**\n\n| File               | Purpose                                             |\n| ------------------ | --------------------------------------------------- |\n| `handlers.ts`      | Output format handlers (text, table, etc.)          |\n| `print-flags.ts`   | `--output` flag \u2192 printer resolution                |\n| `payload-shape.ts` | Response type narrowing/transfo",
+      "file_alias": "snapshot_file_3",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# difyctl\n\nCLI client for [Dify] platform. Browser device-flow signin, list/inspect apps, run with structured input, parse output as JSON, YAML, or human text.\n\n## Install\n\nBuilds are standalone binaries (Bun-compiled) published as **GitHub Actions workflow artifacts** \u2014 no npm, no GitHub Release assets. The installer fetches the latest successful `cli-release.yml` run on `main`, verifies sha256, and copies the binary into `$HOME/.local/bin/difyctl`.\n\n```sh\n# GH_TOKEN with `actions:read` scope is required \u2014 workflow artifact downloads\n# need auth even on public repos.\nexport GH_TOKEN=<your-pat>\ncurl -fsSL https://raw.githubusercontent.com/langgenius/dify/main/cli/scripts/install-cli.sh | sh\n```\n\n| Env              | Default           | Purpose                                               |\n| ---------------- | ----------------- | ----------------------------------------------------- |\n| `GH_TOKEN`       | \u2014                 | GitHub PAT (or `GITHUB_TOKEN`) with `actions:read`.   |\n| `DIFYCTL_PREFIX` | `$HOME/.local`    | Install root. Binary lands at `<prefix>/bin/difyctl`. |\n| `DIFYCTL_REPO`   | `langgenius/dify` | Source repo.                                          |\n| `DIFYCTL_BRANCH` | `main`            | Branch to pick the latest successful run from.        |\n\nSupported targets: `darwin-arm64`, `darwin-x64`, `linux-arm64`, `linux-x64`, `windows-x64.exe`. The shell installer covers Linux + macOS; Windows users can download the `.exe` directly from the same artifact.\n\n## Quickstart\n\n```sh\ndifyctl auth login                                       # opens browser; paste the device code shown\ndifyctl get app                                          # list apps in default workspace\ndifyctl describe app <app-id>                            # inspect parameters\ndifyctl run app <app-id> \"hello\"                         # run, blocking\ndifyctl run app <app-id> \"hello\" -o json | jq .answer    # JSON output\ndifyctl run app <app-id> --input name=world --input topic=cats   # ",
+      "file_alias": "snapshot_file_4",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "{\n  \"name\": \"@langgenius/difyctl\",\n  \"type\": \"module\",\n  \"version\": \"0.1.0-rc.1\",\n  \"description\": \"Dify command-line interface\",\n  \"difyctl\": {\n    \"channel\": \"rc\",\n    \"compat\": {\n      \"minDify\": \"1.14.0\",\n      \"maxDify\": \"1.15.0\"\n    }\n  },\n  \"license\": \"Apache-2.0\",\n  \"exports\": {\n    \".\": {\n      \"types\": \"./dist/index.d.ts\",\n      \"import\": \"./dist/index.js\"\n    }\n  },\n  \"files\": [\n    \"README.md\",\n    \"bin\",\n    \"dist\"\n  ],\n  \"engines\": {\n    \"node\": \"^22.22.1\"\n  },\n  \"scripts\": {\n    \"build\": \"vp pack\",\n    \"dev\": \"bun bin/dev.js\",\n    \"test\": \"vp test\",\n    \"test:coverage\": \"vp test --coverage\",\n    \"lint\": \"eslint\",\n    \"lint:fix\": \"eslint --fix\",\n    \"type-check\": \"tsc\",\n    \"tree:gen\": \"bun scripts/generate-command-tree.ts\",\n    \"tree:check\": \"bun scripts/generate-command-tree.ts --check\",\n    \"prebuild\": \"pnpm tree:gen\",\n    \"predev\": \"pnpm tree:gen\",\n    \"pretest\": \"pnpm tree:gen\",\n    \"ci\": \"pnpm tree:check && pnpm type-check && pnpm lint && pnpm test:coverage && pnpm build\",\n    \"clean\": \"rm -rf dist node_modules/.cache\",\n    \"version:info\": \"bun scripts/print-buildinfo.ts\",\n    \"build:bin\": \"scripts/release-build.sh\"\n  },\n  \"dependencies\": {\n    \"@dify/contracts\": \"workspace:*\",\n    \"@napi-rs/keyring\": \"catalog:\",\n    \"cli-table3\": \"catalog:\",\n    \"eventsource-parser\": \"catalog:\",\n    \"js-yaml\": \"catalog:\",\n    \"ky\": \"catalog:\",\n    \"lockfile\": \"catalog:\",\n    \"open\": \"catalog:\",\n    \"ora\": \"catalog:\",\n    \"picocolors\": \"catalog:\",\n    \"std-semver\": \"catalog:\",\n    \"zod\": \"catalog:\"\n  },\n  \"devDependencies\": {\n    \"@dify/tsconfig\": \"workspace:*\",\n    \"@hono/node-server\": \"catalog:\",\n    \"@types/js-yaml\": \"catalog:\",\n    \"@types/lockfile\": \"catalog:\",\n    \"@types/node\": \"catalog:\",\n    \"@vitest/coverage-v8\": \"catalog:\",\n    \"eslint\": \"catalog:\",\n    \"hono\": \"catalog:\",\n    \"typescript\": \"catalog:\",\n    \"vite\": \"catalog:\",\n    \"vite-plus\": \"catalog:\",\n    \"vitest\": \"catalog:\"\n  }\n}\n",
+      "file_alias": "snapshot_file_5",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "{\n  \"extends\": \"@dify/tsconfig/node.json\",\n  \"compilerOptions\": {\n    \"rootDir\": \"src\",\n    \"paths\": {\n      \"@/*\": [\n        \"./*\"\n      ],\n      \"~@/*\": [\n        \"./*\"\n      ]\n    },\n    \"types\": [\"node\"],\n    \"declaration\": true,\n    \"declarationMap\": true,\n    \"noEmit\": false,\n    \"outDir\": \"dist\",\n    \"sourceMap\": true\n  },\n  \"include\": [\"src/**/*.ts\"],\n  \"exclude\": [\"node_modules\", \"**/*.test.ts\"]\n}\n",
+      "file_alias": "snapshot_file_6",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# Development with devcontainer\n\nThis project includes a devcontainer configuration that allows you to open the project in a container with a fully configured development environment.\nBoth frontend and backend environments are initialized when the container is started.\n\n## GitHub Codespaces\n\n[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/langgenius/dify)\n\nyou can simply click the button above to open this project in GitHub Codespaces.\n\nFor more info, check out the [GitHub documentation](https://docs.github.com/en/free-pro-team@latest/github/developing-online-with-codespaces/creating-a-codespace#creating-a-codespace).\n\n## VS Code Dev Containers\n\n[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=[repository])\n\nif you have VS Code installed, you can click the button above to open this project in VS Code Dev Containers.\n\nYou can learn more in the [Dev Containers documentation](https://code.visualstudio.com/docs/devcontainers/containers).\n\n## Pros of Devcontainer\n\nUnified Development Environment: By using devcontainers, you can ensure that all developers are developing in the same environment, reducing the occurrence of \"it works on my machine\" type of issues.\n\nQuick Start: New developers can set up their development environment in a few simple steps, without spending a lot of time on environment configuration.\n\nIsolation: Devcontainers isolate your project from your host operating system, reducing the chance of OS updates or other application installations impacting the development environment.\n\n## Cons of Devcontainer\n\nLearning Curve: For developers unfamiliar with Docker and VS Code, using devcontainers may be somewhat complex.\n\nPerformance Impact: While usually minimal, programs running inside a devcontainer may be slightly sl",
+      "file_alias": "snapshot_file_7",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# Debugging with VS Code\n\nThis `launch.json.template` file provides various debug configurations for the Dify project within VS Code / Cursor. To use these configurations, you should copy the contents of this file into a new file named `launch.json` in the same `.vscode` directory.\n\n## How to Use\n\n1. **Create `launch.json`**: If you don't have one, create a file named `launch.json` inside the `.vscode` directory.\n1. **Copy Content**: Copy the entire content from `launch.json.template` into your newly created `launch.json` file.\n1. **Select Debug Configuration**: Go to the Run and Debug view in VS Code / Cursor (Ctrl+Shift+D or Cmd+Shift+D).\n1. **Start Debugging**: Select the desired configuration from the dropdown menu and click the green play button.\n\n## Tips\n\n- If you need to debug with Edge browser instead of Chrome, modify the `serverReadyAction` configuration in the \"Next.js: debug full stack\" section, change `\"debugWithChrome\"` to `\"debugWithEdge\"` to use Microsoft Edge for debugging.\n",
+      "file_alias": "snapshot_file_8",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# [[INSTRUCTION]]\n\n## Project Overview\n\nDify is an open-source platform for developing LLM applications with an intuitive interface combining agentic AI workflows, RAG pipelines, agent capabilities, and model management.\n\nThe codebase is split into:\n\n- **Backend API** (`/api`): Python Flask application organized with Domain-Driven Design\n- **Frontend Web** (`/web`): Next.js application using TypeScript and React\n- **Docker deployment** (`/docker`): Containerized deployment configurations\n- **Dify Agent Backend** (`/dify-agent`): Backend services for managing and executing agent\n\n## Backend Workflow\n\n- Read `api/[[INSTRUCTION]]` for details\n- Run backend CLI commands through `uv run --project api <command>`.\n- Integration tests are CI-only and are not expected to run in the local environment.\n\n## Frontend Workflow\n\n- Read `web/[[INSTRUCTION]]` for details\n\n## Testing & Quality Practices\n\n- Follow TDD: red \u2192 green \u2192 refactor.\n- Use `pytest` for backend tests with Arrange-Act-Assert structure.\n- Enforce strong typing; avoid `Any` and prefer explicit type annotations.\n- Write self-documenting code; only add comments that explain intent.\n\n## Language Style\n\n- **Python**: Keep type hints on functions and attributes, and implement relevant special methods (e.g., `__repr__`, `__str__`). Prefer `TypedDict` over `dict` or `Mapping` for type safety and better code documentation.\n- **TypeScript**: Use the strict config, rely on ESLint (`pnpm lint:fix` preferred) plus `pnpm type-check`, and avoid `any` types.\n\n## General Practices\n\n- Prefer editing existing files; add new documentation only when requested.\n- Inject dependencies through constructors and preserve clean architecture boundaries.\n- Handle errors with domain-specific exceptions at the correct layer.\n\n## Project Conventions\n\n- Backend architecture adheres to DDD and Clean Architecture principles.\n- Async work runs through Celery with Redis as the broker.\n- Frontend user-facing strings must use `web/i18n/en-US/`; avoid hardcoded text.\n",
+      "file_alias": "snapshot_file_9",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "interface:\n  display_name: \"E2E Cucumber + Playwright\"\n  short_description: \"Write and review Dify E2E scenarios.\"\n  default_prompt: \"Use $e2e-cucumber-playwright to write or review a Dify E2E scenario under e2e/.\"\n",
+      "file_alias": "snapshot_file_10",
+      "role": "pinned_snapshot_excerpt"
+    }
+  ],
+  "task_brief": "Engineering task (derived only from the pinned instruction text and snapshot signals):\n\nDocument title: [[INSTRUCTION]] \u2014 difyctl (TypeScript CLI). Instruction overview: TypeScript port of difyctl. Stack: custom CLI framework (`src/framework/`), Node 22+, ESM, ky for HTTP, vitest, eslint via @antfu/eslint-config.\n\nWhile performing this work, the instruction cites Referenced artifact R1. Your annotation question is whether that cited artifact is materially necessary for completing this task in the provided snapshot.\n\nVerification command observed in the pinned repository manifests: `npm run lint`. Use this only as a snapshot signal of how the project checks work; do not assume other commands.",
+  "task_brief_source": "h1_title,paragraph",
+  "verification_command_observed": "npm run lint",
+  "verification_evidence": "package.json scripts.lint"
 }

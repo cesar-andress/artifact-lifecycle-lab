@@ -1,0 +1,12 @@
+neutral_id,eligibility_status,reason_code,explanation
+edc493748044c205,not_safe_for_blinding,leakage_or_absence_risk,"Refused emit; scan hits: banned_path:@automattic/grid, raw_anchor_present"
+4b9a3c6654895937,not_safe_for_blinding,leakage_or_absence_risk,"Refused emit; scan hits: banned_path:/route.ts, raw_anchor_present"
+930e6bd912075b0c,not_safe_for_blinding,leakage_or_absence_risk,"Refused emit; scan hits: banned_path:@copilotkit/react, raw_anchor_present"
+091eb6d22fc90585,task_not_separable,could_not_extract_task_purpose,Could not derive a concrete engineering task brief from the pinned instruction.
+faa505ff151a1867,non_software_repository,not_software_repository,"Pinned tree lacks sufficient source/manifest signals of a software repository; signals=['manifest_or_doc:agents.md', 'manifest_or_doc:claude.md', 'manifest_or_doc:readme.md', 'markdown_heavy:md=9,source=2']"
+cbea9e122bb3ae2f,not_safe_for_blinding,unsafe_path_residual,"Could not fully redact path identity without leakage: ['vs/sessions', 'vs/sessions']"
+f3100b00298d1424,insufficient_pre_treatment_context,anchor_not_in_instruction_blob,Anchor citation not found in the sanitized instruction source.
+80994240f7b369b7,not_safe_for_blinding,unsafe_path_residual,"Could not fully redact path identity without leakage: ['/__init__.py', '/__init__.py']"
+51fc8d1a5d5767b4,insufficient_pre_treatment_context,anchor_not_in_instruction_blob,Anchor citation not found in the sanitized instruction source.
+fa72bc285f4b7183,not_safe_for_blinding,leakage_or_absence_risk,Refused emit; scan hits: banned_path:api/
+fc56ab50ea68a616,task_not_separable,could_not_extract_task_purpose,Could not derive a concrete engineering task brief from the pinned instruction.

@@ -1,14 +1,168 @@
 {
+  "annotator_question": "Is Referenced artifact R1 materially necessary for completing THIS software engineering task in THIS repository snapshot?",
   "anonymous_snapshot_id": "b8faa07291c6c05b",
-  "artifact_role_description": "Referenced artifact R1 denotes a file path cited by the project instruction text. Its identity is withheld as a path string so treatment assignment cannot be inferred. The instruction context around the citation is provided below with the path replaced by [[REF]].",
+  "artifact_role_description": "Referenced artifact R1 is a repository artifact cited by the project instruction text (reference kind: path). Its literal path string is withheld and shown as [[REF]] so treatment assignment cannot be inferred from path identity. Use the citation excerpts, task brief, and snapshot context below to judge relevance and necessity.",
   "instruction_citation_excerpts": [
-    "- `[[REF]]` \u2014 Automation action types (`RunDeployment`, `PauseDeployment`, `SendNotification`, etc.)"
+    "- Automations combine triggers (event, metric, compound, sequence) with actions.\n- `DeploymentTriggerTypes` are the subset of triggers usable in `prefect.yaml` deployment definitions.\n\n## Structure\n\n- `schemas/` \u2014 Pydantic models: `Event`, `Resource`, `RelatedResource`, `Automation`, triggers, deployment triggers\n- `clients.py` \u2014 Event emission client (sends events to server/Cloud)\n- `subscribers.py` \u2014 WebSocket subscribers for real-time event streams\n- `[[REF]]` \u2014 Automation action types (`RunDeployment`, `PauseDeployment`, `SendNotification`, etc.)\n- `worker.py` \u2014 Background event emission worker\n- `filters.py` \u2014 Event query filters\n- `related.py` \u2014 Related resource resolution\n\n## Client vs Server\n\n| Concern | Client (`events/`) | Server (`server/events/`) |\n|---------|-------------------|--------------------------|"
+  ],
+  "instruction_language_original": "en",
+  "instruction_provided_in": "en",
+  "nearby_configuration_paths": [
+    ".claude/settings.json",
+    ".github/ISSUE_TEMPLATE/1_bug_report.yaml",
+    ".github/ISSUE_TEMPLATE/2_feature_enhancement.yaml",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    ".github/codeql-config.yml",
+    ".github/dependabot.yml",
+    ".github/labeler.yml",
+    ".github/pyrightconfig-ci.json",
+    ".github/release.yml",
+    ".github/workflows/api-compatibility-tests.yaml"
+  ],
+  "nearby_documentation_paths": [
+    ".github/CONTRIBUTING.md",
+    "[[INSTRUCTION]]",
+    "README.md",
+    "benches/README.md",
+    "client/[[INSTRUCTION]]",
+    "client/README.md",
+    "client/pyproject.toml",
+    "docs/[[INSTRUCTION]]",
+    "load_testing/README.md",
+    "load_testing/local-telemetry/README.md"
+  ],
+  "neighbor_paths": [
+    "src/prefect/events/__init__.py",
+    "src/prefect/events/actions.py",
+    "src/prefect/events/clients.py",
+    "src/prefect/events/filters.py",
+    "src/prefect/events/related.py",
+    "src/prefect/events/subscribers.py",
+    "src/prefect/events/utilities.py",
+    "src/prefect/events/worker.py"
   ],
   "neutral_id": "34d09fe81bbd05ea",
-  "path_policy": "Manipulated and experimental path strings are withheld. Citations use [[REF]] / Referenced artifact R1 so treatment assignment cannot be read from path identity.",
+  "packet_spec_version": "rq5_v1_blind_packet_spec_v2",
+  "path_policy": "Path identity for the cited artifact and for contrast-only manipulated paths is replaced by [[REF]] using semantic whole-path tokenization (not substring replacement). Other snapshot paths may appear when they do not reveal treatment assignment. Do not infer experimental treatment from path placeholders.",
   "protocol_version": "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c",
   "reference_type": "path",
   "referenced_artifact_alias": "Referenced artifact R1",
-  "repository_tree_excerpt": "A full repository tree excerpt is not included in this offline packet build. Judge from the task brief and the instruction citation context only.",
-  "task_brief": "Complete a small, bounded change in the pinned repository snapshot so that the project test command `pytest` passes. Use only files present in the snapshot. Judge whether Referenced artifact R1 is materially necessary for that task."
+  "repository_tree_excerpt": [
+    ".claude/commands/repro.md",
+    ".claude/hooks/symlink-agents-to-claude.sh",
+    ".claude/settings.json",
+    ".claude/skills/agents-md-sync/SKILL.md",
+    ".claude/skills/backlog-management/SKILL.md",
+    ".claude/skills/write-docs/SKILL.md",
+    ".claude/skills/write-docs/template-concept.mdx",
+    ".claude/skills/write-docs/template-howto.mdx",
+    ".dockerignore",
+    ".github/CODEOWNERS",
+    ".github/CONTRIBUTING.md",
+    ".github/ISSUE_TEMPLATE/1_bug_report.yaml",
+    ".github/ISSUE_TEMPLATE/2_feature_enhancement.yaml",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    ".github/codeql-config.yml",
+    ".github/dependabot.yml",
+    ".github/docker/old-sqlite.Dockerfile",
+    ".github/labeler.yml",
+    ".github/pull_request_template.md",
+    ".github/pyrightconfig-ci.json",
+    ".github/release.yml",
+    ".github/workflows/api-compatibility-tests.yaml",
+    ".github/workflows/benchmarks.yaml",
+    ".github/workflows/claude.yml",
+    ".github/workflows/codeql-analysis.yml",
+    ".github/workflows/codspeed-benchmarks.yaml",
+    ".github/workflows/copy-linked-issue-labels.yml",
+    ".github/workflows/dbt-benchmarks.yaml",
+    ".github/workflows/devin-fix-flaky-tests.yaml",
+    ".github/workflows/docker-images.yaml",
+    ".github/workflows/helm-chart-release.yaml",
+    ".github/workflows/integration-package-release.yaml",
+    ".github/workflows/integration-package-tests.yaml",
+    ".github/workflows/integration-tests.yaml",
+    ".github/workflows/k8s-integration-tests.yaml",
+    ".github/workflows/kickoff-release.yaml",
+    ".github/workflows/labeler.yml",
+    ".github/workflows/markdown-tests.yaml",
+    ".github/workflows/nightly-release.yaml",
+    ".github/workflows/npm_update_latest_prefect.yaml",
+    ".github/workflows/prefect-aws-docker-images.yaml",
+    ".github/workflows/prefect-aws-docker-test.yaml",
+    ".github/workflows/prefect-azure-docker-images.yaml",
+    ".github/workflows/prefect-azure-docker-test.yaml",
+    ".github/workflows/prefect-client-publish.yaml",
+    ".github/workflows/prefect-client.yaml",
+    ".github/workflows/prefect-gcp-docker-images.yaml",
+    ".github/workflows/prefect-gcp-docker-test.yaml",
+    ".github/workflows/proxy-test.yaml",
+    ".github/workflows/python-package.yaml",
+    ".github/workflows/python-tests.yaml",
+    ".github/workflows/sqlite-builder.yaml",
+    ".github/workflows/stale.yml",
+    ".github/workflows/static-analysis.yaml",
+    ".github/workflows/time-docker-build.yaml",
+    ".github/workflows/ui-tests.yml",
+    ".github/workflows/ui-v2-checks.yml",
+    ".github/workflows/ui-v2-e2e-tests.yml",
+    ".github/workflows/validate_worker_metadata.yaml",
+    ".github/workflows/windows-tests.yaml"
+  ],
+  "snapshot_file_excerpts": [
+    {
+      "content": "# Events (Client-Side)\n\nClient-side event system for emitting, subscribing to, and defining automations on Prefect events.\n\n## Key Contracts\n\n- **Event schemas are defined here, not on the server.** The server imports schemas from this module.\n- Events follow the CloudEvents-inspired schema: `Event` with `Resource` and `RelatedResource`.\n- Automations combine triggers (event, metric, compound, sequence) with actions.\n- `DeploymentTriggerTypes` are the subset of triggers usable in `prefect.yaml` deployment definitions.\n\n## Structure\n\n- `schemas/` \u2014 Pydantic models: `Event`, `Resource`, `RelatedResource`, `Automation`, triggers, deployment triggers\n- `clients.py` \u2014 Event emission client (sends events to server/Cloud)\n- `subscribers.py` \u2014 WebSocket subscribers for real-time event streams\n- `[[REF]]` \u2014 Automation action types (`RunDeployment`, `PauseDeployment`, `SendNotification`, etc.)\n- `worker.py` \u2014 Background event emission worker\n- `filters.py` \u2014 Event query filters\n- `related.py` \u2014 Related resource resolution\n\n## Client vs Server\n\n| Concern | Client (`events/`) | Server (`server/events/`) |\n|---------|-------------------|--------------------------|\n| Event schemas | Defined here | Imported from client |\n| Emission | `clients.py` | Receives via API |\n| Subscriptions | `subscribers.py` | `stream.py`, `messaging.py` |\n| Trigger evaluation | Definition only | Evaluation and firing |\n| Actions | Type definitions | Execution |\n\n## Related\n\n- `server/events/` \u2192 Server-side event processing\n- `client/schemas/events.py` \u2192 Client-side event schema re-exports\n",
+      "file_alias": "snapshot_file_1",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "from .schemas.events import Event, ReceivedEvent\nfrom .schemas.events import Resource, RelatedResource, ResourceSpecification\nfrom .schemas.automations import (\n    Automation,\n    AutomationCore,\n    Posture,\n    TriggerTypes,\n    Trigger,\n    ResourceTrigger,\n    EventTrigger,\n    MetricTrigger,\n    MetricTriggerOperator,\n    MetricTriggerQuery,\n    CompositeTrigger,\n    CompoundTrigger,\n    SequenceTrigger,\n)\nfrom .schemas.deployment_triggers import (\n    DeploymentTriggerTypes,\n    DeploymentEventTrigger,\n    DeploymentMetricTrigger,\n    DeploymentCompoundTrigger,\n    DeploymentSequenceTrigger,\n)\nfrom .actions import (\n    ActionTypes,\n    Action,\n    DoNothing,\n    RunDeployment,\n    PauseDeployment,\n    ResumeDeployment,\n    ChangeFlowRunState,\n    CancelFlowRun,\n    SuspendFlowRun,\n    CallWebhook,\n    SendNotification,\n    PauseWorkPool,\n    ResumeWorkPool,\n    PauseWorkQueue,\n    ResumeWorkQueue,\n    PauseAutomation,\n    ResumeAutomation,\n    DeclareIncident,\n)\nfrom .clients import get_events_client, get_events_subscriber\nfrom .subscribers import FlowRunSubscriber\nfrom .utilities import emit_event\n\n__all__ = [\n    \"Event\",\n    \"ReceivedEvent\",\n    \"Resource\",\n    \"RelatedResource\",\n    \"ResourceSpecification\",\n    \"Automation\",\n    \"AutomationCore\",\n    \"Posture\",\n    \"TriggerTypes\",\n    \"Trigger\",\n    \"ResourceTrigger\",\n    \"EventTrigger\",\n    \"MetricTrigger\",\n    \"MetricTriggerOperator\",\n    \"MetricTriggerQuery\",\n    \"CompositeTrigger\",\n    \"CompoundTrigger\",\n    \"SequenceTrigger\",\n    \"DeploymentTriggerTypes\",\n    \"DeploymentEventTrigger\",\n    \"DeploymentMetricTrigger\",\n    \"DeploymentCompoundTrigger\",\n    \"DeploymentSequenceTrigger\",\n    \"ActionTypes\",\n    \"Action\",\n    \"DoNothing\",\n    \"RunDeployment\",\n    \"PauseDeployment\",\n    \"ResumeDeployment\",\n    \"ChangeFlowRunState\",\n    \"CancelFlowRun\",\n    \"SuspendFlowRun\",\n    \"CallWebhook\",\n    \"SendNotification\",\n    \"PauseWorkPool\",\n    \"ResumeWorkPool\",\n    \"PauseWorkQueue\",\n    \"ResumeWorkQueue\",\n    \"Pa",
+      "file_alias": "snapshot_file_2",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "import abc\nfrom datetime import timedelta\nfrom typing import Any, Dict, Optional, Union\nfrom uuid import UUID\n\nfrom pydantic import Field, model_validator\nfrom typing_extensions import Literal, Self, TypeAlias\n\nfrom prefect._internal.schemas.bases import PrefectBaseModel\nfrom prefect.client.schemas.objects import StateType\nfrom prefect.types import NonNegativeTimeDelta\n\n\nclass Action(PrefectBaseModel, abc.ABC):\n    \"\"\"An Action that may be performed when an Automation is triggered\"\"\"\n\n    type: str\n\n    def describe_for_cli(self) -> str:\n        \"\"\"A human-readable description of the action\"\"\"\n        return self.type.replace(\"-\", \" \").capitalize()\n\n\nclass DoNothing(Action):\n    \"\"\"Do nothing when an Automation is triggered\"\"\"\n\n    type: Literal[\"do-nothing\"] = \"do-nothing\"\n\n\nclass DeploymentAction(Action):\n    \"\"\"Base class for Actions that operate on Deployments and need to infer them from\n    events\"\"\"\n\n    source: Literal[\"selected\", \"inferred\"] = Field(\n        \"selected\",\n        description=(\n            \"Whether this Action applies to a specific selected \"\n            \"deployment (given by `deployment_id`), or to a deployment that is \"\n            \"inferred from the triggering event.  If the source is 'inferred', \"\n            \"the `deployment_id` may not be set.  If the source is 'selected', the \"\n            \"`deployment_id` must be set.\"\n        ),\n    )\n    deployment_id: Optional[UUID] = Field(\n        None, description=\"The identifier of the deployment\"\n    )\n\n    @model_validator(mode=\"after\")\n    def selected_deployment_requires_id(self):\n        wants_selected_deployment = self.source == \"selected\"\n        has_deployment_id = bool(self.deployment_id)\n        if wants_selected_deployment != has_deployment_id:\n            raise ValueError(\n                \"deployment_id is \"\n                + (\"not allowed\" if has_deployment_id else \"required\")\n            )\n        return self\n\n\nclass RunDeployment(DeploymentAction):\n    \"\"\"Runs the given deployment ",
+      "file_alias": "snapshot_file_3",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "import abc\nimport asyncio\nfrom datetime import timedelta\nfrom types import TracebackType\nfrom typing import (\n    TYPE_CHECKING,\n    Any,\n    ClassVar,\n    Dict,\n    List,\n    MutableMapping,\n    Optional,\n    Tuple,\n    Type,\n    cast,\n)\nfrom uuid import UUID\n\nimport orjson\nfrom cachetools import TTLCache\nfrom prometheus_client import Counter\nfrom typing_extensions import Self\nfrom websockets import Subprotocol\nfrom websockets.asyncio.client import ClientConnection\nfrom websockets.exceptions import (\n    ConnectionClosed,\n    ConnectionClosedError,\n    ConnectionClosedOK,\n)\n\nimport prefect.types._datetime\nfrom prefect._internal.websockets import websocket_connect\nfrom prefect.events import Event\nfrom prefect.logging import get_logger\nfrom prefect.settings import (\n    PREFECT_API_KEY,\n    PREFECT_API_URL,\n    PREFECT_CLOUD_API_URL,\n    PREFECT_DEBUG_MODE,\n    PREFECT_SERVER_ALLOW_EPHEMERAL_MODE,\n    get_current_settings,\n)\n\nif TYPE_CHECKING:\n    from prefect.events.filters import EventFilter\n\nEVENTS_EMITTED = Counter(\n    \"prefect_events_emitted\",\n    \"The number of events emitted by Prefect event clients\",\n    labelnames=[\"client\"],\n)\nEVENTS_OBSERVED = Counter(\n    \"prefect_events_observed\",\n    \"The number of events observed by Prefect event subscribers\",\n    labelnames=[\"client\"],\n)\nEVENT_WEBSOCKET_CONNECTIONS = Counter(\n    \"prefect_event_websocket_connections\",\n    (\n        \"The number of times Prefect event clients have connected to an event stream, \"\n        \"broken down by direction (in/out) and connection (initial/reconnect)\"\n    ),\n    labelnames=[\"client\", \"direction\", \"connection\"],\n)\nEVENT_WEBSOCKET_CHECKPOINTS = Counter(\n    \"prefect_event_websocket_checkpoints\",\n    \"The number of checkpoints performed by Prefect event clients\",\n    labelnames=[\"client\"],\n)\n\nif TYPE_CHECKING:\n    import logging\n\nlogger: \"logging.Logger\" = get_logger(__name__)\n\n# Exceptions that indicate transient network issues and should trigger retries.\n# These are used consistent",
+      "file_alias": "snapshot_file_4",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "from __future__ import annotations\n\nimport datetime\nfrom typing import Optional, Union\nfrom uuid import UUID\n\nfrom pydantic import Field\n\nimport prefect.types._datetime\nfrom prefect._internal.schemas.bases import PrefectBaseModel\nfrom prefect.types import DateTime\nfrom prefect.utilities.collections import AutoEnum\n\nfrom .schemas.events import Event, Resource, ResourceSpecification\n\n\nclass AutomationFilterCreated(PrefectBaseModel):\n    \"\"\"Filter by `Automation.created`.\"\"\"\n\n    before_: Optional[DateTime] = Field(\n        default=None,\n        description=\"Only include automations created before this datetime\",\n    )\n\n\nclass AutomationFilterName(PrefectBaseModel):\n    \"\"\"Filter by `Automation.created`.\"\"\"\n\n    any_: Optional[list[str]] = Field(\n        default=None,\n        description=\"Only include automations with names that match any of these strings\",\n    )\n\n\nclass AutomationFilter(PrefectBaseModel):\n    name: Optional[AutomationFilterName] = Field(\n        default=None, description=\"Filter criteria for `Automation.name`\"\n    )\n    created: Optional[AutomationFilterCreated] = Field(\n        default=None, description=\"Filter criteria for `Automation.created`\"\n    )\n\n\nclass EventDataFilter(PrefectBaseModel, extra=\"forbid\"):  # type: ignore[call-arg]\n    \"\"\"A base class for filtering event data.\"\"\"\n\n    def get_filters(self) -> list[\"EventDataFilter\"]:\n        filters: list[EventDataFilter] = []\n        for filter in [\n            getattr(self, name) for name in self.__class__.model_fields.keys()\n        ]:\n            # Any embedded list of filters are flattened and thus ANDed together\n            subfilters: list[EventDataFilter] = (\n                filter if isinstance(filter, list) else [filter]\n            )\n\n            for subfilter in subfilters:\n                if not isinstance(subfilter, EventDataFilter):\n                    continue\n\n                filters.append(subfilter)\n\n        return filters\n\n    def includes(self, event: Event) -> bool:\n        \"",
+      "file_alias": "snapshot_file_5",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "import asyncio\nfrom typing import (\n    TYPE_CHECKING,\n    Any,\n    Awaitable,\n    Callable,\n    Dict,\n    Iterable,\n    List,\n    Optional,\n    Set,\n    Tuple,\n    Union,\n)\nfrom uuid import UUID\n\nimport prefect.types._datetime\n\nfrom .schemas.events import RelatedResource\n\nif TYPE_CHECKING:\n    from prefect._internal.schemas.bases import ObjectBaseModel\n    from prefect.client.orchestration import PrefectClient\n\nResourceCacheEntry = Dict[str, Union[str, \"ObjectBaseModel\", None]]\nRelatedResourceCache = Dict[\n    str, Tuple[ResourceCacheEntry, prefect.types._datetime.DateTime]\n]\n\nMAX_CACHE_SIZE = 100\nRESOURCE_CACHE: RelatedResourceCache = {}\n\n\ndef tags_as_related_resources(tags: Iterable[str]) -> List[RelatedResource]:\n    return [\n        RelatedResource(\n            {\n                \"prefect.resource.id\": f\"prefect.tag.{tag}\",\n                \"prefect.resource.role\": \"tag\",\n            }\n        )\n        for tag in sorted(tags)\n    ]\n\n\ndef object_as_related_resource(kind: str, role: str, object: Any) -> RelatedResource:\n    if as_related_resource := getattr(object, \"as_related_resource\", None):\n        return as_related_resource(role=role)\n\n    resource_id = f\"prefect.{kind}.{object.id}\"\n    return RelatedResource(\n        {\n            \"prefect.resource.id\": resource_id,\n            \"prefect.resource.role\": role,\n            \"prefect.resource.name\": object.name,\n        }\n    )\n\n\nasync def related_resources_from_run_context(\n    client: \"PrefectClient\",\n    exclude: Optional[Set[str]] = None,\n) -> List[RelatedResource]:\n    from prefect.client.schemas.objects import FlowRun\n    from prefect.context import FlowRunContext, TaskRunContext\n\n    if exclude is None:\n        exclude = set()\n\n    flow_run_context = FlowRunContext.get()\n    task_run_context = TaskRunContext.get()\n\n    if not flow_run_context and not task_run_context:\n        return []\n\n    flow_run_id: Optional[UUID] = getattr(\n        getattr(flow_run_context, \"flow_run\", None), \"id\", None\n    ) or getat",
+      "file_alias": "snapshot_file_6",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "# Contributing\n\nThanks for considering contributing to Prefect!\n\nTo navigate our codebase with confidence, see our [contribution guidelines](https://docs.prefect.io/contribute/).",
+      "file_alias": "snapshot_file_7",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "Prefect is a workflow orchestration platform that coordinates and observes data pipelines. It provides a Python SDK for building workflows, a server backend for orchestration, and a web-based UI for managing and monitoring workflows.\n\n# Guiding Principles\n\nYour primary responsibility is to the project and its users. Every change should serve the broader user base \u2014 not just the immediate request. Be a quality gate: prefer correct, minimal, well-tested changes over fast ones.\n\n# Directory Structure\n\n```\nprefect/\n\u251c\u2500\u2500 benches/                         # Benchmarks (CLI, flows, tasks, imports)\n\u251c\u2500\u2500 client/                          # prefect-client build: subset of src/prefect/ published as a separate PyPI package\n\u251c\u2500\u2500 compat-tests/                    # Tests for REST API compatibility with Prefect Cloud\n\u251c\u2500\u2500 Dockerfile                       # Production container image\n\u251c\u2500\u2500 docs/                            # Mintlify documentation (see docs/[[INSTRUCTION]])\n\u251c\u2500\u2500 examples/                        # Example flows (auto-published to docs)\n\u251c\u2500\u2500 integration-tests/               # End-to-end integration tests (require running server)\n\u251c\u2500\u2500 justfile                         # Task runner (just <command>)\n\u251c\u2500\u2500 load_testing/                    # Load/performance testing\n\u251c\u2500\u2500 plans/                           # Design/implementation plan documents\n\u251c\u2500\u2500 pyproject.toml                   # Root package config\n\u251c\u2500\u2500 schemas/                         # JSON schemas (prefect.yaml, settings)\n\u251c\u2500\u2500 scripts/                         # Code generation and release scripts\n\u251c\u2500\u2500 src/\n\u2502   \u251c\u2500\u2500 integrations/                # External service integrations (see src/integrations/[[INSTRUCTION]])\n\u2502   \u2514\u2500\u2500 prefect/                     # Core package: SDK, server, CLI (see src/prefect/[[INSTRUCTION]])\n\u251c\u2500\u2500 tests/                           # Test suite, mirrors src/prefect/ (see tests/[[INSTRUCTION]])\n\u251c\u2500\u2500 tools/                           # Build tools\n\u251c\u2500\u2500 ui/                              # Vue UI (legacy, will be replaced by ui-v2)\n\u251c\u2500\u2500 ui-v2/       ",
+      "file_alias": "snapshot_file_8",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "<p align=\"center\"><img src=\"https://github.com/PrefectHQ/prefect/assets/3407835/c654cbc6-63e8-4ada-a92a-efd2f8f24b85\" width=1000></p>\n\n<p align=\"center\">\n    <a href=\"https://pypi.org/project/prefect/\" alt=\"PyPI version\">\n        <img alt=\"PyPI\" src=\"https://img.shields.io/pypi/v/prefect?color=0052FF&labelColor=090422\" />\n    </a>\n    <a href=\"https://pypi.org/project/prefect/\" alt=\"PyPI downloads/month\">\n        <img alt=\"Downloads\" src=\"https://img.shields.io/pypi/dm/prefect?color=0052FF&labelColor=090422\" />\n    </a>\n    <a href=\"[repository]/\" alt=\"Stars\">\n        <img src=\"https://img.shields.io/github/stars/prefecthq/prefect?color=0052FF&labelColor=090422\" />\n    </a>\n    <a href=\"[repository]/pulse\" alt=\"Activity\">\n        <img src=\"https://img.shields.io/github/commit-activity/m/prefecthq/prefect?color=0052FF&labelColor=090422\" />\n    </a>\n    <br>\n    <a href=\"https://prefect.io/slack\" alt=\"Slack\">\n        <img src=\"https://img.shields.io/badge/slack-join_community-red.svg?color=0052FF&labelColor=090422&logo=slack\" />\n    </a>\n    <a href=\"https://www.youtube.com/c/PrefectIO/\" alt=\"YouTube\">\n        <img src=\"https://img.shields.io/badge/youtube-watch_videos-red.svg?color=0052FF&labelColor=090422&logo=youtube\" />\n    </a>\n</p>\n\n\n<p align=\"center\">\n    <a href=\"https://docs.prefect.io/v3/get-started/index?utm_source=oss&utm_medium=oss&utm_campaign=oss_gh_repo&utm_term=none&utm_content=none\">\n        Installation\n    </a>\n    \u00b7\n    <a href=\"https://docs.prefect.io/v3/get-started/quickstart?utm_source=oss&utm_medium=oss&utm_campaign=oss_gh_repo&utm_term=none&utm_content=none\">\n        Quickstart\n    </a>\n    \u00b7\n    <a href=\"https://docs.prefect.io/v3/how-to-guides/workflows/write-and-run?utm_source=oss&utm_medium=oss&utm_campaign=oss_gh_repo&utm_term=none&utm_content=none\">\n        Build workflows\n    </a>\n    \u00b7\n    <a href=\"https://docs.prefect.io/v3/concepts/deployments?utm_source=oss&utm_medium=oss&utm_campaign",
+      "file_alias": "snapshot_file_9",
+      "role": "pinned_snapshot_excerpt"
+    },
+    {
+      "content": "{\n  \"$schema\": \"https://json.schemastore.org/claude-code-settings.json\",\n  \"hooks\": {\n    \"SessionStart\": [\n      {\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"$CLAUDE_PROJECT_DIR/.claude/hooks/symlink-agents-to-claude.sh\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
+      "file_alias": "snapshot_file_10",
+      "role": "pinned_snapshot_excerpt"
+    }
+  ],
+  "task_brief": "Engineering task (derived only from the pinned instruction text and snapshot signals):\n\nDocument title: Events (Client-Side). Instruction overview: Client-side event system for emitting, subscribing to, and defining automations on Prefect events.\n\nWhile performing this work, the instruction cites Referenced artifact R1. Your annotation question is whether that cited artifact is materially necessary for completing this task in the provided snapshot.\n\nVerification command observed in the pinned repository manifests: `pytest`. Use this only as a snapshot signal of how the project checks work; do not assume other commands.",
+  "task_brief_source": "h1_title,paragraph",
+  "verification_command_observed": "pytest",
+  "verification_evidence": "Python test config present"
 }
