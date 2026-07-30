@@ -13,14 +13,14 @@ This document enumerates every empirical claim currently supported by **existing
 1. Each claim cites **primary export paths** relative to the repository root (`artifact-lifecycle-lab/`).
 2. **Statistical evidence** reproduces values exactly as reported in those exports (summaries preferred over re-aggregation).
 3. Claims are classified by evidential strength, not narrative importance.
-4. **Git-tracking status** is noted where a supporting file exists on disk but is not yet indexed in `git` (see §Inventory).
+4. **Git-tracking status** records whether supporting files cited at freeze were later committed (see §Inventory). As of the post-freeze hygiene update, formerly workspace-local ledgers and P4 validation outputs listed below are git-tracked.
 
 ### Confidence levels (operational definitions)
 
 | Level | Meaning |
 |-------|---------|
 | **High** | Direct count or estimate from a primary export; audit or paired design; large *N*; CI or *p*-value reported where applicable; minimal inferential leap. |
-| **Medium** | Trace/heuristic classification, observational association, subset overlap, CI includes zero, single-agent pilot, or supporting file not git-tracked at freeze time. |
+| **Medium** | Trace/heuristic classification, observational association, subset overlap, CI includes zero, single-agent pilot, or reliance on a superseded summary path. |
 | **None** | Claim explicitly contradicted by frozen outputs or not empirically tested. |
 
 ---
@@ -47,17 +47,19 @@ This document enumerates every empirical claim currently supported by **existing
 | Paper synthesis | `exports/paper_synthesis/late_binding_evidence_table.csv` | — | — |
 | Conceptual model | `docs/LATE_BINDING_MODEL_v1.md` | — | — |
 
-### Workspace-local outputs (exist on disk; not git-tracked at freeze)
+### Formerly workspace-local outputs (now git-tracked)
 
-| Path | Used for |
-|------|----------|
-| `exports/truth_pilot/p4_validation.md` | Human gold validation metrics (P4 PASS) |
-| `exports/rq5_agent_impact/rq5_results.csv` | Full A/B run ledger (128 runs) |
-| `exports/rq5_agent_impact/rq5_statistics.csv` | Descriptive RQ5 statistics |
-| `exports/rq5_agent_impact/rq5_failure_modes.csv` | Failure-mode counts |
-| `exports/rq5_agent_impact_c/` | Condition C complete cohort (105 runs) |
+These paths existed on disk at the 2026-07-03 freeze and were not yet indexed then; they are now committed and resolve from a clean clone:
 
-Claims citing workspace-local files are classified **Moderately supported** until those exports are committed unchanged.
+| Path | Used for | Git status |
+|------|----------|------------|
+| `exports/truth_pilot/p4_validation.md` | Human gold validation metrics (P4 PASS) | Tracked |
+| `exports/rq5_agent_impact/rq5_results.csv` | Full A/B run ledger (128 runs) | Tracked |
+| `exports/rq5_agent_impact/rq5_statistics.csv` | Descriptive RQ5 statistics | Tracked |
+| `exports/rq5_agent_impact/rq5_failure_modes.csv` | Failure-mode counts | Tracked |
+| `exports/rq5_agent_impact_c/` | Condition C complete cohort (105 runs) | Tracked |
+
+Claims that previously depended only on workspace-local presence should be read against these committed paths; still prefer uptake/ABC summaries over superseded nine-run summaries.
 
 ### Stale / superseded summaries (do not cite for counts)
 
@@ -241,7 +243,7 @@ Direct measurements from git-tracked exports with high confidence. No causal lan
 
 ## Moderately supported claims
 
-Supported by existing outputs but requiring heuristics, observational design, subset restrictions, non-significant contrasts, or workspace-local files.
+Supported by existing outputs but requiring heuristics, observational design, subset restrictions, non-significant contrasts, or careful path selection among coexisting summaries.
 
 ---
 
@@ -253,9 +255,9 @@ Supported by existing outputs but requiring heuristics, observational design, su
 | **Exact wording** | On **N = 200** human-reviewed commits, the frozen P4 classifier achieves precision **0.958**, recall **0.965**, F1 **0.9617**, accuracy **0.945**, Cohen's κ **0.8643** for `true_agent_maintenance`. |
 | **Supporting datasets** | `exports/truth_pilot/agent_attribution_gold_worksheet.csv` |
 | **Supporting figures** | — |
-| **Supporting tables** | Confusion matrix in `exports/truth_pilot/p4_validation.md` (**workspace-local**) |
+| **Supporting tables** | Confusion matrix in `exports/truth_pilot/p4_validation.md` (now git-tracked; was workspace-local at freeze) |
 | **Statistical evidence** | Gate threshold precision ≥ **80%**; observed **95.8%** → **PASS**. TP/FP/FN: **138/6/5** on binary collapse. |
-| **Limitations** | Supporting summary not git-tracked at freeze; single human review pass; worksheet is pilot sample not exhaustive; κ collapses three-level human taxonomy. |
+| **Limitations** | Single human review pass retained; single human review pass; worksheet is pilot sample not exhaustive; κ collapses three-level human taxonomy. |
 | **Confidence** | Medium |
 
 ---
@@ -372,10 +374,10 @@ Supported by existing outputs but requiring heuristics, observational design, su
 | **Claim ID** | MS-09 |
 | **Exact wording** | Condition C executed **105** runs (**35** cases × **3** replicates) for Claude Code in `exports/rq5_agent_impact_c/`. |
 | **Supporting datasets** | `exports/rq5_agent_impact_c/rq5_results.csv` (**workspace-local**, 105 data rows + header) |
-| **Supporting figures** | `exports/rq5_agent_impact_c/figure_success.pdf` (**workspace-local**) |
+| **Supporting figures** | `exports/rq5_agent_impact_c/figure_success.pdf` (now git-tracked; was workspace-local at freeze) |
 | **Supporting tables** | Paired subset in `exports/rq5_agent_impact/rq5_abc_comparative_analysis.md` (uses C from local dir) |
 | **Statistical evidence** | Row count in `rq5_results.csv`; ABC analysis confirms **63** paired triplets from overlap with partial A/B. |
-| **Limitations** | Export directory not git-tracked at freeze; A/B on same cases incomplete (**128** runs, **22/35** cases in overlap narrative). |
+| **Limitations** | A/B on same cases incomplete (**128** runs, **22/35** cases in overlap narrative). |
 | **Confidence** | Medium |
 
 ---
@@ -386,11 +388,11 @@ Supported by existing outputs but requiring heuristics, observational design, su
 |-------|-------|
 | **Claim ID** | MS-10 |
 | **Exact wording** | Across all **105** condition C runs, aggregate task success is **12/105** (**11.4%**). |
-| **Supporting datasets** | `exports/rq5_agent_impact_c/rq5_results.csv` (**workspace-local**) |
+| **Supporting datasets** | `exports/rq5_agent_impact_c/rq5_results.csv` (now git-tracked; was workspace-local at freeze) |
 | **Supporting figures** | — |
 | **Supporting tables** | `exports/paper_synthesis/late_binding_evidence_table.csv` (row: Condition C aggregate success) |
 | **Statistical evidence** | Descriptive proportion only; Wilson CI not reported in primary export. |
-| **Limitations** | Workspace-local file; includes cases without A/B overlap; not paired-tested against A/B in this aggregate. |
+| **Limitations** | Includes cases without A/B overlap; not paired-tested against A/B in this aggregate. |
 | **Confidence** | Medium |
 
 ---
