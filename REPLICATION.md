@@ -1,7 +1,8 @@
 # TOSEM replication guide
 
-**Package version:** 1.0.0  
-**Science freeze:** 2026-07-03  
+**Package version:** 1.1.0 (validation extension; Zenodo archival v1.0.0 unchanged)  
+**Science freeze:** 2026-07-03 (primary)  
+**Validation extension:** 2026-07-31  
 **Manuscript:** *Measuring Mechanical Reference Integrity in Machine-Consumed Instruction Files*
 
 This file is the entry point for reviewers and archivists. For platform internals, see [README.md](README.md).
@@ -11,8 +12,11 @@ This file is the entry point for reviewers and archivists. For platform internal
 | Area | Location | Role |
 |------|----------|------|
 | Claim inventory | [`docs/SCIENTIFIC_EVIDENCE_FREEZE.md`](docs/SCIENTIFIC_EVIDENCE_FREEZE.md) | Supported / unsupported claims and canonical paths |
-| Claim→evidence table | [`exports/paper_synthesis/late_binding_evidence_table.csv`](exports/paper_synthesis/late_binding_evidence_table.csv) | 28 frozen claim rows |
+| Validation protocol | [`docs/VALIDATION_EXTENSION_PROTOCOL.md`](docs/VALIDATION_EXTENSION_PROTOCOL.md) | Prespecified robustness analyses |
+| Validation addendum | [`docs/VALIDATION_EXTENSION_ADDENDUM.md`](docs/VALIDATION_EXTENSION_ADDENDUM.md) | v1.0.0 ↔ v1.1.0 relationship |
+| Claim→evidence table | [`exports/paper_synthesis/late_binding_evidence_table.csv`](exports/paper_synthesis/late_binding_evidence_table.csv) | Frozen claim rows + validation rows |
 | Observational exports | `exports/truth_decay_pilot/`, `exports/truth_pilot/` | RQ1–RQ4, gates P1–P5, audits |
+| Validation artifacts | `validation/` | Blinded RQ2 package, sensitivity, concentration |
 | Exploratory RQ5 | `exports/rq5_agent_impact/`, `exports/rq5_agent_impact_c/` | Frozen ledgers and analyses |
 | Protocols | `protocol/` | Truth-decay and RQ5 experiment protocols |
 | Code | `artifact_lab/` | Extraction, analysis, and report generators |
@@ -67,6 +71,7 @@ make truth-decay-born-stale-autopsy truth-decay-born-stale-audit
 make truth-decay-rq2-failure-audit truth-decay-gfc-confirmatory-audit
 make truth-decay-cited-uncited-audit
 make truth-decay-rq5-uptake
+make validation-all
 ```
 
 Notes:
@@ -99,17 +104,23 @@ Notes:
 | P4 validation | `exports/truth_pilot/p4_validation.md` |
 | P4 gold worksheet | `exports/truth_pilot/agent_attribution_gold_worksheet.csv` |
 | Freeze inventory | `docs/SCIENTIFIC_EVIDENCE_FREEZE.md` |
+| Validation protocol | `docs/VALIDATION_EXTENSION_PROTOCOL.md` |
+| RQ2 sensitivity | `validation/rq2_sensitivity/rq2_sensitivity_summary.md` |
+| Concentration | `validation/concentration/concentration_summary.md` |
+| Blinded RQ2 audit | `validation/rq2_second_audit/` (no public answer key) |
 
 ## License and citation
 
 - License: [LICENSE](LICENSE) (MIT)
 - Citation: [CITATION.cff](CITATION.cff)
-- Archival DOI: [https://doi.org/10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432) (version 1.0.0)
+- Archival DOI: [https://doi.org/10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432) (version **1.0.0**; keep intact)
+- Planned validation deposit: Zenodo version **1.1.0** (same concept DOI family; do not overwrite v1.0.0)
 - Development repository: [https://github.com/cesar-andress/artifact-lifecycle-lab](https://github.com/cesar-andress/artifact-lifecycle-lab)
 
 ## Known limitations
 
 1. L1b blob store (`data/blobs/`) is not shipped (size); full re-mine from registries requires re-extraction.
-2. Prefer the Zenodo v1.0.0 deposit over a moving `main` clone when citing frozen numbers.
+2. Prefer the Zenodo v1.0.0 deposit over a moving `main` clone when citing primary frozen numbers; use v1.1.0 for validation artifacts once published.
 3. RQ5 success/uptake numbers are ledger-frozen; agent products and model versions may drift if rerun.
 4. Development notes under `docs/` (gap analyses, storyline drafts) are not manuscript claims; use the freeze inventory.
+5. Independent RQ2 human agreement is undefined until `rq2_second_auditor_labels.csv` exists; do not simulate labels.

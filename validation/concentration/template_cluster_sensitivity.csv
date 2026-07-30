@@ -1,0 +1,6 @@
+exclusion,n_clusters_excluded,n_rows_excluded,born_stale_remaining,prior_gfc_remaining,prior_gfc_rate_among_remaining
+none,0,0,17747,1405,0.079168
+top_1_repeated_templateish_clusters,1,17,17730,1405,0.079244
+top_3_repeated_templateish_clusters,3,33,17714,1405,0.079316
+top_5_repeated_templateish_clusters,5,43,17704,1405,0.079361
+top_10_repeated_templateish_clusters,10,65,17682,1405,0.079459

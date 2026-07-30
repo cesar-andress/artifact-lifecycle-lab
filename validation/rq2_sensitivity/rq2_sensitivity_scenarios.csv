@@ -1,0 +1,6 @@
+scenario,numerator,denominator,percentage,wilson_lo,wilson_hi,category_composition,rationale,available
+primary_frozen,0,121,0.00,0.00,3.08,ambiguous=1; extractor_artifact=89; normative_or_prescriptive=7; rename_or_move=19; verification_anchor_issue=5,Frozen is_genuine_decay / final_category==genuine_decay,yes
+decay_favoring,25,121,20.66,14.40,28.72,counted_as_genuine=25; extractor_artifact=89; normative_or_prescriptive=7,ambiguous + verification_anchor_issue + returned_after_missing + basename_collision → genuine,yes
+high_specificity,0,121,0.00,0.00,3.08,ambiguous=1; extractor_artifact=89; normative_or_prescriptive=7; rename_or_move=19; verification_anchor_issue=5,Only unequivocal final_category==genuine_decay,yes
+second_auditor,,121,,,,,Not computed; missing validation/rq2_second_audit/rq2_second_auditor_labels.csv,no
+adjudicated,,121,,,,,Not computed; missing validation/rq2_second_audit/rq2_disagreement_adjudication.csv,no

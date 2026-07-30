@@ -1,0 +1,5 @@
+# Hold out original labels until independent annotation completes.
+private/
+rq2_original_labels_private.csv
+rq2_second_auditor_labels.csv
+rq2_disagreement_adjudication.csv

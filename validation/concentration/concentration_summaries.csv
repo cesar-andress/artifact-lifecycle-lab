@@ -1,0 +1,9 @@
+cohort,n_cases,n_repos_in_frame,n_repos_with_zero,median_count,iqr_low,iqr_high,min_count,max_count,top1_share,top5_share,top10_share,hhi,most_influential_repo
+born_stale_all,17747,80,0,67.5,17.75,216.5,1.0,2978.0,0.167803,0.417028,0.623767,581.7641,c65277d4b7b5f15d
+prior_genuine_false_claim,1405,80,23,4.0,0.0,12.25,0.0,217.0,0.154448,0.451246,0.686833,616.2789,3f33ab9828ac52ad
+confirmed_false_at_birth,1200,80,27,3.5,0.0,10.25,0.0,186.0,0.155000,0.470833,0.709167,651.3056,3f33ab9828ac52ad
+born_stale_category__normative_prescriptive,5836,80,8,12.0,3.0,77.75,0.0,732.0,0.125428,0.402159,0.616004,512.3337,c65277d4b7b5f15d
+born_stale_category__verification_anchor_mismatch,5301,80,7,11.0,3.0,47.0,0.0,1363.0,0.257121,0.595171,0.733069,1126.2987,c65277d4b7b5f15d
+born_stale_category__extraction_artifact,2235,80,12,5.0,1.0,19.25,0.0,830.0,0.371365,0.593289,0.731544,1590.3248,c65277d4b7b5f15d
+born_stale_category__template_placeholder,1926,80,14,7.5,1.0,28.5,0.0,419.0,0.217549,0.488058,0.640706,771.1601,c6ac6f9616b35ee8
+born_stale_category__genuine_false_claim,1405,80,23,4.0,0.0,12.25,0.0,217.0,0.154448,0.451246,0.686833,616.2789,3f33ab9828ac52ad

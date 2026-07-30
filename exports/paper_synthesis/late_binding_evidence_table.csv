@@ -1,5 +1,7 @@
 claim,evidence_source,metric,value,limitation
-Zero genuine post-verification decay,rq2_failure_audit_summary.md,adjusted_genuine_decay_count,0/121,single audit pass; extractor heuristics may miss edge cases
+Zero genuine post-verification decay (primary),rq2_failure_audit_summary.md,adjusted_genuine_decay_count,0/121,primary frozen protocol; sensitivity range 0-25/121 in validation/rq2_sensitivity/; second human audit pending
+RQ2 audit-rule sensitivity range,validation/rq2_sensitivity/rq2_sensitivity_summary.md,sensitivity_numerator_range,0-25/121,prespecified scenarios; decay-favoring counts rename-return/anchor/ambiguous as genuine
+Confirmed-false LOO stability,validation/concentration/concentration_summary.md,confirmed_false_loo_range,84.4%-85.8%,case mass concentrated; pooled rate LOO-stable; not population-representative
 Post-verification failures are mostly artifacts,rq2_failure_audit_summary.md,extractor_artifact_share,73.6%,taxonomy depends on deterministic heuristics
 Born-stale cohort is large and heterogeneous,born_stale_summary.md,genuine_false_claim_raw_count,1405 (7.9% of 17747),raw upper bound before confirmatory audit
 Confirmed false claims at creation,gfc_confirmatory_summary.md,confirmed_false_count,1200/1405 (85.4%),Wilson CI 83.5%-87.2%; LLM not invoked for most cases
