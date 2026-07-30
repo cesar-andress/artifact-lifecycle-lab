@@ -16,18 +16,18 @@
   "protocol_version": "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c",
   "seed": 42,
   "software_signals": [
-    "manifest_or_doc:pyproject.toml",
+    "manifest_or_doc:agents.md",
     "manifest_or_doc:agents.md",
     "manifest_or_doc:readme.md",
-    "manifest_or_doc:pyproject.toml",
+    "manifest_or_doc:agents.md",
     "manifest_or_doc:package.json",
-    "manifest_or_doc:readme.md",
-    "manifest_or_doc:readme.md",
+    "manifest_or_doc:agents.md",
+    "manifest_or_doc:agents.md",
+    "manifest_or_doc:agents.md",
     "manifest_or_doc:pyproject.toml",
     "manifest_or_doc:agents.md",
-    "manifest_or_doc:agents.md",
-    "manifest_or_doc:agents.md",
-    "manifest_or_doc:readme.md"
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:contributing.md"
   ],
   "sources": [
     "rq5_case_manifest.csv",

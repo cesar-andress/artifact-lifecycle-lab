@@ -1,0 +1,10 @@
+agent_id,condition,case_id,replicate_id,success,tests_passing,compilation_success,execution_time_seconds,files_modified,tool_failures,iterations,commands_executed,repository_changes,read_instruction,followed_reference,ignored_reference,detected_inconsistency,repaired_reference,error_message,tool_invocations,patch_size,token_usage,cost_usd,trace_classification,failure_mode
+claude_code,A,81ec58cfed88dd3c,1,False,False,True,80.46,30,2,11,13,30,True,True,False,False,False,,10,3423,6815,0.30580375,instruction_read,tests_failed
+claude_code,A,81ec58cfed88dd3c,2,False,False,True,54.64,32,2,8,9,32,True,True,False,False,False,,7,3423,5847,0.2463415,instruction_read,tests_failed
+claude_code,A,81ec58cfed88dd3c,3,False,False,True,113.262,41,2,13,19,41,True,True,False,False,False,,12,3487,7964,0.37317025000000004,instruction_read,tests_failed
+claude_code,B,81ec58cfed88dd3c,1,False,False,True,121.932,42,1,13,21,42,True,True,False,False,False,,12,3487,9738,0.45886825,hallucinated_path,tests_failed
+claude_code,B,81ec58cfed88dd3c,2,False,False,True,81.684,43,2,8,9,43,True,True,False,False,False,,7,3487,7543,0.29190825,hallucinated_path,tests_failed
+claude_code,B,81ec58cfed88dd3c,3,False,False,True,86.624,44,2,11,17,44,True,True,False,False,False,,10,3487,7072,0.33817574999999994,hallucinated_path,tests_failed
+claude_code,A,fd797306713f1063,1,False,False,True,136.308,45,1,11,19,45,True,True,False,False,False,,10,3487,11635,0.48187225000000006,instruction_read,tests_failed
+claude_code,A,fd797306713f1063,2,False,False,True,71.858,46,2,6,9,46,True,True,False,False,False,,5,3488,6859,0.21964125,instruction_read,tests_failed
+claude_code,A,fd797306713f1063,3,False,False,True,68.295,47,1,5,7,47,True,True,False,False,False,,4,3488,6480,0.19228075,instruction_read,tests_failed

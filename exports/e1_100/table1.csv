@@ -1,0 +1,11 @@
+artifact_family,n_repos,n_files,share_repos_pct
+agents_dir,17,670,19.77
+agents_md,47,176,54.65
+claude_md,36,96,41.86
+copilot_instructions,23,25,26.74
+cursor_rules,14,125,16.28
+cursorrules,3,4,3.49
+github_instructions,8,46,9.3
+prompts,20,1507,23.26
+skill_md,41,591,47.67
+windsurf_rules,1,13,1.16

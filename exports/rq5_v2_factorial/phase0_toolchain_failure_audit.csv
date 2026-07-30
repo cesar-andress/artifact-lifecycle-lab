@@ -1,0 +1,142 @@
+run_id,case_id,repository,ecosystem,cell_code,test_command,success,failure_class,evidence,preflight_preventable,exclude_case_recommended,recommended_fix
+17c9fb0d68bde42be934,d2578b858cfe326f,fixmyberlin/tilda-geo,node,T+L,Vitest,False,missing test runner,"/bin/sh: 1: Vitest: not found // trace shell: cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_d2578b858cfe326f_T_L && ls -a | grep -iE '\.env'; echo ""---parent---""; ls -a .. 2>/dev/null | grep -iE '\.env'; echo ""---env example---""; find . -maxdepth 2 -iname '.env*' -not -path '*/node_modules/*' 2>/dev/null; echo ""---git status of my change---""; git status --short | cd /home/cesar/papers/artifact-",yes,no,replace bare runner with ecosystem entrypoint (e.g. npm test / npx vitest); was `Vitest`
+4b2ad9ff25111df1673e,d2578b858cfe326f,fixmyberlin/tilda-geo,node,T+L,Vitest,False,missing test runner,"/bin/sh: 1: Vitest: not found // trace shell: export PATH=""$HOME/.bun/bin:$PATH""; timeout 500 bun run test-run 2>&1 | tail -40 | cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_d2578b858cfe326f_T_L && ls -la .env* app/.env* 2>/dev/null; echo ""--- git status (only my change?) ---""; git status --short; echo ""--- confirm settings.json is only tracked change ---""; git diff --stat | echo ""=== app/.env",yes,no,replace bare runner with ecosystem entrypoint (e.g. npm test / npx vitest); was `Vitest`
+03a944ebe7f80903bc75,d2578b858cfe326f,fixmyberlin/tilda-geo,node,T+L,Vitest,False,missing test runner,"/bin/sh: 1: Vitest: not found // trace shell: cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_d2578b858cfe326f_T_L/app; export PATH=""$HOME/.bun/bin:$PATH""; VITE_APP_ENV=production bun run vitest run 2>&1 | grep -A25 ""FAIL\|⎯⎯⎯⎯⎯⎯⎯"" | head -45 | cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_d2578b858cfe326f_T_L; grep -E ""VITE_APP_ORIGIN|VITE_APP_ENV"" .env.exampl",yes,no,replace bare runner with ecosystem entrypoint (e.g. npm test / npx vitest); was `Vitest`
+d1a6f4c30f91e676dea1,3ff980d65c78fd63,agentwrapper/agent-orchestrator,other,T+L,go test,False,wrong working directory,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init // trace shell: ls /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_3ff980d65c78fd63_T_L/backend/internal/cli/ | cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_3ff980d65c78fd63_T_L/backend && go test ./... 2>&1 | tail -40",yes,no,"run `go test` from Go module root (backend/ or subdir), not repo root"
+e664b8c1888596b695d2,3ff980d65c78fd63,agentwrapper/agent-orchestrator,other,T+L,go test,False,wrong working directory,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init // trace shell: ls /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_3ff980d65c78fd63_T_L/backend/internal/cli/ | grep -n ""newProjectCommand\|newSpawnCommand\|newSendCommand\|AddCommand"" /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_3ff980d65c78fd63_T_L/backend/",yes,no,"run `go test` from Go module root (backend/ or subdir), not repo root"
+f859b847a188794eb4e3,3ff980d65c78fd63,agentwrapper/agent-orchestrator,other,T+L,go test,False,wrong working directory,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init // trace shell: ls /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_3ff980d65c78fd63_T_L/backend/internal/cli/ | cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_3ff980d65c78fd63_T_L/backend && go test ./... 2>&1 | tail -30",yes,no,"run `go test` from Go module root (backend/ or subdir), not repo root"
+61797f45f7664ce7a6f5,1e1131e99f590b53,vercel/next.js,python,T+L,pytest,False,wrong working directory,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+================ // trace shell: which python3.11 python3.10 python3.12 python3.9 2>/dev/null; ls /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/.venv/bin/python* 2>/dev/null; ls /home/cesar/papers/",yes,review,pytest picked up lab root pyproject.toml; constrain cwd to case repo submodule with tests
+11d9ca52c1ab8b667bc7,1e1131e99f590b53,vercel/next.js,python,T+L,pytest,False,wrong working directory,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+================ // trace shell: cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab && (command -v python3 && python3 -m pytest -q 2>&1 | tail -25) || (command -v pytest && pytest -q 2>&1 | tail -25)",yes,review,pytest picked up lab root pyproject.toml; constrain cwd to case repo submodule with tests
+72f223daa517739a980a,1e1131e99f590b53,vercel/next.js,python,T+L,pytest,False,wrong working directory,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+================ // trace shell: ls -la && git log --oneline -3 | pytest 2>&1 | tail -30 | git diff -- .github/pull_request_template.md",yes,review,pytest picked up lab root pyproject.toml; constrain cwd to case repo submodule with tests
+ff1c1cc6b6b660eadf54,abced8248ab90fb1,fixmyberlin/tilda-geo,node,T+L,Vitest,False,missing test runner,"/bin/sh: 1: Vitest: not found // trace shell: export PATH=""$HOME/.bun/bin:$PATH""; bun --version; echo ""--- installing deps (needed to run Vitest) ---""; bun install --frozen-lockfile 2>&1 | tail -20 | export PATH=""$HOME/.bun/bin:$PATH""; bun run test-run 2>&1 | tail -40 | export PATH=""$HOME/.bun/bin:$PATH""; sed -n '1,25p' src/components/shared/utils/getTilesUrl.ts",yes,no,replace bare runner with ecosystem entrypoint (e.g. npm test / npx vitest); was `Vitest`
+0ffd9d615c8818e18786,abced8248ab90fb1,fixmyberlin/tilda-geo,node,T+L,Vitest,False,missing test runner,"/bin/sh: 1: Vitest: not found // trace shell: export PATH=""$HOME/.bun/bin:$PATH""; git stash >/dev/null 2>&1; echo ""=== baseline (no change) test run ===""; bun run test-run 2>&1 | grep -E ""Test Files|Tests "" ; git stash pop >/dev/null 2>&1; echo ""restored"" | git --no-pager diff .vscode/extensions.json | git --no-pager diff -- ../.vscode/extensions.json",yes,no,replace bare runner with ecosystem entrypoint (e.g. npm test / npx vitest); was `Vitest`
+ffee943c69b1c6f59875,abced8248ab90fb1,fixmyberlin/tilda-geo,node,T+L,Vitest,False,missing test runner,"/bin/sh: 1: Vitest: not found // trace shell: export PATH=""$HOME/.bun/bin:$PATH""; cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_abced8248ab90fb1_T_L/app; VITE_APP_ENV=development bun run test-run 2>&1 | tail -8 | export PATH=""$HOME/.bun/bin:$PATH""; cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_abced8248ab90fb1_T_L/app; VITE_APP_ENV=development bun run test-ru",yes,no,replace bare runner with ecosystem entrypoint (e.g. npm test / npx vitest); was `Vitest`
+c71fde8a1468646ce340,d5303ea5b426c7be,agentwrapper/agent-orchestrator,other,T+L,go test,False,wrong working directory,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init // trace shell: cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_d5303ea5b426c7be_T_L/backend && go test ./internal/httpd/... 2>&1 | tail -30 | go generate ./... 2>&1 | tail -20 && echo ""---GENERATE DONE---"" && git status --short | go test ./... 2>&1 | tail -40",yes,no,"run `go test` from Go module root (backend/ or subdir), not repo root"
+1e6de47ad87446bff43c,d5303ea5b426c7be,agentwrapper/agent-orchestrator,other,T+L,go test,False,wrong working directory,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init // trace shell: go generate ./... 2>&1 | tail; echo ""---""; git status --short | git diff internal/httpd/apispec/openapi.yaml | head -30; echo ""=== full test ===""; go test ./... 2>&1 | grep -E ""FAIL|ok.*apispec""  | go test ./... 2>&1 | grep -c ""^ok""; echo ""--- any failures ---""; go test ./... 2>&1 | grep -E ""FAIL|panic"" || ",yes,no,"run `go test` from Go module root (backend/ or subdir), not repo root"
+2e8faebeb58eb8db4eb1,d5303ea5b426c7be,agentwrapper/agent-orchestrator,other,T+L,go test,False,wrong working directory,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init // trace shell: go generate ./internal/httpd/apispec/ 2>&1 | tail; echo ""=== diff ===""; git -C .. diff --stat | git -C .. diff backend/internal/httpd/apispec/openapi.yaml | go test ./... 2>&1 | tail -40",yes,no,"run `go test` from Go module root (backend/ or subdir), not repo root"
+1277c9ce0f66bcf220e9,6aab689b93e84025,vercel/next.js,python,T+L,pytest,False,wrong working directory,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+================ // trace shell: cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_6aab689b93e84025_T_L; python -m pytest --co -q 2>&1 | tail -20; echo ""EXIT: $?"" | cd /home/cesar/pape",yes,review,pytest picked up lab root pyproject.toml; constrain cwd to case repo submodule with tests
+6b4b5d098b8ee0625907,6aab689b93e84025,vercel/next.js,python,T+L,pytest,False,wrong working directory,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+================ // trace shell: cat .github/pull_request_template.md; echo ""---STATUS---""; git status; echo ""---DIFF---""; git diff .agents/skills/create-pr/SKILL.md | ls -la .github/pull_request_template.md; echo ""-",yes,review,pytest picked up lab root pyproject.toml; constrain cwd to case repo submodule with tests
+444e5f234365b74a1c26,6aab689b93e84025,vercel/next.js,python,T+L,pytest,False,wrong working directory,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+================ // trace shell: cat .github/pull_request_template.md 2>&1; echo ""---GITSTATUS---""; git status --short; echo ""---DIFF---""; git diff .agents/skills/create-pr/SKILL.md | pytest 2>&1 | tail -30",yes,review,pytest picked up lab root pyproject.toml; constrain cwd to case repo submodule with tests
+be310fd4b1f6a04a1df1,150fbfaadda24570,azure/oav,node,T+L,npm test,True,,tests passed with files modified,n/a,no,none
+8d194fe872470917549c,150fbfaadda24570,azure/oav,node,T+L,npm test,True,,tests passed with files modified,n/a,no,none
+517fe8adb1ebbf77c537,150fbfaadda24570,azure/oav,node,T+L,npm test,True,,tests passed with files modified,n/a,no,none
+042ca848a039dcb58d65,ea5545b3e36e5c4b,alphabitcore/nexus-gateway,other,T+L,go test,False,wrong working directory,"# .
+no Go files in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_ea5545b3e36e5c4b_T_L // trace shell: cd packages/shared/core/bootenv && go test -race -count=1 ./... | cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_ea5545b3e36e5c4b_T_L/packages/shared/core/bootenv && go test -race -count=1 ./... | go vet ./... && go test",yes,no,"run `go test` from Go module root (backend/ or subdir), not repo root"
+c9d2da434de0b9c3c7a8,ea5545b3e36e5c4b,alphabitcore/nexus-gateway,other,T+L,go test,False,wrong working directory,"# .
+no Go files in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_ea5545b3e36e5c4b_T_L // trace shell: go test ./core/bootenv/ 2>&1 | tail -5 | go test -race -count=1 -cover ./core/bootenv/ 2>&1 | tail -8 | go vet ./core/bootenv/ && go test ./core/bootenv/ 2>&1 | tail -3",yes,no,"run `go test` from Go module root (backend/ or subdir), not repo root"
+42033c1c87de2f3ee42c,ea5545b3e36e5c4b,alphabitcore/nexus-gateway,other,T+L,go test,False,wrong working directory,"# .
+no Go files in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_ea5545b3e36e5c4b_T_L // trace shell: go test -race -count=1 ./identity/pkce/ | grep -rn ""VerifyS256\|ValidVerifier"" --include=*.go .. | grep -v ""identity/pkce/"" | go vet ./identity/pkce/ && go test -cover -count=1 ./identity/pkce/",yes,no,"run `go test` from Go module root (backend/ or subdir), not repo root"
+46f61a1184728ec03966,67c22d7f97cdb50d,microsoft/vscode,python,T+L,pytest,False,wrong working directory,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+================ // trace shell: cd ../.. && python3 -m pytest -q 2>&1 | tail -30 | ls ../../.venv/bin/python* 2>/dev/null; which python3.11 python3.12 python3.13 2>/dev/null; ls /usr/bin/python3.1* 2>/dev/null | cd ",yes,review,pytest picked up lab root pyproject.toml; constrain cwd to case repo submodule with tests
+27b4e147f13e6865083b,67c22d7f97cdb50d,microsoft/vscode,python,T+L,pytest,False,wrong working directory,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+================ // trace shell: python -m pytest --collect-only -q 2>&1 | tail -20 | python3 -m pytest --collect-only -q 2>&1 | tail -20 | python3 -m pytest -q 2>&1 | tail -20",yes,review,pytest picked up lab root pyproject.toml; constrain cwd to case repo submodule with tests
+daaa569f2629cc882b82,67c22d7f97cdb50d,microsoft/vscode,python,T+L,pytest,False,wrong working directory,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+================ // trace shell: find . -name ""*.py"" | grep -v node_modules | grep -iE ""test|conftest"" | head; echo ""===all py in root area===""; find . -maxdepth 2 -name ""*.py"" | grep -v node_modules | head; echo ""==",yes,review,pytest picked up lab root pyproject.toml; constrain cwd to case repo submodule with tests
+a16c0f3a32952401c662,9040e7f7272a3e24,myriad-dreamin/tinymist,node,T+L,yarn test,False,invalid test command,"error Command ""test"" not found. // trace shell: cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_9040e7f7272a3e24_T_L/editors/vscode && corepack yarn test 2>&1 | tail -70 | corepack yarn test:unit run 2>&1 | tail -30; echo ""DISPLAY=$DISPLAY""; which xvfb-run 2>&1 | cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_9040e7f7272a3e24_T_L && git --no-pager diff -- editors/",yes,no,package.json lacks test script; pick valid script from repo or drop case; was `yarn test`
+6dcceb0b17e916af4b9f,9040e7f7272a3e24,myriad-dreamin/tinymist,node,T+L,yarn test,False,invalid test command,"error Command ""test"" not found. // trace shell: yarn test:unit run 2>&1 | tail -25 | git --no-pager diff -- editors/vscode/README.md | git --no-pager diff -- README.md",yes,no,package.json lacks test script; pick valid script from repo or drop case; was `yarn test`
+430ad17a8c46ae8c065d,9040e7f7272a3e24,myriad-dreamin/tinymist,node,T+L,yarn test,False,invalid test command,"error Command ""test"" not found. // trace shell: cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_9040e7f7272a3e24_T_L/editors/vscode && yarn test 2>&1 | tail -50 | yarn test:unit 2>&1 | tail -25 | cd /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_9040e7f7272a3e24_T_L && git --no-pager diff -- docs/tinymist/frontend/vscode.typ editors/vscode/README.md",yes,no,package.json lacks test script; pick valid script from repo or drop case; was `yarn test`
+2415cd359a93db055498,1bf1e91d4777d875,astral-sh/ruff,other,T+L,cargo test,False,timeout,"Compiling unicode-ident v1.0.24
+   Compiling memchr v2.8.1
+   Compiling cfg-if v1.0.4
+   Compiling itoa v1.0.15
+   Compiling smallvec v1.15.1
+   Compiling regex-syntax v0.8.11
+   Compiling equivalent v1.0.2
+   Compiling log v0.4.32
+   Compiling once_cell v1.21.4
+   Compiling foldhash v0.2.0
+   Compi // trace shell: git stash >/dev/null 2>&1; echo ""=== without my change ===""; CARGO_PROFILE_DEV_OPT_LEVEL=1 CARGO_PROFILE_DEV_DEBUG=""line-tables-only"" cargo test -p ruff --test cli lint::walrus_before",partial,no,cargo test compile exceeded capture/time; use smaller crate target or longer timeout with preflight compile
+f75cb4311ac21301e554,1bf1e91d4777d875,astral-sh/ruff,other,T+L,cargo test,False,timeout,"Compiling unicode-ident v1.0.24
+   Compiling memchr v2.8.1
+   Compiling cfg-if v1.0.4
+   Compiling itoa v1.0.15
+   Compiling smallvec v1.15.1
+   Compiling regex-syntax v0.8.11
+   Compiling equivalent v1.0.2
+   Compiling log v0.4.32
+   Compiling foldhash v0.2.0
+   Compiling once_cell v1.21.4
+   Compi // trace shell: NO_COLOR=1 CARGO_PROFILE_DEV_OPT_LEVEL=1 CARGO_PROFILE_DEV_DEBUG=""line-tables-only"" cargo test -p ruff --test cli 2>&1 | tail -15 | git stash && CARGO_PROFILE_DEV_OPT_LEVEL=1 CARGO_PR",partial,no,cargo test compile exceeded capture/time; use smaller crate target or longer timeout with preflight compile
+548af033b0094295d97f,1bf1e91d4777d875,astral-sh/ruff,other,T+L,cargo test,False,timeout,"Compiling unicode-ident v1.0.24
+   Compiling memchr v2.8.1
+   Compiling cfg-if v1.0.4
+   Compiling itoa v1.0.15
+   Compiling smallvec v1.15.1
+   Compiling regex-syntax v0.8.11
+   Compiling equivalent v1.0.2
+   Compiling log v0.4.32
+   Compiling foldhash v0.2.0
+   Compiling once_cell v1.21.4
+   Compi // trace shell: CARGO_PROFILE_DEV_OPT_LEVEL=1 CARGO_PROFILE_DEV_DEBUG=""line-tables-only"" cargo test 2>&1 | tail -40 | git stash && CARGO_PROFILE_DEV_OPT_LEVEL=1 CARGO_PROFILE_DEV_DEBUG=""line-tables-o",partial,no,cargo test compile exceeded capture/time; use smaller crate target or longer timeout with preflight compile

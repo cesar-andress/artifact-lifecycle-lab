@@ -1,0 +1,38 @@
+run_id,case_id,cell_code,agent_id,replicate_id,factor_a,factor_b,factor_c,success,tests_passing,compilation_success,execution_time_seconds,files_modified,tool_failures,read_instruction,anchor_path_touched,decoy_path_touched,bind_failure_detected,grounding_action,repair_success,dry_run,error_message,trace_path,cost_usd,token_usage,commands_executed,iterations,anchor_attempted,instruction_read,timed_out
+17c9fb0d68bde42be934,d2578b858cfe326f,T+L,claude_code,1,present,truthful,yes,False,False,True,1368.6313491940684,4,3,True,True,False,False,False,False,False,test_timeout,exports/rq5_v2_factorial/phase0_traces/17c9fb0d68bde42be934.jsonl,1.4984417499999996,20287,72,40,True,True,False
+4b2ad9ff25111df1673e,d2578b858cfe326f,T+L,claude_code,2,present,truthful,yes,False,False,True,870.9150568109416,3,1,True,True,False,False,False,False,False,test_timeout,exports/rq5_v2_factorial/phase0_traces/4b2ad9ff25111df1673e.jsonl,0.8324150000000001,14766,30,19,True,True,False
+03a944ebe7f80903bc75,d2578b858cfe326f,T+L,claude_code,3,present,truthful,yes,False,False,True,826.6743577910327,2,2,True,True,False,False,False,False,False,test_timeout,exports/rq5_v2_factorial/phase0_traces/03a944ebe7f80903bc75.jsonl,0.8519527500000001,15349,34,21,True,True,False
+d1a6f4c30f91e676dea1,3ff980d65c78fd63,T+L,claude_code,1,present,truthful,yes,True,True,True,51.30762173797563,2,1,True,True,False,False,False,False,False,,exports/rq5_v2_factorial/phase0_traces/d1a6f4c30f91e676dea1.jsonl,0.26842574999999996,5011,10,10,True,True,False
+e664b8c1888596b695d2,3ff980d65c78fd63,T+L,claude_code,2,present,truthful,yes,True,True,True,52.19403607398924,2,0,True,True,False,False,False,False,False,,exports/rq5_v2_factorial/phase0_traces/e664b8c1888596b695d2.jsonl,0.30371725,5633,4,11,True,True,False
+f859b847a188794eb4e3,3ff980d65c78fd63,T+L,claude_code,3,present,truthful,yes,True,True,True,51.86531662098039,2,0,True,True,False,False,False,False,False,,exports/rq5_v2_factorial/phase0_traces/f859b847a188794eb4e3.jsonl,0.24679725000000002,5446,4,11,True,True,False
+61797f45f7664ce7a6f5,1e1131e99f590b53,T+L,claude_code,1,present,truthful,yes,False,False,True,54.33319905998744,2,0,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_1e1131e99f590b53_T_L
+configfile: ../../pyproject.toml
+collected 0 items
+
+=============================== warnings summary ===============================
+../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1624
+  /home/cesar/papers/artifact-lifecycle-lab",exports/rq5_v2_factorial/phase0_traces/61797f45f7664ce7a6f5.jsonl,0.26052425,4406,6,7,True,True,False
+11d9ca52c1ab8b667bc7,1e1131e99f590b53,T+L,claude_code,2,present,truthful,yes,False,False,True,53.42940694100503,2,0,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_1e1131e99f590b53_T_L
+configfile: ../../pyproject.toml
+collected 0 items
+
+=============================== warnings summary ===============================
+../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1624
+  /home/cesar/papers/artifact-lifecycle-lab",exports/rq5_v2_factorial/phase0_traces/11d9ca52c1ab8b667bc7.jsonl,0.20991075,4434,6,7,True,True,False
+72f223daa517739a980a,1e1131e99f590b53,T+L,claude_code,3,present,truthful,yes,False,False,True,52.673974256973715,2,0,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_1e1131e99f590b53_T_L
+configfile: ../../pyproject.toml
+collected 0 items
+
+=============================== warnings summary ===============================
+../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1624
+  /home/cesar/papers/artifact-lifecycle-lab",exports/rq5_v2_factorial/phase0_traces/72f223daa517739a980a.jsonl,0.2919355,4706,6,7,True,True,False
+ff1c1cc6b6b660eadf54,abced8248ab90fb1,T+L,claude_code,1,present,truthful,yes,False,False,True,1001.8367175720297,3,1,True,True,False,False,False,False,False,test_timeout,exports/rq5_v2_factorial/phase0_traces/ff1c1cc6b6b660eadf54.jsonl,0.97490375,16442,40,25,True,True,False
+0ffd9d615c8818e18786,abced8248ab90fb1,T+L,claude_code,2,present,truthful,yes,False,False,True,934.7151073260559,3,1,True,True,False,False,False,False,False,test_timeout,exports/rq5_v2_factorial/phase0_traces/0ffd9d615c8818e18786.jsonl,0.9882319999999999,16013,38,25,True,True,False
+ffee943c69b1c6f59875,abced8248ab90fb1,T+L,claude_code,3,present,truthful,yes,False,False,True,802.3936997009972,2,1,True,True,False,False,False,False,False,test_timeout,exports/rq5_v2_factorial/phase0_traces/ffee943c69b1c6f59875.jsonl,0.49083224999999997,8325,22,15,True,True,False
+c71fde8a1468646ce340,d5303ea5b426c7be,T+L,claude_code,1,present,truthful,yes,True,True,True,117.66387652497086,3,0,True,True,False,False,False,False,False,,exports/rq5_v2_factorial/phase0_traces/c71fde8a1468646ce340.jsonl,0.5655665,8734,16,17,True,True,False

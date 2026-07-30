@@ -1,21 +1,21 @@
 case_id,repository,classification,setup_command,execution_cwd
-d2578b858cfe326f,fixmyberlin/tilda-geo,MINOR_SETUP,npm install,app
+d2578b858cfe326f,fixmyberlin/tilda-geo,MINOR_SETUP,,app
 3ff980d65c78fd63,agentwrapper/agent-orchestrator,READY,,backend
-1e1131e99f590b53,vercel/next.js,MINOR_SETUP,pnpm install,.
-abced8248ab90fb1,fixmyberlin/tilda-geo,MINOR_SETUP,npm install,app
+1e1131e99f590b53,vercel/next.js,MINOR_SETUP,,.
+abced8248ab90fb1,fixmyberlin/tilda-geo,MINOR_SETUP,,app
 d5303ea5b426c7be,agentwrapper/agent-orchestrator,READY,,backend
-6aab689b93e84025,vercel/next.js,MINOR_SETUP,pnpm install,.
-150fbfaadda24570,azure/oav,MINOR_SETUP,npm ci,.
+6aab689b93e84025,vercel/next.js,MINOR_SETUP,,.
+150fbfaadda24570,azure/oav,MINOR_SETUP,,.
 ea5545b3e36e5c4b,alphabitcore/nexus-gateway,READY,,packages/agent
-67c22d7f97cdb50d,microsoft/vscode,MINOR_SETUP,npm ci,.
+67c22d7f97cdb50d,microsoft/vscode,MINOR_SETUP,,.
 1bf1e91d4777d875,astral-sh/ruff,READY,,.
 fa545f0a92aa171d,microsoft/vscode,MINOR_SETUP,,extensions/copilot/test/simulation/fixtures/tests/py-pyproject-toml
-1f69fffb4fb41600,azure/oav,MINOR_SETUP,npm ci,.
+1f69fffb4fb41600,azure/oav,MINOR_SETUP,,.
 4f7981489a817e80,agentwrapper/agent-orchestrator,READY,,backend
-b929f379e955a660,alphabitcore/nexus-gateway,MINOR_SETUP,npm ci,.
+b929f379e955a660,alphabitcore/nexus-gateway,MINOR_SETUP,,.
 ba9ebf91f505caac,langgenius/dify,MINOR_SETUP,,api
-e6e06694f4d15f4f,automattic/wp-calypso,MINOR_SETUP,yarn install,.
+e6e06694f4d15f4f,automattic/wp-calypso,MINOR_SETUP,,.
 c2e719f548713d54,goldenpotato137/potatovn,MINOR_SETUP,,.
 5c319b36368735a7,datadog/dd-trace-js,READY,,.
 8921c9d4e98fba03,alphabitcore/nexus-gateway,READY,,packages/agent
-09be5687edfd506b,automattic/wp-calypso,MINOR_SETUP,yarn install,.
+09be5687edfd506b,automattic/wp-calypso,MINOR_SETUP,,.

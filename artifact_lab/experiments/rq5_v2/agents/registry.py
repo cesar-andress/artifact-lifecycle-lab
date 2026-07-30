@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import subprocess
 import time
@@ -11,7 +12,13 @@ from artifact_lab.experiments.rq5_v2.agents.base import FactorialAgent
 from artifact_lab.experiments.rq5_v2.factors import levels_for_cell
 from artifact_lab.experiments.rq5_v2.models import FactorialCase, FactorialRunResult
 from artifact_lab.experiments.rq5_v2.prompts import build_factorial_prompt
-from artifact_lab.experiments.truth_decay.rq5_experiment.agents.cli_utils import run_subprocess
+from artifact_lab.experiments.truth_decay.rq5_experiment.agents.cli_utils import (
+    instruction_was_read,
+    parse_claude_stream_json,
+    reference_followed,
+    run_subprocess,
+    shell_commands_from_events,
+)
 
 
 def _base_result(
@@ -35,6 +42,29 @@ def _base_result(
         factor_c=levels.factor_c,
         dry_run=dry_run,
     )
+
+
+def _claude_error_message(*, returncode: int, stdout: str, stderr: str) -> str:
+    if stderr.strip():
+        return stderr.strip()[:500]
+    for line in reversed(stdout.splitlines()):
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            obj = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if obj.get("type") == "result":
+            if obj.get("is_error") and obj.get("result"):
+                return str(obj["result"])[:500]
+            if obj.get("api_error_status"):
+                return f"api_error_{obj['api_error_status']}"[:500]
+        if obj.get("error"):
+            return str(obj["error"])[:500]
+    if returncode != 0:
+        return f"exit_{returncode}"
+    return ""
 
 
 class ClaudeCodeAgent:
@@ -75,12 +105,31 @@ class ClaudeCodeAgent:
         env = os.environ.copy()
         env["CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC"] = "1"
         error = ""
+        stdout = ""
+        meta = {
+            "iterations": 0,
+            "tool_invocations": 0,
+            "token_usage": None,
+            "cost_usd": None,
+            "tool_failures": 0,
+        }
+        events = []
         try:
             proc = run_subprocess(cmd, cwd=workspace, timeout=self.timeout_seconds, env=env)
+            stdout = proc.stdout or ""
+            stderr = proc.stderr or ""
             if proc.returncode != 0:
-                error = proc.stderr.strip() or proc.stdout.strip() or f"exit {proc.returncode}"
+                error = _claude_error_message(
+                    returncode=proc.returncode,
+                    stdout=stdout,
+                    stderr=stderr,
+                )
+            parsed_events, parsed_meta = parse_claude_stream_json(stdout)
+            events.extend(parsed_events)
+            meta.update({k: parsed_meta.get(k, meta[k]) for k in meta})
         except subprocess.TimeoutExpired:
-            error = "timeout"
+            error = f"timeout_after_{self.timeout_seconds}s"
+        cell = case.get_cell(cell_code)
         result = _base_result(
             case=case,
             cell_code=cell_code,
@@ -91,7 +140,17 @@ class ClaudeCodeAgent:
         )
         result.execution_time_seconds = round(time.perf_counter() - started, 3)
         result.error_message = error
-        result.read_instruction = levels_for_cell(cell_code).instruction_present
+        result.timed_out = "timeout" in error.lower()
+        result.read_instruction = instruction_was_read(events, case.instruction_path)
+        result.instruction_read = result.read_instruction
+        result.anchor_attempted = reference_followed(events, cell.cited_anchor)
+        result.anchor_path_touched = result.anchor_attempted
+        result.commands_executed = shell_commands_from_events(events)
+        result.iterations = int(meta.get("iterations") or 0)
+        result.tool_failures = int(meta.get("tool_failures") or 0)
+        result.cost_usd = meta.get("cost_usd")
+        result.token_usage = meta.get("token_usage")
+        result._stdout_trace = stdout  # noqa: SLF001 — consumed by runner for trace persistence
         return result
 
 

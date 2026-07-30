@@ -17,17 +17,17 @@
   "seed": 42,
   "software_signals": [
     "manifest_or_doc:readme.md",
+    "manifest_or_doc:makefile",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:gemfile",
     "manifest_or_doc:readme.md",
     "manifest_or_doc:makefile",
     "manifest_or_doc:makefile",
     "manifest_or_doc:makefile",
     "manifest_or_doc:readme.md",
     "manifest_or_doc:makefile",
-    "manifest_or_doc:readme.md",
     "manifest_or_doc:makefile",
-    "manifest_or_doc:makefile",
-    "manifest_or_doc:makefile",
-    "manifest_or_doc:readme.md"
+    "manifest_or_doc:makefile"
   ],
   "sources": [
     "rq5_case_manifest.csv",

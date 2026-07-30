@@ -11,6 +11,7 @@ from artifact_lab.experiments.truth_pilots.p1_reference import run_p1_reference_
 from artifact_lab.experiments.truth_pilots.p2_attribution import run_p2_attribution_pilot
 from artifact_lab.experiments.truth_pilots.p3_rot_incidence import run_p3_rot_incidence_gate
 from artifact_lab.experiments.truth_pilots.p4_attribution_precision import run_p4_attribution_precision_gate
+from artifact_lab.experiments.truth_pilots.p4_validation import run_p4_validation
 from artifact_lab.experiments.truth_pilots.p5_human_baseline import run_p5_human_baseline_gate
 from artifact_lab.experiments.truth_pilots.pre_scaling_gates import run_pre_scaling_gates
 from artifact_lab.experiments.truth_pilots.gates_common import DEFAULT_RQ1_LONGITUDINAL
@@ -76,6 +77,9 @@ def main(argv: list[str] | None = None) -> int:
     p4_parser = sub.add_parser("p4", parents=[gate_common], help="Gate P4 — attribution precision audit")
     p4_parser.add_argument("--n-sample", type=int, default=200)
     p4_parser.add_argument("--seed", type=int, default=42)
+    p4_val = sub.add_parser("p4-validate", help="Validate P4 classifier against human gold labels")
+    p4_val.add_argument("--gold-csv", type=Path, required=True)
+    p4_val.add_argument("--output-dir", type=Path, default=DEFAULT_EXPORT_DIR)
     sub.add_parser("p5", parents=[gate_common], help="Gate P5 — human doc baseline")
     sub.add_parser("pre-scaling-gates", parents=[gate_common], help="Run P3, P4, P5")
 
@@ -85,6 +89,14 @@ def main(argv: list[str] | None = None) -> int:
     all_parser.add_argument("--n-max", type=int, default=500)
 
     args = parser.parse_args(argv)
+    if args.command == "p4-validate":
+        report = run_p4_validation(
+            gold_csv=args.gold_csv,
+            output_md=args.output_dir / "p4_validation.md",
+        )
+        print(f"P4 validation -> {report}")
+        return 0
+
     l1_paths = _resolve_l1(args.l1_paths)
     if not l1_paths and args.command != "go-no-go":
         print("error: no L1 inputs found; run e1 or e1-100 extraction first", file=sys.stderr)

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import math
 from pathlib import Path
 
 import matplotlib
@@ -9,8 +10,11 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.patches import FancyArrowPatch
 
 from artifact_lab.execution.atomic_io import atomic_replace
+
+NODE_RADIUS = 0.68
 
 
 def _save(fig, path: Path) -> None:
@@ -20,25 +24,55 @@ def _save(fig, path: Path) -> None:
     atomic_replace(tmp, path)
 
 
+def _boundary_point(cx: float, cy: float, tx: float, ty: float, *, radius: float = NODE_RADIUS) -> tuple[float, float]:
+    """Point on circle edge toward target (tx, ty)."""
+    dx, dy = tx - cx, ty - cy
+    dist = math.hypot(dx, dy)
+    if dist < 1e-9:
+        return cx, cy
+    return cx + radius * dx / dist, cy + radius * dy / dist
+
+
+def _arc_midpoint(
+    x1: float,
+    y1: float,
+    x2: float,
+    y2: float,
+    *,
+    rad: float,
+) -> tuple[float, float]:
+    """Approximate label anchor along a curved arc3 connection."""
+    mx, my = (x1 + x2) / 2, (y1 + y2) / 2
+    dx, dy = x2 - x1, y2 - y1
+    length = math.hypot(dx, dy) or 1.0
+    px, py = -dy / length, dx / length
+    offset = rad * length * 0.45
+    return mx + px * offset, my + py * offset
+
+
 def render_figure_lifecycle_diagram(transition_rows: list[dict], path: Path) -> None:
     """Conceptual lifecycle diagram with empirical first-transition and key edge weights."""
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.set_xlim(0, 10)
-    ax.set_ylim(0, 6)
+    fig, ax = plt.subplots(figsize=(10.5, 7.5))
+    ax.set_xlim(-0.2, 10.2)
+    ax.set_ylim(-0.25, 7.35)
     ax.axis("off")
+    ax.set_aspect("equal")
 
+    # Layered layout: operational center, integrity_loss directly above, repair below,
+    # birth left, deletion right, unverifiable bottom-left.  Edges follow natural flow
+    # top-to-bottom / left-to-right with minimal crossings.
     nodes = {
-        "birth": (1.0, 3.0),
-        "operational": (3.5, 4.5),
-        "integrity_loss": (6.0, 3.0),
-        "repair": (6.0, 1.0),
-        "deletion": (9.0, 3.0),
-        "unverifiable": (3.5, 1.0),
+        "operational": (5.0, 3.6),
+        "integrity_loss": (5.0, 6.15),
+        "birth": (1.4, 3.6),
+        "deletion": (8.6, 3.6),
+        "unverifiable": (1.4, 0.85),
+        "repair": (5.0, 0.85),
     }
     labels = {
         "birth": "Birth",
         "operational": "Operational",
-        "integrity_loss": "Integrity\nloss",
+        "integrity_loss": "Integrity loss",
         "repair": "Repair",
         "deletion": "Deletion",
         "unverifiable": "Unverifiable",
@@ -55,33 +89,127 @@ def render_figure_lifecycle_diagram(transition_rows: list[dict], path: Path) -> 
         if r.get("section") == "transition_probability"
     }
 
-    for name, (x, y) in nodes.items():
-        ax.add_patch(plt.Circle((x, y), 0.55, fill=True, color="#ECF0F1", ec="#2C3E50", lw=1.5))
-        ax.text(x, y, labels[name], ha="center", va="center", fontsize=9, fontweight="bold")
+    for _name, (x, y) in nodes.items():
+        ax.add_patch(
+            plt.Circle((x, y), NODE_RADIUS, fill=True, color="#ECF0F1", ec="#2C3E50", lw=1.6, zorder=3)
+        )
 
-    def edge(a: str, b: str, rad: float = 0.0, label: str | None = None) -> None:
+    for name, (x, y) in nodes.items():
+        label = labels[name]
+        fontsize = 9 if len(label) <= 12 else 8.5
+        ax.text(x, y, label, ha="center", va="center", fontsize=fontsize, fontweight="bold", zorder=4)
+
+    def edge(
+        a: str,
+        b: str,
+        *,
+        rad: float = 0.0,
+        label: str | None = None,
+        label_offset: tuple[float, float] = (0.0, 0.0),
+        label_xy: tuple[float, float] | None = None,
+    ) -> None:
         x1, y1 = nodes[a]
         x2, y2 = nodes[b]
-        ax.annotate(
-            "",
-            xy=(x2, y2),
-            xytext=(x1, y1),
-            arrowprops=dict(arrowstyle="->", color="#34495E", lw=1.2, connectionstyle=f"arc3,rad={rad}"),
+        sx, sy = _boundary_point(x1, y1, x2, y2)
+        ex, ey = _boundary_point(x2, y2, x1, y1)
+        style = f"arc3,rad={rad}"
+        arrow = FancyArrowPatch(
+            (sx, sy),
+            (ex, ey),
+            arrowstyle="-|>",
+            mutation_scale=13,
+            color="#34495E",
+            linewidth=1.25,
+            connectionstyle=style,
+            shrinkA=0,
+            shrinkB=0,
+            zorder=1,
         )
+        ax.add_patch(arrow)
         if label:
-            mx, my = (x1 + x2) / 2, (y1 + y2) / 2 + rad
-            ax.text(mx, my, label, fontsize=7, ha="center", color="#7F8C8D")
+            if label_xy is not None:
+                lx, ly = label_xy
+            else:
+                lx, ly = _arc_midpoint(sx, sy, ex, ey, rad=rad)
+                lx += label_offset[0]
+                ly += label_offset[1]
+            ax.text(
+                lx,
+                ly,
+                label,
+                fontsize=7.5,
+                ha="center",
+                va="center",
+                color="#5D6D7E",
+                bbox=dict(boxstyle="round,pad=0.18", fc="white", ec="none", alpha=0.9),
+                zorder=2,
+            )
 
-    edge("birth", "operational", label=f"{first_probs.get('operational', 0):.1%}")
-    edge("birth", "integrity_loss", rad=-0.15, label=f"{first_probs.get('integrity_loss', 0):.1%}")
-    edge("birth", "unverifiable", rad=0.15, label=f"{first_probs.get('unverifiable', 0):.1%}")
-    edge("operational", "integrity_loss", label=f"{trans_probs.get(('operational', 'integrity_loss'), 0):.1%}")
-    edge("integrity_loss", "repair", rad=-0.2, label=f"{trans_probs.get(('integrity_loss', 'repair'), 0):.1%}")
-    edge("repair", "operational", rad=0.2, label=f"{trans_probs.get(('repair', 'operational'), 0):.1%}")
-    edge("integrity_loss", "deletion", label=f"{trans_probs.get(('integrity_loss', 'deletion'), 0):.1%}")
-    edge("operational", "deletion", rad=0.15, label=f"{trans_probs.get(('operational', 'deletion'), 0):.1%}")
+    # Birth fan-out (left column).
+    edge(
+        "birth",
+        "operational",
+        rad=0.0,
+        label=f"{first_probs.get('operational', 0):.1%}",
+        label_xy=(3.0, 4.05),
+    )
+    edge(
+        "birth",
+        "unverifiable",
+        rad=0.0,
+        label=f"{first_probs.get('unverifiable', 0):.1%}",
+        label_xy=(0.55, 2.1),
+    )
+    edge(
+        "birth",
+        "integrity_loss",
+        rad=0.28,
+        label=f"{first_probs.get('integrity_loss', 0):.1%}",
+        label_xy=(2.35, 5.55),
+    )
 
-    ax.set_title("RQ4 — Multi-state reference lifecycle (empirical transition weights)", fontsize=12)
+    # Vertical spine through operational.
+    edge(
+        "operational",
+        "integrity_loss",
+        rad=0.0,
+        label=f"{trans_probs.get(('operational', 'integrity_loss'), 0):.1%}",
+        label_xy=(4.2, 4.95),
+    )
+    edge(
+        "repair",
+        "operational",
+        rad=0.0,
+        label=f"{trans_probs.get(('repair', 'operational'), 0):.1%}",
+        label_xy=(4.2, 2.35),
+    )
+
+    # Horizontal exits at operational and integrity_loss rows.
+    edge(
+        "operational",
+        "deletion",
+        rad=0.0,
+        label=f"{trans_probs.get(('operational', 'deletion'), 0):.1%}",
+        label_xy=(6.9, 3.95),
+    )
+    edge(
+        "integrity_loss",
+        "deletion",
+        rad=-0.22,
+        label=f"{trans_probs.get(('integrity_loss', 'deletion'), 0):.1%}",
+        label_xy=(7.55, 5.25),
+    )
+
+    # Downward branch to repair.
+    edge(
+        "integrity_loss",
+        "repair",
+        rad=0.22,
+        label=f"{trans_probs.get(('integrity_loss', 'repair'), 0):.1%}",
+        label_xy=(6.0, 2.55),
+    )
+
+    ax.set_title("RQ4: Multi-state reference lifecycle (empirical transition weights)", fontsize=12)
     _save(fig, path)
     plt.close(fig)
 

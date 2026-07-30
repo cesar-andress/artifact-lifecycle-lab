@@ -10,8 +10,8 @@ failed mechanical verification from first observation — not engineering fault 
 
 - Born-stale references classified: **17747**
 - LLM dual-judge adjudication enabled: **yes**
-- References sent to LLM judges: **150**
-- Judge disagreements (unresolved): **6**
+- References sent to LLM judges: **1540**
+- Judge disagreements (unresolved): **135**
 
 ## Inferred taxonomy (not hardcoded)
 
@@ -26,16 +26,15 @@ when heuristic confidence is insufficient. Letter codes are illustrative only.
 | D | `pre_observation_evolution` | 876 | 4.9% |
 | E | `external_reference` | 33 | 0.2% |
 | G | `verification_anchor_mismatch` | 5301 | 29.9% |
-| F | `genuine_false_claim` | 1532 | 8.6% |
-| U | `unresolved_disagreement` | 8 | 0.0% |
+| F | `genuine_false_claim` | 1405 | 7.9% |
+| U | `unresolved_disagreement` | 135 | 0.8% |
 
 ## Adjudication status
 
 - **deterministic_high:** 8579 (48.3%)
 - **deterministic_medium:** 7628 (43.0%)
-- **llm_quota_exceeded:** 1390 (7.8%)
-- **llm_agreement:** 144 (0.8%)
-- **llm_disagreement:** 6 (0.0%)
+- **llm_agreement:** 1405 (7.9%)
+- **llm_disagreement:** 135 (0.8%)
 
 ## Heuristic confidence distribution
 

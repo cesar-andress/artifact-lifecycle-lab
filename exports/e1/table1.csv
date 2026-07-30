@@ -1,0 +1,9 @@
+artifact_family,n_repos,n_files,share_repos_pct
+agents_dir,6,70,42.86
+agents_md,10,70,71.43
+claude_md,6,13,42.86
+copilot_instructions,2,3,14.29
+cursor_rules,1,1,7.14
+github_instructions,1,30,7.14
+prompts,4,39,28.57
+skill_md,8,76,57.14

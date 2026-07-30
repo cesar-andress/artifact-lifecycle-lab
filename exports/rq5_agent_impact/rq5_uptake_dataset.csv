@@ -124,3 +124,6 @@ claude_code,A,64877a6152749c82,2,True,True,True,False,False,False,False,False,Fa
 claude_code,A,64877a6152749c82,3,True,True,True,True,False,False,False,False,False,tests_failed,followed_not_success,instruction_read
 claude_code,B,64877a6152749c82,1,True,True,True,False,True,False,False,True,False,tests_failed,read_quoted_not_followed,instruction_ignored
 claude_code,B,64877a6152749c82,2,True,True,True,True,True,True,False,False,False,tests_failed,followed_not_success,hallucinated_path
+claude_code,B,64877a6152749c82,3,True,True,True,True,True,True,False,False,False,tests_failed,followed_not_success,hallucinated_path
+claude_code,A,a542dc2c46a8989f,1,True,True,True,False,False,False,False,False,False,tests_failed,read_quoted_not_followed,instruction_ignored
+claude_code,A,a542dc2c46a8989f,2,True,True,True,True,False,False,False,False,False,tests_failed,followed_not_success,instruction_read

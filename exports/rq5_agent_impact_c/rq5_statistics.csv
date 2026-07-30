@@ -1,0 +1,8 @@
+estimand,agent_id,n_cases,n_pairs,value,ci_low,ci_high,method,n_a_success,n_b_success,n_both_success,n_a_only_success,n_b_only_success,n_neither_success
+success_rate_a,claude_code,35,0,0.0,0.0,0.0,wilson,0,0,0,0,0,0
+success_rate_b,claude_code,35,0,0.0,0.0,0.0,wilson,0,0,0,0,0,0
+paired_success_difference_a_minus_b,claude_code,35,0,0.0,0.0,0.0,bootstrap_cluster_case,0,0,0,0,0,0
+cohens_h,claude_code,35,0,0.0,0.0,0.0,point_estimate,0,0,0,0,0,0
+mcnemar_p_value,claude_code,35,105,1.0,0.0,1.0,exact_mcnemar,0,0,0,0,0,105
+execution_time_difference_a_minus_b,claude_code,35,0,0.0,0.0,0.0,bootstrap_paired,0,0,0,0,0,0
+cliffs_delta_execution_time,claude_code,35,0,0.0,0.0,0.0,point_estimate,0,0,0,0,0,0

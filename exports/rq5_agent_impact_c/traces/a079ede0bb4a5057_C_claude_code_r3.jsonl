@@ -1,0 +1,6 @@
+{"event_type": "Bash", "payload": {"input": {"command": "git status && echo \"---LOG---\" && git log --oneline -5", "description": "Check git status and log"}, "tool": "Bash"}, "timestamp": "2026-07-03T02:56:01.894222+00:00"}
+{"event_type": "shell_command", "payload": {"command": "git status && echo \"---LOG---\" && git log --oneline -5"}, "timestamp": "2026-07-03T02:56:01.894243+00:00"}
+{"event_type": "Bash", "payload": {"input": {"command": "ls -la && echo \"---\" && git diff --stat HEAD", "description": "List directory and diff stat"}, "tool": "Bash"}, "timestamp": "2026-07-03T02:56:01.894299+00:00"}
+{"event_type": "shell_command", "payload": {"command": "ls -la && echo \"---\" && git diff --stat HEAD"}, "timestamp": "2026-07-03T02:56:01.894306+00:00"}
+{"event_type": "Bash", "payload": {"input": {"command": "find .agents .claude -type f 2>/dev/null | head -50; echo \"---AGENTS.md---\"; cat AGENTS.md", "description": "Inspect agent config dirs and AGENTS.md"}, "tool": "Bash"}, "timestamp": "2026-07-03T02:56:01.894358+00:00"}
+{"event_type": "shell_command", "payload": {"command": "find .agents .claude -type f 2>/dev/null | head -50; echo \"---AGENTS.md---\"; cat AGENTS.md"}, "timestamp": "2026-07-03T02:56:01.894364+00:00"}

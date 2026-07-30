@@ -1,0 +1,6 @@
+{"event_type": "Bash", "payload": {"input": {"command": "ls -la && git log --oneline -5", "description": "List repo contents and log"}, "tool": "Bash"}, "timestamp": "2026-07-03T06:06:03.638988+00:00"}
+{"event_type": "shell_command", "payload": {"command": "ls -la && git log --oneline -5"}, "timestamp": "2026-07-03T06:06:03.639004+00:00"}
+{"event_type": "Bash", "payload": {"input": {"command": "ls -la .claude/ && cat .git && git status", "description": "Inspect .claude and git state"}, "tool": "Bash"}, "timestamp": "2026-07-03T06:06:03.639037+00:00"}
+{"event_type": "shell_command", "payload": {"command": "ls -la .claude/ && cat .git && git status"}, "timestamp": "2026-07-03T06:06:03.639040+00:00"}
+{"event_type": "Bash", "payload": {"input": {"command": "git show --stat HEAD | head -40 && echo \"---DELETED CLAUDE.md---\" && git show HEAD:CLAUDE.md | head -60", "description": "Show HEAD commit and deleted CLAUDE.md"}, "tool": "Bash"}, "timestamp": "2026-07-03T06:06:03.639082+00:00"}
+{"event_type": "shell_command", "payload": {"command": "git show --stat HEAD | head -40 && echo \"---DELETED CLAUDE.md---\" && git show HEAD:CLAUDE.md | head -60"}, "timestamp": "2026-07-03T06:06:03.639084+00:00"}

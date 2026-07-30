@@ -1,0 +1,5 @@
+condition,agent_id,trace_class,count,frequency,n_runs
+C,claude_code,instruction_read,9,0.085714,105
+C,claude_code,instruction_ignored,90,0.857143,105
+C,claude_code,instruction_followed,1,0.009524,105
+C,claude_code,tool_failure,5,0.047619,105

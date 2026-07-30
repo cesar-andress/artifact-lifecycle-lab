@@ -1,0 +1,67 @@
+run_id,case_id,success,failure_category,error_message,timed_out,instruction_read,anchor_attempted
+17c9fb0d68bde42be934,d2578b858cfe326f,False,Toolchain,"/bin/sh: 1: Vitest: not found
+",False,True,True
+4b2ad9ff25111df1673e,d2578b858cfe326f,False,Toolchain,"/bin/sh: 1: Vitest: not found
+",False,True,True
+03a944ebe7f80903bc75,d2578b858cfe326f,False,Toolchain,"/bin/sh: 1: Vitest: not found
+",False,True,True
+d1a6f4c30f91e676dea1,3ff980d65c78fd63,False,Toolchain,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init
+",False,True,True
+e664b8c1888596b695d2,3ff980d65c78fd63,False,Toolchain,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init
+",False,True,True
+f859b847a188794eb4e3,3ff980d65c78fd63,False,Toolchain,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init
+",False,True,True
+61797f45f7664ce7a6f5,1e1131e99f590b53,False,Toolchain,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifac",False,True,True
+11d9ca52c1ab8b667bc7,1e1131e99f590b53,False,Toolchain,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifac",False,True,True
+72f223daa517739a980a,1e1131e99f590b53,False,Toolchain,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifac",False,True,True
+ff1c1cc6b6b660eadf54,abced8248ab90fb1,False,Toolchain,"/bin/sh: 1: Vitest: not found
+",False,True,True
+0ffd9d615c8818e18786,abced8248ab90fb1,False,Toolchain,"/bin/sh: 1: Vitest: not found
+",False,True,True
+ffee943c69b1c6f59875,abced8248ab90fb1,False,Toolchain,"/bin/sh: 1: Vitest: not found
+",False,True,True
+c71fde8a1468646ce340,d5303ea5b426c7be,False,Toolchain,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init
+",False,True,True
+1e6de47ad87446bff43c,d5303ea5b426c7be,False,Toolchain,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init
+",False,True,True
+2e8faebeb58eb8db4eb1,d5303ea5b426c7be,False,Toolchain,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init
+",False,True,True
+1277c9ce0f66bcf220e9,6aab689b93e84025,False,Toolchain,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifac",False,True,True
+6b4b5d098b8ee0625907,6aab689b93e84025,False,Toolchain,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifac",False,True,True
+444e5f234365b74a1c26,6aab689b93e84025,False,Toolchain,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifac",False,True,True
+be310fd4b1f6a04a1df1,150fbfaadda24570,True,Success,,False,True,True
+8d194fe872470917549c,150fbfaadda24570,True,Success,,False,True,True
+517fe8adb1ebbf77c537,150fbfaadda24570,True,Success,,False,True,True
+042ca848a039dcb58d65,ea5545b3e36e5c4b,False,Tests,"# .
+no Go files in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_ea5545b3e36e5c4b_T_L
+",False,True,True
+c9d2da434de0b9c3c7a8,ea5545b3e36e5c4b,False,Tests,"# .
+no Go files in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_ea5545b3e36e5c4b_T_L
+",False,True,True
+42033c1c87de2f3ee42c,ea5545b3e36e5c4b,False,Tests,"# .
+no Go files in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_ea5545b3e36e5c4b_T_L
+",False,True,True

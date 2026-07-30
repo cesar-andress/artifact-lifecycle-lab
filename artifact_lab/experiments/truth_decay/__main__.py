@@ -9,6 +9,7 @@ from pathlib import Path
 from artifact_lab.experiments.truth_decay.run_born_stale_audit import run_born_stale_audit
 from artifact_lab.experiments.truth_decay.run_born_stale_autopsy import run_born_stale_autopsy
 from artifact_lab.experiments.truth_decay.run_cited_uncited_audit import run_cited_uncited_audit
+from artifact_lab.experiments.truth_decay.run_selection_study import run_selection_study
 from artifact_lab.experiments.truth_decay.run_gfc_confirmatory_audit import run_gfc_confirmatory_audit
 from artifact_lab.experiments.truth_decay.run_rq2_failure_audit import run_rq2_failure_audit
 from artifact_lab.experiments.truth_decay.run_rq1 import DEFAULT_EXPORT_DIR, DEFAULT_L1_PATHS, run_rq1_feasibility_study
@@ -28,6 +29,10 @@ from artifact_lab.experiments.truth_decay.run_rq5_experiment import (
 from artifact_lab.experiments.truth_decay.rq5_experiment.task_selection import select_experiment_cases
 from artifact_lab.experiments.truth_decay.run_rq5_redesign_plan import generate_rq5_redesign_plan
 from artifact_lab.experiments.truth_decay.run_rq5_prep import DEFAULT_RQ5_EXPORT, run_rq5_preparation
+from artifact_lab.experiments.truth_decay.run_rq5_v2_candidates import (
+    DEFAULT_RQ5_V2_EXPORT,
+    run_rq5_v2_candidate_export,
+)
 from artifact_lab.experiments.truth_decay.run_rq5_mediation_analysis import run_rq5_mediation_analysis
 from artifact_lab.experiments.truth_decay.run_rq5_uptake_analysis import run_rq5_uptake_analysis
 from artifact_lab.experiments.truth_pilots.gates_common import DEFAULT_RQ1_LONGITUDINAL
@@ -203,6 +208,19 @@ def _cmd_rq5_prep(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_rq5_v2_candidates(args: argparse.Namespace) -> int:
+    outputs = run_rq5_v2_candidate_export(
+        longitudinal_csv=args.longitudinal_csv,
+        l1_paths=args.l1_paths,
+        blobs_dir=args.blobs_dir,
+        output_dir=args.output_dir,
+        min_candidates=args.min_candidates,
+    )
+    for label, path in outputs.items():
+        print(f"{label} -> {path}")
+    return 0
+
+
 def _cmd_gfc_confirmatory_audit(args: argparse.Namespace) -> int:
     outputs = run_gfc_confirmatory_audit(
         taxonomy_csv=args.taxonomy_csv,
@@ -222,6 +240,20 @@ def _cmd_cited_uncited_audit(args: argparse.Namespace) -> int:
         scratch_dir=args.scratch,
         output_dir=args.output_dir,
         max_cited_per_repo=args.max_cited_per_repo,
+        seed=args.seed,
+        clone_timeout=args.clone_timeout,
+    )
+    for label, path in outputs.items():
+        print(f"{label} -> {path}")
+    return 0
+
+
+def _cmd_selection_study(args: argparse.Namespace) -> int:
+    outputs = run_selection_study(
+        longitudinal_csv=args.longitudinal_csv,
+        scratch_dir=args.scratch,
+        output_dir=args.output_dir,
+        max_referenced_per_repo=args.max_referenced_per_repo,
         seed=args.seed,
         clone_timeout=args.clone_timeout,
     )
@@ -323,6 +355,17 @@ def main(argv: list[str] | None = None) -> int:
     )
     rq5_prep.add_argument("--output-dir", type=Path, default=DEFAULT_RQ5_EXPORT)
     rq5_prep.set_defaults(func=_cmd_rq5_prep)
+
+    rq5_v2 = sub.add_parser(
+        "rq5-v2-candidates",
+        help="RQ5 v2 load-bearing candidate export (no agent runs)",
+    )
+    rq5_v2.add_argument("--longitudinal-csv", type=Path, default=DEFAULT_RQ1_LONGITUDINAL)
+    rq5_v2.add_argument("--l1", type=Path, action="append", dest="l1_paths")
+    rq5_v2.add_argument("--blobs-dir", type=Path, default=Path("data/blobs"))
+    rq5_v2.add_argument("--output-dir", type=Path, default=DEFAULT_RQ5_V2_EXPORT)
+    rq5_v2.add_argument("--min-candidates", type=int, default=100)
+    rq5_v2.set_defaults(func=_cmd_rq5_v2_candidates)
 
     rq5_report = sub.add_parser(
         "rq5-report",
@@ -530,6 +573,23 @@ def main(argv: list[str] | None = None) -> int:
     cited_audit.add_argument("--seed", type=int, default=42)
     cited_audit.add_argument("--clone-timeout", type=int, default=180)
     cited_audit.set_defaults(func=_cmd_cited_uncited_audit)
+
+    selection = sub.add_parser(
+        "selection-study",
+        help="Matched observational study for the selection hypothesis",
+    )
+    selection.add_argument("--longitudinal-csv", type=Path, default=DEFAULT_RQ1_LONGITUDINAL)
+    selection.add_argument("--scratch", type=Path, default=Path("scratch"))
+    selection.add_argument("--output-dir", type=Path, default=DEFAULT_RQ2_EXPORT)
+    selection.add_argument(
+        "--max-referenced-per-repo",
+        type=int,
+        default=None,
+        help="Optional cap for development runs (default: all referenced paths)",
+    )
+    selection.add_argument("--seed", type=int, default=42)
+    selection.add_argument("--clone-timeout", type=int, default=600)
+    selection.set_defaults(func=_cmd_selection_study)
 
     args = parser.parse_args(argv)
     return args.func(args)

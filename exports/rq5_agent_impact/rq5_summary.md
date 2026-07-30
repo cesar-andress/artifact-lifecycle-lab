@@ -1,35 +1,24 @@
-# RQ5 — Causal Agent Impact Experiment
+# RQ5 — Causal Evidence Summary
 
-## Design
+## Design (frozen protocol)
 
-- **Condition A:** repository pinned at `task_commit_sha` with truthful instruction blob.
-- **Condition B:** same repository, same commit, same task; instruction blob swapped to
-  naturally occurring confirmed-false snapshot (no synthetic perturbation).
-- **Cases:** drawn deterministically from `rq5_candidate_dataset.csv` joined with
-  `gfc_confirmatory_audit.csv` (`is_confirmed_false=true`).
+- Condition **A:** truthful instruction blob at pinned commit.
+- Condition **B:** confirmed-false natural instruction blob; all else identical.
 
 ## Execution
 
-- Selected cases: **35**
-- Agents: **stub**
-- Replicates per (case × condition × agent): **1**
-- Total runs recorded: **70** (A=35, B=35)
-- Objective test execution: **disabled**
-- Git workspaces: **disabled (local stub mode)**
+- Cases: **35**
+- Agents: **claude_code**
+- Replicates per (case × condition × agent): **3**
+- Total runs in results file: **9**
 
-## Outputs
+## Raw outcome counts
 
-- `rq5_dataset.csv` — run-level outcomes
-- `rq5_effect_sizes.csv` — paired success contrasts and bootstrap CIs
-- `rq5_trace_statistics.csv` — trace-coded behavior rates
-- `rq5_case_manifest.csv` — selected experimental units
-- `traces/` — JSONL interaction traces per run
-- `figure_success_rate.pdf`, `figure_failure_modes.pdf`, `figure_trace_flow.pdf`
+- `claude_code`: success A=0/6, B=0/3
 
-## Descriptive aggregates (no interpretation)
+## Statistics (descriptive only)
 
-- Agent `stub_agent_v1`: success rate A=1.000, B=0.000, paired Δ=1.000 (bootstrap CI 1.000–1.000), Cohen's h=3.142
-
-## Trace statistics rows
-
-- Total trace statistic rows: **15**
+- `claude_code` paired_success_difference_a_minus_b: value=0.0, CI=[0.0, 0.0], method=bootstrap_cluster_case
+- `claude_code` cohens_h: value=0.0, CI=[0.0, 0.0], method=point_estimate
+- `claude_code` mcnemar_p_value: value=1.0, CI=[0.0, 1.0], method=exact_mcnemar
+- `claude_code` cliffs_delta_execution_time: value=-0.333333, CI=[-0.333333, -0.333333], method=point_estimate

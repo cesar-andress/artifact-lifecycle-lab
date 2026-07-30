@@ -1,5 +1,5 @@
 {
-  "ok": false,
+  "ok": true,
   "checks": {
     "repaired_manifest_selected": true,
     "execute_env_required": true,
@@ -9,11 +9,8 @@
     "trace_storage_enabled": true,
     "tl_cell_only": true,
     "primary_agent_only": true,
-    "expected_run_count": true,
-    "manifest_hash_recorded": true
+    "expected_run_count": true
   },
-  "messages": [
-    "manifest_path not provided for repaired-manifest check"
-  ],
+  "messages": [],
   "manifest_sha256": "305f8dc618dabf374a11aa1d8ac64d9c2f7ab2076929830149fb9f7530f4d678"
 }

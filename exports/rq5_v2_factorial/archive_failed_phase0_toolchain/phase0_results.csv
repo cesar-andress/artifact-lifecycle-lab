@@ -1,0 +1,215 @@
+run_id,case_id,cell_code,agent_id,replicate_id,factor_a,factor_b,factor_c,success,tests_passing,compilation_success,execution_time_seconds,files_modified,tool_failures,read_instruction,anchor_path_touched,decoy_path_touched,bind_failure_detected,grounding_action,repair_success,dry_run,error_message,trace_path,cost_usd,token_usage,commands_executed,iterations,anchor_attempted,instruction_read,timed_out
+17c9fb0d68bde42be934,d2578b858cfe326f,T+L,claude_code,1,present,truthful,yes,False,False,True,240.82684611203055,2,0,True,True,False,False,False,False,False,"/bin/sh: 1: Vitest: not found
+",exports/rq5_v2_factorial/phase0_traces/17c9fb0d68bde42be934.jsonl,0.8564474999999999,17042,30,19,True,True,False
+4b2ad9ff25111df1673e,d2578b858cfe326f,T+L,claude_code,2,present,truthful,yes,False,False,True,232.28992565407975,2,1,True,True,False,False,False,False,False,"/bin/sh: 1: Vitest: not found
+",exports/rq5_v2_factorial/phase0_traces/4b2ad9ff25111df1673e.jsonl,0.76634075,16401,26,17,True,True,False
+03a944ebe7f80903bc75,d2578b858cfe326f,T+L,claude_code,3,present,truthful,yes,False,False,True,323.60164330303576,2,2,True,True,False,False,False,False,False,"/bin/sh: 1: Vitest: not found
+",exports/rq5_v2_factorial/phase0_traces/03a944ebe7f80903bc75.jsonl,0.99894575,18549,38,23,True,True,False
+d1a6f4c30f91e676dea1,3ff980d65c78fd63,T+L,claude_code,1,present,truthful,yes,False,False,True,65.96876893295813,2,0,True,True,False,False,False,False,False,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init
+",exports/rq5_v2_factorial/phase0_traces/d1a6f4c30f91e676dea1.jsonl,0.29479925,5338,4,11,True,True,False
+e664b8c1888596b695d2,3ff980d65c78fd63,T+L,claude_code,2,present,truthful,yes,False,False,True,43.72781867408194,2,0,True,True,False,False,False,False,False,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init
+",exports/rq5_v2_factorial/phase0_traces/e664b8c1888596b695d2.jsonl,0.2533875,5456,6,11,True,True,False
+f859b847a188794eb4e3,3ff980d65c78fd63,T+L,claude_code,3,present,truthful,yes,False,False,True,42.0649230780201,2,0,True,True,False,False,False,False,False,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init
+",exports/rq5_v2_factorial/phase0_traces/f859b847a188794eb4e3.jsonl,0.20825900000000003,5288,4,10,True,True,False
+61797f45f7664ce7a6f5,1e1131e99f590b53,T+L,claude_code,1,present,truthful,yes,False,False,True,76.97122521806322,2,0,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+============================ no tests ran in 3.03s =============================
+",exports/rq5_v2_factorial/phase0_traces/61797f45f7664ce7a6f5.jsonl,0.37603824999999996,6303,16,12,True,True,False
+11d9ca52c1ab8b667bc7,1e1131e99f590b53,T+L,claude_code,2,present,truthful,yes,False,False,True,101.57774061596952,2,1,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+============================ no tests ran in 3.80s =============================
+",exports/rq5_v2_factorial/phase0_traces/11d9ca52c1ab8b667bc7.jsonl,0.52662975,7591,18,13,True,True,False
+72f223daa517739a980a,1e1131e99f590b53,T+L,claude_code,3,present,truthful,yes,False,False,True,49.941543868052776,2,0,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+============================ no tests ran in 3.06s =============================
+",exports/rq5_v2_factorial/phase0_traces/72f223daa517739a980a.jsonl,0.25735375,5137,8,8,True,True,False
+ff1c1cc6b6b660eadf54,abced8248ab90fb1,T+L,claude_code,1,present,truthful,yes,False,False,True,183.45455904500187,2,2,True,True,False,False,False,False,False,"/bin/sh: 1: Vitest: not found
+",exports/rq5_v2_factorial/phase0_traces/ff1c1cc6b6b660eadf54.jsonl,0.70006025,13213,26,17,True,True,False
+0ffd9d615c8818e18786,abced8248ab90fb1,T+L,claude_code,2,present,truthful,yes,False,False,True,178.16376406507288,2,2,True,True,False,False,False,False,False,"/bin/sh: 1: Vitest: not found
+",exports/rq5_v2_factorial/phase0_traces/0ffd9d615c8818e18786.jsonl,0.688991,12122,30,20,True,True,False
+ffee943c69b1c6f59875,abced8248ab90fb1,T+L,claude_code,3,present,truthful,yes,False,False,True,186.86972826596443,2,0,True,True,False,False,False,False,False,"/bin/sh: 1: Vitest: not found
+",exports/rq5_v2_factorial/phase0_traces/ffee943c69b1c6f59875.jsonl,0.63914975,9496,32,21,True,True,False
+c71fde8a1468646ce340,d5303ea5b426c7be,T+L,claude_code,1,present,truthful,yes,False,False,True,84.43261783097125,3,0,True,True,False,False,False,False,False,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init
+",exports/rq5_v2_factorial/phase0_traces/c71fde8a1468646ce340.jsonl,0.5011162499999999,7765,8,12,True,True,False
+1e6de47ad87446bff43c,d5303ea5b426c7be,T+L,claude_code,2,present,truthful,yes,False,False,True,75.0015970400311,3,0,True,True,False,False,False,False,False,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init
+",exports/rq5_v2_factorial/phase0_traces/1e6de47ad87446bff43c.jsonl,0.34848799999999996,6689,14,12,True,True,False
+2e8faebeb58eb8db4eb1,d5303ea5b426c7be,T+L,claude_code,3,present,truthful,yes,False,False,True,130.65568379191402,3,0,True,True,False,False,False,False,False,"go: cannot find main module, but found .git/config in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+	to create a module there, run:
+	cd ../.. && go mod init
+",exports/rq5_v2_factorial/phase0_traces/2e8faebeb58eb8db4eb1.jsonl,0.57394325,10287,24,18,True,True,False
+1277c9ce0f66bcf220e9,6aab689b93e84025,T+L,claude_code,1,present,truthful,yes,False,False,True,55.441389779060145,2,1,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+============================ no tests ran in 3.31s =============================
+",exports/rq5_v2_factorial/phase0_traces/1277c9ce0f66bcf220e9.jsonl,0.35063375,7143,10,10,True,True,False
+6b4b5d098b8ee0625907,6aab689b93e84025,T+L,claude_code,2,present,truthful,yes,False,False,True,45.436067968041634,2,1,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+============================ no tests ran in 3.26s =============================
+",exports/rq5_v2_factorial/phase0_traces/6b4b5d098b8ee0625907.jsonl,0.24863400000000002,6723,6,8,True,True,False
+444e5f234365b74a1c26,6aab689b93e84025,T+L,claude_code,3,present,truthful,yes,False,False,True,34.92729070896655,2,1,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+============================ no tests ran in 3.49s =============================
+",exports/rq5_v2_factorial/phase0_traces/444e5f234365b74a1c26.jsonl,0.20603625,5923,4,7,True,True,False
+be310fd4b1f6a04a1df1,150fbfaadda24570,T+L,claude_code,1,present,truthful,yes,True,True,True,313.7741359959822,133,0,True,True,True,False,False,False,False,,exports/rq5_v2_factorial/phase0_traces/be310fd4b1f6a04a1df1.jsonl,0.8981584999999999,17808,32,22,True,True,False
+8d194fe872470917549c,150fbfaadda24570,T+L,claude_code,2,present,truthful,yes,True,True,True,273.52432221900017,133,0,True,True,True,False,False,False,False,,exports/rq5_v2_factorial/phase0_traces/8d194fe872470917549c.jsonl,0.6318584999999999,14036,24,16,True,True,False
+517fe8adb1ebbf77c537,150fbfaadda24570,T+L,claude_code,3,present,truthful,yes,True,True,True,329.2058326249588,3,0,True,True,True,False,False,False,False,,exports/rq5_v2_factorial/phase0_traces/517fe8adb1ebbf77c537.jsonl,0.9834057500000001,19091,28,19,True,True,False
+042ca848a039dcb58d65,ea5545b3e36e5c4b,T+L,claude_code,1,present,truthful,yes,False,False,True,110.2173990448881,3,1,True,True,False,False,False,False,False,"# .
+no Go files in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_ea5545b3e36e5c4b_T_L
+",exports/rq5_v2_factorial/phase0_traces/042ca848a039dcb58d65.jsonl,0.5874605,11706,12,12,True,True,False
+c9d2da434de0b9c3c7a8,ea5545b3e36e5c4b,T+L,claude_code,2,present,truthful,yes,False,False,True,98.84460885998979,3,1,True,True,False,False,False,False,False,"# .
+no Go files in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_ea5545b3e36e5c4b_T_L
+",exports/rq5_v2_factorial/phase0_traces/c9d2da434de0b9c3c7a8.jsonl,0.5515080000000001,12177,14,13,True,True,False
+42033c1c87de2f3ee42c,ea5545b3e36e5c4b,T+L,claude_code,3,present,truthful,yes,False,False,True,100.67151188292634,3,1,True,True,False,False,False,False,False,"# .
+no Go files in /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab/scratch/rq5v2_ea5545b3e36e5c4b_T_L
+",exports/rq5_v2_factorial/phase0_traces/42033c1c87de2f3ee42c.jsonl,0.5377525,11950,16,14,True,True,False
+46f61a1184728ec03966,67c22d7f97cdb50d,T+L,claude_code,1,present,truthful,yes,False,False,True,76.70012269505486,2,0,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+============================ no tests ran in 0.72s =============================
+",exports/rq5_v2_factorial/phase0_traces/46f61a1184728ec03966.jsonl,0.43222600000000005,5728,16,12,True,True,False
+27b4e147f13e6865083b,67c22d7f97cdb50d,T+L,claude_code,2,present,truthful,yes,False,False,True,58.96612987999059,2,1,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+============================ no tests ran in 0.77s =============================
+",exports/rq5_v2_factorial/phase0_traces/27b4e147f13e6865083b.jsonl,0.31245049999999996,4974,12,10,True,True,False
+daaa569f2629cc882b82,67c22d7f97cdb50d,T+L,claude_code,3,present,truthful,yes,False,False,True,59.89828092800546,2,1,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 0 items
+
+============================ no tests ran in 0.68s =============================
+",exports/rq5_v2_factorial/phase0_traces/daaa569f2629cc882b82.jsonl,0.30131325000000003,5425,10,9,True,True,False
+a16c0f3a32952401c662,9040e7f7272a3e24,T+L,claude_code,1,present,truthful,yes,False,False,True,186.2784297641022,3,2,True,True,True,False,False,False,False,"error Command ""test"" not found.
+",exports/rq5_v2_factorial/phase0_traces/a16c0f3a32952401c662.jsonl,0.65813025,10608,28,20,True,True,False
+6dcceb0b17e916af4b9f,9040e7f7272a3e24,T+L,claude_code,2,present,truthful,yes,False,False,True,137.9375060079992,2,2,True,True,True,False,False,False,False,"error Command ""test"" not found.
+",exports/rq5_v2_factorial/phase0_traces/6dcceb0b17e916af4b9f.jsonl,0.48979525,8097,24,16,True,True,False
+430ad17a8c46ae8c065d,9040e7f7272a3e24,T+L,claude_code,3,present,truthful,yes,False,False,True,166.60608177998662,3,1,True,True,True,False,False,False,False,"error Command ""test"" not found.
+",exports/rq5_v2_factorial/phase0_traces/430ad17a8c46ae8c065d.jsonl,0.6244795,10785,20,18,True,True,False
+2415cd359a93db055498,1bf1e91d4777d875,T+L,claude_code,1,present,truthful,yes,False,False,True,206.23449150705616,4,1,True,True,False,False,False,False,False,"   Compiling unicode-ident v1.0.24
+   Compiling memchr v2.8.1
+   Compiling cfg-if v1.0.4
+   Compiling itoa v1.0.15
+   Compiling smallvec v1.15.1
+   Compiling regex-syntax v0.8.11
+   Compiling equivalent v1.0.2
+   Compiling log v0.4.32
+   Compiling once_cell v1.21.4
+   Compiling foldhash v0.2.0
+   Compiling allocator-api2 v0.2.21
+   Compiling ryu v1.0.20
+   Compiling unicode-width v0.2.2
+   Compiling static_assertions v1.1.0
+   Compiling libc v0.2.186
+   Compiling serde_core v1.0.228
+   Compiling",exports/rq5_v2_factorial/phase0_traces/2415cd359a93db055498.jsonl,0.349045,7574,10,8,True,True,False
+f75cb4311ac21301e554,1bf1e91d4777d875,T+L,claude_code,2,present,truthful,yes,False,False,True,299.344781908988,2,0,True,True,False,False,False,False,False,"   Compiling unicode-ident v1.0.24
+   Compiling memchr v2.8.1
+   Compiling cfg-if v1.0.4
+   Compiling itoa v1.0.15
+   Compiling smallvec v1.15.1
+   Compiling regex-syntax v0.8.11
+   Compiling equivalent v1.0.2
+   Compiling log v0.4.32
+   Compiling foldhash v0.2.0
+   Compiling once_cell v1.21.4
+   Compiling allocator-api2 v0.2.21
+   Compiling ryu v1.0.20
+   Compiling unicode-width v0.2.2
+   Compiling static_assertions v1.1.0
+   Compiling serde_core v1.0.228
+   Compiling libc v0.2.186
+   Compiling",exports/rq5_v2_factorial/phase0_traces/f75cb4311ac21301e554.jsonl,0.25225425,6210,8,7,True,True,False
+548af033b0094295d97f,1bf1e91d4777d875,T+L,claude_code,3,present,truthful,yes,False,False,True,340.7618613030054,2,0,True,True,False,False,False,False,False,"   Compiling unicode-ident v1.0.24
+   Compiling memchr v2.8.1
+   Compiling cfg-if v1.0.4
+   Compiling itoa v1.0.15
+   Compiling smallvec v1.15.1
+   Compiling regex-syntax v0.8.11
+   Compiling equivalent v1.0.2
+   Compiling log v0.4.32
+   Compiling foldhash v0.2.0
+   Compiling once_cell v1.21.4
+   Compiling allocator-api2 v0.2.21
+   Compiling ryu v1.0.20
+   Compiling static_assertions v1.1.0
+   Compiling unicode-width v0.2.2
+   Compiling serde_core v1.0.228
+   Compiling libc v0.2.186
+   Compiling",exports/rq5_v2_factorial/phase0_traces/548af033b0094295d97f.jsonl,0.23873575000000002,6182,6,6,True,True,False
+e9aaf8f97df1a3b58142,fa545f0a92aa171d,T+L,claude_code,1,present,truthful,yes,False,False,True,208.07930444907396,2,2,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 1 item / 3 errors
+
+==================================== ERRORS ====================================
+_ ERROR collecting scratch/rq5v2_fa545f0a92aa171d_T_L/extensions/copilot/test/simulation/fixtures/tests/py-pyproject-toml/tes",exports/rq5_v2_factorial/phase0_traces/e9aaf8f97df1a3b58142.jsonl,0.6938642499999998,12034,32,20,True,True,False
+a036805e847df0d68c2e,fa545f0a92aa171d,T+L,claude_code,2,present,truthful,yes,False,False,True,116.25114605095703,2,0,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 1 item / 3 errors
+
+==================================== ERRORS ====================================
+_ ERROR collecting scratch/rq5v2_fa545f0a92aa171d_T_L/extensions/copilot/test/simulation/fixtures/tests/py-pyproject-toml/tes",exports/rq5_v2_factorial/phase0_traces/a036805e847df0d68c2e.jsonl,0.43821625000000003,9666,12,10,True,True,False
+56f3fbc72aed07af8afb,fa545f0a92aa171d,T+L,claude_code,3,present,truthful,yes,False,False,True,75.33311273202114,2,0,True,True,False,False,False,False,False,"============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/cesar/papers/artifact-lifecycle-lab/artifact-lifecycle-lab
+configfile: pyproject.toml
+plugins: anyio-4.14.0
+collected 1 item / 3 errors
+
+==================================== ERRORS ====================================
+_ ERROR collecting scratch/rq5v2_fa545f0a92aa171d_T_L/extensions/copilot/test/simulation/fixtures/tests/py-pyproject-toml/tes",exports/rq5_v2_factorial/phase0_traces/56f3fbc72aed07af8afb.jsonl,0.27607649999999995,6277,10,9,True,True,False
+99498d87e4e09a7856a4,1f69fffb4fb41600,T+L,claude_code,1,present,truthful,yes,True,True,True,225.25255531705915,132,0,True,True,False,False,False,False,False,,exports/rq5_v2_factorial/phase0_traces/99498d87e4e09a7856a4.jsonl,0.5180307500000001,9683,20,15,True,True,False

@@ -11,23 +11,23 @@
   "n_reference_aliases_internal": 1,
   "n_tree_paths": 5000,
   "neutral_id": "123d9269d1595912",
-  "packet_sha256": "7e7c437eb331636302344c61f8c7b3f4d7a4a0f8fa3293c7adbdfa02bbc03a2e",
+  "packet_sha256": "d9662fff9f17d9841d82f888e52f6a55354dec22231f9cb5f27eed07beb144bb",
   "packet_spec_version": "rq5_v1_blind_packet_spec_v2",
   "protocol_version": "RQ5_V1_BLIND_LB_ANNOTATION_PROTOCOL.md@e41902c",
   "seed": 42,
   "software_signals": [
+    "manifest_or_doc:readme.md",
     "manifest_or_doc:makefile",
     "manifest_or_doc:pyproject.toml",
     "manifest_or_doc:readme.md",
-    "manifest_or_doc:readme.md",
-    "manifest_or_doc:build.gradle",
-    "manifest_or_doc:pyproject.toml",
-    "manifest_or_doc:readme.md",
-    "manifest_or_doc:readme.md",
-    "manifest_or_doc:readme.md",
     "manifest_or_doc:pyproject.toml",
     "manifest_or_doc:pyproject.toml",
-    "manifest_or_doc:pyproject.toml"
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:readme.md",
+    "manifest_or_doc:makefile"
   ],
   "sources": [
     "rq5_case_manifest.csv",
@@ -38,5 +38,5 @@
     "git_tree:6011fd3644e0"
   ],
   "task_brief_source": "h1_title,paragraph",
-  "verification_command_observed": "gradle test"
+  "verification_command_observed": "make test"
 }
