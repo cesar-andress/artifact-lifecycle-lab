@@ -17,7 +17,7 @@ Pre-submission validation extension on the frozen observational exports used by 
 ## Highlights
 
 - Blinded second-auditor package for all 121 RQ2 candidate events.
-- Independent human labels (Pepe, Ana; Rebeca as sensitivity) and recommended multi-estimator summaries.
+- Independent human labels (Person 1, Person 2; Person 3 as sensitivity) and recommended multi-estimator summaries.
 - Prespecified audit-rule sensitivity alongside the frozen primary 0/121 estimator.
 - Repository-concentration, leave-one-out, and template-cluster sensitivity analyses.
 - Automated QC for frozen headline counts and blinded-package leakage.

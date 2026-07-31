@@ -10,7 +10,7 @@
 - Add repository-concentration analyses (`validation/concentration/`).
 - Add `make validation-*` targets, QC script, and pytest assertions for frozen counts / leakage.
 - Update claim-to-evidence table with sensitivity and concentration rows.
-- Independent human agreement metrics included under `validation/rq2_second_audit/` (Pepe, Ana; Rebeca as sensitivity).
+- Independent human agreement metrics included under `validation/rq2_second_audit/` (Person 1, Person 2; Person 3 as sensitivity).
 - Zenodo: published as **v1.1.0** ([10.5281/zenodo.21716211](https://doi.org/10.5281/zenodo.21716211)); do not silently replace archival **v1.0.0** ([10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432)).
 
 Science freeze for primary manuscript numbers remains **2026-07-03**.

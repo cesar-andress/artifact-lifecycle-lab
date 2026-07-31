@@ -1,6 +1,6 @@
 # Recommended RQ2 Human-Validation Study
 
-**Streams retained:** Pepe, Ana (primary independent pair); Rebeca (sensitivity).
+**Streams retained:** Person 1, Person 2 (primary independent pair); Person 3 (sensitivity).
 **Excluded:** Juan (provisional / non-expert stream).
 **Primary frozen labels:** unchanged (0/121).
 
@@ -17,7 +17,7 @@
 | `decay_favoring_rules` | **25/121** (20.7%) | 14.4–28.7% | Prespecified audit-rule sensitivity |
 | `high_specificity_rules` | **0/121** (0.0%) | 0.0–3.1% | Prespecified audit-rule sensitivity |
 
-## Pepe ↔ Ana (primary independent pair)
+## Person 1 ↔ Person 2 (primary independent pair)
 
 - Category agreement: **111/121** (0.917); Cohen's κ = **0.866**
 - Genuine-decay label agreement: **112/121**
@@ -33,12 +33,12 @@
 
 ## Robust reading
 
-- Independent human YES numerators (Pepe/Ana): **17–18/121**.
+- Independent human YES numerators (Person 1/Person 2): **17–18/121**.
 - Conservative paired consensus (both YES): **13/121**.
-- Rebeca sensitivity upper bound: **27/121**.
+- Person 3 sensitivity upper bound: **27/121**.
 - Prespecified rule sensitivity: **0–25/121**.
 - Across human + rule scenarios the adjusted numerator spans **0–27/121**, while naive detector-level 121/121 still substantially overstates genuine post-verification decay.
-- Formal third-party adjudication of Pepe–Ana disagreements remains optional; the both-YES consensus is the transparent paired proxy used here.
+- Formal third-party adjudication of Person 1–Person 2 disagreements remains optional; the both-YES consensus is the transparent paired proxy used here.
 
 ## Outputs
 

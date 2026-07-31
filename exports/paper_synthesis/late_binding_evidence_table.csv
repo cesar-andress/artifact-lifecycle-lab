@@ -1,7 +1,7 @@
 claim,evidence_source,metric,value,limitation
 Zero genuine post-verification decay (primary),rq2_failure_audit_summary.md,adjusted_genuine_decay_count,0/121,primary frozen protocol; independent humans 17-18/121; both-YES consensus 13/121; human+rule range 0-27/121
-RQ2 independent human YES (Pepe),validation/rq2_second_audit/auditors/pepe_rq2_second_auditor_labels.csv,genuine_decay_YES,17/121,blinded independent stream; category κ vs Ana 0.866
-RQ2 independent human YES (Ana),validation/rq2_second_audit/auditors/ana_rq2_second_auditor_labels.csv,genuine_decay_YES,18/121,blinded independent stream; paired with Pepe
+RQ2 independent human YES (Person 1),validation/rq2_second_audit/auditors/pepe_rq2_second_auditor_labels.csv,genuine_decay_YES,17/121,blinded independent stream; category κ vs Person 2 0.866
+RQ2 independent human YES (Person 2),validation/rq2_second_audit/auditors/ana_rq2_second_auditor_labels.csv,genuine_decay_YES,18/121,blinded independent stream; paired with Person 1
 RQ2 pepe-ana both-YES consensus,validation/rq2_second_audit/agreement/recommended_estimators.csv,pepe_ana_both_YES,13/121,conservative paired proxy; not third-party adjudication
 RQ2 audit-rule sensitivity range,validation/rq2_sensitivity/rq2_sensitivity_summary.md,sensitivity_numerator_range,0-25/121,prespecified scenarios; decay-favoring counts rename-return/anchor/ambiguous as genuine
 Confirmed-false LOO stability,validation/concentration/concentration_summary.md,confirmed_false_loo_range,84.4%-85.8%,case mass concentrated; pooled rate LOO-stable; not population-representative
