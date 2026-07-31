@@ -430,6 +430,7 @@ validation-concentration: install-paper
 	$(PY) scripts/validation/run_repository_concentration.py
 
 validation-agreement: install-paper
+	$(PY) scripts/validation/run_multi_auditor_agreement.py
 	$(PY) scripts/validation/run_rq2_human_agreement.py
 
 validation-qc: install-paper
