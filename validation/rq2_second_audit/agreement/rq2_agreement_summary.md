@@ -7,12 +7,27 @@ Primary frozen labels remain unchanged. Auditor files were not modified.
 | Estimator | Numerator / 121 | Notes |
 |-----------|----------------:|-------|
 | Original frozen (primary) | **0/121** | `is_genuine_decay` |
+| Independent `ana` | **18/121** (14.9%; Wilson 9.6–22.3%) | NO=103, IE=0 |
 | Independent `juan` | **0/121** (0.0%; Wilson 0.0–3.1%) | NO=76, IE=45 |
 | Independent `pepe` | **17/121** (14.0%; Wilson 9.0–21.4%) | NO=104, IE=0 |
+| Independent `rebeca` | **27/121** (22.3%; Wilson 15.8–30.5%) | NO=94, IE=0 |
 | Adjudicated | — | pending completed adjudication |
 | Decay-favoring sensitivity | **25/121** | prespecified scenario |
 
 ## Agreement vs primary
+
+### Auditor `ana`
+
+- Raw category agreement: **20/121** (0.165)
+- Cohen's κ (categories): **0.080**
+- Binary agreement (YES vs not-YES): **103/121** (0.851); TP=0 TN=103 FP=18 FN=0
+- Positive agreement: **0.0**
+- Negative agreement: **0.920**
+- Headline-changing disagreements (binary): **18** (all are primary=False → auditor YES or mapped)
+- Confidence-stratified category agreement:
+  - High: 9/89
+  - Medium: 11/32
+- Category mix: {'verification_anchor_issue': 41, 'rename_or_move': 60, 'genuine_decay': 18, 'normative_or_prescriptive': 2}
 
 ### Auditor `juan`
 
@@ -41,9 +56,27 @@ Primary frozen labels remain unchanged. Auditor files were not modified.
   - Medium: 4/14
 - Category mix: {'verification_anchor_issue': 45, 'rename_or_move': 58, 'genuine_decay': 17, 'ambiguous': 1}
 
+### Auditor `rebeca`
+
+- Raw category agreement: **24/121** (0.198)
+- Cohen's κ (categories): **0.136**
+- Binary agreement (YES vs not-YES): **94/121** (0.777); TP=0 TN=94 FP=27 FN=0
+- Positive agreement: **0.0**
+- Negative agreement: **0.874**
+- Headline-changing disagreements (binary): **27** (all are primary=False → auditor YES or mapped)
+- Confidence-stratified category agreement:
+  - High: 15/102
+  - Medium: 9/19
+- Category mix: {'rename_or_move': 42, 'verification_anchor_issue': 51, 'genuine_decay': 27, 'external_or_environmental': 1}
+
 ## Inter-auditor agreement
 
+- `ana_vs_juan`: category 43/121; genuine_decay raw 75/121; binary-mapped 103/121; κ(category)=0.207
+- `ana_vs_pepe`: category 111/121; genuine_decay raw 112/121; binary-mapped 112/121; κ(category)=0.866
+- `ana_vs_rebeca`: category 87/121; genuine_decay raw 110/121; binary-mapped 110/121; κ(category)=0.569
 - `juan_vs_pepe`: category 43/121; genuine_decay raw 74/121; binary-mapped 104/121; κ(category)=0.199
+- `juan_vs_rebeca`: category 57/121; genuine_decay raw 74/121; binary-mapped 94/121; κ(category)=0.350
+- `pepe_vs_rebeca`: category 88/121; genuine_decay raw 111/121; binary-mapped 111/121; κ(category)=0.578
 
 ## Interpretation notes
 

@@ -1,0 +1,7 @@
+first\second,ambiguous,extractor_artifact,genuine_decay,normative_or_prescriptive,rename_or_move,verification_anchor_issue
+ambiguous,0,0,0,0,1,0
+extractor_artifact,0,0,17,1,42,29
+genuine_decay,0,0,0,0,0,0
+normative_or_prescriptive,0,0,1,1,3,2
+rename_or_move,0,0,0,0,14,5
+verification_anchor_issue,0,0,0,0,0,5

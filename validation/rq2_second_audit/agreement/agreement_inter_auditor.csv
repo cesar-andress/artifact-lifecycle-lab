@@ -1,2 +1,7 @@
 pair,category_agree,genuine_raw_agree,binary_mapped_agree,kappa_category
+ana_vs_juan,43,75,103,0.2074
+ana_vs_pepe,111,112,112,0.8657
+ana_vs_rebeca,87,110,110,0.5689
 juan_vs_pepe,43,74,104,0.1991
+juan_vs_rebeca,57,74,94,0.3495
+pepe_vs_rebeca,88,111,111,0.5775
