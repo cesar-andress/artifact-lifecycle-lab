@@ -9,7 +9,12 @@ authors:
     given-names: César
     orcid: "https://orcid.org/0009-0001-8968-3404"
     email: cesar.andress@ucjc.edu
-    affiliation: "CRIA-BDHS Research Group, Higher Polytechnic School of Technology and Science, Universidad Camilo José Cela"
+    affiliation: "CRIA-BDHS Research Group, Higher Polytechnic School of Technology and Science, Universidad Camilo José Cela, Madrid, Spain"
+  - family-names: Martín-Moncunill
+    given-names: David
+    orcid: "https://orcid.org/0000-0003-2422-9005"
+    email: david.martinm@ucjc.edu
+    affiliation: "CRIA-BDHS Research Group, Higher Polytechnic School of Technology and Science, Universidad Camilo José Cela, Madrid, Spain"
 repository-code: "https://github.com/cesar-andress/artifact-lifecycle-lab"
 url: "https://doi.org/10.5281/zenodo.21711432"
 doi: "10.5281/zenodo.21711432"

@@ -113,8 +113,9 @@ Notes:
 
 - License: [LICENSE](LICENSE) (MIT)
 - Citation: [CITATION.cff](CITATION.cff)
+- Authors: César Andrés (corresponding); David Martín-Moncunill
 - Archival DOI: [https://doi.org/10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432) (version **1.0.0**; keep intact)
-- Planned validation deposit: Zenodo version **1.1.0** (same concept DOI family; do not overwrite v1.0.0)
+- Validation deposit: Zenodo version **1.1.0** (same concept DOI family via regenerated GitHub tag/release; do not overwrite v1.0.0)
 - Development repository: [https://github.com/cesar-andress/artifact-lifecycle-lab](https://github.com/cesar-andress/artifact-lifecycle-lab)
 
 ## Known limitations
