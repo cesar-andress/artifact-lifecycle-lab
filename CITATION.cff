@@ -16,12 +16,21 @@ authors:
     email: david.martinm@ucjc.edu
     affiliation: "CRIA-BDHS Research Group, Higher Polytechnic School of Technology and Science, Universidad Camilo José Cela, Madrid, Spain"
 repository-code: "https://github.com/cesar-andress/artifact-lifecycle-lab"
-url: "https://doi.org/10.5281/zenodo.21711432"
-doi: "10.5281/zenodo.21711432"
+url: "https://doi.org/10.5281/zenodo.21716211"
+doi: "10.5281/zenodo.21716211"
 identifiers:
   - type: doi
+    value: "10.5281/zenodo.21716211"
+    description: Zenodo version DOI for v1.1.0 (current archival cite)
+  - type: doi
     value: "10.5281/zenodo.21711432"
-    description: Zenodo archival deposit v1.0.0 (primary freeze; keep intact)
+    description: Zenodo version DOI for prior freeze v1.0.0 (keep intact)
+  - type: doi
+    value: "10.5281/zenodo.21711431"
+    description: Zenodo concept DOI (all versions)
+  - type: url
+    value: "https://github.com/cesar-andress/artifact-lifecycle-lab/releases/tag/v1.1.0"
+    description: GitHub release tag v1.1.0
 license: MIT
 keywords:
   - software documentation
@@ -35,5 +44,6 @@ abstract: >-
   Reference Integrity in Machine-Consumed Instruction Files. Contains frozen
   observational exports, confirmatory audit summaries, exploratory RQ5 ledgers,
   protocols, regeneration scripts, and a v1.1.0 validation extension (blinded
-  RQ2 audit package, audit-rule sensitivity, repository concentration).
-  Science freeze date: 2026-07-03; validation extension: 2026-07-31.
+  RQ2 audit package, independent human labels, audit-rule sensitivity,
+  repository concentration). Science freeze date: 2026-07-03; validation
+  extension: 2026-07-31. Zenodo version DOI: 10.5281/zenodo.21716211.

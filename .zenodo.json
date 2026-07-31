@@ -1,6 +1,6 @@
 {
   "title": "Artifact Lifecycle Lab: Replication Package for Measuring Mechanical Reference Integrity in Machine-Consumed Instruction Files",
-  "description": "Archival replication package for the ACM TOSEM submission Measuring Mechanical Reference Integrity in Machine-Consumed Instruction Files.\n\nFrozen scientific outputs (2026-07-03) include longitudinal panel exports (RQ1–RQ4), confirmatory audits (RQ2 failure audit; born-stale / GFC), exploratory RQ5 A/B/C ledgers, claim-to-evidence mapping, protocols, and Makefile regeneration targets for observational analyses.\n\nv1.1.0 adds a validation extension on those frozen exports: blinded RQ2 second-auditor package with independent human labels (Pepe/Ana/Rebeca), recommended multi-estimator agreement summaries, audit-rule sensitivity, and repository-concentration analyses. Do not silently replace v1.0.0.\n\nAuthors: César Andrés (corresponding); David Martín-Moncunill.\n\nPrimary entry point: REPLICATION.md. Authoritative claim inventory: docs/SCIENTIFIC_EVIDENCE_FREEZE.md. Validation protocol: docs/VALIDATION_EXTENSION_PROTOCOL.md.\n\nRQ5 agent reruns require Claude Code CLI credentials and are frozen; use committed ledgers for manuscript numbers.",
+  "description": "Archival replication package for the ACM TOSEM submission Measuring Mechanical Reference Integrity in Machine-Consumed Instruction Files.\n\nFrozen scientific outputs (2026-07-03) include longitudinal panel exports (RQ1–RQ4), confirmatory audits (RQ2 failure audit; born-stale / GFC), exploratory RQ5 A/B/C ledgers, claim-to-evidence mapping, protocols, and Makefile regeneration targets for observational analyses.\n\nv1.1.0 adds a validation extension on those frozen exports: blinded RQ2 second-auditor package with independent human labels (Pepe/Ana/Rebeca), recommended multi-estimator agreement summaries, audit-rule sensitivity, and repository-concentration analyses. Do not silently replace v1.0.0.\n\nAuthors: César Andrés (corresponding); David Martín-Moncunill.\n\nPrimary entry point: REPLICATION.md. Authoritative claim inventory: docs/SCIENTIFIC_EVIDENCE_FREEZE.md. Validation protocol: docs/VALIDATION_EXTENSION_PROTOCOL.md.\n\nZenodo version DOI: 10.5281/zenodo.21716211 (v1.1.0). Prior freeze: 10.5281/zenodo.21711432 (v1.0.0). Concept DOI: 10.5281/zenodo.21711431.\n\nRQ5 agent reruns require Claude Code CLI credentials and are frozen; use committed ledgers for manuscript numbers.",
   "creators": [
     {
       "name": "Andrés, César",
@@ -29,15 +29,22 @@
   "version": "1.1.0",
   "related_identifiers": [
     {
+      "identifier": "10.5281/zenodo.21716211",
+      "relation": "isIdenticalTo",
+      "resource_type": "software",
+      "scheme": "doi"
+    },
+    {
       "identifier": "10.5281/zenodo.21711432",
       "relation": "isNewVersionOf",
       "resource_type": "software",
       "scheme": "doi"
     },
     {
-      "identifier": "https://github.com/cesar-andress/artifact-lifecycle-lab",
+      "identifier": "https://github.com/cesar-andress/artifact-lifecycle-lab/releases/tag/v1.1.0",
       "relation": "isSupplementTo",
-      "resource_type": "software"
+      "resource_type": "software",
+      "scheme": "url"
     }
   ]
 }

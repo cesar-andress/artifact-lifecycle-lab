@@ -38,7 +38,7 @@
 
 ## Remaining work
 
-1. Independent human annotation of `validation/rq2_second_audit/rq2_audit_form.xlsx` / blinded CSV.
-2. Run `make validation-agreement` and complete adjudication file.
-3. Recompute second-auditor / adjudicated sensitivity scenarios.
-4. Publish Zenodo **v1.1.0** (do not silently replace v1.0.0).
+1. ~~Independent human annotation~~ — Pepe, Ana, and Rebeca labels ingested; Juan excluded.
+2. ~~Agreement summaries~~ — `make validation-recommended` / recommended study outputs under `validation/rq2_second_audit/agreement/`.
+3. Formal third-party adjudication of the remaining Pepe–Ana binary disagreements remains optional.
+4. ~~Publish Zenodo **v1.1.0**~~ — published as [10.5281/zenodo.21716211](https://doi.org/10.5281/zenodo.21716211); do not silently replace v1.0.0 ([10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432)).

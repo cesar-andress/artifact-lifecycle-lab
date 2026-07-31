@@ -20,8 +20,10 @@ First archival release of the replication package accompanying the manuscript
 
 ## How to cite
 
-Use `CITATION.cff`, or cite the Zenodo deposit  
-[https://doi.org/10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432) (version 1.0.0).
+Use `CITATION.cff`, or cite the current Zenodo deposit  
+[https://doi.org/10.5281/zenodo.21716211](https://doi.org/10.5281/zenodo.21716211) (version 1.1.0).  
+This v1.0.0 note records the original freeze DOI  
+[https://doi.org/10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432).
 
 ## Start here
 

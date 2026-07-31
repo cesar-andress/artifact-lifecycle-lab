@@ -1,7 +1,9 @@
 # Artifact Lifecycle Lab
 
-**Archival replication package (v1.0.0 on Zenodo; in-repo validation extension → v1.1.0)** for the ACM TOSEM manuscript  
+**Archival replication package (Zenodo v1.1.0; DOI [10.5281/zenodo.21716211](https://doi.org/10.5281/zenodo.21716211))** for the ACM TOSEM manuscript  
 *Measuring Mechanical Reference Integrity in Machine-Consumed Instruction Files*.
+
+Prior freeze **v1.0.0** remains at [10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432).
 
 **Start here for reviewers and Zenodo users:** **[REPLICATION.md](REPLICATION.md)**
 

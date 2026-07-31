@@ -6,7 +6,7 @@
 
 ## Purpose
 
-Archival entry point for this package: [`REPLICATION.md`](../REPLICATION.md) (tag `v1.0.0`; Zenodo DOI [10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432)).
+Archival entry point for this package: [`REPLICATION.md`](../REPLICATION.md) (tag `v1.1.0`; Zenodo DOI [10.5281/zenodo.21716211](https://doi.org/10.5281/zenodo.21716211)). Prior freeze tag `v1.0.0` remains at [10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432).
 
 
 This document enumerates every empirical claim currently supported by **existing, read-only laboratory outputs**. It is the authoritative claim inventory for the ACM TOSEM submission. No new experiments, no regeneration of datasets, and no modification of export directories are permitted after this freeze.

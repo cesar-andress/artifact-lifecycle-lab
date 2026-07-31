@@ -114,14 +114,16 @@ Notes:
 - License: [LICENSE](LICENSE) (MIT)
 - Citation: [CITATION.cff](CITATION.cff)
 - Authors: César Andrés (corresponding); David Martín-Moncunill
-- Archival DOI: [https://doi.org/10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432) (version **1.0.0**; keep intact)
-- Validation deposit: Zenodo version **1.1.0** (same concept DOI family via regenerated GitHub tag/release; do not overwrite v1.0.0)
+- Current archival DOI: [https://doi.org/10.5281/zenodo.21716211](https://doi.org/10.5281/zenodo.21716211) (version **1.1.0**)
+- Prior freeze DOI: [https://doi.org/10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432) (version **1.0.0**; keep intact)
+- Concept DOI: [https://doi.org/10.5281/zenodo.21711431](https://doi.org/10.5281/zenodo.21711431)
+- GitHub release: [v1.1.0](https://github.com/cesar-andress/artifact-lifecycle-lab/releases/tag/v1.1.0)
 - Development repository: [https://github.com/cesar-andress/artifact-lifecycle-lab](https://github.com/cesar-andress/artifact-lifecycle-lab)
 
 ## Known limitations
 
 1. L1b blob store (`data/blobs/`) is not shipped (size); full re-mine from registries requires re-extraction.
-2. Prefer the Zenodo v1.0.0 deposit over a moving `main` clone when citing primary frozen numbers; use v1.1.0 for validation artifacts once published.
+2. Prefer the Zenodo v1.1.0 deposit ([10.5281/zenodo.21716211](https://doi.org/10.5281/zenodo.21716211)) over a moving `main` clone when citing the full package; use v1.0.0 ([10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432)) when citing the original primary freeze alone.
 3. RQ5 success/uptake numbers are ledger-frozen; agent products and model versions may drift if rerun.
 4. Development notes under `docs/` (gap analyses, storyline drafts) are not manuscript claims; use the freeze inventory.
 5. Independent RQ2 human agreement is undefined until `rq2_second_auditor_labels.csv` exists; do not simulate labels.
