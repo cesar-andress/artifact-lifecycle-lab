@@ -11,7 +11,7 @@ whether the event is **genuine post-verification decay** for the RQ2 adjusted
 estimand (physical disappearance / loss of the referenced artifact after prior
 verified existence), or an alternative explanation.
 
-You must **not** be told the original audit labels or the aggregate 0/121 result
+You must **not** be told any prior audit labels or any aggregate study result
 while annotating.
 
 ## Categories
@@ -83,8 +83,9 @@ while annotating.
 - **Inclusion:** Two plausible categories remain.
 - **Exclusion:** Clear single category.
 - **Minimum evidence:** Explicit competing accounts in the note.
-- **Counts as genuine decay for RQ2:** no under primary protocol (sensitivity
-  scenarios may reclassify).
+- **Counts as genuine decay for RQ2:** record `counts_as_genuine_decay=false`
+  unless you independently judge the binary estimand as yes; note competing
+  categories under `category_ambiguity`.
 
 ### U — `uncertain_insufficient_evidence`
 
@@ -103,15 +104,13 @@ while annotating.
 | `evidence_note` | concise note citing which evidence fields you used |
 | `category_ambiguity` | optional: names of competing categories |
 
-## Examples outside the 121 set
+## Calibration
 
-Use born-stale taxonomy documentation and non-RQ2 examples in
-`exports/truth_decay_pilot/born_stale_examples.csv` and
-`exports/truth_decay_pilot/gfc_confirmatory_examples.csv` for calibration.
-Do **not** open `rq2_failure_audit.csv` or any private answer key while labeling.
+Category definitions above are the only calibration material shipped with this
+package. Do **not** open frozen audit exports, private answer keys, the
+manuscript, or aggregate result tables while labeling.
 
 ## Blindedness
 
-The blinded CSV/XLSX omit original `final_category`, `is_genuine_decay`,
-heuristic conclusions, and LLM judge fields. Do not seek those files until
-annotation is complete.
+The blinded CSV/XLSX omit prior classification fields, heuristic conclusions,
+and LLM judge fields. Do not seek those files until annotation is complete.
