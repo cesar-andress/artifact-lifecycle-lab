@@ -1,0 +1,11 @@
+event_id,pepe_category,ana_category,pepe_genuine,ana_genuine,rebeca_genuine,primary_category,binary_disagreement,category_disagreement,adjudicated_label,adjudicated_counts_as_genuine_decay,adjudicator,rationale,evidence_used,date
+3929835e3f712e18,ambiguous,genuine_decay,NO,YES,NO,normative_or_prescriptive,True,True,,,,,,
+643becb24136926b,verification_anchor_issue,genuine_decay,NO,YES,YES,extractor_artifact,True,True,,,,,,
+9d9f4c229c95294d,verification_anchor_issue,genuine_decay,NO,YES,YES,extractor_artifact,True,True,,,,,,
+a4f08236181c34a0,genuine_decay,normative_or_prescriptive,YES,NO,YES,normative_or_prescriptive,True,True,,,,,,
+a5b1a45986752906,verification_anchor_issue,rename_or_move,NO,NO,NO,extractor_artifact,False,True,,,,,,
+aad919812142906a,verification_anchor_issue,genuine_decay,NO,YES,YES,extractor_artifact,True,True,,,,,,
+bd74ff38108c703b,verification_anchor_issue,genuine_decay,NO,YES,YES,extractor_artifact,True,True,,,,,,
+d45c07c8bf8fc13e,genuine_decay,verification_anchor_issue,YES,NO,YES,extractor_artifact,True,True,,,,,,
+e47accd46b1b38b1,genuine_decay,rename_or_move,YES,NO,YES,extractor_artifact,True,True,,,,,,
+f0b5f84050941bd5,genuine_decay,normative_or_prescriptive,YES,NO,YES,extractor_artifact,True,True,,,,,,

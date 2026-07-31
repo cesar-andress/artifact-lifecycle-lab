@@ -8,7 +8,6 @@ Primary frozen labels remain unchanged. Auditor files were not modified.
 |-----------|----------------:|-------|
 | Original frozen (primary) | **0/121** | `is_genuine_decay` |
 | Independent `ana` | **18/121** (14.9%; Wilson 9.6–22.3%) | NO=103, IE=0 |
-| Independent `juan` | **0/121** (0.0%; Wilson 0.0–3.1%) | NO=76, IE=45 |
 | Independent `pepe` | **17/121** (14.0%; Wilson 9.0–21.4%) | NO=104, IE=0 |
 | Independent `rebeca` | **27/121** (22.3%; Wilson 15.8–30.5%) | NO=94, IE=0 |
 | Adjudicated | — | pending completed adjudication |
@@ -28,19 +27,6 @@ Primary frozen labels remain unchanged. Auditor files were not modified.
   - High: 9/89
   - Medium: 11/32
 - Category mix: {'verification_anchor_issue': 41, 'rename_or_move': 60, 'genuine_decay': 18, 'normative_or_prescriptive': 2}
-
-### Auditor `juan`
-
-- Raw category agreement: **27/121** (0.223)
-- Cohen's κ (categories): **0.178**
-- Binary agreement (YES vs not-YES): **121/121** (1.000); TP=0 TN=121 FP=0 FN=0
-- Positive agreement: **nan**
-- Negative agreement: **1.000**
-- Headline-changing disagreements (binary): **0** (all are primary=False → auditor YES or mapped)
-- Confidence-stratified category agreement:
-  - Low: 1/45
-  - Medium: 26/76
-- Category mix: {'rename_or_move': 19, 'normative_or_prescriptive': 18, 'ambiguous': 45, 'verification_anchor_issue': 38, 'extractor_artifact': 1}
 
 ### Auditor `pepe`
 
@@ -71,11 +57,8 @@ Primary frozen labels remain unchanged. Auditor files were not modified.
 
 ## Inter-auditor agreement
 
-- `ana_vs_juan`: category 43/121; genuine_decay raw 75/121; binary-mapped 103/121; κ(category)=0.207
 - `ana_vs_pepe`: category 111/121; genuine_decay raw 112/121; binary-mapped 112/121; κ(category)=0.866
 - `ana_vs_rebeca`: category 87/121; genuine_decay raw 110/121; binary-mapped 110/121; κ(category)=0.569
-- `juan_vs_pepe`: category 43/121; genuine_decay raw 74/121; binary-mapped 104/121; κ(category)=0.199
-- `juan_vs_rebeca`: category 57/121; genuine_decay raw 74/121; binary-mapped 94/121; κ(category)=0.350
 - `pepe_vs_rebeca`: category 88/121; genuine_decay raw 111/121; binary-mapped 111/121; κ(category)=0.578
 
 ## Interpretation notes

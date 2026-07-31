@@ -1,5 +1,4 @@
 auditor,yes_numerator,no,insufficient_evidence,category_agree,kappa_category,binary_agree,tp,tn,fp,fn,neg_agreement,headline_disagreements
 ana,18,103,0,20,0.0799,103,0,103,18,0,0.9196,18
-juan,0,76,45,27,0.1776,121,0,121,0,0,1.0000,0
 pepe,17,104,0,19,0.0729,104,0,104,17,0,0.9244,17
 rebeca,27,94,0,24,0.1362,94,0,94,27,0,0.8744,27

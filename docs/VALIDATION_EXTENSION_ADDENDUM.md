@@ -6,15 +6,23 @@
 
 ## Relationship to v1.0.0
 
-| Item | v1.0.0 (Zenodo DOI 10.5281/zenodo.21711432) | This extension (planned v1.1.0) |
-|------|---------------------------------------------|-------------------------------|
-| Primary observational exports | Frozen / authoritative | Unchanged |
-| Adjusted genuine decay primary | 0/121 | Still primary; unchanged |
-| Confirmed-false-at-birth | 1200/1405 | Unchanged |
-| Blinded RQ2 second-auditor package | Absent | Added (`validation/rq2_second_audit/`) |
-| Audit-rule sensitivity | Absent | Added (`validation/rq2_sensitivity/`) |
-| Repository concentration | Absent | Added (`validation/concentration/`) |
-| Human agreement metrics | N/A | **Not computed** (no second-auditor labels yet) |
+| Item | v1.0.0 | This extension (v1.1.0) |
+|------|--------|-------------------------|
+| Primary observational exports | Frozen | Unchanged |
+| Adjusted genuine decay primary | 0/121 | Still primary |
+| Independent human audits | Absent | Pepe 17/121; Ana 18/121; Rebeca sensitivity 27/121 |
+| Paired both-YES consensus | N/A | 13/121 (conservative proxy) |
+| Juan stream | N/A | Excluded (provisional) |
+| Audit-rule sensitivity | Absent | 0–25/121 |
+| Repository concentration | Absent | Added |
+
+## Recommended human-validation study (2026-07-31)
+
+- Retained streams: Pepe + Ana (primary pair); Rebeca (upper sensitivity).
+- Excluded: Juan.
+- Outputs: `validation/rq2_second_audit/agreement/recommended_study_summary.md`.
+- Formal third-party adjudication of the 9–10 Pepe–Ana disagreements remains optional.
+
 
 ## Exact changes
 

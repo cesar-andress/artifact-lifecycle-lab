@@ -62,7 +62,7 @@ GENERAL_OSS_POOL := data/registry/sources/general_oss_candidates.jsonl
 	recover verify truth-pilot-p1 truth-pilot-p2 truth-pilot-go-no-go truth-pilots \
 	truth-decay-rq1 truth-decay-rq2 truth-decay-rq3 truth-decay-rq4 truth-decay-rq5-prep truth-decay-rq5-v2-candidates rq5-v2-execution-viability rq5-v2-factorial-plan rq5-v2-phase0-execution-viability rq5-v2-phase0-prepare-relaunch rq5-v2-phase0-run task-calibration rq5-v2-phase0-analysis rq5-v2-phase0-status rq5-v2-phase0-toolchain-audit truth-decay-rq5 truth-decay-rq5-run truth-decay-born-stale-audit truth-decay-born-stale-autopsy truth-decay-rq2-failure-audit truth-decay-gfc-confirmatory-audit truth-decay-cited-uncited-audit truth-decay-selection-study truth-pilot-p3 truth-pilot-p4 truth-pilot-p4-validate truth-pilot-p5 pre-scaling-gates rq5-v1-blind-lb-packets rq5-v1-blind-lb-annotation-kit rq5-v1-blind-lb-v3-feasibility \
 	validation-package validation-sensitivity validation-concentration validation-agreement validation-qc validation-all \
-	validation-distribution
+	validation-distribution validation-recommended
 
 e1: install-paper e1-extract e1-derive e1-exports-run profile-report
 
@@ -431,7 +431,11 @@ validation-concentration: install-paper
 
 validation-agreement: install-paper
 	$(PY) scripts/validation/run_multi_auditor_agreement.py
+	$(PY) scripts/validation/run_recommended_human_study.py
 	$(PY) scripts/validation/run_rq2_human_agreement.py
+
+validation-recommended: install-paper
+	$(PY) scripts/validation/run_recommended_human_study.py
 
 validation-qc: install-paper
 	$(PY) scripts/validation/run_validation_qc.py

@@ -1,0 +1,9 @@
+estimator,numerator,denominator,percentage,wilson_lo,wilson_hi,role
+primary_frozen,0,121,0.00,0.00,3.08,Frozen is_genuine_decay
+independent_pepe,17,121,14.05,8.96,21.35,Primary independent stream
+independent_ana,18,121,14.88,9.62,22.29,Primary independent stream (pair)
+pepe_ana_both_YES,13,121,10.74,6.39,17.52,Conservative paired consensus (recommended adjudicated proxy)
+pepe_ana_either_YES,22,121,18.18,12.32,26.00,Liberal paired union
+sensitivity_rebeca,27,121,22.31,15.81,30.52,Independent upper-bound sensitivity stream
+decay_favoring_rules,25,121,20.66,14.40,28.72,Prespecified audit-rule sensitivity
+high_specificity_rules,0,121,0.00,0.00,3.08,Prespecified audit-rule sensitivity
