@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this replication package, please cite it as below."
 type: software
-title: "Artifact Lifecycle Lab: Replication Package for Measuring Mechanical Reference Integrity in Machine-Consumed Instruction Files"
+title: "Artifact Lifecycle Lab: Replication Package for Measuring Reference Integrity in Coding-Agent Instruction Files (An Audited Longitudinal Study)"
 version: "1.1.0"
 date-released: "2026-07-31"
 authors:
@@ -37,13 +37,17 @@ keywords:
   - coding agents
   - instruction files
   - reference integrity
+  - mining software repositories
   - empirical software engineering
   - replication package
 abstract: >-
-  Replication package for the ACM TOSEM manuscript Measuring Mechanical
-  Reference Integrity in Machine-Consumed Instruction Files. Contains frozen
-  observational exports, confirmatory audit summaries, exploratory RQ5 ledgers,
-  protocols, regeneration scripts, and a v1.1.0 validation extension (blinded
-  RQ2 audit package, independent human labels, audit-rule sensitivity,
-  repository concentration). Science freeze date: 2026-07-03; validation
-  extension: 2026-07-31. Zenodo version DOI: 10.5281/zenodo.21716211.
+  Replication package for the Empirical Software Engineering manuscript
+  Measuring Reference Integrity in Coding-Agent Instruction Files: An
+  Audited Longitudinal Study. Contains frozen observational exports,
+  audit summaries, GFC filter outputs, exploratory RQ5 ledgers,
+  protocols, regeneration scripts, and a v1.1.0 validation extension
+  (blinded RQ2 audit package, independent human labels, audit-rule
+  sensitivity, repository concentration). Science freeze date:
+  2026-07-03; validation extension: 2026-07-31. Zenodo version DOI:
+  10.5281/zenodo.21716211. Do not mint a new scientific Zenodo version
+  for editorial retitling.

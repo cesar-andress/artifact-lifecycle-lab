@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased]
+
+### Package identity (no new scientific Zenodo version)
+
+- Retitle GitHub metadata (`.zenodo.json`, `CITATION.cff`, README / replication entry) to the EMSE manuscript.
+- Frozen exports, protocols, and Zenodo version DOI `10.5281/zenodo.21716211` (v1.1.0) are unchanged. Do not mint v1.2.0.
+
 ## [1.1.0] — 2026-07-31
 
 ### Validation extension (does not alter frozen primary observations)

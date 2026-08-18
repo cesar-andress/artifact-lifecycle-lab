@@ -1,9 +1,9 @@
 # Artifact Lifecycle Lab
 
-**Archival replication package (Zenodo v1.1.0; DOI [10.5281/zenodo.21716211](https://doi.org/10.5281/zenodo.21716211))** for the ACM TOSEM manuscript  
-*Measuring Mechanical Reference Integrity in Machine-Consumed Instruction Files*.
+**Archival replication package (Zenodo v1.1.0; DOI [10.5281/zenodo.21716211](https://doi.org/10.5281/zenodo.21716211))** for the Empirical Software Engineering (EMSE) manuscript
+*Measuring Reference Integrity in Coding-Agent Instruction Files: An Audited Longitudinal Study*.
 
-Prior freeze **v1.0.0** remains at [10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432).
+Cite the frozen science with that Zenodo version DOI. Prior freeze **v1.0.0** remains at [10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432). Historical TOSEM-era titles remain in freeze notes and record how the archive was created.
 
 **Start here for reviewers and Zenodo users:** **[REPLICATION.md](REPLICATION.md)**
 
@@ -24,7 +24,8 @@ Prior freeze **v1.0.0** remains at [10.5281/zenodo.21711432](https://doi.org/10.
 ```bash
 git clone https://github.com/cesar-andress/artifact-lifecycle-lab.git
 cd artifact-lifecycle-lab
-git checkout v1.1.0   # or v1.0.0 for the original archival snapshot
+# Current GitHub snapshot: main (Git tag v1.0.0 tracks this HEAD).
+# Published scientific archive: Zenodo v1.1.0 (DOI 10.5281/zenodo.21716211).
 
 python3.12 -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate

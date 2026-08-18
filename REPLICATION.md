@@ -1,9 +1,11 @@
-# TOSEM replication guide
+# Replication guide
 
-**Package version:** 1.1.0 (validation extension; Zenodo archival v1.0.0 unchanged)  
-**Science freeze:** 2026-07-03 (primary)  
-**Validation extension:** 2026-07-31  
-**Manuscript:** *Measuring Mechanical Reference Integrity in Machine-Consumed Instruction Files*
+**Package version:** 1.1.0 (validation extension; Zenodo archival v1.0.0 unchanged)
+**Science freeze:** 2026-07-03 (primary)
+**Validation extension:** 2026-07-31
+**Manuscript:** *Measuring Reference Integrity in Coding-Agent Instruction Files: An Audited Longitudinal Study* (Empirical Software Engineering)
+
+Historical TOSEM-era titles in freeze notes and `RELEASE_NOTES.md` record how v1.0.0 / v1.1.0 were created. They are not the current manuscript identity.
 
 This file is the entry point for reviewers and archivists. For platform internals, see [README.md](README.md).
 

@@ -1,6 +1,6 @@
 {
-  "title": "Artifact Lifecycle Lab: Replication Package for Measuring Mechanical Reference Integrity in Machine-Consumed Instruction Files",
-  "description": "Archival replication package for the ACM TOSEM submission Measuring Mechanical Reference Integrity in Machine-Consumed Instruction Files.\n\nFrozen scientific outputs (2026-07-03) include longitudinal panel exports (RQ1–RQ4), confirmatory audits (RQ2 failure audit; born-stale / GFC), exploratory RQ5 A/B/C ledgers, claim-to-evidence mapping, protocols, and Makefile regeneration targets for observational analyses.\n\nv1.1.0 adds a validation extension on those frozen exports: blinded RQ2 second-auditor package with independent human labels (Person 1/Person 2/Person 3), recommended multi-estimator agreement summaries, audit-rule sensitivity, and repository-concentration analyses. Do not silently replace v1.0.0.\n\nAuthors: César Andrés (corresponding); David Martín-Moncunill.\n\nPrimary entry point: REPLICATION.md. Authoritative claim inventory: docs/SCIENTIFIC_EVIDENCE_FREEZE.md. Validation protocol: docs/VALIDATION_EXTENSION_PROTOCOL.md.\n\nZenodo version DOI: 10.5281/zenodo.21716211 (v1.1.0). Prior freeze: 10.5281/zenodo.21711432 (v1.0.0). Concept DOI: 10.5281/zenodo.21711431.\n\nRQ5 agent reruns require Claude Code CLI credentials and are frozen; use committed ledgers for manuscript numbers.",
+  "title": "Artifact Lifecycle Lab: Replication Package for Measuring Reference Integrity in Coding-Agent Instruction Files (An Audited Longitudinal Study)",
+  "description": "Replication package for the manuscript Measuring Reference Integrity in Coding-Agent Instruction Files: An Audited Longitudinal Study, prepared for Empirical Software Engineering (EMSE).\n\nZenodo version 1.1.0 (DOI 10.5281/zenodo.21716211) archives the frozen scientific evidence used by that manuscript: longitudinal panel exports (RQ1-RQ4), the RQ2 failure audit, the born-stale taxonomy and GFC filter outputs, exploratory RQ5 A/B/C ledgers, claim-to-evidence mapping, protocols, and Makefile regeneration targets for observational analyses. The 2026-07-31 validation extension (blinded RQ2 second-auditor package, independent human labels for Person 1/Person 2/Person 3, audit-rule sensitivity, repository-concentration analyses) is included. Do not silently replace v1.0.0 (DOI 10.5281/zenodo.21711432).\n\nEditorial rewriting of the manuscript for EMSE (template, section order, Related Work, GFC filter wording) did not change the frozen scientific content of this deposit.\n\nHistorical TOSEM-era titles and venue wording may remain in frozen release notes and freeze documents inside the package; those files record how v1.1.0 was created.\n\nAuthors: César Andrés (corresponding); David Martín-Moncunill.\n\nPrimary entry point: REPLICATION.md. Authoritative claim inventory: docs/SCIENTIFIC_EVIDENCE_FREEZE.md. Validation protocol: docs/VALIDATION_EXTENSION_PROTOCOL.md.\n\nRQ5 agent reruns require Claude Code CLI credentials and are not bit-identically regenerable; use committed ledgers for manuscript numbers.\n\nConcept DOI: 10.5281/zenodo.21711431.",
   "creators": [
     {
       "name": "Andrés, César",
@@ -18,9 +18,9 @@
     "coding agents",
     "instruction files",
     "reference integrity",
+    "mining software repositories",
     "empirical software engineering",
-    "replication package",
-    "TOSEM"
+    "replication package"
   ],
   "license": "mit",
   "upload_type": "software",
