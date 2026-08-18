@@ -29,7 +29,7 @@ def render_figure_taxonomy(category_counts: Counter[str], path: Path) -> None:
         "pre-observation\nevolution",
         "external\nreference",
         "verification\nanchor mismatch",
-        "genuine false\nclaim",
+        "LLM-agreed\nfalse-claim\ncandidate",
         "unresolved\ndisagreement",
     ]
     keys = [
