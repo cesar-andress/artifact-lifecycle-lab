@@ -1,6 +1,6 @@
 # Replication guide
 
-**Package version:** 1.2.0 (EMSE-facing packaging / documentation release)  
+**Package version:** 1.2.1 (documentation / metadata patch; frozen science unchanged from v1.2.0)  
 **Science freeze:** 2026-07-03 (primary observational evidence)  
 **Validation extension:** 2026-07-31  
 **Manuscript:** *Measuring Reference Integrity in Coding-Agent Instruction Files: An Audited Longitudinal Study* (Empirical Software Engineering)
@@ -49,7 +49,7 @@ Material-necessity / load-bearing annotation kits are **withdrawn**
 ```bash
 git clone https://github.com/cesar-andress/artifact-lifecycle-lab.git
 cd artifact-lifecycle-lab
-git checkout v1.2.0
+git checkout v1.2.1
 
 python3.12 -m venv .venv
 source .venv/bin/activate
@@ -124,16 +124,17 @@ Notes:
 
 | Version | Role |
 |---------|------|
-| **v1.2.0** (this release) | Recommended for EMSE manuscript readers ([10.5281/zenodo.22009399](https://doi.org/10.5281/zenodo.22009399)) |
+| **v1.2.1** (this release) | Recommended packaging snapshot; docs/metadata patch ([GitHub `v1.2.1`](https://github.com/cesar-andress/artifact-lifecycle-lab/releases/tag/v1.2.1)) |
+| **v1.2.0** | Prior packaging release ([10.5281/zenodo.22009399](https://doi.org/10.5281/zenodo.22009399)) |
 | **v1.1.0** | Prior archival package ([10.5281/zenodo.21716211](https://doi.org/10.5281/zenodo.21716211)) |
 | **v1.0.0** | Prior primary freeze ([10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432)) |
 
 - License: [LICENSE](LICENSE) (MIT)
 - Citation file: [CITATION.cff](CITATION.cff)
 - Authors: César Andrés (corresponding); David Martín-Moncunill
-- Zenodo **v1.2.0** version DOI: [10.5281/zenodo.22009399](https://doi.org/10.5281/zenodo.22009399)
-- Concept DOI: [10.5281/zenodo.21711431](https://doi.org/10.5281/zenodo.21711431)
-- GitHub release: [v1.2.0](https://github.com/cesar-andress/artifact-lifecycle-lab/releases/tag/v1.2.0)
+- Zenodo **concept DOI** (all versions): [10.5281/zenodo.21711431](https://doi.org/10.5281/zenodo.21711431)
+- Zenodo **v1.2.1** version DOI: assigned on Zenodo archive of this tag (read from the landing after mint; not invented in-tree)
+- GitHub release: [v1.2.1](https://github.com/cesar-andress/artifact-lifecycle-lab/releases/tag/v1.2.1)
 
 ## Known limitations
 

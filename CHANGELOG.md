@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.2.1] — 2026-08-19
+
+### Documentation / metadata patch (frozen science unchanged)
+
+- Align archived repository snapshot with package citation metadata after Zenodo v1.2.0
+  captured an earlier commit than the DOI-recording docs.
+- Bump package version to **1.2.1**; prefer Zenodo **concept DOI** `10.5281/zenodo.21711431` in-tree.
+- Do not embed a not-yet-minted v1.2.1 version DOI; read it from the Zenodo landing after archive.
+- Preserve v1.2.0 ([10.5281/zenodo.22009399](https://doi.org/10.5281/zenodo.22009399)) and earlier tags unchanged.
+- Add `RELEASE_NOTES_v1.2.1.md`.
+
 ## [1.2.0] — 2026-08-19
 
 ### Packaging / documentation release (frozen science unchanged)

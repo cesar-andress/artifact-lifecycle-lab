@@ -11,4 +11,4 @@ Authoritative claim inventory for the EMSE manuscript:
 Current package entry points:
 
 - [`../../REPLICATION.md`](../../REPLICATION.md)
-- [`../../RELEASE_NOTES_v1.2.0.md`](../../RELEASE_NOTES_v1.2.0.md)
+- [`../../RELEASE_NOTES_v1.2.1.md`](../../RELEASE_NOTES_v1.2.1.md)
