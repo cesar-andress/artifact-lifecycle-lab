@@ -1,12 +1,17 @@
 # Changelog
 
-## [Unreleased]
+## [1.2.0] — 2026-08-19
 
-### Package identity (no new scientific Zenodo version)
+### Packaging / documentation release (frozen science unchanged)
 
-- Retitle GitHub metadata (`.zenodo.json`, `CITATION.cff`, README / replication entry) to the EMSE manuscript.
-- Frozen exports, protocols, and Zenodo version DOI `10.5281/zenodo.21716211` (v1.1.0) are unchanged. Do not mint v1.2.0.
-- Regenerate annotated GitHub tag `v1.0.0` on current `main` HEAD so the public GitHub/Zenodo sync tracks the EMSE package identity (no new scientific Zenodo version).
+- Align public metadata and documentation with the Empirical Software Engineering (EMSE) manuscript
+  *Measuring Reference Integrity in Coding-Agent Instruction Files: An Audited Longitudinal Study*.
+- Bump package version to **1.2.0** (`.zenodo.json`, `CITATION.cff`, `pyproject.toml`, README / REPLICATION).
+- Add `RELEASE_NOTES_v1.2.0.md` and `docs/historical/README.md` (navigation for pre-submission development notes).
+- Preserve frozen observational exports, human labels, protocols, and scientific results.
+- Prior archival versions remain available: v1.1.0 ([10.5281/zenodo.21716211](https://doi.org/10.5281/zenodo.21716211)),
+  v1.0.0 ([10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432)).
+- Zenodo version DOI for v1.2.0 is minted after this GitHub release is archived (do not invent a DOI).
 
 ## [1.1.0] — 2026-07-31
 
@@ -25,7 +30,7 @@ Science freeze for primary manuscript numbers remains **2026-07-03**.
 
 ## [1.0.0] — 2026-07-31
 
-### Archival release (TOSEM replication package)
+### Archival release (historical package identity preserved in RELEASE_NOTES.md)
 
 - Add LICENSE (MIT), CITATION.cff, .zenodo.json, REPLICATION.md, RELEASE_NOTES.md.
 - Document frozen versus regenerable outputs; mark RQ5 agent runs as non-regenerable for claim verification.

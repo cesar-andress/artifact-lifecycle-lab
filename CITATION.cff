@@ -1,9 +1,9 @@
 cff-version: 1.2.0
 message: "If you use this replication package, please cite it as below."
 type: software
-title: "Artifact Lifecycle Lab: Replication Package for Measuring Reference Integrity in Coding-Agent Instruction Files (An Audited Longitudinal Study)"
-version: "1.1.0"
-date-released: "2026-07-31"
+title: "Artifact Lifecycle Lab: Replication Package for Measuring Reference Integrity in Coding-Agent Instruction Files"
+version: "1.2.0"
+date-released: "2026-08-19"
 authors:
   - family-names: Andrés
     given-names: César
@@ -16,21 +16,22 @@ authors:
     email: david.martinm@ucjc.edu
     affiliation: "CRIA-BDHS Research Group, Higher Polytechnic School of Technology and Science, Universidad Camilo José Cela, Madrid, Spain"
 repository-code: "https://github.com/cesar-andress/artifact-lifecycle-lab"
-url: "https://doi.org/10.5281/zenodo.21716211"
-doi: "10.5281/zenodo.21716211"
+# Preferred cite URL until Zenodo mints the v1.2.0 version DOI:
+url: "https://github.com/cesar-andress/artifact-lifecycle-lab/releases/tag/v1.2.0"
+# doi: UPDATE AFTER ZENODO MINTS v1.2.0 (do not invent a DOI)
 identifiers:
+  - type: url
+    value: "https://github.com/cesar-andress/artifact-lifecycle-lab/releases/tag/v1.2.0"
+    description: GitHub release tag v1.2.0 (current package; preferred until Zenodo DOI exists)
   - type: doi
     value: "10.5281/zenodo.21716211"
-    description: Zenodo version DOI for v1.1.0 (current archival cite)
+    description: Zenodo version DOI for prior package v1.1.0 (historical; keep intact)
   - type: doi
     value: "10.5281/zenodo.21711432"
-    description: Zenodo version DOI for prior freeze v1.0.0 (keep intact)
+    description: Zenodo version DOI for prior freeze v1.0.0 (historical; keep intact)
   - type: doi
     value: "10.5281/zenodo.21711431"
     description: Zenodo concept DOI (all versions)
-  - type: url
-    value: "https://github.com/cesar-andress/artifact-lifecycle-lab/releases/tag/v1.1.0"
-    description: GitHub release tag v1.1.0
 license: MIT
 keywords:
   - software documentation
@@ -44,10 +45,11 @@ abstract: >-
   Replication package for the Empirical Software Engineering manuscript
   Measuring Reference Integrity in Coding-Agent Instruction Files: An
   Audited Longitudinal Study. Contains frozen observational exports,
-  audit summaries, GFC filter outputs, exploratory RQ5 ledgers,
-  protocols, regeneration scripts, and a v1.1.0 validation extension
-  (blinded RQ2 audit package, independent human labels, audit-rule
-  sensitivity, repository concentration). Science freeze date:
-  2026-07-03; validation extension: 2026-07-31. Zenodo version DOI:
-  10.5281/zenodo.21716211. Do not mint a new scientific Zenodo version
-  for editorial retitling.
+  audit materials, independent human validation labels, claim-to-evidence
+  mappings, GFC filter outputs, exploratory runtime-probe ledgers,
+  protocols, and regeneration scripts. Package version 1.2.0 aligns public
+  metadata and documentation with the EMSE manuscript without recomputing
+  or altering frozen scientific evidence. Science freeze date: 2026-07-03;
+  validation extension: 2026-07-31. After Zenodo archives this GitHub
+  release, replace the preferred citation DOI with the minted v1.2.0
+  version DOI (concept DOI remains 10.5281/zenodo.21711431).

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "artifact-lifecycle-lab"
-version = "1.1.0"
-description = "Replication package and research platform for mechanical reference integrity in machine-consumed instruction files"
+version = "1.2.0"
+description = "Replication package for measuring reference integrity in coding-agent instruction files (EMSE manuscript)"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
