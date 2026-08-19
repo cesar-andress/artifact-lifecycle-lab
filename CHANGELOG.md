@@ -6,6 +6,7 @@
 
 - Retitle GitHub metadata (`.zenodo.json`, `CITATION.cff`, README / replication entry) to the EMSE manuscript.
 - Frozen exports, protocols, and Zenodo version DOI `10.5281/zenodo.21716211` (v1.1.0) are unchanged. Do not mint v1.2.0.
+- Regenerate annotated GitHub tag `v1.0.0` on current `main` HEAD so the public GitHub/Zenodo sync tracks the EMSE package identity (no new scientific Zenodo version).
 
 ## [1.1.0] — 2026-07-31
 
