@@ -8,7 +8,7 @@ Replication package **v1.2.0** for the Empirical Software Engineering (EMSE) man
 | | |
 |--|--|
 | **Recommended package tag** | [`v1.2.0`](https://github.com/cesar-andress/artifact-lifecycle-lab/releases/tag/v1.2.0) |
-| **Zenodo v1.2.0 DOI** | Pending mint after this GitHub release is archived |
+| **Zenodo v1.2.0 DOI** | [10.5281/zenodo.22009399](https://doi.org/10.5281/zenodo.22009399) |
 | **Prior package v1.1.0** | [10.5281/zenodo.21716211](https://doi.org/10.5281/zenodo.21716211) (historical) |
 | **Prior freeze v1.0.0** | [10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432) (historical) |
 | **Concept DOI** | [10.5281/zenodo.21711431](https://doi.org/10.5281/zenodo.21711431) |

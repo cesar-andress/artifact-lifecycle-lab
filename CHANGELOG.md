@@ -11,7 +11,7 @@
 - Preserve frozen observational exports, human labels, protocols, and scientific results.
 - Prior archival versions remain available: v1.1.0 ([10.5281/zenodo.21716211](https://doi.org/10.5281/zenodo.21716211)),
   v1.0.0 ([10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432)).
-- Zenodo version DOI for v1.2.0 is minted after this GitHub release is archived (do not invent a DOI).
+- Zenodo version DOI for v1.2.0: [10.5281/zenodo.22009399](https://doi.org/10.5281/zenodo.22009399).
 
 ## [1.1.0] — 2026-07-31
 

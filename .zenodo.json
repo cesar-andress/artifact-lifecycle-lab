@@ -1,6 +1,6 @@
 {
   "title": "Artifact Lifecycle Lab: Replication Package for Measuring Reference Integrity in Coding-Agent Instruction Files",
-  "description": "Replication package for the Empirical Software Engineering (EMSE) manuscript Measuring Reference Integrity in Coding-Agent Instruction Files: An Audited Longitudinal Study.\n\nThis archive contains frozen observational evidence (longitudinal panel exports RQ1-RQ4), extraction and verification code, audit materials, independent human validation labels, claim-to-evidence mappings, reproducibility documentation, exploratory runtime-probe ledgers (package label RQ5), protocols, and supporting analysis artifacts.\n\nVersion 1.2.0 updates the public package organization, documentation, and metadata for the EMSE manuscript. The underlying frozen scientific evidence is preserved: observational exports, human labels, audit decisions, protocols, and scientific results were not recomputed or altered merely for this release.\n\nReaders of the EMSE manuscript should prefer this v1.2.0 package. Prior archival versions remain available for provenance (v1.1.0 DOI 10.5281/zenodo.21716211; v1.0.0 DOI 10.5281/zenodo.21711432). Concept DOI: 10.5281/zenodo.21711431.\n\nPrimary entry point: REPLICATION.md. Authoritative claim inventory: docs/SCIENTIFIC_EVIDENCE_FREEZE.md. Validation protocol: docs/VALIDATION_EXTENSION_PROTOCOL.md.\n\nReproducibility boundary: exploratory runtime-probe agent reruns require Claude Code CLI credentials and are not bit-identically regenerable; use committed ledgers for manuscript numbers. Observational Make targets regenerate from frozen intermediate tables without agent credentials.\n\nAuthors: César Andrés (corresponding); David Martín-Moncunill.",
+  "description": "Replication package for the Empirical Software Engineering (EMSE) manuscript Measuring Reference Integrity in Coding-Agent Instruction Files: An Audited Longitudinal Study.\n\nThis archive contains frozen observational evidence (longitudinal panel exports RQ1-RQ4), extraction and verification code, audit materials, independent human validation labels, claim-to-evidence mappings, reproducibility documentation, exploratory runtime-probe ledgers (package label RQ5), protocols, and supporting analysis artifacts.\n\nVersion 1.2.0 (DOI 10.5281/zenodo.22009399) is the recommended package for EMSE manuscript readers. It updates public organization, documentation, and metadata; the underlying frozen scientific evidence is preserved and was not recomputed for this release.\n\nPrior archival versions remain available for provenance (v1.1.0 DOI 10.5281/zenodo.21716211; v1.0.0 DOI 10.5281/zenodo.21711432). Concept DOI: 10.5281/zenodo.21711431.\n\nPrimary entry point: REPLICATION.md. Authoritative claim inventory: docs/SCIENTIFIC_EVIDENCE_FREEZE.md. Validation protocol: docs/VALIDATION_EXTENSION_PROTOCOL.md.\n\nReproducibility boundary: exploratory runtime-probe agent reruns require Claude Code CLI credentials and are not bit-identically regenerable; use committed ledgers for manuscript numbers.\n\nAuthors: César Andrés (corresponding); David Martín-Moncunill.",
   "creators": [
     {
       "name": "Andrés, César",
@@ -28,6 +28,12 @@
   "communities": [],
   "version": "1.2.0",
   "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.22009399",
+      "relation": "isIdenticalTo",
+      "resource_type": "software",
+      "scheme": "doi"
+    },
     {
       "identifier": "10.5281/zenodo.21716211",
       "relation": "isNewVersionOf",

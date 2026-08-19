@@ -5,11 +5,11 @@
 **Tag:** `v1.2.0`  
 **Authors:** César Andrés (corresponding); David Martín-Moncunill  
 **Manuscript:** *Measuring Reference Integrity in Coding-Agent Instruction Files: An Audited Longitudinal Study* (Empirical Software Engineering)  
+**Zenodo version DOI (v1.2.0):** [10.5281/zenodo.22009399](https://doi.org/10.5281/zenodo.22009399)  
 **Prior package (v1.1.0):** [10.5281/zenodo.21716211](https://doi.org/10.5281/zenodo.21716211)  
 **Prior freeze (v1.0.0):** [10.5281/zenodo.21711432](https://doi.org/10.5281/zenodo.21711432)  
 **Concept DOI:** [10.5281/zenodo.21711431](https://doi.org/10.5281/zenodo.21711431)  
-**GitHub release:** [v1.2.0](https://github.com/cesar-andress/artifact-lifecycle-lab/releases/tag/v1.2.0)  
-**Zenodo version DOI for v1.2.0:** pending mint after this GitHub release is archived (do not invent a DOI)
+**GitHub release:** [v1.2.0](https://github.com/cesar-andress/artifact-lifecycle-lab/releases/tag/v1.2.0)
 
 ## Summary
 
